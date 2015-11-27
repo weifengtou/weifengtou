@@ -1,0 +1,40 @@
+<extend name="Base/prcenter"/>
+
+<block name="header">
+  <header>
+    <div class="littlebanner">
+      <img src="__HOME__/images/entrepre/cailing.gif" />
+    </div>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+      //$('#createproject').romoveClass('abefore');
+      $('#createproject').addClass('jiben');
+    });
+    </script>
+  </header>
+</block>
+
+<block name="body">
+  <div class="all">
+    <include file="main_t" />
+    <!--main-->
+    <div class="main" style="margin-bottom:20px;">
+      <include file="main_l" />
+
+      <div class="main_r">
+        <div class="yichuangjian">
+          <p>创建项目</p>
+        </div>
+
+        <div class="cjxm">
+          <a href="?s=/Home/Entrepre/entrepre">
+            <img src="__IMG__/prcenter/cjxm.gif" alt="点击创建新项目" width="257" height="49" />
+          </a>
+        </div>
+
+      </div>
+    <div class="clear"></div>
+    </div>
+    
+  </div>
+</block>

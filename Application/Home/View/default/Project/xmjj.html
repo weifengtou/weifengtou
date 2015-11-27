@@ -1,0 +1,156 @@
+<!--项目简介-->
+<div class="gongtong xmjj">
+
+    <h3>项目简介</h3>
+
+    <!--项目视频-->
+    <div class="xmjj_l">
+        <div>
+            <?php if ($proInfo[0][videoweb]):
+                $x = $proInfo[0][videoweb];
+            else:
+                $x = 'XODMwNjE3ODIw';
+            endif ?>
+            <div id="youkuplayer" style="position:absolute;width:480px;height:400px;z-index:0;" style="display:none;"></div>
+            <script type="text/javascript" src="http://player.youku.com/jsapi">
+                player = new YKU.Player('youkuplayer',{
+                styleid: '0',
+                client_id: 'YOUR YOUKUOPENAPI CLIENT_ID',
+                vid:"{$x}"
+                });
+            </script>
+            <script>
+                
+                $("object").append('<param name="wmode" value="opaque">')
+                $("#youkuplayer").show()
+                
+            </script>
+        </div>
+    </div>
+
+    <!--关于我们-->
+    <div id="container">
+        <div id="div1">
+
+            <div class="aboutus zffir">
+                <h2>关于我们</h2>
+                <p>{$proInfo[0][prabout]}</p>
+
+            </div>
+
+            <div class="aboutus zssec">
+                <h2>为什么需要你们的支持</h2>
+                <p>{$proInfo[0][prwhysupport]}</p>
+
+            </div>
+
+            <div class="aboutus ztthr">
+                <h2>我们的承诺与回报</h2>
+                <p>{$proInfo[0][prpromise]}</p>
+
+            </div>
+
+            <div class="aboutus zffou">
+                <h2>项目风险</h2>
+                <p>{$proInfo[0][prdanger]}</p>
+
+            </div>
+        </div>
+        <if condition="$proInfo[0][prabout]||$proInfo[0][prwhysupport]||$proInfo[0][prpromise]||$proInfo[0][prdanger]">
+            <div id="div2">
+                <div id="div3"></div>
+            </div>
+            <else />
+            <div></div>
+        </if>
+
+        <script type="text/javascript">  
+            var oContainer = document.getElementById("container"), oDiv1 = document.getElementById("div1"), oDiv2 = document.getElementById("div2"), oDiv3 = document.getElementById("div3");  
+
+            oDiv3.onmousedown = function(e) {  
+                e = e || event;  
+  
+                var disY = e.clientY - this.offsetTop;  
+                  
+                if(oDiv3.setCapture){  
+                    oDiv3.onmousemove=fnMove;  
+                    oDiv3.onmouseup=fnUp;  
+                    oDiv3.setCapture();  
+                }else{  
+                    document.onmousemove=fnMove;  
+                    document.onmouseup=fnUp;  
+                }  
+                  
+                function fnMove(ev) {  
+                    ev = ev || event;  
+  
+                    var t = ev.clientY - disY;  
+                    setTop(t);  
+                };  
+  
+                function fnUp() {  
+                    this.onmousemove = null;  
+                    this.onmouseup = null;  
+                      
+                    if(this.releaseCapture){  
+                        this.releaseCapture();  
+                    }  
+                };  
+  
+                return false;  
+            };  
+  
+            function setTop(t) {  
+                var down = oDiv2.offsetHeight - oDiv3.offsetHeight;  
+  
+                if (t < 0) {  
+                    t = 0;  
+                } else if (t > down) {  
+                    t = down  
+                }  
+  
+                oDiv3.style.top = t + 'px';  
+  
+                var scale = t / down;  
+                oDiv1.style.top = -(oDiv1.offsetHeight - oContainer.offsetHeight) * scale + 'px';  
+            }  
+  
+            addEvent(oDiv1, 'mousewheel', mousewheel);  
+            addEvent(oDiv1, 'DOMMouseScroll', mousewheel);  
+            addEvent(oDiv2, 'mousewheel', mousewheel);  
+            addEvent(oDiv2, 'DOMMouseScroll', mousewheel);  
+  
+            function addEvent(obj, oEvent, fn) {  
+                if (obj.attachEvent) {  
+                    obj.attachEvent('on' + oEvent, fn);  
+                } else {  
+                    obj.addEventListener(oEvent, fn, false);  
+                }  
+            }  
+  
+            function mousewheel(e) {  
+                var ev = e || event, bDown = false;  
+  
+                bDown = ev.wheelDelta ? ev.wheelDelta < 0 : ev.detail > 0;  
+                  
+                if (bDown) {  
+                    setTop(oDiv3.offsetTop+10);  
+                }else{  
+                    setTop(oDiv3.offsetTop-10);  
+                }  
+  
+                //FF,绑定事件，阻止默认事件  
+                if (e.preventDefault) {  
+                    e.preventDefault();  
+                }  
+  
+                return false;  
+            }  
+            </script>
+
+        <div class="clear"></div>
+    </div>
+
+    <div class="clear"></div>
+
+</div>

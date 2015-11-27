@@ -1,0 +1,56 @@
+<extend name="Public/base"/>
+
+<!-- 子导航 -->
+<block name="sidebar">
+    <include file="sidemenu" />
+</block>
+
+<block name="body">
+    <div class="main-title">
+        <h2>项目编辑</h2>
+        <!-- 下载 -->
+		<div style="float:left;width:150px;height:30px; line-height:30px; text-align:center; color:#007300"><a id="download" style="color:#007300" href="{:U('Article/exportLookover03Excel','prid='.$prid)}">下载</a></div>
+    </div>
+    <div class="w936" style="margin:0 auto;">
+        <include file="lookoverTab" />
+        <script type="text/javascript">
+        $(document).ready(function($) {
+            $('#tb_5').addClass('tabcss');
+        });
+        </script>
+        <div class="ctt">
+            <div class="dis" id="tbc_03">
+						<!-- <if condition="!($prdescription)"> -->
+							<div class="middle" id="cd51">
+								{$prdes|htmlspecialchars_decode}
+    								
+							</div>
+						<div class="clear"></div>
+					</div>
+                <div style="width:758px;height:35px;">
+                    <div style="width:244px;margin:0 auto;">
+                        <div class="next" style=" background:url('./Public/home/images/entrepre/xis.gif') no-repeat;">
+                            <a href="__URL__/lookover02&prid={$prid}">上一步</a>
+                        </div>
+                        <div class="next" style=" background:url('./Public/home/images/entrepre/xis.gif') no-repeat;">
+                            <a href="__URL__/lookover03&prid={$prid}">下一步</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+    <php>
+        if(C('COLOR_STYLE')=='blue_color') echo '
+        <link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+    <link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+    <link href="__HOME__/css/entrepre.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+</block>

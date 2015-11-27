@@ -1,0 +1,89 @@
+<extend name="Base/invcenter"/>
+
+<block name="header">
+    <header>
+        <!--banner-->
+        <div class="littlebanner">
+            <img src="__IMG__/investor/invcenter/cailing.gif" />
+        </div>
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                $('#chuzi').addClass('jiben');
+            });
+        </script>
+    </header>
+    <!-- ==============================================js特效================================================= -->
+    <include file="index/effect" />
+    <!-- =================================================================================================== -->
+</block>
+<block name="body">
+    <div class="all">
+
+        <include file="main_t" />
+        <!--main-->
+        <div class="main" style="margin-bottom:20px;">
+            <include file="main_l" />
+            <div class="main_r">
+
+                <div class="yichuangjian">
+
+                    <p>
+                        出资
+                        <span>
+                            你发表了 <font style="color:red"><?php echo count($chuzis); ?>个</font>
+                            预约出资意向
+                        </span>
+                    </p>
+
+                </div>
+                <div id="items">
+                <?php foreach ($chuzis as $key => $value): ?>
+                    <div class="dongtai">
+                        <div class="dongtai_l">
+                            <a href="?s=home/project/prdetail&pid={$value[prid]}">
+                                <img src="./Uploads/Album/{$value[logo]}" height="82" width="163" />
+                            </a>
+                        </div>
+                        <div class="dongtai_r">
+                            <p>
+                                你向
+                                <span>{$value[username]}</span>
+                                <img src="__IMG__/investor/invcenter/renzheng.gif" width="20" height="20" alt="认证" />
+                                的案例
+                                <span>{$value[pjname]}</span>
+                                发表了
+                                <span>{$value[cz_maney]}元</span>
+                                的投资意向
+                                <br />
+                            </p>
+                            <h3 class="time">{:date("Y-m-d",$value[cz_time])}</h3>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="fenge clear"></div>
+                    </div>
+                <?php endforeach ?>
+                </div>
+                <div class="pages">
+                    <script>
+                    $("div.pages").jPages({
+                        containerID : "items",
+                        perPage : 10,
+                        previous : "上一页",
+                        next : "下一页"
+                    });
+                    </script>
+                </div>
+                <?php if (count($chuzis)==0): ?>
+                    <script>
+                        $("#items").hide()
+                        $(".pages").hide()
+                    </script>
+                    <p>你还没有对任何项目发表出资意向</p>
+                <?php endif ?>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</block>

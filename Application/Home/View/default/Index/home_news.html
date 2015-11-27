@@ -1,0 +1,122 @@
+<!--微风投头条-->
+
+<div class="newin_bt">
+    <div class="newin_bta">
+        微风投头条
+        <font>
+        微风投头条结汇与此。
+        </font>
+    </div>
+</div>
+
+<div class="newss">
+	
+	<!--图片轮播-->
+	<div class="newss_l">
+		<style type="text/css">
+		#banner_news { position: relative; width: 570px; height: 300px; overflow: hidden; }
+		#banner_list img { border: 0px; width:570px; height:300px;}
+		#banner_bg { position: absolute; bottom: 0; background-color: #000; height: 60px; filter: Alpha(Opacity=30); opacity: 0.8; z-index: 1000; cursor: pointer; width: 570px; }
+		#banner_info { position: absolute; bottom: 0; left: 5px; height:50px; color: #fff; z-index: 1001; cursor: pointer; font-size:16px}
+		#banner_text { position: absolute; width: 120px; z-index: 1002; right: 3px; bottom: 3px;}
+		#banner_news ul { position: absolute; list-style-type: none; filter: Alpha(Opacity=80); opacity: 1; z-index: 1002; margin: 0; padding: 0; bottom: 3px; right: 5px; }
+		#banner_news ul li { padding: 0px 8px; float: left; display: block; color:#f39c11 !important; background: #fff; cursor: pointer; border: 1px solid #333;}
+		#banner_news ul li.on { background-color:#ffe7c5; color:#7b7b7b !important;}
+		#banner_list a { position: absolute; }
+		<!--
+		让四张图片都可以重叠在一起-->
+		</style>
+
+		<script type="text/javascript">
+		var t = n =0, count;
+		$(document).ready(function(){ 
+		count=$("#banner_list a").length;
+		$("#banner_list a:not(:first-child)").hide();
+		$("#banner_info").html($("#banner_list a:first-child").find("img").attr('alt'));
+		$("#banner_info").click(function(){window.open($("#banner_list a:first-child").attr('href'), "_blank")});
+		$("#banner_news li").click(function() {
+		var i = $(this).text() -1;//获取Li元素内的值，即1，2，3，4
+		n = i;
+		if (i >= count) return;
+		$("#banner_info").html($("#banner_list a").eq(i).find("img").attr('alt'));
+		$("#banner_info").unbind().click(function(){window.open($("#banner_list a").eq(i).attr('href'), "_blank")})
+		$("#banner_list a").filter(":visible").fadeOut(500).parent().children().eq(i).fadeIn(1000);
+		document.getElementById("banner_news").style.background="";
+		$(this).toggleClass("on");
+		$(this).siblings().removeAttr("class");
+		});
+		t = setInterval("showAuto()", 4000);
+		$("#banner_news").hover(function(){clearInterval(t)}, function(){t = setInterval("showAuto()", 4000);});
+		})
+
+		function showAuto()
+		{
+		n = n >=(count -1) ?0 : ++n;
+		$("#banner_news li").eq(n).trigger('click');
+		}
+		</script>
+		<div id="banner_news">
+			<div id="banner_bg"></div>
+			<!--标题背景-->
+			<div id="banner_info"></div>
+			<!--标题-->
+			<ul>
+				<li class="on">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ul>
+			<div id="banner_list">
+				<?php $category=D('Category')->getChildrenId(news);
+				$__LIST__ = D('Document')->where("position>3")->lists($category, '`level` DESC,`id` DESC', 1,true);
+				if(is_array($__LIST__)): $i = 0; 
+				if( count($__LIST__)==0 ) : echo "" ;
+				else: foreach($__LIST__ as $key=>$article): $mod = ($i % 2 );
+				++$i; 
+				if ($article[position]>3): ?>
+					<?php $info = D('Document')->detail($article[id]); ?>
+					<a class="index_news_img" href="<?php echo U('Article/detail?id='.$article['id']);?>" target="_blank">
+						<?php $index_image = M('picture')->where("id='$info[index_image]'")->find(); ?>
+						<?php if ($index_image[path]): ?>
+						<img src=".{$index_image[path]}" title="{$article[title]}" alt="{$article[title]}" />
+						<?php else: ?>
+						<img src="__STATIC__/images/nop.gif" titele="{$article[title]}" alt="{$article[title]}" />
+						<?php endif; ?>
+					</a>
+				<?php endif; endforeach; endif; else: echo "" ;endif; ?>
+			</div>
+			<script>
+				$(".index_news_img:gt(3)").remove()
+			</script>
+		</div>
+	</div>
+	<div class="newss_r">
+		<?php $category=D('Category')->getChildrenId(news);
+		$__LIST__ = D('Document')->where("position>3")->lists($category, '`level` DESC,`id` DESC', 1,true);
+		if(is_array($__LIST__)): $i = 0; 
+		if( count($__LIST__)==0 ) : echo "" ;
+		else: foreach($__LIST__ as $key=>$article): $mod = ($i % 2 );
+		++$i; 
+		if ($article[position]>3): ?>
+			<div class="newz">
+				<div class="newz_l">
+					<a href="<?php echo U('Article/detail?id='.$article['id']);?>" target="_blank"><?php echo ($article["title"]); ?></a>
+				</div>
+				<div class="newz_r"><?php echo (date('Y.m.d',$article["create_time"])); ?></div>
+				<div class="clear"></div>
+			</div>
+		<?php endif; endforeach; endif; else: echo "" ;endif; ?>
+	</div>
+	<script>
+	$(".newz:gt(5)").remove()
+	</script>
+	<div class="clear"></div>
+
+</div>
+
+	<!--更多-->
+    <div class="xmmore">
+        <div class="xmmorea">
+            <a href="{:U('Article/lists?category=news')}" target="_blank"><img src="__HOME__/images/index/newmore.gif"></a>
+        </div>
+    </div>

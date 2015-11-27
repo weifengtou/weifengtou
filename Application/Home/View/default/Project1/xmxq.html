@@ -1,0 +1,105 @@
+
+<extend name="Base/prdetail1"/>
+<block name="header">
+    <link rel="stylesheet" type="text/css" href="__HOME__/css/detail.css">
+    <link rel="stylesheet"  href="__CSS__/prdetail.css" type="text/css" />
+    <script src="__STATIC__/jquery.idTabs.min.js"></script>
+</block>
+<block name="body">
+
+    <div class="prodeta_a">
+        <div class="prodeta_b">
+            <div>
+                <!--banner-->
+                <include file="Project1:banner" />
+
+                <!--main-->
+                <div class="xmdal_main">
+                    <!--左-->
+                    <div class="xmmain_l">
+                        <!--简介-->
+                        <include file="Project1:jian_jie" />
+
+                        <include file="Project1:ping_lun" />
+                        <script>
+                        function bt_size_change () {
+                            var height = $("div.prodeta_b").height()
+                            height = height + 'px'
+                            $("div.row").css('height',height);
+                            $("li.compa_fe>a,div.paging>a").on('click',function(event) {
+                                event.preventDefault();
+                                height = $('.prodeta_b').height()
+                                $("div.row").css('height',height);
+                            });
+                        }
+                        jQuery(document).ready(function($) {
+                            var pl_inc = $("#ping_lun_include").html()
+                            $("#ping_lun_include").remove()
+                            $("#pinglun1").append('<div id="ping_lun_include"></div>')
+                            $("#ping_lun_include").append(pl_inc)
+                            $("li.compa_fe>a").on('click',function(event) {
+                                event.preventDefault();
+                                if ($(this).attr('href')=='#jie_shao') {
+                                    $("#ping_lun_include").remove()
+                                    $("#pinglun1").append('<div id="ping_lun_include"></div>')
+                                    $("#ping_lun_include").append(pl_inc)
+                                }
+                                if ($(this).attr('href')=='#ping_lun') {
+                                    $("#ping_lun_include").remove()
+                                    $("#pinglun2").append('<div id="ping_lun_include"></div>')
+                                    $("#ping_lun_include").append(pl_inc)
+                                }
+                            });
+                            bt_size_change ()
+                        });
+                        </script>
+                        <!--介绍-->
+                        <include file="Project1:jie_shao" />
+                        <!--介绍结束-->
+
+                        <!--评论开始-->
+                        <div id="ping_lun">
+                            <div id="pinglun2"></div>
+                        </div>
+                        <!--评论结束-->
+
+                        <!--项目详述开始-->
+                        <include file="Project1:xiang_shu" />
+                        <!--项目详述结束-->
+
+                        <!--模式开始-->
+                        <include file="Project1:mo_shi" />
+                        <!--模式结束--> </div>
+
+                    <!--右-->
+                    <div class="xmmain_r">
+
+                        <!--关注约谈-->
+                        <include file="Project1:guan_zhu_yue_tan" />
+
+                        <!--认证-->
+                        <include file="Project1:ren_zheng" />
+
+                        <!--预约认购-->
+                        <include file="Project1:yu_yue_ren_gou" />
+
+                        <!-- 问题解释 -->
+                        <include file="Project1:wen_ti_jie_shi" />
+
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file="Public:minilogin" />
+    <script>
+    jQuery(document).ready(function($) {
+        bt_size_change ()
+        window.onresize = function (e) {
+            bt_size_change ()
+            fabu_change()
+        }
+    });
+    </script>
+</block>

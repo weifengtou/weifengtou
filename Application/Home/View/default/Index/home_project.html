@@ -1,0 +1,302 @@
+<!--融资中的项目-->
+<div>
+    <div class="newin_bt">
+        <div class="newin_bta">
+            融资中的项目
+            <font>
+            这些项目是微风投正在融资的项目，抓紧抢投，获得超额利润。
+            </font>
+        </div>
+    </div>
+
+    <!--改动后-->
+    <div id="rzs">
+        <?php foreach ($rzs as $key =>
+        $v1): ?>
+        
+
+        			<div class="xm_new">
+                        <div class="xmnewa">
+                            <a href="index.php?s=home/project/prdetail&pid={$v1[id]}" target="_blank">
+                                <?php if (!$v1[logo]): ?>
+			                    <img src="__HOME__/images/index/item01.gif" width="317" height="175"  />
+			                    <?php else: ?>
+			                    <img onclick='location.href("index.php?s=home/project/prdetail&pid={$v1[id]}")' src="./Uploads/Album/{$v1[logo]}" style="max-width:368px;max-height:220px;" />
+			                    <?php endif; ?>
+                                <div class="xmnewb"> <strong>{$v1[pjname]}</strong>
+                                    <br>
+                                    <p>{$v1[pjintroduce]}</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div style="padding:15px 0 0 0"></div>
+
+                        <div class="xmnewb">
+                            <div class="xmnewc">
+                                ¥
+                                <span>{:number_format($v1[budget])}</span>
+                                元融资金额
+                            </div>
+                            <div class="clear"></div>
+                            <!--百分比-->
+                            <div class="xmnewd">
+                                <div class="xmnewbft">
+                                <?php if($v1[money] > $v1[budget]){
+			                    $ec = 100;
+			                    $attrleft = 0;
+			                    }else{
+			                    $ec = round($v1[money]/$v1[budget]*100,2);
+			                    if ($ec<20) {
+			                    $attrleft = 1;
+			                    }else{
+			                    $attrleft = 0;
+			                    }
+			                    } ?>
+                                    <div class="xmnewbft_l" style="width:{$ec}%"></div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+
+                            <!--融资额度-->
+                            <div>
+                                <div class="xmnewmo xmnewc">
+                                    已融资：
+                                    <span>¥<?php echo number_format($v1[money]); ?></span>
+                                    元
+                                </div>
+                                <div class="xmnewc">
+                                    已融资：
+                                    <span>{$ec}</span>
+                                    %
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+
+        <?php endforeach; ?>
+
+        <div class="clear"></div>
+        <script>
+            jQuery(document).ready(function($) {
+                $('#rzs :nth-child(3n)').css({"margin-right":"0"})
+            });
+        </script>
+    </div>
+
+    <!--更多-->
+    <div class="xmmore">
+        <div class="xmmorea">
+            <a href="index.php?s=home/project/project&prrateid={$rzs[0][prrate]}" target="_blank"><img src="__HOME__/images/index/newmore.gif"></a>
+        </div>
+    </div>
+
+</div>
+
+
+<!--预热中的项目-->
+
+<div>
+    <div class="newin_bt">
+        <div class="newin_bta">
+            预热中的项目
+            <font>
+            这些项目是微风投优选项目，提前预约，先人一步把握投资机会。
+            </font>
+        </div>
+    </div>
+
+    <!--改动后-->
+    <div id="yrs">
+
+        <?php foreach ($yrs as $key =>
+        $v2): ?>
+        				<div class="xm_new">
+                            <div class="xmnewa">
+                                <a href="index.php?s=home/project/prdetail&pid={$v2[id]}" target="_blank">
+                                    <?php if (!$v2[logo]): ?>
+    			                    <img src="__HOME__/images/index/item01.gif" width="317" height="175"  />
+    			                    <?php else: ?>
+    			                    <img onclick='location.href("index.php?s=home/project/prdetail&pid={$v2[id]}")' src="./Uploads/Album/{$v2[logo]}" style="max-width:368px;max-height:220px;" />
+    			                    <?php endif; ?>
+                                    <div class="xmnewb"> <strong>{$v2[pjname]}</strong>
+                                        <br>
+                                        <p>{$v2[pjintroduce]}</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div style="padding:15px 0 0 0"></div>
+
+                            <div class="xmnewb">
+                                <div class="xmnewc">
+                                    ¥
+                                    <span>{:number_format($v2[budget])}</span>
+                                    元融资金额
+                                </div>
+                                <div class="clear"></div>
+                                <!--百分比-->
+                                <div class="xmnewd">
+                                    <div class="xmnewbft">
+                                    <?php if($v2[money] > $v2[budget]){
+    			                    $ec = 100;
+    			                    $attrleft = 0;
+    			                    }else{
+    			                    $ec = round($v2[money]/$v2[budget]*100,2);
+    			                    if ($ec<20) {
+    			                    $attrleft = 1;
+    			                    }else{
+    			                    $attrleft = 0;
+    			                    }
+    			                    } ?>
+                                        <div class="xmnewbft_l" style="width:{$ec}%"></div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+
+                                <!--融资额度-->
+                                <div>
+                                    <div class="xmnewmo xmnewc">
+                                        已融资：
+                                        <span>¥<?php echo number_format($v2[money]); ?></span>
+                                        元
+                                    </div>
+                                    <div class="xmnewc">
+                                        已融资：
+                                        <span>{$ec}</span>
+                                        %
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+
+        <?php endforeach; ?>
+
+        <div class="clear"></div>
+
+        <script>
+            jQuery(document).ready(function($) {
+                $('#yrs :nth-child(3n)').css({"margin-right":"0"})
+            });
+        </script>
+
+    </div>
+
+    <!--更多-->
+    <div class="xmmore">
+        <div class="xmmorea">
+            <a href="index.php?s=home/project/project&prrateid={$yrs[0][prrate]}" target="_blank"><img src="__HOME__/images/index/newmore.gif"></a>
+        </div>
+    </div>
+</div>
+
+<!--融资成功的项目-->
+<div>
+    <div class="newin_bt">
+        <div class="newin_bta">
+            融资成功的项目
+            <font>
+            这些项目是在微风投已经融资成功的项目，融钱融人，分享成功经验。
+            </font>
+        </div>
+    </div>
+
+    <!--改动后-->
+    <div id="oks">
+
+        <?php foreach ($oks as $key =>
+        $v3): ?>
+        				<div class="xm_new">
+                            <div class="xmnewa">
+                                <a href="index.php?s=home/project/prdetail&pid={$v3[id]}" target="_blank">
+                                    <?php if (!$v3[logo]): ?>
+    			                    <img src="__HOME__/images/index/item01.gif" width="317" height="175"  />
+    			                    <?php else: ?>
+    			                    <img onclick='location.href("index.php?s=home/project/prdetail&pid={$v3[id]}")' src="./Uploads/Album/{$v3[logo]}" style="max-width:368px;max-height:220px;" />
+    			                    <?php endif; ?>
+                                    <div class="xmnewb"> <strong>{$v3[pjname]}</strong>
+                                        <br>
+                                        <p>{$v3[pjintroduce]}</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div style="padding:15px 0 0 0"></div>
+
+                            <div class="xmnewb">
+                                <div class="xmnewc">
+                                    ¥
+                                    <span>{:number_format($v3[budget])}</span>
+                                    元融资金额
+                                </div>
+                                <div class="clear"></div>
+                                <!--百分比-->
+                                <div class="xmnewd">
+                                    <div class="xmnewbft">
+                                    <?php if($v3[money] > $v3[budget]){
+    			                    $ec = 100;
+    			                    $attrleft = 0;
+    			                    }else{
+    			                    $ec = round($v3[money]/$v3[budget]*100,2);
+    			                    if ($ec<20) {
+    			                    $attrleft = 1;
+    			                    }else{
+    			                    $attrleft = 0;
+    			                    }
+    			                    } ?>
+                                        <div class="xmnewbft_l" style="width:{$ec}%"></div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+
+                                <!--融资额度-->
+                                <div>
+                                    <div class="xmnewmo xmnewc">
+                                        已融资：
+                                        <span>¥<?php echo number_format($v3[money]); ?></span>
+                                        元
+                                    </div>
+                                    <div class="xmnewc">
+                                        已融资：
+                                        <span>{$ec}</span>
+                                        %
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+
+        <?php endforeach; ?>
+
+        <div class="clear"></div>
+
+        <script>
+            jQuery(document).ready(function($) {
+                $('#oks :nth-child(3n)').css({"margin-right":"0"})
+            });
+        </script>
+
+    </div>
+
+    
+
+    <script>
+        jQuery(document).ready(function($) {
+            $(".yddiiy").each(function(index, val) {
+                if ($(this).attr("attrleft") == 1) {
+                    $(this).children(".ddiiy-fo").animate({left: "+=40px"})
+                }
+            });
+        });
+    </script>
+
+    <!--更多-->
+    <div class="xmmore">
+        <div class="xmmorea">
+            <a href="index.php?s=home/project/project&prrateid={$oks[0][prrate]}" target="_blank"><img src="__HOME__/images/index/newmore.gif"></a>
+        </div>
+    </div>
+</div>
+

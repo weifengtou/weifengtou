@@ -1,0 +1,63 @@
+<div class="grjj">
+	<div class="grjs">
+		<div class="grjs_img">
+			<a href="#">
+				<?php if ($investor[0][face_img]): ?>
+				<img src="./Uploads/Investor/{$investor[0][face_img]}" width="134" height="134" style="width:134px;height:134px;" />
+				<?php else: ?>
+				<img src="__STATIC__/images/nop.gif" width="134" height="134" />
+				<?php endif; ?></a>
+			<div class="positiono">
+				<a href="#">
+					<img src="__IMG__/investor/invdisplay/touxiang02.png" width="134" height="134"/>
+				</a>
+			</div>
+		</div>
+		<div class="grjs_r">
+			<h2>
+				{$inv_detail[0][showname]}
+				<?php if ($investor[0][type]==2): ?>
+					--机构投资者
+				<?php endif; ?>
+			</h2>
+			<?php if ($investor[0][privacy]==0): ?>
+			<span>个人信息未公开</span>
+			<?php else: ?>
+			<span>{$homeuser[0][username]}</span>
+			<span>tel:{$investor[0][phone]}</span>
+			<span>e-mail:{$homeuser[0][email]}</span>
+			<?php endif; ?>
+			<p>
+				<span>{$investor[0][company]}</span>
+				<span>{$investor[0][sheng]}-{$investor[0][shi]}-{$investor[0][qu]}</span>
+			</p>
+			<a href="javascript:proDelivery({$investor[0][id]});">
+				<img src="__IMG__/investor/invdisplay/tdxm01.gif" alt="投递项目" width="125" height="38" />
+			</a>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="grjj_r">
+		<div id="ygzD">
+			<?php if ($userinfo) {
+							$is_att = M('attention')->
+			where("uid='$userinfo[id]' AND atted_id='$_GET[uid]'")->select();
+						if ($is_att): ?>
+			<a id="ygz" href="javascript:delatt({$investor[0][id]});">
+				<img id="ygzI" src="__IMG__/investor/invdisplay/guanzhu02.gif" width="125" height="44" alt="已关注" />
+			</a>
+			<?php else: ?>
+			<a id="gz" href="javascript:attention({$investor[0][id]});">
+				<img src="__IMG__/investor/invdisplay/guanzhu01.gif" width="125" height="44" alt="关注" />
+			</a>
+			<?php endif;}else{ ?>
+			<a id="gz" href="javascript:attention({$proInfo[0][id]});">
+				<img src="__IMG__/investor/invdisplay/guanzhu01.gif" width="125" height="44" alt="关注" />
+			</a>
+			<?php  } ?></div>
+		<a id="yt" href="javascript:webMsg({$investor[0][id]});">
+			<img src="__IMG__/detail/zhanneixin.gif" width="125" height="44" alt="约谈" />
+		</a>
+	</div>
+	<div class="clear"></div>
+</div>

@@ -1,0 +1,140 @@
+<extend name="Base/investor"/>
+
+<block name="header">
+	<header>
+		<div class="littlebanner">
+			<img src="__HOME__/images/entrepre/cailing.gif" />
+		</div>
+	</header>
+</block>
+
+<block name="body">
+	<div class="tzrxxt">
+		<div class="ttitlse">
+			<img src="__IMG__/investor/investor/touzi03.gif" />
+		</div>
+		<div class="middle">
+			<h3>进行身份认证</h3>
+			<div class="nese">
+				<div class="midleft">
+					<div class="midl">
+						上传投资人资料 (机构投资者需要机构代表名片)
+						<div id="imginfo" class="zil">
+							<?php if ($info[0]['inv_info']): ?>
+							<img src="./Uploads/Investor/{$info[0]['inv_info']}" />
+							<?php else: ?>
+							<img class="isUp3" src="__IMG__/investor/investor/shenfu03.gif" />
+							<?php endif ?></div>
+					</div>
+					<form action="{:U(infoup)}" id="info" method="post" enctype="multipart/form-data">
+						<div class="midh">
+							<a>
+								<div class="input-file" style="overflow: hidden;position: relative;width:105px;height:35px; background:url('__IMG__/investor/shangcus.gif') no-repeat;float:left;">
+									<input type="file" name="upImg" onchange="infoup()" style="opacity: 0;filter: alpha(opacity:0);top: 0;right: 0;margin:0;width:105px;height:35px;cursor:pointer;"></div>
+							</a>
+						</div>
+					</form>
+					<div class="clear"></div>
+				</div>
+				<div class="midriht">
+					<form action="">
+						<div class="xinl">
+							新浪微博加V用户可以 <font style="color:#f00">快速认证</font>
+						</div>
+						<div class="bae">
+							<!-- <a href="https://api.weibo.com/oauth2/authorize?client_id={:C('WEIBO_APP_ID')}&response_type=code&redirect_uri={:C('WEB_URL')}/index.php?s=Home/User/weibologin" target="_blank">
+								<img src="__IMG__/investor/investor/bading.gif" />
+							</a> -->
+							<a onclick="javascript:hasnofun();">
+								<img src="__IMG__/investor/investor/bading.gif" />
+							</a>
+						</div>
+					</form>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="hesl"></div>
+
+			<div class="nese">
+				<div class="midlee">
+					<form action="{:U(fup)}" id="fup" method="post" enctype="multipart/form-data">
+						<div class="midl">
+							身份证正面照片
+							<div id="imgfup" class="zil">
+								<?php if ($info[0]['f_image']): ?>
+								<img src="./Uploads/Investor/{$info[0]['f_image']}" />
+								<?php else: ?>
+								<img class="isUp3" src="__IMG__/investor/investor/shenfu01.gif" />
+								<?php endif ?></div>
+						</div>
+						<div class="midh">
+							<a>
+								<div class="input-file" style="overflow: hidden;position: relative;width:105px;height:35px; background:url('__IMG__/investor/shangcus.gif') no-repeat;float:left;">
+									<input type="file" name="upImg" onchange="fup()" style="opacity: 0;filter: alpha(opacity:0);top: 0;right: 0;margin:0;width:105px;height:35px;cursor:pointer;"></div>
+							</a>
+						</div>
+					</form>
+					<div class="clear"></div>
+				</div>
+				<div class="midlee">
+					<form action="{:U(bup)}" id="bup" method="post" enctype="multipart/form-data">
+						<div class="midl">
+							身份证反面照片
+							<div id="imgbup" class="zil">
+								<?php if ($info[0]['b_image']): ?>
+								<img src="./Uploads/Investor/{$info[0]['b_image']}" />
+								<?php else: ?>
+								<img class="isUp3" src="__IMG__/investor/investor/shenfu02.gif" />
+								<?php endif ?></div>
+						</div>
+						<div class="midh">
+							<a>
+								<div class="input-file" style="overflow: hidden;position: relative;width:105px;height:35px; background:url('__IMG__/investor/shangcus.gif') no-repeat;float:left;">
+									<input type="file" name="upImg" onchange="bup()" style="opacity: 0;filter: alpha(opacity:0);top: 0;right: 0;margin:0;width:105px;height:35px;cursor:pointer;"></div>
+							</a>
+						</div>
+					</form>
+					<div class="clear"></div>
+				</div>
+				<?php if ($info[0][type]==2): ?>
+					<div class="midlee">
+					<form action="{:U(zhizhaoUp)}" id="zzform" method="post" enctype="multipart/form-data">
+						<div class="midl">
+							营业执照扫描件
+							<div id="zhizhao" class="zil">
+								<?php if ($info[0][zhizhao]): ?>
+								<img src="./Uploads/Investor/{$info[0][zhizhao]}" />
+								<?php else: ?>
+								<img class="" src="__IMG__/investor/investor/shenfu02.gif" />
+								<?php endif; ?></div>
+						</div>
+						<div class="midh">
+							<a>
+								<div class="input-file" style="overflow: hidden;position: relative;width:105px;height:35px; background:url('__IMG__/investor/shangcus.gif') no-repeat;float:left;">
+									<input type="file" name="upImg" onchange="zhizhaoUp()" style="opacity: 0;filter: alpha(opacity:0);top: 0;right: 0;margin:0;width:105px;height:35px;cursor:pointer;"></div>
+							</a>
+						</div>
+					</form>
+					<div class="clear"></div>
+				<?php endif; ?>
+				</div>
+				<div class="clear"></div>
+				<div class="eese">
+					<form action="">
+						<div class="shad">
+							<a href="{:U(investor02)}">
+								<img src="__IMG__/investor/investor/se.gif" />
+							</a>
+						</div>
+						<div class="xiae">
+							<a href="javascript:sub3();">
+								<img src="__IMG__/investor/investor/sheld.gif" />
+							</a>
+						</div>
+					</form>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</block>

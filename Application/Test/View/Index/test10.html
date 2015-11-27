@@ -1,0 +1,35 @@
+<script src="__STATIC__/lazyload.js"></script>
+<!--分页插件-->
+<link rel="stylesheet" href="__STATIC__/jPages/css/jPages.css" />
+<script src="__STATIC__/jPages/js/jPages.min.js"></script> 
+<!-- data-original="img/example.jpg" -->
+<div class="container-fluid" id="testpage">
+	<?php $i=1; ?>
+		<div class="row-fluid">
+			<div class="span12">
+				<div class="row-fluid">
+	<?php foreach ($images as $key => $value): ?>
+					<div class="span3">
+						<?php if ($i%5==0): ?>
+							<img class="lazy" alt="140x140" src="__STATIC__/images/nop.gif" data-original="./Uploads/PrImages/{$value[thumbname]}" />
+						<?php else: ?>
+							<img class="lazy" alt="140x140" data-original="./Uploads/PrImages/{$value[thumbname]}" />
+						<?php endif; ?>
+					</div>
+	<?php endforeach; ?>
+				</div>
+			</div>
+		</div>
+</div>
+<div class="jpages"></div>
+<script>
+jQuery(document).ready(function($) {
+	$("img.lazy").lazyload({
+		placeholder : "__STATIC__/images/nop.gif",
+		effect : "fadeIn" 
+	});
+	// $("div.jpages").jPages({
+ //    	containerID : "testpage"
+	// });
+});
+</script>

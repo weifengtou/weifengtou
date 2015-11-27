@@ -1,0 +1,120 @@
+
+
+
+<div class="allmain">
+
+	<div class="xinxi">
+
+		<div class="blue">
+			<p>
+				{$userinfo[username]}
+				<br />
+				<span class="jianjie">梧桐盛嘉投资</span>
+			</p>
+
+		</div>
+
+		<div class="wzd">
+			<volist name="pruser" id="vo">
+			<div class="wzdo">
+				<p>信息完整度:</p>
+			</div>
+			
+
+			<div class="wzdtw">
+				<!-- <img src="__HOME__/images/prcenter/xinxiwanzhengdu.gif" alt="wanzhengdu" width="253" height="30" /> -->
+				<!-- <div class="wzdtw_s"><img src="__HOME__/images/prcenter/wanz01.gif"></div> -->
+				<div class="wzdtw_d">
+				<if condition="empty($vo[realname])">
+				<div class="wzdtw_ds" style="width:37.5%;"></div>
+				<elseif condition="!empty($vo[realname]) AND empty($vo[face_img]) AND empty($vo[qq]) AND empty($vo[weibo])" />
+				<div class="wzdtw_ds" style="width:62.5%;"></div>
+				<elseif condition="!empty($vo[realname]) AND !empty($vo[face_img]) AND empty($vo[qq]) AND empty($vo[weibo])" />
+				<div class="wzdtw_ds" style="width:75%;"></div>
+				<elseif condition="!empty($vo[realname]) AND empty($vo[face_img]) AND !empty($vo[qq]) AND empty($vo[weibo])" />
+				<div class="wzdtw_ds" style="width:75%;"></div>
+				<elseif condition="!empty($vo[realname]) AND empty($vo[face_img]) AND empty($vo[qq]) AND !empty($vo[weibo])" />
+				<div class="wzdtw_ds" style="width:75%;"></div>
+				<elseif condition="!empty($vo[realname]) AND !empty($vo[face_img]) AND !empty($vo[qq]) AND empty($vo[weibo])" />
+				<div class="wzdtw_ds" style="width:87.5%;"></div>
+				<elseif condition="!empty($vo[realname]) AND !empty($vo[face_img]) AND empty($vo[qq]) AND !empty($vo[weibo])" />
+				<div class="wzdtw_ds" style="width:87.5%;"></div>
+				<elseif condition="!empty($vo[realname]) AND empty($vo[face_img]) AND !empty($vo[qq]) AND !empty($vo[weibo])" />
+				<div class="wzdtw_ds" style="width:87.5%;"></div>
+				<elseif condition="!empty($vo[realname]) AND !empty($vo[face_img]) AND !empty($vo[qq]) AND !empty($vo[weibo])" />
+				<div class="wzdtw_ds" style="width:100%;"></div>
+				</if>
+				</div>
+			</div>
+
+			<div class="wzdth">
+				<if condition="empty($vo[realname])">37%
+				<elseif condition="!empty($vo[realname]) AND empty($vo[face_img]) AND empty($vo[qq]) AND empty($vo[weibo])" />62%
+				<elseif condition="!empty($vo[realname]) AND !empty($vo[face_img]) AND empty($vo[qq]) AND empty($vo[weibo])" />75%
+				<elseif condition="!empty($vo[realname]) AND empty($vo[face_img]) AND !empty($vo[qq]) AND empty($vo[weibo])" />75%
+				<elseif condition="!empty($vo[realname]) AND empty($vo[face_img]) AND empty($vo[qq]) AND !empty($vo[weibo])" />75%
+				<elseif condition="!empty($vo[realname]) AND !empty($vo[face_img]) AND !empty($vo[qq]) AND empty($vo[weibo])" />87%
+				<elseif condition="!empty($vo[realname]) AND !empty($vo[face_img]) AND empty($vo[qq]) AND !empty($vo[weibo])" />87%
+				<elseif condition="!empty($vo[realname]) AND empty($vo[face_img]) AND !empty($vo[qq]) AND !empty($vo[weibo])" />87%
+				<elseif condition="!empty($vo[realname]) AND !empty($vo[face_img]) AND !empty($vo[qq]) AND !empty($vo[weibo])" />100%
+				</if>
+			</div>
+			</volist>
+			<div class="clear"></div>
+			
+
+		</div>
+
+		<div class="clear"></div>
+	</div>
+
+	<div class="guan">
+
+		<div class="guann">
+			<p><a href="{:U(createdproject)}">{:count($pros)}</a></p>
+			<p>已有项目</p>
+		</div>
+
+		<div class="guann">
+			<p><a href="{:U(touDi)}">{:count($toudis)}</a></p>
+			<p>投递记录</p>
+		</div>
+
+		<!-- <div class="guann">
+			<p>0</p>
+			<p>新消息</p>
+		</div> -->
+
+		<div class="position_first">
+
+			<?php if ($pruser[0][face_img]): ?>
+			<img src="./Uploads/Album/{$pruser[0][face_img]}" alt="企业logo" style="width:134px;height:134px;" width="134" height="134" />
+			<?php else: ?>
+			<img src="__STATIC__/images/nop.gif" alt="暂无logo" width="134" height="134" />
+			<?php endif ?></div>
+
+		<div class="position_first">
+			<img src="__HOME__/images/prcenter/touxiang.png" width="134" height="134" />
+		</div>
+
+	</div>
+
+	<div class="bianj">
+
+		<div class="mjj">
+			<p>微风投——专注于小微实体企业中长期融资的创投服务平台</p>
+		</div>
+
+		<div class="edit">
+			<a href="__URL__/bianji">
+				<img src="__HOME__/images/prcenter/bianj.gif" width="94" height="24" alt="编辑个人信息" />
+			</a>
+		</div>
+
+		<div class="clear"></div>
+
+	</div>
+
+	<div class="clear"></div>
+
+</div>

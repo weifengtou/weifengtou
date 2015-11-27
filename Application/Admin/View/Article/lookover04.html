@@ -1,0 +1,100 @@
+<extend name="Public/base"/>
+
+<!-- 子导航 -->
+<block name="sidebar">
+    <include file="sidemenu" />
+</block>
+
+<block name="body">
+    <div class="main-title">
+        <h2>项目编辑</h2>
+        <!-- 下载 -->
+		<div style="float:left;width:150px;height:30px; line-height:30px; text-align:center; color:#007300"><a id="download" style="color:#007300" href="{:U('Article/exportLookover04Excel','prid='.$prid)}">下载</a></div>
+    </div>
+    <div class="w936" style="margin:0 auto;">
+        <!-- <div id="tb_" class="tb_">
+        <ul>
+            <li id="tb_1" class="hovertab" >
+                <a href="__URL__/lookover&id={$prid}">项目资料</a>
+            </li>
+            <li id="tb_2" class="normaltab" >
+                <a href="__URL__/lookover02&prid={$prid}">审核资料</a>
+            </li>
+            <li id="tb_3" class="normaltab" >
+                <a href="__URL__/lookover03&prid={$prid}">融资需求</a>
+            </li>
+            <li id="tb_4" class="normaltab" style="background:#fff;font-weight:bold;">
+                <a href="__URL__/lookover04&prid={$prid}"style="background:#fff;font-weight:bold;">项目图片</a>
+            </li>
+        </ul>
+    </div>
+    -->
+    <include file="lookoverTab" />
+    <script type="text/javascript">
+        $(document).ready(function($) {
+            $('#tb_4').addClass('tabcss');
+        });
+        </script>
+    <div class="ctt">
+        <div class="undis" id="tbc_01">
+            <div class="middle">
+                <div class="linds">
+                    <div class="titles">
+                        <div class="titlet">图片尺寸1048x524,支持jpg/jpeg/gif格式。</div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="lidsee"></div>
+
+                    <div id="imgDiv" class="thumbholder">
+                        <?php foreach ($imgs as $key =>
+                        $value): ?>
+                        <div id="{$value.id}" class="pies">
+                            <a class="clickbox">
+                                <img src="./Uploads/PrImages/{$value.thumbname}" width='241' height='157' alt="" /> <b class="lightbox"><b class="light"></b>
+                                    <b class="box"><img src="./Uploads/PrImages/{$value.name}" alt="" />
+                                        <span> <i></i>
+                                        </span></b> </b> 
+                            </a>
+                            <div class="xinse">
+                                <a href="#" style="margin-right:30px">
+                                    <img src='./Public/Home/images/Entrepre/lezuo.gif' />
+                                </a>
+                                <a href="#" style="margin-right:30px">
+                                    <img src='./Public/Home/images/Entrepre/leyou.gif' />
+                                </a>
+                                <a href="javascript:;" onclick="imgDel({$value.id})">
+                                    <img src='./Public/Home/images/Entrepre/shanchu.gif' />
+                                </a>
+                            </div>
+                        </div>
+                        <?php endforeach ?>
+                        <br class="clear" />
+                        <div id="close"></div>
+
+                    </div>
+
+                </div>
+                <div>
+                    <a href="?s=Article/review" style="margin-left:430px;">
+                        <img src="__HOME__/images/entrepre/fanhui.gif"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</block>
+
+<block name="script">
+<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+<php>
+if(C('COLOR_STYLE')=='blue_color') echo '
+<link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+<!-- <link href="__ADMIN__/css/predit.css" rel="stylesheet" type="text/css">
+-->
+<link href="__HOME__/css/entrepre.css" rel="stylesheet" type="text/css">
+<link href="__ADMIN__/css/pictu.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+</block>

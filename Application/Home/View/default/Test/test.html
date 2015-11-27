@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<title>{:C('WEB_SITE_TITLE')}</title>
+<link rel="stylesheet" type="text/css" href="__HOME__/css/entrepre.css">
+<script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="__STATIC__/jquery.form.js" language="javascript"></script>
+<script type="text/javascript" src="__HOME__/js/json2.js" language="javascript"></script>
+</head>
+<body>
+<script type="text/javascript" language="javascript">
+        $(document).ready(function() {
+	        $("#uploadimg").on('change',function(){
+			    $("#form1").ajaxForm({
+				    beforeSubmit:function(){
+					    alert('-----');
+				    },
+					success:function(data){
+						alert(data);
+					}
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<form id="form1" name="form1" method="post" action="__URL__/test01" enctype="mulytipart/form-data">  
+		<input type="file" id="uploadimg" name="uploadimg" />
+	</form>
+	<hr>
+	<div id="imgDiv"></div>
+</body>
+</html>

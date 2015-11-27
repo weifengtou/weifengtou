@@ -1,0 +1,100 @@
+
+<div class="allmain">
+
+	<div class="xinxi">
+
+		<div class="blue">
+			<p>
+				{$homeuser[0]['username']}
+				<br />
+				<span class="jianjie">梧桐盛嘉投资</span>
+			</p>
+
+		</div>
+
+		<div class="wzd">
+			
+
+			<div class="wzdo">
+				<a href="index.php?s=Home/investor/">
+					<?php if($investor[0][iden_status]=='-1'): ?>
+						<font style="color:red">&nbsp;&nbsp;&nbsp;审核失败&nbsp;&nbsp;&nbsp;<br />
+					<a href="?s=Home/Investor" style="color:white; background:#f39c11; pading:2px 5px; width:55px">&nbsp;&nbsp;&nbsp;重新提交&nbsp;&nbsp;&nbsp;</a>
+	                    </font>
+					<?php elseif($investor[0][iden_status]=='0'): ?>
+					<font color="red">未提交</font>
+					<?php elseif($investor[0][iden_status]=='1'): ?>
+					<font color="#f39c11">待审核,请稍等...</font>
+					<?php elseif($investor[0][iden_status]>
+					1): ?>
+					审核成功
+					<?php endif ?></div>
+				</a>
+				<div class="wzdo" style="color:#444">状态:</div>
+			<div class="clear"></div>
+
+		</div>
+
+		<div class="clear"></div>
+	</div>
+
+	<div class="guan">
+
+		<div class="guann">
+			<p><a href="{:U(tijiao)}">{:count($prodeliverys)}</a></p>
+			<p>项目申请</p>
+		</div>
+
+		<div class="guann">
+			<p><a href="{:U(entrepre)}">{:count($tzxms)}</a></p>
+			<p>已投项目</p>
+		</div>
+
+		<!-- <div class="guann">
+			<p>0</p>
+			<p>新信息</p>
+		</div> -->
+
+		<div class="position_first">
+			<?php if (!$investor[0][face_img]): ?>
+			<img src="__STATIC__/images/nop.gif" alt="企业logo" style="width:134px;height:134px;" width="134" height="134" />
+			<?php else: ?>
+			<img src="./Uploads/Investor/{$investor[0][face_img]}" alt="企业logo" style="width:134px;height:134px;" width="134" height="134" />
+			<?php endif ?></div>
+
+		<div class="position_first">
+			<img src="__IMG__/investor/invcenter/touxiang.png" alt="企业logo" width="134" height="134" />
+		</div>
+
+	</div>
+
+	<div class="bianj">
+
+		<div class="mjj">
+			<p>微风投——专注于小微实体企业中长期融资的创投服务平台</p>
+		</div>
+		<?php if ($investor[0][type]==1): ?>
+		<div class="edit">
+			<a href="{:U(bianji)}">
+				<img src="__HOME__/images/investor/invcenter/bianj.gif" width="94" height="24"/>
+			</a>
+		</div>
+		<?php endif; ?>
+
+		<?php if ($investor[0][type]==2): ?>
+		<div class="edit" style="width:250px">
+			<a href="{:U(bianji)}" style="margin-right:10px">
+				<img src="__HOME__/images/investor/invcenter/bianj.gif" width="94" height="24"/>
+			</a>
+				<a href="{:U(editjigou)}">
+					<img src="__HOME__/images/investor/invcenter/editjigou.gif" width="94" height="24"/>
+				</a>
+		</div>
+		<?php endif; ?>
+
+		<div class="clear"></div>
+
+	</div>
+	<div class="clear"></div>
+
+</div>

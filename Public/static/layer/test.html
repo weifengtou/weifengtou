@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.js"></script>
+    <script src="layer.min.js"></script>
+    <title>layer</title>
+</head>
+<body>
+<button onclick="test()">123</button>
+<script>
+function test () {
+    // body...
+    $.layer({
+        type: 1,
+        title: false, //不显示默认标题栏
+        shade: [0], //不显示遮罩
+        area: ['600px', '360px'],
+        page: {html: '<img src="http://static.oschina.net/uploads/space/2014/0516/012728_nAh8_1168184.jpg" alt="layer">'}
+    });
+}
+</script>
+</body>
+</html>

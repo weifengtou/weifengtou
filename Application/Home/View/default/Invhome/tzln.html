@@ -1,0 +1,39 @@
+<div class="gongtong tzln">
+	<h3>投资理念</h3>
+	<div class="tzlnun">
+		<div class="tzlnun_l">
+			<div class="tzln_nr">
+				<p>{$investor[0][tzidea]}</p>
+			</div>
+			<div class="clear"></div>
+			<div>
+				<div class="wleft">投资方向：</div>
+				<div class="wright">{$investor[0][intentionname]};</div>
+			</div>
+			<div class="clear"></div>
+			<div>
+				<div class="wleft">投资计划：</div>
+				<div class="wright">
+					投资￥
+					<?php echo number_format($investor[0][min_maney]); ?>
+					~￥
+					<?php echo number_format($investor[0][max_maney]); ?></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="qjwz">
+			<h2>迄今为止</h2>
+			<div class="qjwz_l"> <font style="font-size:60px; font-weight:bold; line-height:65px">{$numpr}</font>
+				个项目
+			</div>
+			<div class="qjwz_r">
+				<p>共投资总额：</p>
+				<p>
+					<span>{$allmoney}</span>
+					元
+				</p>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>

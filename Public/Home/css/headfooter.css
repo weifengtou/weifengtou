@@ -1,0 +1,95 @@
+* { margin: 0; padding: 0; }
+body {font: 14px; color: #444; background:#f6f6f6; font-family:"微软雅黑" }
+img { border: 0; vertical-align: bottom; }
+ul, li, dt { margin: 0; padding: 0; list-style: none; }
+a { text-decoration: none; }
+a:link { color: #000000; text-decoration: none; }
+a:hover {  cursor: pointer; color:#FF0099; text-decoration: none;}
+a.underline { text-decoration: underline; }
+a:visited { color: #000000; text-decoration: none; }
+form, ul, li, p, h1, h2, h3, h4, h5, h6 { padding:0; margin:0}
+.clear { clear: both;  line-height:0px;height:1px;overflow:hidden;*display:inline;}
+
+
+
+/*----------------------顶部-------------------------*/
+
+
+/*----------------------中间-------------------------*/
+
+.all{width:100%; height:100%;}
+
+
+.wftbg{ width:100%; height:81px; background:#fff; min-width:1170px}
+
+.wftt{ width:1170px; margin:0 auto; height:81px}
+.wftl{ float:left; display:block; width:870px; height:81px}
+.shouye_l{ float:left; display:block; width:370px; height:81px;}
+.shouye_r{ width:450px; height:39px; padding:21px 0px 21px 50px; float:right; display:block}
+.sy{ float:left; width:150px; height:39px; display:block}
+.sy img{ width:150px; height:39px}
+.dlzc{ width:300px; float:right; height:20px; padding:40px 0px 21px 0px; display:block;}
+.dlzc_l{ float:left; display:inline; width:96px; height:20px; line-height:20px; padding-left:90px}
+.dlz{ float:left; width:48px; height:25px; line-height:25px; text-align:center}
+.dlz a{ color:#333 !important;}
+.dlz a:hover{ text-decoration:none}
+.zcd{ float:right}
+.dlzc_r{ float:right; display:block; width:72px; height:25px;  color:#333; text-align:center; line-height:25px; padding-left:17px}
+.dlzc_r a{ color:#333 !important; font-size:14px; height:25px; line-height:25px}
+.dlzc_r ul li a:hover{ color:#fff !important}
+.dlzc_r a:hover{ color:#333; text-decoration:none}
+
+
+.afdl{ width:96px; text-align:center; height:20px; line-height:20px}
+.afdl a{ color:#333;; height:20px; line-height:20px}
+.afdl a:hover{ text-decoration:underline; color:#333 !important}
+
+.dlzc_r ul li a:hover{ color:#fff !important}
+.afdl ul li a:hover{ color:#fff !important}
+
+.ttt{ width:100%; background:#384768; min-width:1100px}
+.ttte{ width:1100px; margin:0 auto; padding:35px 30px}
+.ttte ul{ float:left; width:100px; padding:0 50px; display:inline; border-right:#2d3953 dashed 1px; border-left:dashed 1px #606c86; min-height:180px}
+.ttte ul li{ display:block; width:100px; height:25px; line-height:25px; text-align:center; color:#fff; font-weight:bold; font-size:14px }
+.ttte ul li a{ font-size:14px; color:#fff !important ; font-weight:normal }
+.ttte ul li a:hover{ text-decoration:underline; color:#fff}
+.ttte ul#ul0{ border-left:none;}
+.ttte ul#ul4{ border-right:none;}
+
+
+
+
+
+
+
+.dfoot{ width:100%; background:#333 0 0 repeat; min-width:1100px}
+.dfootn{ width:715px; padding:30px 200px 50px 200px; margin:0 auto}
+.lianfo{ height:50px}
+.lianfo ul li{ float:left; padding:0 7px 0 8px; margin-bottom:20px}
+.dfootw{ width:715px; text-align:center; font-size:12px; line-height:25px; color:#fff}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

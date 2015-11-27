@@ -1,0 +1,44 @@
+<!--pjname and create_person-->
+<div class="grjj">
+
+    <div class="grjs">
+
+        <h1>{$proInfo[0][pjname]}</h1>
+
+        <ul>
+            <li class="fa">发起人</li>
+            <li>{$prcreater[0][membername]}</li>
+            <li>{$prcreater[0][memberposition]}</li>
+            <?php
+                            $x = M("project")->
+            where("id='".$proInfo[0][id]."'")->select();
+                            ?>
+            <li>{$x[0][province]} {$x[0][city]} {$x[0][town]}</li>
+        </ul>
+    </div>
+
+    <div class="grjj_r">
+        <div id="ygzD">
+            <?php if ($userinfo) {
+                                $is_att = M('attention')->
+            where("uid='$userinfo[id]' AND atted_childid='$_GET[pid]'")->select();
+                            if ($is_att): ?>
+            <a id="ygz" href="javascript:delatt({$proInfo[0][id]});">
+                <img id="ygzI" src="__IMG__/investor/invdisplay/guanzhu02.gif" width="125" height="44" alt="已关注" />
+            </a>
+            <?php else: ?>
+            <a id="gz" href="javascript:attention({$proInfo[0][id]});">
+                <img src="__IMG__/investor/invdisplay/guanzhu01.gif" width="125" height="44" alt="关注" />
+            </a>
+            <?php endif;}else{ ?>
+            <a id="gz" href="javascript:attention({$proInfo[0][id]});">
+                <img src="__IMG__/investor/invdisplay/guanzhu01.gif" width="125" height="44" alt="关注" />
+            </a>
+            <?php  } ?></div>
+        <a href="javascript:webMsg({$proInfo[0][id]});">
+            <img src="__HOME__/images/detail/zhanneixin.gif" width="125" height="44" alt="约谈" />
+        </a>
+    </div>
+
+    <div class="clear"></div>
+</div>

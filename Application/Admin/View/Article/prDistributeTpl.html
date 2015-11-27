@@ -1,0 +1,122 @@
+<extend name="Public/base"/>
+
+<!-- 子导航 -->
+<block name="sidebar">
+    <include file="sidemenu" />
+</block>
+
+
+<block name="body">
+	<!-- 标题 -->
+	<div class="main-title">
+		<h2>
+		项目({$_total})
+		</h2>
+	</div>
+
+	<!-- 按钮工具栏 -->
+	<div class="cf">
+	</div>
+
+
+	<!-- 数据表格 -->
+    <div class="data-table">
+		<table class="">
+    <thead>
+        <tr>
+		<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+		<th class="">编号</th>
+		<th class="">项目名</th>
+		<th class="">创建日期</th>
+		<th class="">最后更新</th>
+		<th class="">状态</th>
+		<th class="">进度</th>
+		<th class="">操作</th>
+		<th class="">分配</th>
+		<th class="">负责人</th>
+		</tr>
+    </thead>
+    <tbody>
+		<volist name="list" id="vo">
+		<tr>
+            <td><input class="ids" type="checkbox" name="ids[]" value="{$vo.id}" /></td>
+			<td id="prid">{$vo.id} </td>
+			<!-- <td><a href="{:U('Article/index?cate_id='.$vo['category_id'].'&pid='.$vo['id'])}" id="prname{$vo.id}">{$vo.pjname}</a></td> -->
+			<td><a href="{:U('Article/lookover?id='.$vo['id'])}" id="prname{$vo.id}">{$vo.pjname}</a></td>
+			<td>{$vo.submit_time}</td>
+			<td>{$vo.update_time}</td>
+			<!-- <td>{$vo.status}</td> -->
+			<td>
+				<if condition="$vo.prrate eq 0">不通过
+					<elseif condition="$vo.prrate eq -1"/>待审核
+					<elseif condition="$vo.prrate eq 1"/>通过
+					<elseif condition="$vo.prrate eq 2"/>预热中
+					<elseif condition="$vo.prrate eq 3"/>正式上线
+					<elseif condition="$vo.prrate eq 4"/>融资成功
+				</if>
+			</td>
+			<td>
+				<a href="javascript:rate1({$vo.id});" id="rate1{$vo.id}">通过</a>
+				<a href="javascript:rate0({$vo.id});" id="rate0{$vo.id}">不通过</a>
+			</td>
+			<td><a href="{:U('Article/lookover?id='.$vo['id'])}">查看</a>
+				<a href="{:U('Article/predit?id='.$vo['id'])}">编辑</a>
+            </td>
+            <td><select id="prreview{$vo.id}"  onchange="selectfun(this,{$vo.id})">
+            	    <volist name="prreview" id="vo2">
+            	    	<option value="{$vo2.uid}">{$vo2.nickname}</option>
+            	    </volist>
+            	</select>
+            </td>
+            <td id="prreviewer{$vo.id}">{$vo.prreview}</td>
+		</tr>
+		</volist>
+	</tbody>
+    </table> 
+
+        
+	</div>
+
+	<!-- 分页 -->
+    <div class="page">
+        {$_page}
+    </div>
+</div>
+
+</block>
+<block name="script">
+<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+<php>if(C('COLOR_STYLE')=='blue_color') echo '<link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript" src="__STATIC__/layer.min.js" language="javascript"></script>
+<script type="text/javascript"> 
+	//分配项目
+	function selectfun(obj,i) {
+		var prreviewid = $(obj).val();
+		var prreview = $(obj).find("option:selected").text();
+    	var prname = $('#prname'+i).html();
+    	var prid = i;
+    	var prreviewer = 'prreviewer'+i;
+      layer.confirm('确定将项目'+'<font color="red">'+prname+'</font>'+'分配给'+'<font color="red">'+prreview+'</font>'+'吗？',
+        function(){
+          $.ajax({
+            type: "GET",
+            url: "__URL__/distribute&prid="+prid+"&prreviewid="+prreviewid+"&prreview="+prreview,
+            success:function(data){
+              if(data==1){
+                layer.alert('项目'+'<font color="red">'+prname+'</font>'+'分配给'+'<font color="red">'+prreview+'</font>'+'!');
+                $('#'+prreviewer).html(prreview);
+              }else{
+                $('#'+prreviewer).html('未分配');
+              }
+            }
+          })
+        },
+        function(){layer.alert('请重新分配项目'+'<font color="red">'+prname+'</font>'+'!');
+        }
+      )
+    }   
+</script>
+</block>

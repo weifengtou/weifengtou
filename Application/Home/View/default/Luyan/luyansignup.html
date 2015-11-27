@@ -1,0 +1,241 @@
+<extend name="Base/luyansignup"/>
+<block name="header">
+	<header>
+		<!-- <div class="littlebanner wftban">
+		<img src="__HOME__/images/luyansingup/bannwft.jpg" />
+	</div>
+	-->
+</header>
+<!-- ==============================================js特效================================================= -->
+<include file="effect" />
+<!-- =================================================================================================== -->
+</block>
+
+<block name="body">
+<div class="all">
+	<div class="lzong">
+
+		<div class="wftban">
+			<img src="__HOME__/images/luyansingup/bannwft.jpg"  />
+		</div>
+
+		<div class="hyjs">
+			<div>
+				<div class="hyjs_la">会议主题</div>
+				<div class="hyjs_r">{$info[title]}</div>
+				<div class="clear"></div>
+			</div>
+
+			<div>
+				<div class="hyjs_lb">会议时间</div>
+				<div class="hyjs_r">{$info[riqi]}</div>
+				<div class="clear"></div>
+			</div>
+
+			<div>
+				<div class="hyjs_lc">联系人</div>
+				<div class="hyjs_r">{$info[lianxiren]}</div>
+				<div class="clear"></div>
+			</div>
+
+			<div>
+				<div class="hyjs_ld">电话</div>
+				<div class="hyjs_r">{$info[dianhua]}</div>
+				<div class="clear"></div>
+			</div>
+
+			<div>
+				<div class="hyjs_le">地址</div>
+				<div class="hyjs_r">{$info[dizhi]}</div>
+				<div class="clear"></div>
+			</div>
+
+			<!-- <div>
+				<div class="hyjs_lf">参加项目</div>
+				<div class="hyjs_r">
+					<ul>
+						<li>
+							<a href="#">河南四鸿实业有限公司</a>
+						</li>
+						<li>
+							<a href="#">郑州创明科技有限公司</a>
+						</li>
+						<li>
+							<a href="#">济源市众信新型墙体材料有限公司</a>
+						</li>
+						<li>
+							<a href="#">河南省万冠实业有限公司</a>
+						</li>
+						<li>
+							<a href="#">河南晟道科技有限公司</a>
+						</li>
+						<li>
+							<a href="#">郑州美特美家具有限公司</a>
+						</li>
+						<li>
+							<a href="#">360极速模式项目创建3</a>
+						</li>
+						<li>
+							<a href="#">火狐浏览器软件开发</a>
+						</li>
+						<li>
+							<a href="#">河南民德科技有限公司</a>
+						</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div> -->
+
+			<div>
+				<div class="hyjs_lg">收费情况</div>
+				<div class="hyjs_r">{$info[shoufei]}</div>
+				<div class="clear"></div>
+			</div>
+
+			<div>
+				<div class="hyjs_lh">活动说明</div>
+				<div class="hyjs_r">
+					<div class="hdsm">
+						{$info[shuoming]}
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+
+		<div class="wftdoz">
+			<div class="wftdoa" id="invest">
+				<a href="javascript:putinvest();">投资人报名</a>
+			</div>
+			<div class="wftdoa wftdox" id="entrepre">
+				<a href="javascript:putentrepre();">项目方报名</a>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+		<div class="baomo">
+			<div class="kkua" id="signupDiv">
+				<div class="baogg" id="cd01">
+					<!-- 報名表單 -->
+					<form name="luyansignupForm" id="luyansignupForm" method="post" action="__URL__/addLuyanPeople">
+						<!-- 报名者身份类型：0代表投资人，1代表项目方 -->
+						<input type="hidden" name="identify" id="identify" value="">
+						<div class="chsoe" style="margin:20px 0">
+							<div class="woss"> <font style="color:#f00">*</font>
+								真实姓名
+							</div>
+							<div class="kuang">
+								<input type="text" class="ldd" id="realname" name="realname" placeholder="请输入您的真实姓名" />
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="chsoe" style="margin:20px 0">
+							<div class="woss"> <font style="color:#f00">*</font>
+								手机号码
+							</div>
+							<div class="kuang">
+								<input type="text" class="ldd" id="telnumber" name="telnumber" placeholder="请输入您的手机号码" />
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="chsoe">
+							<div class="woss">
+								<font style="color:#f00">*</font>
+								留言
+							</div>
+							<div class="kuang">
+								<textarea  class="lss" id="leavemsg" name="leavemsg" placeholder="请输入留言"></textarea>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="ttjio">
+							<input type="image" id="saveluyaninfo" name="saveluyaninfo" src="__HOME__/images/luyansingup/tijiao02.gif">
+							<!-- <a href="#">
+							<img src="__HOME__/images/luyansingup/tijiao02.gif"  />
+						</a>
+						-->
+					</div>
+				</form>
+			</div>
+			<div class="baogg" id="cd02" style="display:none;">
+				<!-- 成功报名 -->
+				<div class="csucce">
+					<ul>
+						<li class="csucce_a">提交成功！</li>
+						<li class="csucce_b">我们会尽快对您的留言进行处理。</li>
+						<li class="csucce_c">
+							<a href="__URL__/index">
+								<img src="__HOME__/images/luyansingup/fhhyzx.gif" />
+							</a>
+						</li>
+					</ul>
+
+				</div>
+			</div>
+			<div class="fangss">
+				<div class="fanga">报名方式:</div>
+				<div class="fangb">
+					<p>1.联系电话：400-700-8998</p>
+					<p>2.企业QQ：12345</p>
+				</div>
+				<div class="ewm">
+					<img src="__HOME__/images/luyansingup/wftdingyue.gif" />
+					关注【微风投】订阅号
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+<script>
+$(document).ready(function($) {
+	$('#saveluyaninfo').on('click',function(){
+		var r = /^(13[0-9]|15[0|1|2|3|5|6|7|8|9]|17[7|8]|18[0-9])\d{8}$/;     //手机号正则表达式
+		if($.trim($('#identify').val()).length == 0){
+			layer.tips('请选择身份类型','#realname',{time:3,guide:0});
+			return false;
+		}else if($.trim($('#realname').val()).length < 2 || $.trim($('#realname').val()).length > 15 ){
+			layer.tips('字数在2~15之间','#realname',{time:3,guide:1});
+			return false;
+		}else if($.trim($('#telnumber').val()).length == 0){
+			layer.tips('手机号码不能为空！','#telnumber',{time:3,guide:1});
+			return false;
+		}else if(!r.test($('#telnumber').val())){
+			layer.tips('手机号码不正确！','#telnumber',{time:3,guide:1});
+			return false;
+		}else if($.trim($('#leavemsg').val()).length < 2 || $.trim($('#leavemsg').val()).length > 500){
+			layer.tips('字数在2~500之间','#leavemsg',{time:3,guide:1});
+			return false;
+		}else{
+			$('#luyansignupForm').trigger('submit');
+			return false;
+		}
+	}); 
+	$('#luyansignupForm').ajaxForm(function(data){
+		if(data == -1){
+			layer.alert('提交失败，请登录', 8);
+		}else if(data > 0){
+			$('#cd01').hide();
+			$('#cd02').show();
+			$('#luyansignupForm').clearForm();
+		}
+	});
+});
+function putinvest(){
+	$('#identify').val(0);
+	// $('#entrepre').addClass('wftdox');
+	// $('#invest').removeClass('wftdox');
+	$('#signupDiv').addClass('kkua');
+	$('#signupDiv').removeClass('kkub')
+}
+function putentrepre(){
+	$('#identify').val(1);
+	// $('#invest').addClass('wftdox');
+	// $('#entrepre').removeClass('wftdox');
+	$('#signupDiv').addClass('kkub');
+	$('#signupDiv').removeClass('kkua');
+}
+</script>
+</block>

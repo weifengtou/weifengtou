@@ -1,0 +1,290 @@
+/*reg1*/
+jQuery(document).ready(function($) {
+	//投资人页面1验证
+	$("#reg1").validate({
+        // debug: true,
+        rules: {
+        	phone:{
+        		required:true,
+        		number:true
+        	},
+            realname: {
+                required: true
+            },
+            company: {
+                required: true
+            },
+            sex:{},
+            sheng:{},
+            shi:{},
+            qu:{},
+            one_industry:{},
+            two_industry:{},
+            three_industry:{},
+            privacy:{}
+        },
+        messages: {
+            realname: {
+                required: '请输入正确的姓名'
+            }
+        }
+    });
+    //添加案例验证
+    $("#addcase").validate({
+    	// debug:true,
+    	rules: {
+    		pname:{
+    			required:true
+    		},
+    		purl: {
+    			// required:true,
+    			url:true
+    		},
+    		pdetail: {
+    			maxlength:50
+    		}
+    	},
+    	messages:{
+    		purl: {
+    			// url:"请输入正确的url",
+    		},
+    		pdetail: {
+    			maxlength:"不得多于50个字符"
+    		}
+    	}
+    })
+    
+    //修改案例验证
+    $(".editcase").each(function(index, val) {
+    	/* iterate through array or object */
+    	$("#editcase"+$(this).attr("attrid")).validate({
+    		// debug:true,
+    		rules: {
+    			pname: {
+    				required:true
+    			},
+    			purl: {
+    				// required:true,
+    				url:true
+    			},
+    			pdetail: {
+    				maxlength:50
+    			}
+    		},
+    		messages: {
+    			purl:{
+    				// url:"请输入正确的url",
+    			},
+    			pdetail: {
+	    			maxlength:"不得多于50个字符"
+	    		}
+    		}
+    	})
+    	$("#editcase"+$(this).attr("attrid")).ajaxForm(function (e) {
+    		alert(e)
+    	})
+    });
+    // ************************************************************************************************
+    //地区js(曹超2014-12-10)
+    function jsSelectItemByValue(objSelect, value) {
+		//判断是否存在
+		var isExit = false;
+		for (var i = 0; i < objSelect.options.length; i++) {
+			if (objSelect.options[i].value == value) {
+				objSelect.options[i].selected = true;
+				isExit = true;
+				break;
+			}
+		}
+	}
+	//加载所有市     
+	$('#province').on('change', function() {
+		var areaid = $(this).val();
+		var time = new Date();
+		var time2 = time.getTime();
+		var areaurl = '?s=home/investor/province&areaid=' + areaid + '&time=' + time2;
+		$.get(areaurl, function(data) {
+			$("#city").empty();
+			$("#town").empty();
+			var t = JSON.parse(data);
+			$('#city').append('<option value="">城市</option><br />');
+			$('#town').append('<option value="">县区</option><br />');
+			$.each(t, function(key, obj) {
+				$('#city').append('<option value=' + obj.id + '>' + obj.name + '</option><br />');
+			});
+		});
+	});
+	//加载所有县
+	$('#city').on('change', function() {
+		var areaid = $(this).val();
+		var time = new Date();
+		var time2 = time.getTime();
+		var areaurl = '?s=home/investor/city&areaid=' + areaid + '&time=' + time2;
+		$.get(areaurl, function(data) {
+			$("#town").empty();
+			var t = JSON.parse(data);
+			$('#town').append('<option value="">县区</option><br />');
+			$.each(t, function(key, obj) {
+				$('#town').append('<option value=' + obj.id + '>' + obj.name + '</option><br />');
+			});
+		});
+	});
+	// ***************************************************************************************************
+});
+$('#addcase').ajaxForm(function (e) {
+	var data = jQuery.parseJSON(e)
+	showaddcase (data) 
+	$('.addpname').val('')
+	$('.addpurl').val('')
+	$('.addpdetail').val('')
+})
+function sub1 () {
+	if ($("input[name=pname].addpname").val()==''&&$("input[name=purl].addpurl").val()==''&&$("textarea[name=pdetail].addpdetail").val()=='') {
+		$('#reg1').trigger('submit')
+	}else{
+		alert("请先保存案例！")
+	}
+}
+function addcase () {
+	$("#addcase").trigger('submit')
+}
+function showaddcase (data) {
+	var divCase = "<form class='editcase' action='?s=Home/investor/editcase' id='editcase"+data.id+"' attrid='"+data.id+"' method='post'>" +
+		"<div id='case"+data.id+"'>" +
+			"<input type='hidden' name='case_id' value='"+data.id+"'>" +
+			"<div class='chsoe'>" +
+				"<div class='woss'>" +
+					"<font style='color:#f00'>*</font>" +
+					"项目名称" +
+				"</div>" +
+				"<div class='kuang'>" +
+					"<input type='text'  class='ldd' id='pname"+data.id+"' name='pname' placeholder='请输入您项目的全称' value='"+data.pname+"'>" +
+				"</div>" +
+				"<div class='clear'></div>" +
+			"</div>" +
+			"<div class='chsoe' style='margin:20px 0'>" +
+				"<div class='woss'>" +
+					"网站地址" +
+				"</div>" +
+				"<span class='kuang'>"+
+					"<input type='text'  class='ldd' id='purl"+data.id+"' name='purl' placeholder='请输入您项目的网址' value='"+data.purl+"'>" +
+				"</span>" +
+				"<div class='kuang'></div>" +
+				"<div class='clear'></div>" +
+			"</div>" +
+			"<div class='chsoe' style='margin:20px 0'>" +
+				"<div class='woss'>" +
+					"项目描述" +
+				"</div>" +
+				"<div class='kuang' style='width:855px'>"+
+					"<textarea class='lss' id='pdetail"+data.id+"' name='pdetail' cols='30' rows='10' placeholder='请输入您项目的描述'>"+data.pdetail+"</textarea>" +
+				"</div>" +
+				"<div class='clear'></div>" +
+			"</div>" +
+			"<div style=' margin:20px 0 20px 88px;'>" +
+				"<div style=' float:left; padding-right:30px; display:'>" +
+					"<a href='javascript:editcase("+data.id+")'>" +
+						"<img src='./Public/Home/images/investor/investor/bianji.gif' width='55' height='30' alt='编辑' />" +
+					"</a>" +
+				"</div>" +
+				"<div style=' float:left;'>" +
+					"<a href='javascript:delcase("+data.id+")'>" +
+						"<img src='./Public/Home/images/investor/investor/shanc.gif' width='55' height='30' alt='删除' />" +
+					"</a>" +
+				"</div>" +
+				"<div class='clear'></div>" +
+			"</div>" +
+			"<div class='linsss' style=' margin-left:88px'></div>" +
+		"</div>" +
+	"</form>";
+	$("#choses").append(divCase)
+	
+}
+function delcase (id) {
+	$.post('?s=home/Investor/delcase', {case_id: id}, function(data, textStatus, xhr) {
+		/*optional stuff to do after success */
+		if (data=='1') {
+			$("#case"+id).remove()
+			alert("删除成功！")
+		}else{
+			alert(data)
+		}
+	});
+}
+function editcase (id) {
+	$("#editcase"+id).trigger('submit')
+}
+/*reg1*/
+
+/*reg2*/
+jQuery(document).ready(function($) {
+	$("#reg2").validate({
+		// debug:true,
+		rules: {
+			tzidea: {
+				minlength: 6
+			},
+			income: {
+				number:true
+			},
+			min_maney:{
+				number:true
+			},
+			max_maney:{
+				number:true
+			}
+		},
+		messages: {
+			tzidea: {
+				minlength: "不少于6个字"
+			}
+		}
+	})
+});
+function sub2 () {
+	editor.sync()
+	var min_maney = $("input[name=min_maney]").val()
+	var max_maney = $("input[name=max_maney]").val()
+	if (eval(min_maney)>eval(max_maney)) {
+		alert("最大投资金额应该大于最小投资金额")
+		return ;
+	}
+	$('#reg2').trigger('submit')
+}
+/*reg2*/
+
+/*reg3*/
+jQuery(document).ready(function($) {
+	$('#info').ajaxForm(function  (e) {
+		var data = jQuery.parseJSON(e);
+		$("#imginfo").html("<img src='./Uploads/Investor/"+data.inv_info+"' />")
+	})
+	$('#fup').ajaxForm(function  (e) {
+		var data = jQuery.parseJSON(e);
+		$("#imgfup").html("<img src='./Uploads/Investor/"+data.f_image+"' />")
+	})
+	$('#bup').ajaxForm(function  (e) {
+		var data = jQuery.parseJSON(e);
+		$("#imgbup").html("<img src='./Uploads/Investor/"+data.b_image+"' />")
+	})
+});
+function sub3 () {
+	if ($('.isUp3').size()>0) {
+		alert("图片必须上传")
+		return;
+	}
+	$.post('?s=home/investor/invApply', {'iden_status':'1'}, function(data, textStatus, xhr) {
+		alert("申请成功 请等待审核！")
+		window.location.href="?s=home/investor";
+	});
+}
+function infoup () {
+	$('#info').trigger('submit')
+}
+function fup () {
+	$('#fup').trigger('submit')
+}
+function bup () {
+	$('#bup').trigger('submit')
+}
+/*reg3*/

@@ -1,0 +1,45 @@
+<div class="xmainr_b">
+    <div class="renmoney">
+        <div class="renmoney_a">投资计划</div>
+    </div>
+
+    <div class="elsfee">
+        <div class="fels01">领域</div>
+        <div class="fels02">{$investor[0][intentionname]}</div>
+    </div>
+
+    <div class="elsfee">
+        <div class="fels01">城市</div>
+        <div class="fels02">{$investor[0][sheng]} ・ {$investor[0][shi]} ・ {$investor[0][qu]}</div>
+    </div>
+
+    <!-- <div class="elsfee">
+        <div class="fels01">单个项目投资额度</div>
+        <div class="fels02"><span><?php echo number_format($investor[0][min_maney]/10000); ?>万</span> - <span><?php echo number_format($investor[0][max_maney]/10000); ?>万</span></div>
+    </div> -->
+
+    <div class="elsfee">
+        <div class="fels03">
+            <div class="geshe">
+                <span>{$investor[0][tz_num]}</span>
+                个
+            </div>
+            <div class="geshefse">一年投资计划</div>
+        </div>
+        <div class="fels04">
+            <div class="felse">
+                <span><?php echo number_format($investor[0][min_maney]/10000); ?></span>
+                -
+                <span><?php echo number_format($investor[0][max_maney]/10000); ?></span>
+                万
+            </div>
+            <div class="feaese">单个项目投资额度</div>
+        </div>
+
+        <div style="clear:both"></div>
+    </div>
+
+    <div class="sendp">
+        <a href="javascript:proDelivery({$investor[0][id]});">投递项目</a>
+    </div>
+</div>

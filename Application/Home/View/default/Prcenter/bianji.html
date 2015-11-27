@@ -1,0 +1,255 @@
+<extend name="Base/prcenter"/>
+
+<block name="header">
+    <header>
+        <div class="littlebanner">
+            <img src="__HOME__/images/entrepre/cailing.gif" />
+        </div>
+    </header>
+    <!-- ==============================================js特效================================================= -->
+    <include file="index/effect" />
+    <!-- =================================================================================================== -->
+</block>
+
+<block name="body">
+    <div class="all">
+        <include file="main_t" />
+        <!--main-->
+        <div class="main" style="margin-bottom:20px;">
+            <include file="main_l" />
+
+            <div class="main_r">
+
+                <div class="tx">
+
+                    <p>头像设置</p>
+                    <form action="__URL__/txup" id="update_tx" method="post" enctype="multipart/form-data">
+                        <div class="tx_img">
+                            <div id="show_img" class="cicun">
+                                <?php if (!$pruser[0][face_img]): ?>
+                                <img class="img_one" src="__IMG__/investor/invcenter/touxiangshangchuan.gif" alt="上传头像" width="220" height="220" />
+                                <?php else: ?>
+                                <img class="img_one" src="./Uploads/Album/{$pruser[0][face_img]}" width="220" height="220" />
+                                <?php endif ?>
+                                图片比例：1:1
+                                </div>
+                            <div style="width:280px;height:140px;float:left;">
+                                <div class="input-file" style="overflow: hidden;position: relative;width:105px;height:35px; background:url('__IMG__/investor/shangcus.gif') no-repeat;float:right;margin-top:90px">
+                                    <input type="file" name="upImg" onchange="txup()" style="opacity: 0;filter: alpha(opacity:0);top: 0;right: 0;margin:0;width:105px;height:35px;cursor:pointer;"></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </form>
+                    <div class="clear"></div>
+
+                </div>
+
+                <!--表单-->
+                <script>
+                    function txup () {
+                        $('#update_tx').trigger('submit')
+                    }
+                    $('#update_tx').ajaxForm(function  (e) {
+                        $('#show_img').html("<img class='img_one' src='./Uploads/Album/"+e+"' width='220' height='220' />")
+                        $("#subImg").val(e);
+                    })
+                    
+                    //提交编辑
+                    function bianjiSub () {  
+                        $("#bianjiSub").ajaxSubmit({
+                            beforeSubmit:function () {
+                                var r = /^(13[0-9]|15[0|1|2|3|5|6|7|8|9]|17[7|8]|18[0-9])\d{8}$/;           //手机号正则表达式
+                                var qq = /^[1-9][0-9]{4,9}$/;           //qq号正则表达式
+                                if (!r.test($("#phone").val())) {
+                                    layer.tips('手机号码错误！','#phone',{time:3,guide:1})
+                                    // location.href = "#phone"
+                                    return false
+                                }
+                                if ($.trim($("#realname").val()).length==0) {
+                                    layer.tips('真实名称不能为空！','#realname',{time:3,guide:1})
+                                    // location.href = "#realname"
+                                    return false
+                                }
+                                if ($.trim($("#province").val()).length==0) {
+                                    layer.tips('请选择！','#town',{time:3,guide:1})
+                                    // location.href = "#province"
+                                    return false
+                                }
+                                if ($.trim($("#city").val()).length==0) {
+                                    layer.tips('请选择！','#town',{time:3,guide:1})
+                                    // location.href = "#city"
+                                    return false
+                                }
+                                if ($.trim($("#town").val()).length==0) {
+                                    layer.tips('请选择！','#town',{time:3,guide:1})
+                                    // location.href = "#town"
+                                    return false
+                                }
+                                if (!qq.test($("#qq").val())) {
+                                    layer.tips('qq格式不正确！','#qq',{time:3,guide:1})
+                                    // location.href = "#qq"
+                                    return false
+                                }
+                            },
+                            success:function (e) {
+                                layer.alert(e,2,function(){window.location.href = '?s=home/prcenter/baseinfo';});
+                            }
+                        })
+                    }
+                </script>
+
+                <form action="{:U(bianji)}" method="post" id="bianjiSub">
+                    <input type="hidden" name="face_img" id="subImg" value="{$pruser[0][face_img]}" />
+                    <div class="regist">
+                        <div style="margin:25px 0">
+                            <div class="woxx">Email：</div>
+                            <div class="kuang">{$userinfo[email]}
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div style="margin:25px 0">
+                            <div class="woxx"><font style="color:#f00">*</font>手机号码：</div>
+                            <div class="kuang">
+                                <input type="text" name="phone" class="ldd" id="phone" maxlength="11" value="{$pruser[0][phone]}">
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div style="margin:25px 0">
+                            <div class="woxx"><font style="color:#f00">*</font>真实姓名：</div>
+                            <div class="kuang">
+                                <input type="text" name="realname" class="ldd" id="realname" maxlength="10" value="{$pruser[0][realname]}">
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div style="margin:25px 0">
+                            <div class="woxx"><font style="color:#f00">*</font>性别：</div>
+                            <div class="kuang" id="sex" ckd="{$pruser[0][sex]}">
+                                <input type="radio" name="sex" value="1" checked="checked" /> <font style="font-size:14px">男</font>
+                                <input type="radio" name="sex" value="2" /> <font style="font-size:14px">女</font>
+                                <?php if ($pruser[0][sex]): ?>
+                                <script>
+                                    var ckdid = $("#sex").attr("ckd")-1
+                                    // alert(ckdid)
+                                    jQuery("input[name=sex]").eq(ckdid).attr("checked",true)
+                                </script>
+                                <?php endif ?></div>
+                            <div class="clear"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="gezitwo">
+                        <div class="woxx"><font style="color:#f00">*</font>所在地区：</div>
+                        <div class="kuang">
+                            <select name="sheng" id="province" style="width:160px;height:30px;font-size:14px;padding-left:7px;">
+                                <option class="oparea" value="">省/自治区</option>
+                                <foreach item="vo" name="province">
+                                    <?php if($pruser[0][shengid] == $vo[id]): ?>                            
+                                    <option value="{$vo.id}" selected=selected>{$vo.name}</option>
+                                    <?php else: ?>                            
+                                    <option value="{$vo.id}" >{$vo.name}</option>
+                                    <?php endif;?></foreach>
+                            </select>
+                            <select name="shi" id="city" style="width:160px;height:30px;font-size:14px;padding-left:7px;">
+                                <?php if(!empty($pruser[0][shiid])): ?>                            
+                                <option value="{$pruser[0][shiid]}" >{$pruser[0][shi]}</option>
+                                <?php endif; ?></select>
+                            <select name="qu" id="town" style="width:160px;height:30px;font-size:14px;padding-left:7px;">
+                                <?php if(!empty($pruser[0][quid])): ?>                            
+                                <option value="{$pruser[0][quid]}" >{$pruser[0][qu]}</option>
+                                <?php endif; ?></select>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div style="margin:25px 0">
+                        <div class="woxx">QQ：</div>
+                        <div class="kuang">
+                            <input type="text" name="qq" class="ldd" id="qq" maxlength="11" value="{$pruser[0][qq]}">
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div style="margin:25px 0">
+                        <div class="woxx">微博：</div>
+                        <div class="kuang">
+                            <input type="text" name="weibo" class="ldd" id="weibo" maxlength="50" value="{$pruser[0][weibo]}">
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </form>
+                <div class="ese">
+                    <div class="shad">
+                        <a href="javascript:bianjiSub();">
+                            <img src="__IMG__/investor/invcenter/subm.gif" />
+                        </a>
+                    </div>
+                    <div class="xiae">
+                        <a href="#">
+                            <img src="__IMG__/investor/invcenter/rese.gif" />
+                        </a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+    //地区js(曹超2014-12-10)
+    function jsSelectItemByValue(objSelect, value) {
+        //判断是否存在
+        var isExit = false;
+        for (var i = 0; i < objSelect.options.length; i++) {
+            if (objSelect.options[i].value == value) {
+                objSelect.options[i].selected = true;
+                isExit = true;
+                break;
+            }
+        }
+    }
+    //加载所有市     
+    $('#province').on('change', function() {
+        var areaid = $(this).val();
+        var time = new Date();
+        var time2 = time.getTime();
+        var areaurl = '?s=home/investor/province&areaid=' + areaid + '&time=' + time2;
+        $.get(areaurl, function(data) {
+            $("#city").empty();
+            $("#town").empty();
+            var t = JSON.parse(data);
+            $('#city').append('<option value="">城市</option><br />');
+            $('#town').append('<option value="">县区</option><br />');
+            $.each(t, function(key, obj) {
+                $('#city').append('<option value=' + obj.id + '>' + obj.name + '</option><br />');
+            });
+        });
+    });
+    //加载所有县
+    $('#city').on('change', function() {
+        var areaid = $(this).val();
+        var time = new Date();
+        var time2 = time.getTime();
+        var areaurl = '?s=home/investor/city&areaid=' + areaid + '&time=' + time2;
+        $.get(areaurl, function(data) {
+            $("#town").empty();
+            var t = JSON.parse(data);
+            $('#town').append('<option value="">县区</option><br />');
+            $.each(t, function(key, obj) {
+                $('#town').append('<option value=' + obj.id + '>' + obj.name + '</option><br />');
+            });
+        });
+    });
+});
+</script>
+
+
+   
+</block>
+

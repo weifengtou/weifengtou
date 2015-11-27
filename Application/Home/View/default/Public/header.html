@@ -1,0 +1,156 @@
+<!-- 导航条
+================================================== -->
+<div class="wftbg" style=" position:relative; z-index:10">
+    <div class="wftt">
+        <div class="wftl">
+            <div class="shouye_l">
+                <a class="brand" href="{:U('Index/index')}">
+                    <img src="__HOME__/images/handf/wftlogo.jpg" alt="让创业者跑得更快" height="55" width="445" />
+                </a>
+            </div>
+            <div class="shouye_r">
+                <div class="sy">
+                    <a href="{:U('Index/index')}">
+                        <img src="__HOME__/images/handf/wftsy.gif" width="120" height="40" alt="网站首页" />
+                    </a>
+                </div>
+                <div class="sy">
+                    <a href="{:U('Project/project')}">
+                        <img src="__HOME__/images/handf/wftxm.gif" width="120" height="40" alt="好项目" />
+                    </a>
+                </div>
+                <div class="sy">
+                    <a href="{:U('Invhome/investors')}">
+                        <img src="__HOME__/images/handf/wfttzr.gif" width="120" height="40" alt="投资人" />
+                    </a>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="dlzc">
+            <!-- ==========================================会员中心下拉菜单========================================================= -->
+            <div class="dlzc_l">
+                <if condition="is_denglu()">
+                    <div class="afdl">
+                        <li class="afdl_w dropdown" onmouseover="downmenu()" onmouseout="upmenu()">
+
+                            <a href="{:U('User/membercenter')}" class="dropdown-toggle" data-toggle="dropdown" style="padding-left:0;padding-right:0" >会员中心</a>
+                            <ul class="dropdownmem-menu dropdown-menu" style="display:none; position:absolute; z-index:10000">
+                                <li>
+                                    <a href="javascript:power01();">已创建项目</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:power02();">创建项目</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:power03();">已投项目</a>
+                                </li>
+                                <li>
+                                    <a onclick="javascript:shezhi();">账号设置</a>
+                                </li>
+                                <li>
+                                    <a href="{:U('User/logout')}">安全退出</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </div>
+                    <else/>
+                    <div style="margin-right:0">
+                        <div class="dlz">
+                            <a href="{:U('User/login')}">登录</a>
+                        </div>
+                        <div class="dlz">
+                            <a href="{:U('User/register')}" style="padding-left:0;padding-right:0; color:#e41b23 !important">注册</a>
+                        </div>
+                    </div>
+                </if>
+            </div>
+            <!-- ===========================================服务中心下拉菜单============================================================ -->
+            <div class="dlzc_r" style="position:relative;" onmouseover="downservemenu()" onmouseout="upservemenu()">
+                <a>服务中心</a>
+                <ul class="dropdownserve-menu dropdown-menu" style="display:none; position:absolute; z-index:10000">
+                    <li>
+                        <a href="{:U('Luyan/luyanzhuanti')}">路演专题</a>
+                    </li>
+                    <li>
+                        <a href="{:U('Weivideo/videoFir')}">微风投电影</a>
+                    </li>
+                    <li>
+                        <a href="{:U('Article/lists?category=news')}">新闻中心</a>
+                    </li>
+                    <li>
+                        <a href="{:U('Help/serve')}">我们的服务</a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+// ==============================会员中心下拉菜单========================================================
+function downmenu(){
+    $('.dropdownmem-menu').show();
+}
+function upmenu(){
+    $('.dropdownmem-menu').hide();
+}
+// ===============================服务中心下拉菜单========================================================
+function downservemenu(){
+    $('.dropdownserve-menu').show();
+}
+function upservemenu(){
+    $('.dropdownserve-menu').hide();
+}
+// ==============================会员下拉菜单操作权限判断==================================================
+// =========进入以创建项目页======================
+function power01(){
+    $.ajax({
+        url:"?s=home/user/power",
+        success:function(data){
+            var t = $.parseJSON(data);
+            if(t.style == 1){
+                window.location.href="?s=home/prcenter/createdproject";
+            }else if(t.style == 2){
+                layer.alert('投资人对此无操作权限',8);
+            }else if(t.style == 3){
+                layer.alert('请先选择身份',8);
+            }
+        }
+    });
+}
+// =========进入创建项目页========================
+function power02(){
+    $.ajax({
+        url:"?s=home/user/power",
+        success:function(data){
+            var t = $.parseJSON(data);
+            if(t.style == 1){
+                window.location.href="?s=home/prcenter/createproject";
+            }else if(t.style == 2){
+                layer.alert('投资人对此无操作权限',8);
+            }else if(t.style == 3){
+                layer.alert('请先选择身份',8);
+            }
+        }
+    });
+}
+// =========进入已投项目页========================
+function power03(){
+    $.ajax({
+        url:"?s=home/user/power",
+        success:function(data){
+            var t = $.parseJSON(data);
+            if(t.style == 1){
+                layer.alert('项目方对此无操作权限',8);
+            }else if(t.style == 2){
+                window.location.href="?s=home/Invcenter/entrepre";
+            }else if(t.style == 3){
+                layer.alert('请先选择身份',8);
+            }
+        }
+    });
+}
+</script>

@@ -1,0 +1,362 @@
+<extend name="Public/base"/>
+
+<!-- 子导航 -->
+<block name="sidebar">
+	<include file="sidemenu" />
+</block>
+
+<block name="body">
+	<div>
+		<!-- 标题 -->
+		<div class="main-title">
+			<h2>项目({$_total})</h2>
+		</div>
+
+		<!-- 按钮工具栏 -->
+		<div class="cf">
+			<!-- 高级搜索 -->
+			<div class="search-form fr cf">
+				<div class="sleft">
+					<div class="drop-down" style="display:none;">
+						<span class="sort-txt"">所有</span>
+						<i class="arrow arrow-down""></i>
+						<ul id="sub-sch-menu" class="nav-list hidden">
+							<li><a href="javascript:;">所有</a></li>
+							<li><a href="javascript:;">正常</a></li>
+							<li><a href="javascript:;">禁用</a></li>
+							<li><a href="javascript:;">待审核</a></li>
+						</ul>
+						<script>
+						$(function(){
+							$(".sort-txt,.arrow-down").click(function(){
+								$("#sub-sch-menu").show();
+							});
+							$(document).on("click",function(e){
+								var target  = $(e.target);
+									if(target.closest(".sort-txt,.arrow-down,#sub-sch-menu").length == 0){
+										/*.closest()沿 DOM 树向上遍历，直到找到已应用选择器的一个匹配为止，返回包含零个或一个元素的 jQuery 对象。*/
+									$("#sub-sch-menu").hide();
+								};
+								e.stopPropagation();
+							})
+						})
+						</script>
+					</div>
+					<input type="text" name="title" class="search-input" placeholder="请输入项目名称">
+					<a class="sch-btn" id="search"><i class="btn-search"></i></a>
+				</div>
+			</div>
+		</div>
+
+		<!-- 数据表格 -->
+		<div class="data-table">
+			<table class="">
+				<thead>
+					<tr>
+						<th class="row-selected row-selected">
+							<input class="check-all" type="checkbox"/>
+						</th>
+						<th class="">编号</th>
+						<th class="">项目名</th>
+						<th class="">联系人</th>
+						<th class="">联系电话</th>
+						<th class="">联系邮箱</th>
+						<th class="">创建日期</th>
+						<th class="">最后更新</th>
+						<th class="">隐藏/显示</th>
+						<th class="">状态</th>
+						<th class="">操作</th>
+						<th class="">进度</th>
+						<!-- 项目经理显示分配 -->
+						<if condition="$group_id eq 9">  
+							<th class="">分配</th>
+							<th class="">负责人</th>
+						</if>
+						<if condition="$group_id eq 9 OR $group_id eq 3 OR count($_SESSION) eq 1">
+							<th class="">已融资/总融资</th>
+							<th class="">融资详情</th>
+						</if>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="list" item="vo">
+						<tr>
+							<td>
+								<input class="ids" type="checkbox" name="ids[]" value="{$vo.id}" />
+							</td>
+							<td id="prid">{$vo.id}</td>
+							<td>
+								<a href="{:U('Article/lookover?id='.$vo['id'])}" id="prname{$vo.id}">{$vo.pjname}</a>
+							</td>
+							<td>{$vo.linkman}</td>
+							<td>{$vo.prphone}</td>
+							<td>{$vo.email}</td>
+							<td>{$vo.submit_time}</td>
+							<td>{$vo.update_time}</td>
+							<td id="showHide{$vo.id}">
+								<if condition="$vo.status eq 0">隐藏
+									<elseif condition="$vo.status eq 1"/>项目页显示
+									<elseif condition="$vo.status eq 2"/>首页+项目页显示
+								</if>
+							</td>
+							<td id="statue{$vo.id}">
+								<if condition="$vo.prrate eq 0">不通过
+									<elseif condition="$vo.prrate eq -1"/>待审核
+									<elseif condition="$vo.prrate eq 1"/>通过
+									<elseif condition="$vo.prrate eq 2"/>预热中
+									<elseif condition="$vo.prrate eq 3"/>正式上线
+									<elseif condition="$vo.prrate eq 4"/>融资成功
+								</if>
+							</td>
+							<td>
+								<a href="{:U('Article/lookover?id='.$vo['id'])}">查看</a>
+								<a href="{:U('Article/predit?id='.$vo['id'])}">编辑</a>
+								<if condition="$group_id eq 4">		<!-- 客服显示 -->
+									<a href="javascript:showHide(0,{$vo.id})">隐藏</a>
+									<a href="javascript:showHide(1,{$vo.id})">项目页显示</a>
+									<a href="javascript:showHide(2,{$vo.id})">首页+项目页显示</a>
+								</if>
+							</td>
+
+							<td id="ratetd1{$vo.id}">
+								<if condition="$group_id eq 4">		<!-- 客服显示 -->
+									<a href="javascript:rate1({$vo.id});" id="rate1{$vo.id}">通过</a>
+									<a href="javascript:rate0({$vo.id});" id="rate0{$vo.id}">不通过</a>
+									<elseif condition="$group_id eq 3 AND $vo.prrate gt 0"/>	<!-- 项目助理 -->
+									<a href="javascript:rate2({$vo.id})" id="rate2{$vo.id}">预热中</a>
+									<a href="javascript:rate3({$vo.id})" id="rate3{$vo.id}">正式上线</a>
+									<a href="javascript:rate4({$vo.id})" id="rate4{$vo.id}">融资成功</a>
+									<elseif condition="$group_id eq 9 AND $vo.prrate gt 0"/>	<!-- 项目经理理 -->
+									<a href="javascript:rate0({$vo.id});" id="rate0{$vo.id}">不通过</a>
+									<a href="javascript:rate2({$vo.id})" id="rate2{$vo.id}">预热中</a>
+									<a href="javascript:rate3({$vo.id})" id="rate3{$vo.id}">正式上线</a>
+									<a href="javascript:rate4({$vo.id})" id="rate4{$vo.id}">融资成功</a>
+									<!-- <a href="javascript:rate1({$vo.id});" id="rate1{$vo.id}">通过</a>
+									<a href="javascript:rate0({$vo.id});" id="rate0{$vo.id}">不通过</a> -->
+								</if>
+							</td>
+							<!-- 所有项目助理 -->
+							<if condition="$group_id eq 9 AND $vo.prrate gt 0">
+								<td>
+									<select id="prreview{$vo.id}"  onchange="selectfun(this,{$vo.id})">
+            	    					<volist name="prreviewes" id="vo2">
+            	    						<option value="{$vo2.uid}">{$vo2.nickname}</option>
+            	    					</volist>
+            						</select>
+            					</td>
+								<td id="prreviewer{$vo.id}">{$vo.prreview}</td>
+							</if>
+							<if condition="$group_id neq 4 AND $vo.prrate gt 0">
+								<td>
+									<a href="javascript:fianacing({$vo.id})" id="fianacing{$vo.id}">{$vo.totalmoney}&frasl;{$vo.budget}</a>
+								</td>
+								<td>
+									<a href="{:U('Article/finsinfo?id='.$vo[id])}">融资详情</a>
+								</td>
+							</if>
+						</tr>
+					</foreach>
+				</tbody>
+			</table>
+
+		</div>
+
+		<!-- 分页 -->
+		<div class="page">{$_page}</div>
+	</div>
+
+</block>
+<block name="script">
+	<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+	<php>
+		if(C('COLOR_STYLE')=='blue_color') echo '
+		<link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+	<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="__STATIC__/json2.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer.ext.js"></script>
+	<script type="text/javascript">
+    function rate1(id){      //通过
+    	var prname = $('#prname'+id).html();
+      	var prid = id;
+      	layer.confirm('请确定项目'+'<font color="red">'+prname+'</font>'+'通过!',
+      		function(){
+      			$.ajax({
+        			//type: "GET",
+        			type:"POST",
+	        		//url: "__URL__/rate1&prid="+prid,
+	        		url:"__URL__/rate1",
+	        		data:{prid:prid},
+	        		//data:{prid:prid,name:"wftcc",pwd:"90397F93CA4C287C6CCF7E95DB44",content:"有项目审核通过，请注意查看",mobile:"15003995764,18739910648",type:"pt"},
+	        		success:function(data){
+	        			//alert(data);
+	        			if(data==1){
+	        				layer.alert('项目'+'<font color="red">'+prname+'</font>'+'已通过!');
+	        				$('#ratetd1'+id).html('审核通过');
+	        				$('#statue'+id).html('通过');
+	        			}
+	        		},
+      			})
+      		},
+      		function(){
+      			layer.alert('请重新选择项目进度！');
+      		}
+        )
+    }
+    function rate0(id){        //不通过
+      	var prid = id;
+      	layer.prompt({title: '输入原因，并确认',type: 3}, function(val,index){  //原因弹出层
+	        var why = val;
+	        layer.close(index); 
+	        $.ajax({
+	          	type:"get",
+	          	url:"__URL__/why&prid="+prid+"&why="+why,
+	          	success:function(data){
+		            if(data==1){
+		              $('#ratetd1'+id).html('审核未通过');
+		              $('#statue'+id).html('不通过');
+		            } 
+	          	}
+	        })
+      	});
+    }
+    function rate2(id){    //预热中
+    	var prname = $('#prname'+id).html();
+      	var prid = id;
+      	layer.confirm('请确定项目'+'<font color="red">'+prname+'</font>'+'正在预热中!',
+      		function(){
+      			$.ajax({
+        			type: "GET",
+	        		url: "__URL__/rate2&prid="+prid,
+	        		success:function(data){
+	        			if(data==1){
+	        				layer.alert('项目'+'<font color="red">'+prname+'</font>'+'正在预热中!');
+	        				$('#ratetd1'+id).html('项目预热中');
+	        			}
+	        		},
+      			})
+      		},
+      		function(){
+      			layer.alert('请重新选择项目进度！');
+      		}
+        )
+    }
+    function rate3(id){     //正式上线
+    	var prname = $('#prname'+id).html();
+      	var prid = id;
+      	layer.confirm('请确定项目'+'<font color="red">'+prname+'</font>'+'正式上线!',
+      		function(){
+      			$.ajax({
+        			type: "GET",
+	        		url: "__URL__/rate3&prid="+prid,
+	        		success:function(data){
+	        			if(data==1){
+	        				layer.alert('项目'+'<font color="red">'+prname+'</font>'+'已正式上线!');
+	        				$('#ratetd1'+id).html('项目正式上线');
+	        			}
+	        		},
+      			})
+      		},
+      		function(){
+      			layer.alert('请重新选择项目进度！');
+      		}
+        )
+    } 
+    function rate4(id){     //正式上线
+    	var prname = $('#prname'+id).html();
+      	var prid = id;
+      	layer.confirm('请确定项目'+'<font color="red">'+prname+'</font>'+'已融资成功!',
+      		function(){
+      			$.ajax({
+        			type: "GET",
+	        		url: "__URL__/rate4&prid="+prid,
+	        		success:function(data){
+	        			if(data==1){
+	        				layer.alert('项目'+'<font color="red">'+prname+'</font>'+'已融资成功!');
+	        				$('#ratetd1'+id).html('项目融资成功');
+	        			}
+	        		},
+      			})
+      		},
+      		function(){
+      			layer.alert('请重新选择项目进度！');
+      		}
+        )
+    }
+    //项目显示、隐藏
+    function showHide(status,id){
+    	var prname = $('#prname'+id).html();
+    	layer.confirm('请确定执行该操作',
+    		function(){
+				$.ajax({
+					type:'GET',
+					url:'__URL__/showHide&status='+status+'&id='+id,
+					success:function(data){
+						if(data==1 && status==0){
+							layer.alert('项目'+'<font color="red">'+prname+'</font>'+'隐藏成功!');
+							$('#showHide'+id).html('隐藏');
+						}else if(data==1 && status==1){
+							layer.alert('项目'+'<font color="red">'+prname+'</font>'+'项目页显示成功!');
+							$('#showHide'+id).html('项目页显示');
+						}else if(data==1 && status==2){
+							layer.alert('项目'+'<font color="red">'+prname+'</font>'+'首页+项目页显示成功!');
+							$('#showHide'+id).html('首页+项目页显示');
+						}else if(data==0 && status==0){
+							layer.alert('项目'+'<font color="red">'+prname+'</font>'+'处于隐藏状态!');
+							$('#showHide'+id).html('隐藏');
+						}else if(data==0 && status==1){
+							layer.alert('项目'+'<font color="red">'+prname+'</font>'+'处于项目页显示状态!');
+							$('#showHide'+id).html('项目页显示');
+						}else if(data==0 && status==2){
+							layer.alert('项目'+'<font color="red">'+prname+'</font>'+'处于首页+项目页显示状态!');
+							$('#showHide'+id).html('首页+项目页显示');
+						}
+					},
+				})    		
+    		},
+    		function(){
+    			layer.alert('请重新选择项目的显示与隐藏');
+    		}
+    	)
+    }
+    function fianacing(id){   //已融资/总融资
+      	var prid = id;
+      	$.layer({
+	        type: 2,
+	        title: "融资信息", //不显示默认标题栏
+	        shade: [0.8, '#000'], //不显示遮罩
+	        area: ['950px', '600px'],
+	        iframe: {src: '?s=article/financing&prid='+prid}
+      	});
+    }
+  //分配项目
+	function selectfun(obj,i) {
+	  	//alert(i);
+		var prreviewid = $(obj).val();
+		var prreview = $(obj).find("option:selected").text();
+    	var prname = $('#prname'+i).html();
+    	var prid = i;
+    	var prreviewer = 'prreviewer'+i;
+      layer.confirm('确定将项目'+'<font color="red">'+prname+'</font>'+'分配给'+'<font color="red">'+prreview+'</font>'+'吗？',
+        function(){
+          $.ajax({
+            type: "GET",
+            url: "__URL__/distribute&prid="+prid+"&prreviewid="+prreviewid+"&prreview="+prreview,
+            success:function(data){
+              if(data==1){
+                layer.alert('项目'+'<font color="red">'+prname+'</font>'+'分配给'+'<font color="red">'+prreview+'</font>'+'!');
+                $('#'+prreviewer).html(prreview);
+              }else{
+                $('#'+prreviewer).html('未分配');
+              }
+            }
+          })
+        },
+        function(){layer.alert('请重新分配项目'+'<font color="red">'+prname+'</font>'+'!');
+        }
+      )
+    }   
+</script>
+</block>

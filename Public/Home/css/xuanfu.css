@@ -1,0 +1,45 @@
+* { margin: 0; padding: 0; }
+body {font: 14px; color: #444; background:#f6f6f6; font-family:"微软雅黑" }
+img { border: 0; vertical-align: bottom; }
+ul, li, dt { margin: 0; padding: 0; list-style: none; }
+a { text-decoration: none; }
+a:link { color: #000000; text-decoration: none; }
+a:hover {  cursor: pointer; color:#FF0099; text-decoration: none;}
+a.underline { text-decoration: underline; }
+a:visited { color: #000000; text-decoration: none; }
+form, ul, li, p, h1, h2, h3, h4, h5, h6 { padding:0; margin:0}
+.clear { clear: both; line-height:0px;height:1px;overflow:hidden;*display:inline; }
+/*----------------------顶部-------------------------*/
+
+.xuanfu{ width:50px; position:fixed; right:20px; bottom:140px; z-index:999; font-size:13px; text-align:center; color:666;}
+.every{ width:50px;z-index:999;}
+.erery_a{ width:50px; height:50px; cursor:pointer; background:url(../images/fuchuang/tel2.gif) 0 0 no-repeat; border:#ddd solid 1px; position:relative;}
+.erery_a:hover{ width:50px; cursor:pointer; background:url(../images/fuchuang/tel1.gif) 0 0 no-repeat; color:#fff; border:#358ae4 solid 1px; }
+.erery_b{ width:50px; height:50px; cursor:pointer; background:url(../images/fuchuang/jianyi2.gif) 0 0 no-repeat; border:#ddd solid 1px; }
+.erery_b:hover{ width:50px; cursor:pointer; background:url(../images/fuchuang/jianyi1.gif) 0 0 no-repeat; color:#fff; border:#358ae4 solid 1px; }
+.erery_c{ width:50px; height:50px; cursor:pointer; background:url(../images/fuchuang/ewma2.gif) 0 0 no-repeat; border:#ddd solid 1px; position:relative;}
+.erery_c:hover{ width:50px; cursor:pointer; background:url(../images/fuchuang/ewma1.gif) 0 0 no-repeat; color:#fff; border:#358ae4 solid 1px; }
+.erery_d{ width:50px; height:50px; cursor:pointer; background:url(../images/fuchuang/top2.gif) 0 0 no-repeat; border:#ddd solid 1px;z-index: 999; }
+.erery_d:hover{ width:50px; cursor:pointer; background:url(../images/fuchuang/top1.gif) 0 0 no-repeat; color:#fff; border:#358ae4 solid 1px;z-index: 999;}
+.everyc_ewm{ display:none; position:absolute; left:-145px; top:-30px; cursor:pointer; background:none}
+.erery_c:hover .everyc_ewm{ display:block;}
+.erery_a:hover .everyc_ewm{ display:block;}
+.erery_e{ width:50px; height:50px; cursor:pointer; background:url(../images/fuchuang/lianxi2.gif) 0 0 no-repeat; border:#ddd solid 1px; }
+.erery_e:hover{ width:50px; cursor:pointer; background:url(../images/fuchuang/lianxi1.gif) 0 0 no-repeat; color:#fff; border:#358ae4 solid 1px; }
+
+/*.xuanfu{ width:60px; position:fixed; right:22px; bottom:250px; z-index:99999; font-size:13px; text-align:center; color:666;}
+.every{ width:60px;}
+.erery_a{ width:60px; height:85px; cursor:pointer; background:url(../images/fuchuang/tel2.jpg) 0 0 no-repeat; border:#ddd solid 1px; }
+.erery_a:hover{ width:60px; cursor:pointer; background:url(../images/fuchuang/tel1.jpg) 0 0 no-repeat; color:#fff; border:#358ae4 solid 1px; }
+.erery_b{ width:60px; height:85px; cursor:pointer; background:url(../images/fuchuang/jianyi2.jpg) 0 0 no-repeat; border:#ddd solid 1px; }
+.erery_b:hover{ width:60px; cursor:pointer; background:url(../images/fuchuang/jianyi1.jpg) 0 0 no-repeat; color:#fff; border:#358ae4 solid 1px; }
+.erery_c{ width:60px; height:85px; cursor:pointer; background:url(../images/fuchuang/ewma2.jpg) 0 0 no-repeat; border:#ddd solid 1px; position:relative;}
+.erery_c:hover{ width:60px; cursor:pointer; background:url(../images/fuchuang/ewma1.jpg) 0 0 no-repeat; color:#fff; border:#358ae4 solid 1px; }
+.erery_d{ width:60px; height:85px; cursor:pointer; background:url(../images/fuchuang/top2.jpg) 0 0 no-repeat; border:#ddd solid 1px; }
+.erery_d:hover{ width:60px; cursor:pointer; background:url(../images/fuchuang/top1.jpg) 0 0 no-repeat; color:#fff; border:#358ae4 solid 1px;}
+.everyc_ewm{ display:none; position:absolute; right:-150px; top:-30px; cursor:pointer; background:none}
+.erery_c:hover .everyc_ewm{ display:block;}*/
+
+.z_index999{
+	z-index: 999;
+}

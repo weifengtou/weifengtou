@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<include file="Public/head"/>
+	<!-- ========================悬浮区css============================================== -->
+	<link rel="stylesheet" type="text/css" href="__HOME__/css/xuanfu.css">
+
+	<!--表单插件-->
+	<script src="__STATIC__/jquery.form.js"></script>
+
+	<!--验证插件-->
+	<script src="__STATIC__/jQueryValidation/lib/jquery.validate.js"></script>
+	<script src="__STATIC__/jQueryValidation/lib/jquery.metadata.js"></script>
+	<script src="__STATIC__/jQueryValidation/lib/jquery.validate.messages_cn.js"></script>
+	<style type="text/css">
+  	/**
+  	*  @DO 校验的样式文件
+  	*  @DATE 2010-11-25
+  	*  @AUTHOR Frylan
+  	*/
+  	/*错误样式*/
+  	input.error { border: 1px dashed red;background:yellow; padding:2px; }
+  	select.error { border: 1px dashed red; background:yellow; padding:2px; }
+  	.error {
+	    float: left;
+	    height: 30px;
+	    line-height: 30px;
+	    padding-left: 16px;
+	    margin-left: 2px;
+	    color:red;
+	    /*背景图片（校验未通过的’×’图标）*/
+	    /*background: url(unchecked.gif) no-repeat 0px 0px;*/
+	    font-family:Verdana, Geneva, sans-serif;
+	    font-size:13px;
+    }
+    </style>
+
+	<!-- kindeditor文本编辑器 -->
+    <link rel="stylesheet" href="__STATIC__/kindeditor/themes/default/default.css">
+    <script src="__STATIC__/kindeditor/kindeditor-min.js"></script>
+    <script src="__STATIC__/kindeditor/zh_CN.js"></script>
+
+	<!--分页插件-->
+	<link rel="stylesheet" href="__STATIC__/jPages/css/jPages.css" />
+	<script src="__STATIC__/jPages/js/jPages.min.js"></script>
+
+	<!--自定义-->
+	<link rel="stylesheet"  href="__CSS__/yc_entrepre.css" type="text/css" />
+	<script src="__JS__/invcenter.js"></script>
+
+	<script type="text/javascript" language="javascript">
+    //<!CDATA[
+    function g(o){return document.getElementById(o);}
+    function HoverLi(n){
+    //如果有N个标签,就将i<=N;
+    for(var i=1;i<=3;i++){g('tb_'+i).className='normaltab';g('tbc_0'+i).className='undis';}g('tbc_0'+n).className='dis';g('tb_'+n).className='hovertab';
+    }
+    //如果要做成点击后再转到请将<li>中的onmouseover 改成 onclick;
+    //]]>
+	</script>
+	<!-- ========================悬浮区js============================================== -->
+	<script type="text/javascript" src="__HOME__/js/scrolltotop.js"></script>
+
+</head>
+<body>
+	<!-- 头部 -->
+	<include file="Public/header"/>
+	<!-- /头部 -->
+
+	<!-- 主体 -->
+	<include file="Public/body"/>
+	<!-- /主体 -->
+
+	<!-- 底部 -->
+	<include file="Public/footer"/>
+	<!-- /底部 -->
+</body>
+</html>

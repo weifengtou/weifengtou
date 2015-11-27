@@ -1,0 +1,45 @@
+<div class="comm">
+    <h3>
+        <span>往期</span>
+        微电影
+    </h3>
+    <div>
+            <!-- <div class="tuwen">
+                <div class="tuwen_s">
+                    <a href="#">
+                        <img src="__HOME__/images/weivideo/wdy01.gif" width="247" height="137" />
+                    </a>
+                </div>
+                <div class="tuwen_x">
+                    <div class="tuwenx_l">
+                        <a href="#">中国国际微电影节</a>
+                    </div>
+                    <div class="tuwenx_r">2014-12-09</div>
+                    <div class="clear"></div>
+                </div>
+            </div> -->
+        <?php foreach ($list as $key => $value): ?>
+            <?php $listinfo = D('Document')->detail($value[id]); ?>
+            <div class="tuwen">
+                <div class="tuwen_s">
+                    <a href="{:U('videoFir?id='.$listinfo[id])}">
+                        <?php if ($value[filmimage]):
+                            $x = M('picture')->where("id='$value[filmimage]'")->find(); ?>
+                            <img src=".{$x[path]}" />
+                        <?php else: ?>
+                            <img src="__STATIC__/images/nop.gif" />
+                        <?php endif; ?>
+                    </a>
+                </div>
+                <div class="tuwen_x">
+                    <div class="tuwenx_l">
+                        <a href="#">{$listinfo[title]}</a>
+                    </div>
+                    <div class="tuwenx_r">{:date("Y-m-d",$listinfo[create_time])}</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <?php endforeach ?>
+    </div>
+    <div class="clear"></div>
+</div>

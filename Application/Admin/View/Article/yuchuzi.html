@@ -1,0 +1,83 @@
+<extend name="Public/base"/>
+
+<!-- 子导航 -->
+<block name="sidebar">
+	<include file="sidemenu" />
+</block>
+
+<block name="body">
+<script type="text/javascript" src="__STATIC__/jquery-migrate-1.2.1.min.js"></script>
+
+	<div>
+		<!-- 标题 -->
+		<div class="main-title">
+			<h2>预出资({$_total})</h2>
+		</div>
+
+		<!-- 信息和操作 -->
+		<div id="ined">
+			<div class="clear"></div>
+		</div>
+		
+		<!-- 按钮工具栏 -->
+		<div class="cf"></div>
+		<!-- 数据表格 -->
+		<div class="data-table">
+			<table class="">
+				<thead>
+					<tr>
+						<th class="row-selected row-selected">
+							<input class="check-all" type="checkbox"/>
+						</th>
+						<th class="">编号</th>
+						<th>投资人真实姓名</th>
+						<th>项目人真实姓名</th>
+						<th>预出资项目</th>
+						<th>预出资金额</th>
+						<th>预出资信息</th>
+						<th>预出资时间</th>
+						<th>状态</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="list" item="vo">
+						<?php $inv_detail = get_homeuser_detail(get_homeuser_id($vo[iid],2)); ?>
+						<?php $pru_detail = get_homeuser_detail($vo[pid]); ?>
+						<?php $pro_detail = get_child_detail($vo[prid],1); ?>
+						<tr>
+							<td>
+								<input class="ids" type="checkbox" name="ids[]" value="{$vo.id}" />
+							</td>
+							<td id="prid">{$vo.id}</td>
+							<td><a href="index.php?s=Home/Invhome/invDisplay&uid={$vo[pid]}" target="_blank">{$inv_detail[0][realname]}</a></td>
+							<td>{$pru_detail[0][realname]}</td>
+							<td><a href="index.php?s=Home/Project/prdetail&pid={$vo[prid]}" target="_blank">{$pro_detail[0][pjname]}</a></td>
+							<td>{$vo[cz_maney]}</td>
+							<td>{$vo[cz_msg]}</td>
+							<td>{:date('Y-m-d',$vo[cz_time])}</td>
+							<td>状态</td>
+							<td>操作</td>
+						</tr>
+					</foreach>
+				</tbody>
+			</table>
+
+		</div>
+
+		<!-- 分页 -->
+		<div class="page">{$_page}</div>
+	</div>
+
+</block>
+<block name="script">
+<style>
+	/*样式*/
+</style>
+<script type="text/javascript" src="__STATIC__/layer.min.js"></script>
+<script type="text/javascript" src="__STATIC__/layer.ext.js"></script>
+
+<script>
+	//
+</script>
+</block>

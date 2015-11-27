@@ -1,0 +1,140 @@
+<extend name="Public/base"/>
+
+<!-- 子导航 -->
+<block name="sidebar">
+    <include file="sidemenu" />
+</block>
+
+<block name="body">
+    <div class="main-title">
+        <h2>项目编辑</h2>
+        <!-- 下载 -->
+		<div  style="float:left;width:150px;height:30px; line-height:30px; text-align:center; color:#007300"><a id="download" style="color:#007300" href="{:U('Article/exportLookover02Excel','prid='.$prid)}">下载</a></div>
+    </div>
+    <div class="w936" style="margin:0 auto;">
+        <include file="lookoverTab" />
+        <script type="text/javascript">
+        $(document).ready(function($) {
+            $('#tb_2').addClass('tabcss');
+        });
+        </script>
+        <div class="ctt">
+            <div class="undis" id="tbc_02">
+                <div class="middle">
+                    <div class="gezild">
+                        <div class="gezitwo">
+                            <div class="woqq"> <font style="color:#f00; font-weight:normal">*</font>
+                                法人身份证
+                            </div>
+                            <div class="kuang" style="width:620px;height:220px;">
+                                <if condition="!$fornt">
+                                    <img src="__HOME__/images/entrepre/shenfu01.gif" id="img01" width="220px" height="220px" />
+                                    <img src="__HOME__/images/entrepre/shenfu01.gif" id="img02" style="display:none;width:220px;height:220px;" />
+                                    <else />
+                                    <img src="__COMPANY__/{$fornt}" id="img02" style="width:220px;height:220px;" />
+                                </if>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <if condition="!$rear">
+                                    <img src="__HOME__/images/entrepre/shenfu02.gif" id="img11" width="220px" height="220px"/>
+                                    <img src="__HOME__/images/entrepre/shenfu02.gif" id="img12" style="display:none;width:220px;height:220px;" />
+                                    <else />
+                                    <img src="__COMPANY__/{$rear}" id="img12" style="width:220px;height:220px;" />
+                                </if>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="linfes"></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="gezild">
+                        <div class="woqq"> <font style="color:#f00; font-weight:normal">*</font>
+                            法人证信报告
+                        </div>
+                        <div class="kuang">
+                            <if condition="!$legalperson">
+                                <img src="__HOME__/images/entrepre/shenfu04.gif" id="img21" />
+                                <img src="__HOME__/images/entrepre/shenfu04.gif" id="img22" style="display:none;width:220px;height:220px;"/>
+                                <else />
+                                <img src="__COMPANY__/{$legalperson}" id="img22" style="width:220px;height:220px;"/>
+                            </if>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="linfes"></div>
+                    <div class="gezild" >
+                        <div class="woqq">
+                            <font style="color:#f00; font-weight:normal">*</font>
+                            营业执照副本
+                        </div>
+                        <div class="kuang">
+                            <if condition="!$businesslicence">
+                                <img src="__HOME__/images/entrepre/shenfu05.gif" id="img31"/>
+                                <img src="__HOME__/images/entrepre/scwj.gif" id="img32" style="display:none;width:220px;height:220px;float:left;"/>
+                                <else />
+                                <img src="__COMPANY__/{$businesslicence}" id="img32" style="width:220px;height:220px;float:left;"/>
+                            </if>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="linfes"></div>
+                    <div class="gezild" style="height:220px;">
+                        <div class="woqq" >
+                            <font style="color:#f00; font-weight:normal">*</font>
+                            税务登记证副本
+                            <br />
+                            加盖公章
+                        </div>
+                        <div class="kuang">
+                            <if condition="!$taxcertificate">
+                                <img src="__HOME__/images/entrepre/shenfu06.gif" id="img41" />
+                                <img src="__HOME__/images/entrepre/scwj.gif" id="img42" style="display:none;width:220px;height:220px;"/>
+                                <else />
+                                <img src="__COMPANY__/{$taxcertificate}" id="img42" style="width:220px;height:220px;"/>
+                            </if>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="linfes"></div>
+                    <div class="gezild" style="height:220px;">
+                        <div class="woqq">
+                            <font style="color:#f00; font-weight:normal">*</font>
+                            公司照片
+                        </div>
+                        <div class="kuang">
+                            <if condition="!$companyimg">
+                                <img src="__HOME__/images/entrepre/shenfu07.gif" id="img51" />
+                                <img src="__HOME__/images/entrepre/scwj.gif" id="img52" style="display:none;width:220px;height:220px;float:left;"/>
+                                <else />
+                                <img src="__COMPANY__/{$companyimg}" id="img52" style="width:220px;height:220px;float:left;"/>
+                            </if>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="nexxt">
+                <div style="margin:0 auto;width:244px;height:35px;">
+                    <div class="next" style=" background:url('./Public/home/images/entrepre/xis.gif') no-repeat;">
+                        <a href="__URL__/lookover&id={$prid}">上一步</a>
+                    </div>
+                    <div class="next" style=" background:url('./Public/home/images/entrepre/xis.gif') no-repeat;">
+                        <a href="__URL__/lookover03&prid={$prid}">下一步</a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+    <php>
+        if(C('COLOR_STYLE')=='blue_color') echo '
+        <link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+    <link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+    <link href="__HOME__/css/entrepre.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+</block>

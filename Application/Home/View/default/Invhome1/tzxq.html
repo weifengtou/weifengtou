@@ -1,0 +1,52 @@
+<extend name="Base/invDisplay"/>
+<block name="header">
+    <link rel="stylesheet"  href="__HOME__/css/tzxq.css" type="text/css" />
+    <link rel="stylesheet"  href="__HOME__/css/detail.css" type="text/css" />
+</block>
+<block name="body">
+    <?php $inv_detail = get_child_detail($investor[0][id],2); ?>
+    <div class="prodeta_a">
+        <div class="prodeta_b">
+            <div>
+                <!--banner-->
+                <include file="Invhome1:banner" />
+
+                <!--main-->
+                <div class="xmdal_main">
+                    <!--左-->
+                    <div class="xmmain_l">
+
+                        <!-- 介绍 -->
+                        <include file="Invhome1:jie_shao" />
+
+                        <!-- 投资理念 -->
+                        <include file="Invhome1:tou_zi_li_nian" />
+
+                        <!-- 关注项目 -->
+                        <include file="Invhome1:guan_zhu_xiang_mu" />
+
+                        <!-- 投资案例 -->
+                        <include file="Invhome1:tou_zi_an_li" />
+
+                        <!-- 评论 -->
+                        <include file="Invhome1:ping_lun" />
+
+                    </div>
+
+                    <!--右-->
+                    <div class="xmmain_r">
+
+                        <!-- 投资计划 -->
+                        <include file="Invhome1:tou_zi_ji_hua" />
+
+                        <!-- 粉丝 -->
+                        <include file="Invhome1:fans" />
+                        
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file="Public:minilogin" />
+</block>

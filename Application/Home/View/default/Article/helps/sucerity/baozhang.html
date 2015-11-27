@@ -1,0 +1,290 @@
+<extend name="Base/index"/>
+<block name="header">
+<link rel="stylesheet"  href="baozhang.css" type="text/css" />
+<style>
+* { margin: 0; padding: 0; }
+body {font:14px; color: #444; background:#f6f6f6; font-family:"微软雅黑" }
+img { border: 0; vertical-align: bottom; }
+ul, li, dt { margin: 0; padding: 0; list-style: none; }
+a { text-decoration: none; }
+a:link { color: #000000; text-decoration: none; }
+a:hover {  cursor: pointer; text-decoration: none;}
+a.underline { text-decoration: underline; }
+a:visited { color: #000000; text-decoration: none; }
+form, ul, li, p, h1, h2, h3, h4, h5, h6 { padding:0; margin:0}
+.clear { clear: both; line-height:0px;height:1px;overflow:hidden;*display:inline; }
+/*----------------------顶部-------------------------*/
+
+
+.all{ width:100%; height:100%}
+
+.beginerea{ width:100%; height:395px; background:url(__HOME__/images/article/helps/baozhang/about-banner2.jpg) center center repeat-x;}
+
+.beginereb{ width:1100px; height:395px; margin:0 auto}
+
+
+.begin-nava{ background:#fff; width:100%; height:355px}
+.begin-navb{ width:860px; height:193px; padding:83px 120px 78px 120px; margin:0 auto}
+.be-nav_money{ float:left; height:193px; cursor:pointer;}
+.be-nav_money a{ display:block; height:58px; width:135px; padding-top:135px; background:url(__HOME__/images/article/helps/baozhang/zijin-nav1.gif) 0 0 no-repeat; font-size:22px; color:#56b4f2 !important; text-align:center; line-height:70px; font-weight:bold}
+.be-nav_money a:hover{ background:url(__HOME__/images/article/helps/baozhang/zijin-nav2.gif) 0 0 no-repeat;}
+.be-nav_risk{ float:left; height:193px; padding:0 227px }
+.be-nav_risk a{ display:block; height:58px; width:135px; padding-top:135px; background:url(__HOME__/images/article/helps/baozhang/fengkong-nav1.gif) 0 0 no-repeat; font-size:22px; color:#56b4f2 !important; text-align:center; line-height:70px; font-weight:bold}
+.be-nav_risk a:hover{ background:url(__HOME__/images/article/helps/baozhang/fengkong-nav2.gif) 0 0 no-repeat;}
+.be-nav_law{ float:left; height:193px; }
+.be-nav_law a{ display:block; height:58px; width:135px; padding-top:135px; background:url(__HOME__/images/article/helps/baozhang/falv-nav1.gif) 0 0 no-repeat; font-size:22px; color:#56b4f2 !important; text-align:center; line-height:70px; font-weight:bold}
+.be-nav_law a:hover{ background:url(__HOME__/images/article/helps/baozhang/falv-nav2.gif) 0 0 no-repeat;}
+
+
+/******************认证与未认证*********************/
+.identifi_diffc{ padding-top:30px}
+/*******************融资说明**********************/
+/**白色通用**/
+.financing_aa{ width:100%; background:#f6f6f6}
+.financing_ab{ width:1100px; margin:0 auto; background:#f6f6f6}
+.financing_ac{ padding:45px 0 95px 0}
+
+/*灰色通用*/
+.financing_ba{ width:100%; background:#fff}
+.financing_bb{ width:1100px; margin:0 auto; background:#fff}
+
+
+/*******************安全保障*********************/
+
+.money_seca{ padding:0px 335px 0px 70px; background:url(__HOME__/images/article/helps/baozhang/zijinbg1.gif) 805px 53px no-repeat}
+.money_secb{ font-size:18px; color:#444 !important; line-height:36px; padding-bottom:10px}
+.money_secc{ font-size:16px; line-height:36px; color:#444;}
+.money_secc span{ font-size:16px; line-height:36px; color:#56b4f2 !important;}
+
+.risk_seca{ padding:20px 210px 70px 85px; background:url(__HOME__/images/article/helps/baozhang/riskbg1.gif) 831px 70px no-repeat; font-size:20px; line-height:43px; }
+.risk_secb{ width:505px; padding-top:10px}
+.risk_secc{ padding:20px 0 80px 570px; background:url(__HOME__/images/article/helps/baozhang/riskbg2.gif) 50px 42px no-repeat}
+.risk_secd{ padding:0 540px 70px 65px; background:url(__HOME__/images/article/helps/baozhang/riskbg3.gif) 774px 18px no-repeat}
+.risk_sece{ padding:0 15px; padding-bottom:30px }
+.risk_secf{ float:left; width:530px; display:inline; padding-bottom:5px}
+.risk_secg{ font-size:14px; line-height:30px;}
+
+.law-seca{ padding:15px 460px 80px 100px; background:url(__HOME__/images/article/helps/baozhang/lawbg1.gif) 844px 5px no-repeat}
+.law-secb{  font-size:18px; color:#56b4f2 !important; line-height:43px;}
+.law-secc{  font-size:16px; line-height:30px;}
+.risk-tixi{font-size:20px; color:#ff716f !important; line-height:43px; padding-bottom:10px}
+
+</style>
+</block>
+
+
+
+<block name="body">
+
+<div>
+	<div class="all">
+    
+    	<!--banner-->
+        <div class="beginerea">
+        	<div class="beginereb">
+            	<img src="__HOME__/images/article/helps/baozhang/about-banner1.jpg" />
+            </div>
+        </div>
+        
+        
+        <!--导航-->
+        <div class="begin-nava">
+        	<div class="begin-navb">
+            	<div class="be-nav_money">
+                	<a href="#zijinbaozhang">资金保障</a>
+                </div>
+                <div class="be-nav_risk">
+            		<a href="#fengkongbaozhang">风控保障</a>
+            	</div>
+                <div class="be-nav_law">
+            		<a href="#falvbaozhang">法律保障</a>
+            	</div>
+                <div class="clear"></div>
+            </div>
+            
+        </div>
+        
+ 
+        
+        
+        
+        
+        
+        
+        <!--资金保障-->
+        <div id="zijinbaozhang" class="financing_aa">
+            <div class="financing_ab" style=" padding-bottom:40px">
+                <div class="identifi_diffc">
+                    <img src="__HOME__/images/article/helps/baozhang/zijinbt.gif" />
+                </div>
+                <div class="money_seca">
+                	<div class="money_secb">
+                    信任和安全的基础永远都是建立在真实、透明、平等的信息交流上。因此微风投搭建了最透明的融资信息披露制度，从三个层面实现融资信息、资金流转的100%透明。
+                    </div>
+                    <div class="money_secc">
+                    1、微风投模式特别增设了第三方<span>（河南梧桐盛嘉投资管理有限公司）</span><br />
+
+对资金流转过程进行全程动态监管，资金的每一次流动都能被投资者清晰地掌握。<br />
+
+2、投资人资金投出后，资金的所有流转使用轨迹和信息都能可查，<br />
+
+项目将拥有极高的信息透明度，投资人也将拥有最完整的知情权。<br />
+
+3、项目监管方对项目融资方所做的所有尽职调查信息都会向投资人和监管方公开，<br />
+
+投资人在投资前就能对项目的所有信息和风险评估有客观、相对完整的掌握。
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 风控保障 -->
+        <div id="fengkongbaozhang" class="financing_ba">
+        	<div class="financing_bb">
+            	<div class="identifi_diffc">
+                	<img src="__HOME__/images/article/helps/baozhang/riskbt1.gif" />
+                </div>
+                <div style=" color:#0a93ae; font-size:30px; text-align:center; padding-bottom:25px">（一）风控体系</div>
+                <div class="risk_seca">
+                微风投成立伊始就建立了一套从项目来源到尽职调查再到风险控制的一套完整的风控体系。
+                	<div class="risk_secb">
+                    	<div class="money_secb" style="padding-bottom:10px; color:#0a93ae !important; font-size:20px">
+                        可靠的渠道控制
+                        </div>
+                        <div class="money_secc">
+                       微风投对项目渠道进行严格把关，力求从源头把握项目质量。利用微风投网络平台和其关联方的高端资源，通过行业资深专家的成熟经验和理论实践，从成长型、科技型、创新型的行业和企业中发掘安全性、增值性更高的项目渠道、筛选质量更高的融资项目。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="financing_ba">
+        	<div class="financing_bb">
+                <div class="risk_secc">
+                	<div class="money_secb" style="padding-bottom:10px; color:#0a93ae !important; font-size:20px">
+                    360度实地尽调
+                    </div>
+                    <div class="money_secc">
+                    微风投建立了专业尽调团队，对融资项目进行360度实地尽职调查，调查报告的数据由实地调查数据、人民银行征信系统数据、公安部居民身份系统数据、税务系统数据、海关系统数据、工商局系统数据、车辆管理系统数据、房屋管理系统数据等组成。对融资项目实施立体化多层级的数据采集，以确保项目及融资需求真实、客观、合法，为投资人对项目的投资风险评估提供可信的依据。
+                    </div>
+                </div>
+                
+                <div class="risk_secd">
+                	<div class="money_secb" style="padding-bottom:10px; color:#0a93ae !important; font-size:20px">
+                    	专业性的风控团队和技术
+                    </div>
+                    <div class="money_secc">
+                    微风投建立了一支专业的风险控制团队和一套稳健的收益/风险控制制度和流程，以实现对投资人的投资保障。
+微风投为投资人和融资企业提供专业的、个性化的投融资服务，以及严格审查融资项目，严谨签署相关合同，严肃执行监管程序。
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="financing_aa">
+        	<div class="financing_ab" style="padding-top:60px">
+            <div style=" color:#ff716f; font-size:30px; text-align:center; padding-bottom:35px">（二）项目评审体系</div>
+                <img src="__HOME__/images/article/helps/baozhang/riskl.jpg" style="padding-bottom:30px" />
+                
+                <div class="risk_sece">
+                	<div class="risk_secf">
+                    	<div class="risk-tixi" style="padding-bottom:0px; color:#ff716f !important">
+                        1.项目登记：
+                        </div>
+                        <div class="risk_secg">
+                        (1)线上申请人实名登记、企业基本情况登记、微风投平台筛查、预约线下面谈；<br />
+
+(2)线下项目的搜集资料、和申请人面谈、登记。
+                        </div>
+                    </div>
+                    
+                    <div class="risk_secf">
+                    	<div class="risk-tixi" style="padding-bottom:0px; color:#ff716f !important">
+                        2.项目初审：
+                        </div>
+                        <div class="risk_secg">
+                        (1)业务团队：约见项目申请人、审核项目基础资料，实地调查，评估项目可行性；<br />
+
+(2)风控团队：复审项目全部资料、实地调查，评估项目风险和预测预期收益。
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    
+                    <div class="risk_secf">
+                    	<div class="risk-tixi" style="padding-bottom:0px; color:#ff716f !important">
+                        3.项目评议：
+                        </div>
+                        <div class="risk_secg">
+                        (1)项目申请人提交推介资料；<br />
+
+(2)微风投团队制作路演方案并协调执行。
+                        </div>
+                    </div>
+                    
+                    <div class="risk_secf">
+                    	<div class="risk-tixi" style="padding-bottom:0px; color:#ff716f !important">
+                        4.项目推介或路演：
+                        </div>
+                        <div class="risk_secg">
+                        (1)根据项目调查的结果组织评议会，项目评议小组出具意见，确定项目进展；<br />
+
+(2)如通过评议，制定投资人对接方案。
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    
+                    <div class="risk_secf">
+                    	<div class="risk-tixi" style="padding-bottom:0px; color:#ff716f !important">
+                        5.签订合同与归档：
+                        </div>
+                        <div class="risk_secg">
+                        对接成功的项目进行合同的签订、归档。
+                        </div>
+                    </div>
+                    
+                    <div class="risk_secf">
+                    	<div class="risk-tixi" style="padding-bottom:0px; color:#ff716f !important">
+                       6.投后管理：
+                        </div>
+                        <div class="risk_secg">
+                        归档项目后，由投后部对项目进行后续监督和风险控制。
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- 法律保障 -->
+        <div id="falvbaozhang" class="financing_ba">
+        	<div class="financing_bb">
+            	<div class="identifi_diffc">
+                	<img src="__HOME__/images/article/helps/baozhang/lawbt1.gif" />
+                </div>
+
+                
+                <div class="law-seca">
+                	
+                    <div class="law-secc">
+                    根据《合同法》及《关于人民法院审理借贷案件的若干意见》等相关法律法规，微风投所提供居间服务具有合法性，民间借贷符合法律规定，投资人在微风投平台所获收益受法律保护。
+
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+            
+            
+        
+        
+        
+        
+        
+        
+    </div>
+
+</div>
+</block>

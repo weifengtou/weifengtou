@@ -1,0 +1,55 @@
+<extend name="Base/register"/>
+<block name="header">
+	<link rel="stylesheet"  href="__CSS__/forgetpassword.css" type="text/css" />
+	<header>
+		<div class="littlebanner">
+			<img src="__HOME__/images/entrepre/cailing.gif" />
+		</div>
+	</header>
+</block>
+
+<block name="body">
+	<div class="all">
+    	
+        <div class="forgot">
+	    	<div class="forgoa">找回密码</div>
+	        <div><img src="__IMG__/user/forgetpassword/forget02.gif" /></div>
+	        
+	        <div class="forgomm">
+	        	<div class="wendd">
+	                密码重置邮件已发送至您的邮箱：{$_GET[email]} &nbsp; <a href="{:getemailurl($_GET[email])}" target="_blank">去邮箱确认</a><br />
+					请在24小时内查收，或在下方填写您邮箱收到的验证码。
+	            </div>
+	            
+	        	
+	            
+	            <div class="wodedea">
+	            	<!-- <form action="{:U(forgetpd03)}" method="post" id="form"> -->
+		            	<div class="woded_l">
+		                	<font style="color:#f00">*</font>邮箱收到的验证码：
+		                </div>
+		                <div class="yanzhe">
+		                	<input type="text" name="upcode" maxlength="8" placeholder="请输入验证码" />
+		                </div>
+		                <div class="clear"></div>
+	                <!-- </form> -->
+	            </div>
+	            <div class="yessub">
+	            	<img onclick="yanzheng()" src="__IMG__/user/forgetpassword/submit1.gif" />
+	            </div>
+	        </div>
+	        <script>
+	        function yanzheng () {
+	        	location.href = "?s=Home/User/forgetpd03&email={$_GET[email]}&upcode="+$("input[name=upcode]").val()
+	        }
+	        </script>
+	        
+	        <div class="beizz">
+	        如您登录邮箱没找到邮件，您可以尝试：<br />
+			1、在邮箱垃圾箱里找找；<br />
+			2、稍等几分钟再看看；<br />
+			3、可能由于网络原因，没有收到验证邮件，您可以&nbsp<a href="javascript:history.go(-1);">重新获取邮件</a>。<br />
+	        </div>
+	    </div>
+    </div>
+</block>

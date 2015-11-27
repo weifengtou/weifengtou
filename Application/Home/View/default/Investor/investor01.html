@@ -1,0 +1,243 @@
+<extend name="Base/investor"/>
+
+<block name="header">
+	<header>
+		<div class="littlebanner">
+			<img src="__HOME__/images/entrepre/cailing.gif" />
+		</div>
+	</header>
+</block>
+
+<block name="body">
+	<div class="tzrxxt">
+		<div class="ttitlse">
+			<img src="__IMG__/investor/investor/touzi01.gif" />
+		</div>
+		<form id="reg1" action="{:U('investor01')}" method="post" >
+			<div class="middle">
+				<h3 id="baseinfo">基本信息</h3>
+				<div class="chsoe">
+					<div class="woss"> <font style="color:#f00">*</font>
+						类型 
+					</div>
+					<div class="kuang">
+						<input type="radio" name="type" value="1" <?php if ($info[0][type]!=2): ?>
+							checked="checked"
+						<?php endif; ?> />
+						个人投资者
+						<input type="radio" name="type" value="2" <?php if ($info[0][type]==2): ?>
+							checked="checked"
+						<?php endif; ?> />
+						机构投资者
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe" style="margin:20px 0">
+					<div class="woss"> <font style="color:#f00">*</font>
+						手机号码 
+					</div>
+					<div class="kuang">
+						<input type="text" class="ldd" name="phone" id="phone" maxlength="11" placeholder="请输入电话号码" value="{$info[0][phone]}" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe" style="margin:20px 0">
+					<div class="woss"> <font style="color:#f00">*</font>
+						真实姓名
+					</div>
+					<div class="kuang">
+						<input type="textarea" class="ldd" name="realname" id="realname" maxlength="20" placeholder="请输入真实姓名" value="{$info[0][realname]}" />
+					</div>
+					<div class="kuang">(机构投资者需要输入联系人的真实信息！)</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe" style="margin:20px 0">
+					<div class="woss">
+						简介
+					</div>
+					<div class="kuang" style="width:855px">
+						<textarea class="lss" name="introduce" id="introduce" maxlength="100" cols="30" rows="10" placeholder="请输入投资人简介">{$info[0][introduce]}</textarea>
+					</div>
+					<div class="kuang"></div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe" style="margin:20px 0">
+					<div class="woss">
+						<font style="color:#f00">*</font>
+						性别
+					</div>
+					<div class="kusng" id="sex">
+						<input type="radio" name="sex" value="1" <?php if (!$info[0][sex]||$info[0][sex]!=2): ?>
+							checked="checked"
+						<?php endif; ?> />
+						男
+						<input type="radio" name="sex" value="2" <?php if ($info[0][sex]==2): ?>
+							checked="checked"
+						<?php endif; ?> />
+						女
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe">
+					<div class="woss">
+						<font style="color:#f00">*</font>
+						所在公司
+					</div>
+					<div class="kuang">
+						<input type="text" class="ldd" name="company" id="company" maxlength="25" placeholder="请输入您公司的全称" value="{$info[0][company]}" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe" style="margin:20px 0">
+					<div class="woss">
+						<font style="color:#f00">*</font>
+						所在地区
+					</div>
+					<div class="lised">
+						<!-- ************************地区2014-12-10********************************************* -->
+						<select name="sheng" id="province">
+							<option class="oparea" value="">省/自治区</option>
+							<foreach item="vo" name="allprovince">
+								<?php if($info[0][shengid] == $vo[id]): ?>
+									<option value="{$vo.id}" selected=selected>{$vo.name}</option>
+								<?php else: ?>
+									<option value="{$vo.id}" >{$vo.name}</option>
+								<?php endif;?>
+							</foreach>
+						</select>
+						<select name="shi" id="city">
+							<?php if(!empty($info[0][shiid])): ?>
+								<option value="{$info[0][shiid]}" >{$info[0][shi]}</option>
+							<?php endif; ?>
+						</select>
+						<select name="qu" id="town">
+							<?php if(!empty($info[0][quid])): ?>
+								<option value="{$info[0][quid]}" >{$info[0][qu]}</option>
+							<?php endif; ?>
+						</select>
+						<!-- ************************************************************************** -->
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="cheos" style="margin:20px 0">
+					<div class="woss">
+						<font style="color:#f00">*</font>
+						隐私公开
+					</div>
+					<div class="kusng" id="privacy">
+						<input type="radio" name="privacy" value="1" <?php if (!$info[0][privacy]||$info[0][privacy]!=0): ?>
+							checked="checked"
+						<?php endif; ?> />
+						是
+						<input type="radio" name="privacy" value="0" <?php if ($info[0][privacy]==0): ?>
+							checked="checked"
+						<?php endif; ?> />
+						否
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</form>
+		<div class="middle">
+			<h3>过往投资案例</h3>
+				
+			<div id="choses">
+				<?php foreach ($cases as $key => $value): ?>
+					<!--保存后样式-->
+					<form class="editcase" action="{:U(editCase)}" id="editcase{$value.id}" attrid="{$value.id}" method="post">
+						<input type="hidden" name="case_id" value="{$value.id}">
+						<div id="case{$value.id}">
+							<div class="chsoe">
+								<div class="woss">
+									<font style="color:#f00">*</font>
+									项目名称
+								</div>
+								<div class="kuang">
+									<input type="text"  class="ldd" id="pname{$value.id}" name="pname" maxlength="20" placeholder="未填写" value="{$value.pname}" disabled="disabled">
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="chsoe" style="margin:20px 0">
+								<div class="woss">
+									网站地址
+								</div>
+								<span class="kuang">
+									<input type="text"  class="ldd" id="purl{$value.id}" name="purl" maxlength="30" placeholder="未填写" value="{$value.purl}" disabled="disabled">
+								</span>
+								<div class="kuang"></div>
+								<div class="clear"></div>
+							</div>
+							<div class="chsoe" style="margin:20px 0">
+								<div class="woss">
+									项目描述
+								</div>
+								<div class="kuang" style="width:855px">
+									<textarea class="lss" name="pdetail" id="pdetail{$value.id}" maxlength="100" cols="30" rows="10" placeholder="未填写" disabled="disabled">{$value.pdetail}</textarea>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div style=" margin:20px 0 20px 88px;">
+								<div style=" float:left;">
+									<a href="javascript:delcase({$value.id});">
+										<img src="__IMG__/investor/investor/shanc.gif" width="55" height="30" alt="删除" />
+									</a>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="linsss" style=" margin-left:88px"></div>
+						</div>
+					</form>
+				<?php endforeach ?>
+			</div>
+			<form action="{:U(addCase)}" id="addcase" method="post">
+			<div>
+				<!--添加-->
+				<div class="chsoe">
+					<div class="woss">
+						<font style="color:#f00">*</font>
+						项目名称
+					</div>
+					<div class="kuang">
+						<input type="text" class="ldd addpname" id="pname" name="pname" maxlength="20" placeholder="请输入您项目的全称" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe"  style="margin:20px 0">
+					<div class="woss">
+						网站地址
+					</div>
+					<span class="kuang">
+						<input type="text" class="ldd addpurl" id="purl" 
+						name="purl" maxlength="30" placeholder="请输入您公司的网站地址"/>
+					</span>
+					<div class="kuang"></div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe">
+					<div class="woss">
+						项目描述
+					</div>
+					<div class="kuang">
+						<textarea  class="lss addpdetail" id="pdetail" name="pdetail" maxlength="100" placeholder="添加项目描述"></textarea>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+				<div class="sdle">
+					<a id="caseadd">
+						<img src="__IMG__/investor/investor/baocs.gif" />
+					</a>
+				</div>
+				<div class="seser">
+					<input type="checkbox" id="isaccess" />
+					我已经认真阅读并同意<a href="?s=Home/Help/touziren" target="_blank"><font color="blue">《微风投投资人协议》</font></a>
+				</div>
+				<div class="tongyi">
+					<input type="image" src="__IMG__/investor/investor/quds.gif" id="sub1"> 
+				</div>
+			</div>
+		</form>
+		</div>
+		
+	</div>
+</block>

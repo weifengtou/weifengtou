@@ -1,0 +1,57 @@
+* { margin: 0; padding: 0; }
+body {font: 14px; color: #444; background:#f6f6f6; font-family:"微软雅黑" }
+img { border: 0; vertical-align: bottom; }
+ul, li, dt { margin: 0; padding: 0; list-style: none; }
+a { text-decoration: none; }
+a:link { color: #000000; text-decoration: none; }
+a:hover {  cursor: pointer; color:#FF0099; text-decoration: none;}
+a.underline { text-decoration: underline; }
+a:visited { color: #000000; text-decoration: none; }
+form, ul, li, p, h1, h2, h3, h4, h5, h6 { padding:0; margin:0}
+.clear { clear: both; }
+/*----------------------顶部-------------------------*/
+
+
+/*----------------------中间-------------------------*/
+
+
+
+/*----------------------文章页-------------------------*/
+
+
+
+.article{ width:1100; margin:20px 0}
+.article_l{ float:left; width:805px; background:#fff; border:#dcdcdc solid 1px; padding:25px 30px 50px 30px}
+.article_ls{ border-bottom:#dcdcdc solid 1px;}
+.article_ls h2{ text-align:left; font-weight:bold; height:50px; line-height:50px; font-size:20px}
+.contents{ width:769px; padding:20px 0px 10px 0px; border-bottom:#dcdcdc dotted 1px; margin:0 18px}
+
+.contentt h3{ font-size:16px; margin-bottom:20px; height:10px}
+.contents p{ line-height:30px; font-size:16px; line-height:35px}
+.lastat{ border:none}
+
+
+/*****************************************安全保障*/
+.xxins{ width:805px; padding:20px 0}
+.xxinsa_l{ float:left; width:85px; height:85px; padding-left:30px; display:inline}
+.xxinsa_ra{ float:right; width:430px; padding:10px 15px; background:#ffe6d7; margin-right:171px; display:inline; font-size:14px; color:#444; min-height:75px}
+.xxinsa_ra ul li{ line-height:25px}
+.xxinsb_la{ float:left; width:430px; margin-left:174px; display:inline; background:#ffe6d7; padding:10px 15px;font-size:14px; color:#444; min-height:75px}
+.xxinsb_la ul li{ line-height:25px}
+.xxinsb_r{ float:right; margin-left:56px; width:115px; display:inline}
+
+
+
+
+
+
+
+
+
+
+
+
+/*资金保障*/
+.zijinn h3{ font-size:16px; margin:25px 0; line-height:2.0}
+
+

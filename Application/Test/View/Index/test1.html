@@ -1,0 +1,33 @@
+<?php if(IS_POST) {
+	yc_vp($_POST);
+	yc_vp(strtotime($_POST[f1]));
+} ?>
+<form action="" method="post">
+	<input class="Wdate" name="f1" type="text" onClick="WdatePicker({
+		minDate:'%Date',
+		startDate:'2014-12-01',
+		alwaysUseStartDate:true
+	})"> 
+	<input type="submit" value="my97" />
+</form>
+<script>
+	function get_unix_time(dateStr)
+	{
+	    var newstr = dateStr.replace(/-/g,'/')
+	    var date =  new Date(newstr)
+	    var time_str = date.getTime().toString()
+	    return time_str.substr(0, 10)
+	}
+</script>
+<br>
+<hr>
+<form action="" method="post">
+	<input type="text" id="hello" name="f1" />
+	<script>
+		laydate({
+		    elem: '#hello', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
+		    event: 'focus' //响应事件。如果没有传入event，则按照默认的click
+		});
+	</script>
+	<input type="submit" value="laydate" />
+</form>

@@ -1,0 +1,94 @@
+<div class="biaoti">
+	<div class="biaoti_l btty">组织融资方和投资人进行线下见面,增加双方的了解和信任，同时对项目可投资性进行一次真实的考验。</div>
+	<div class="biaoti_r">
+		<a href="#"></a>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<!-- 路演 -->		
+<?php 
+$today = date("Y-m-d");
+$luyans = M("Document_luyan")->order("riqi DESC")->limit("5")->select(); 
+?>
+<div class="lyh">
+	<div class="lyhm">
+		<?php foreach ($luyans as $key => $value): ?>
+			<?php 
+			$info = D("Document")->detail($value[id]); 
+			$zero1=strtotime(date("Y-m-d"));
+			$zero2=strtotime($info[riqi]);
+			if ($zero1<$zero2) {
+				$url = "index.php?s=Home/Luyan/luyansignup";
+			}else{
+				$url = "index.php?s=Home/Luyan/luyanzhuanti&riqi=".$info[riqi];
+			}
+			?>
+			<ul>
+				<!-- 图片 -->		
+				<div class="lyhm_l">
+					<a href="{$url}" target="_blank">
+						<img src="__HOME__/images/pastLuyan/w-bannera02.jpg" style="width:480;height:260px;" />		
+					</a>
+				</div>
+				<!-- 介绍 -->		
+				<div class="lyhm_r">
+					<div class="lyhms">
+						<h2>
+							<a href="{$url}" target="_blank">{$info[title]}</a>
+						</h2>
+						<p>
+							会议时间：{$info[starttime]} &nbsp;&nbsp; &nbsp; 联系人：{$info[lianxiren]}&nbsp;&nbsp;&nbsp;    联系电话：{$info[dianhua]}
+						</p>
+						<p>会议地点：{$info[dizhi]}</p>
+					</div>
+					<div class="lyhmz">
+						<p>
+							{$info[shuoming]}
+						</p>
+					</div>
+					<!-- 报名 -->		
+					<div class="lyhmx">
+						<?php 
+						if($zero1<$zero2): ?>		
+						<a href="index.php?s=Home/Luyan/luyansignup">
+							<!-- 路演报名 -->		
+							<img src="__HOME__/images/index/lyhbm.gif" width="142" height="36" alt="报名路演" />		
+						</a>
+						<?php else : ?>		
+						<img src="__HOME__/images/index/bmjz.gif" width="142" height="36" alt="报名截止" />		
+						<?php endif ?></div>
+				</div>
+			</ul>
+		<?php endforeach; ?>
+	</div>
+
+	<div class="lyhn">
+		<ul>
+			<?php foreach ($luyans as $key => $value): ?>
+				<?php 
+				$info = D("Document")->detail($value[id]); 
+				$zero1=strtotime(date("Y-m-d"));
+				$zero2=strtotime($info[riqi]);
+				if ($zero1<$zero2) {
+					$url = "index.php?s=Home/Luyan/luyansignup";
+				}else{
+					$url = "index.php?s=Home/Luyan/luyanzhuanti&riqi=".$info[riqi];
+				}
+				?>
+				<li>
+					<a href="{$url}" target="_blank">
+						<span>{$info[riqi]}路演</span>
+					</a>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+		<div class="clear"></div>
+	</div>
+
+	<div class="clear"></div>
+</div>
+
+<script type="text/javascript">jQuery(".lyh").slide({autoPlay:true});</script>
+
+<div class="fen"></div>

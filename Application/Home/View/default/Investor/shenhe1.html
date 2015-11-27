@@ -1,0 +1,255 @@
+<extend name="Base/shenhe1"/>
+
+<block name="header">
+	<header>
+		<div class="littlebanner">
+			<img src="__HOME__/images/entrepre/cailing.gif" />
+		</div>
+	</header>
+</block>
+
+<block name="body">
+	<div class="all">
+		<div class="allmain">
+			<div class="ttitlse">
+				<img src="__IMG__/investor/inv_shenhe/shenhet.gif" />
+			</div>
+			<div class="middle">
+				<h3>基本信息</h3>
+				<div class="cheos">
+					<div class="woss"> <!-- <font style="color:#f00">*</font> -->
+						真实名称
+					</div>
+					<div class="kusng">
+						{$info[0][realname]}
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe" style="margin:20px 0">
+					<div class="woss"> <!-- <font style="color:#f00">*</font> -->
+						性别
+					</div>
+					<div class="kusng">
+						<?php if ($info[0][sex]==2): ?>
+							女
+						<?php else: ?>
+							男
+						<?php endif ?>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe" style="margin:20px 0">
+					<div class="woss"> <!-- <font style="color:#f00">*</font> -->
+						手机号码
+					</div>
+					<div class="kuang">{$info[0][phone]}</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe">
+					<div class="woss">
+						所在公司
+					</div>
+					<div class="kuang">{$info[0]['company']}</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe" style="margin:20px 0">
+					<div class="woss">
+						位置
+					</div>
+					<div class="lised">
+						{$info[0][sheng]} {$info[0][shi]} {$info[0][qu]}
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+
+			<div class="midle">
+				<h3>过往投资案例</h3>
+				<?php foreach ($cases as $key => $value): ?>
+				<div class="chsoe">
+					<div class="woss">
+						项目名称
+					</div>
+					<div class="kuang">{$value[pname]}</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe"  style="margin:20px 0">
+					<div class="woss">
+						网站地址
+					</div>
+					<div class="kuang">{$value[purl]}</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe">
+					<div class="woss">
+						项目描述
+					</div>
+					<div class="kuang" style="width:700px;word-wrap:break-word;">
+						{$value[pdetail]}
+					</div>
+					<div class="clear"></div>
+				</div>
+				<br>
+				<hr>
+				<?php endforeach ?>
+			</div>
+
+			<div class="middle">
+				<h3>团队成员</h3>
+				<?php foreach ($cys as $key => $value): ?>
+					<div class="chsoe">
+						<div class="woss">
+							成员姓名
+						</div>
+						<div class="kuang">{$value[cyname]}</div>
+						<div class="clear"></div>
+					</div>
+					<div class="chose">
+						<div class="woss">
+							成员简介
+						</div>
+						<div class="kuang" style="width:700px;word-wrap:break-word;">
+							{$value[cydetail]}
+						</div>
+						<div class="clear"></div>
+					</div>
+				<?php endforeach ?>
+			</div>
+
+			<div class="middle">
+				<h3>描述投资理念</h3>
+				<div class="cheos">
+					<div class="woxx">
+						投资理念
+					</div>
+					<div class="kusng">
+						{$info[0][tzidea]}
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe" style="margin:20px 0">
+					<div class="woxx">
+						投资意向
+					</div>
+					<div class="kuang">
+						{$info[0][intentionname]}
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe" style="margin:20px 0">
+					<div class="woxx">
+						您目前的年收入
+					</div>
+					<div class="kuang">
+						{$info[0]['income']} 元
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe">
+					<div class="woxx">
+						最小投资额
+					</div>
+					<div class="kuang">
+						{$info[0]['min_maney']} 元
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe"  style=" margin-top:20px;">
+					<div class="woxx">
+						最大投资额
+					</div>
+					<div class="kuang">
+						{$info[0]['max_maney']} 元
+					</div>
+					<div class="clear"></div>
+				</div>
+
+			</div>
+
+			<div class="middle">
+				<h3>进行身份认证</h3>
+				<div class="nese">
+					<div class="midleft">
+						<div class="midl">
+							投资人资料
+							<div class="zil">
+								<img src="./uploads/Investor/{$info[0]['inv_info']}" />
+							</div>
+						</div>
+						<div class="midh"></div>
+						<div class="clear"></div>
+					</div>
+					<div class="midriht">
+						<div class="xinl">
+							您的新浪ID：
+							<font style="color:#f00">张朝阳的老舅</font>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="hesl"></div>
+
+				<div class="nese">
+					<div class="midlee">
+						<div class="midl">
+							身份证正面照片
+							<div class="sfz">
+								<img src="./uploads/Investor/{$info[0]['f_image']}" />
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="midlee">
+						<div class="midl">
+							身份证反面照片
+							<div class="sfz">
+								<img src="./uploads/Investor/{$info[0]['b_image']}" />
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+
+					<?php if ($info[0][type]==2): ?>
+						<div class="nese">
+						<div class="midlee">
+							<div class="midl">
+								营业执照
+								<div class="sfz">
+									<img src="./uploads/Investor/{$info[0][zhizhao]}" />
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="clear"></div>
+					<?php endif; ?>
+				</div>
+				<div class="hesl"></div>
+
+				</div>
+			</div>
+
+			
+			<div class="lostt">
+				<!-- <a href="{:U(investor01)}">修改信息</a>
+				<a href="?s=Home/Invcenter">去个人中心</a>
+				<a href="?s=Home">返回首页</a> -->
+				<div class="changem">
+					<img src="__HOME__/images/entrepre/xgcc.gif" onclick="javascript:herf_xiugai ();">
+				</div>
+				<div class="changeb">
+					<a href="?s=Home/Invcenter">个人中心</a>
+					<a href="?s=Home">返回首页</a>
+				</div>
+			</div>
+		
+
+		</div>
+
+	</div>
+	<script>
+	function herf_xiugai (url) {
+		window.location.href="index.php?s=Home/Investor/investor01";  
+	}
+	</script>
+</block>

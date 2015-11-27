@@ -1,0 +1,111 @@
+* { margin: 0; padding: 0; }
+body {font: 14px; color: #444; background:#f9f9f9; font-family:"微软雅黑"  }
+img { border: 0; vertical-align: bottom; }
+ul, li, dt { margin: 0; padding: 0; list-style: none; }
+a { text-decoration: none; }
+a:link { color: #000000; text-decoration: none; }
+a:hover {  cursor: pointer; color:#FF0099; text-decoration: none;}
+a.underline { text-decoration: underline; }
+a:visited { color: #000000; text-decoration: none; }
+form, ul, li, p, h1, h2, h3, h4, h5, h6 { padding: 0; margin-left: 0; margin-right: 0; margin-top: 0; }
+.clear { clear: both; }
+/*----------------------顶部-------------------------*/
+
+
+/*----------------------中间-------------------------*/
+
+.all{width:100%; height:100%;}
+
+.littlebanner{ width:100%; background:#e1e5ed; text-align:center}
+.allmain{width:1000px;margin:20px auto; }
+.allmains{width:1000px;margin:60px auto;}
+.middle{ background:#fff; border:1px solid #ccc; padding:25px; margin:20px 0;font-size:12px;}
+.middle h3{ background:url(../images/investor/inv_shenhe/henxs.gif) no-repeat bottom; padding-bottom:15px; font-size:20px; font-weight:normal; margin-bottom:15px;}
+.cheos{ font-size:12px;}
+.chsoe{ font-size:12px;}
+.woss{ font-size:12px;width:67px;float:left; text-align:right; margin-right:20px; line-height:30px}
+.woxx{ font-size:12px;width:100px;float:left; text-align:right; margin-right:20px; line-height:30px}
+.kuang{ float:left; line-height:30px;}
+.kuang textarea.ldd{ line-height:30px; padding-left:10px; height:30px;width:350px; color:#ccc}
+.kusng{ float:left; line-height:30px}
+.lised{ float:left; line-height:30px}
+
+.midle{ background:#fff; border:1px solid #ccc; padding:25px; font-size:12px;}
+.midle h3{ background:url(../images/investor/inv_shenhe/henxs.gif) no-repeat bottom; padding-bottom:15px; font-size:20px; font-weight:normal; margin-bottom:15px;}
+.kuang textarea.lss{ line-height:30px; padding-left:10px; height:180px;width:500px; color:#ccc}
+.sdle{ margin:20px 0 60px 88px;}
+.seser{ margin-left:350px; }
+.tongyi{ margin:20px 0; text-align:center}
+.ese{ margin:60px 0 20px 300px;}
+.shad{ float:left; margin-right:20px;}
+.xiae{ float:left; }
+
+.nese{}
+.midlee{ float:left; width:450px;}
+.midleft{ float:left; width:450px; border-right:1px dashed #ccc}
+.zil{ width:220px; height:220px; margin-top:15px;}
+.sfz{ width:365px; height:220px; margin-top:15px;}
+.midl{ float:left;}
+.midh{ float:left; width:104px; height:35px; margin:120px 0 0 40px; display:inline}
+.midriht{ float:left; width:450px; }
+.xinl{ background:url(../images/investor/inv_shenhe/xlsae.gif) no-repeat; line-height:36px; padding-left:46px; margin:80px 0 20px 100px}
+.bae{margin-left:160px}
+.hesl{ height:1px; background:#ccc; margin:40px 0}
+.eese{ margin:60px 0 20px 360px;}
+.ssse{ margin:50px auto; text-align:center}
+
+.middlll{ background:#fff; border:1px solid #ccc; padding:40px 200px 60px 200px; font-size:12px;}
+.meihao{ background:url(../images/investor/inv_shenhe/leses.gif) no-repeat; height:50px; width:318px; margin:20px 0 20px 140px}
+.linsese{ height:1px; background:#ccc; margin-bottom:40px;}
+.linsss{ height:1px; border-bottom:1px dashed #ccc;margin:20px 0}
+.esessds{}
+.lels{ float:left;}
+.rihs{ float:left; line-height:52px; padding-left:15px}
+.lostt{ margin:0 auto}
+.changem{ width:127px; height:35px; margin:0 auto; cursor:pointer;}
+.changeb{ width:200px; margin:20px auto;}
+.changeb a{ width:100px; text-align:center; color:#444; display:block; height:30px; line-height:30px; float:left; margin-bottom:20px}
+.changeb a:hover{ text-decoration:underline; color:#444}
+
+
+/*----------------------底部-------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>无标题文档</title>
+	
+	<style type="text/css">
+
+* { margin: 0; padding: 0; }
+body {font: 14px; color: #444; background:#fff; font-family:"微软雅黑" }
+img { border: 0; vertical-align: bottom; }
+ul, li, dt, dd, dl{ margin: 0; padding: 0; list-style: none; }
+a { text-decoration: none; }
+a:link { color: #000000; text-decoration: none; }
+a:hover {  cursor: pointer; color:#FF0099; text-decoration: none;}
+a.underline { text-decoration: underline; }
+a:visited { color: #000000; text-decoration: none; }
+form, ul, li, p, h1, h2, h3, h4, h5, h6 { padding:0; margin:0}
+.clear { clear: both; }
+
+
+
+
+.zongg{  width:698px; background:#fff; border:#dcdcdc solid 1px; padding:20px 15px; margin:0 auto}
+
+
+
+.con{ width:698px; border-bottom:#dcdcdc dotted 1px; padding:20px 0 0 0; position:relative}
+.con dl{ border:#dcdcdc solid 1px; padding:10px 10px; width:678px}
+.con dl dt{ float:left; margin-right:0px; display:block; width:285px; height:175px; padding:5px 0 5px 0}
+.con dl dt img{ width:285px; height:175px}
+.con dl dd{ display:block; float:right; width:380px;}
+.con dl dd strong{ font-size:16px; margin-bottom:20px; line-height:30px}
+.con dl dd p{ font-size:12px; line-height:20px}
+.con dl dd ul li{ float:left;}
+.right_imgmm{ background:url(./Public/Home/images/prcenter/baifenshu04.gif) 0 1px no-repeat; width:45px}
+.right_imgmm p{ font-size:6px; height:22px; line-height:22px; margin:5px 0 0px 0px; text-align:center}
+.rongzi{ clear:both; margin-top:5px}
+.rongzi p{ float:left; margin-right:70px; display:inline}
+.rongzipp{ float:left}
+.rongzipp p{ float:left; margin-right:70px; margin:0px 65px 10px 0; display:inline}
+.rongzibj{ float:right; width:80px; margin-top:6px}
+
+
+
+
+.tdmm{ float:right; padding-top:5px}
+.imggmm{ margin:10px 0 15px 0}
+
+.liuy{ width:698px;}
+.liuy textarea{ width:678px; max-height:80px; border:#f39c11 solid 1px; margin-bottom:15px; padding:10px; line-height:1.5; color:#444; height:80px}
+.liuy a img{ float:right; margin-bottom:10px}
+
+
+/*----------------------进度条样式-------------------------*/
+.progress-a{width:250px;height:10px;background:#ebebeb;margin-top:10px; margin-right:5px}
+.progress-b{height:100%;background-color:#54adef;}
+
+
+
+
+
+.pages{ padding:15px 15px 15px 0; text-align:center;color:rgb(51,51,51); clear:both}
+.pages a{ margin:0 2px; padding:5px 10px; color:rgb(51,51,51); font-size:12px; border:#dcdcdc solid 1px}
+.pages a:hover{ background:#666666; border:none; padding:6px 11px; color:white}
+/*.pages a.now{ background:#666666; color:#FFF; border:none; padding:6px 11px}*/
+.pages a.nextpage{ border:#dcdcdc solid 1px;}
+.pages a.nextpage:hover{ background:#666666; border:none}
+
+.jp-current{
+	background:#666666; color:#FFF !important; border:none !important; padding:6px 11px !important;
+}
+.jp-current:hover{background:#666666 !important; color:#FFF !important; border:none !important; padding:6px 11px !important; cursor:pointer !important; font-weight:normal !important;}
+.jp-previous{border:#dcdcdc solid 1px;
+
+}
+.jp-next{border:#dcdcdc solid 1px;
+
+}
+.jp-previous:hover{ background:#666666 !important; border:none !important; color:#fff !important; cursor:pointer !important;}
+.jp-next:hover{ background:#666666 !important; border:none !important; color:#fff !important; cursor:pointer !important;}
+
+</style>
+
+
+<script src="__STATIC__/jquery-1.10.2.min.js"></script>
+	<link rel="stylesheet" href="__STATIC__/jPages/css/jPages.css" /> 
+	<script src="__STATIC__/jPages/js/jPages.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer.min.js"></script>
+  	<script type="text/javascript" src="__STATIC__/layer.ext.js"></script>
+
+</head>
+
+<body>
+
+	<div class="zongg">
+
+		<div class="liuy">
+			<textarea id="leavemsg" placeholder="请输入留言信息"></textarea>
+			<input type="hidden" id="iid" maxlength="100" value="{$iid}" />
+			<div class="clear"></div>
+		</div>
+		<div id="items">
+			<?php foreach ($userPros as $key => $value): ?>
+			<div class="con">
+
+				<dl>
+					
+					<dt>
+						<?php if ($value[logo]): ?>
+							<img src="./Uploads/Album/{$value[logo]}" />
+						<?php else: ?>
+							<img src="__STATIC__/images/nop.gif" />
+						<?php endif ?>
+					</dt>
+					
+					<dd> <strong>{$value[pjname]}</strong>
+						<p>
+							{$value[pjintroduce]}
+						</p>
+						<div class="imggmm">
+							<ul>
+								<!-- <li>
+									<img src="__IMG__/project/baifenshu02.gif" alt="百分比" height="22" width="250" />
+								</li> -->
+								<li>
+									<div class="baifen" style="margin-top:5px;">
+										<div id="progress-bar" class="progress-a">
+											<div id="progress" class="progress-b" style="width: <?php if($value[money] >
+												$value[budget]){echo 100;}else{echo round($value[money]/$value[budget]*100,2);} ?>%;">
+											</div>
+										</div>
+
+										<div class="clear"></div>
+
+									</div>
+								</li>
+								
+								<li class="right_imgmm">
+									<p><?php echo round($value[money]/$value[budget],2)*100; ?>%</p>
+								</li>
+							</ul>
+						</div>
+
+						<div class="clear"></div>
+						<div class="rongzi">
+							<div class="rzp">
+								<p>
+									{$value[money]}元
+									<br />
+									已融资金额
+								</p>
+								<p>
+									{$value[budget]}元
+									<br />
+									融资总额
+								</p>
+							</div>
+							<div class="tdmm">
+								<a href="javascript:choose({$value[id]});">
+									<img src="__IMG__/project/tdxm.gif" width="95" height="33" alt="投递项目" />
+								</a>
+							</div>
+							<div class="clear"></div>
+						</div>
+
+					</dd>
+
+					<div class="clear"></div>
+
+				</dl>
+			</div>
+			<?php endforeach ?>
+		</div>
+		<div class="pages">
+            <script>
+                $("div.pages").jPages({
+                    containerID : "items",
+                    perPage : 3,
+                    previous : "上一页",
+                    next : "下一页"
+                });
+            </script>
+        </div>
+		
+
+	</div>
+
+</body>
+</html>
+
+<script>
+	function choose (pid) {
+		var val = $('#leavemsg').val();
+		var iid = $("#iid").val();
+		if (val!='') {
+			$.post('?s=Home/Project/deliveryPro',{pid:pid,val:val,iid:iid}, function(data, textStatus, xhr) {
+				alert(data)
+				var index = parent.layer.getFrameIndex(window.name);
+				parent.layer.close(index)
+			})
+		}else{
+			alert("请输入留言信息！");
+		}
+	}
+</script>

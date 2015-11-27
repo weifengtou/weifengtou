@@ -1,0 +1,94 @@
+<style type="text/css">
+* { margin: 0; padding: 0; }
+body {font: 14px; color: #444; background:#f6f6f6; font-family:"微软雅黑" }
+img { border: 0; vertical-align: bottom; }
+ul, li, dt { margin: 0; padding: 0; list-style: none; }
+a { text-decoration: none; }
+a:link { color: #000000; text-decoration: none; }
+a:hover {  cursor: pointer; color:#FF0099; text-decoration: none;}
+a.underline { text-decoration: underline; }
+a:visited { color: #000000; text-decoration: none; }
+form, ul, li, p, h1, h2, h3, h4, h5, h6 { padding:0; margin:0}
+.clear { clear: both; line-height:0px;height:1px;overflow:hidden;*display:inline; }
+.xiuchang{ width:450px; height:283px; background:url(__IMG__/public/shezhi/xiugbg1.gif) 0 0 repeat}
+.xiuchang_a{ width:435px; height:44px; background:url(__IMG__/public/shezhi/xiugbg2.gif) 0 0 repeat; padding-left:15px; color:#fff; font-size:16px; line-height:44px}
+.xiuchang_b{ width:444px; height:196px; background:#fff; margin:0 auto; padding-top:40px}
+.xiuchang_l{ float:left; width:125px; text-align:right; font-size:12px; height:20px; line-height:20px; color:#555}
+.xiuchang_r{ float:right; font-size:12px; height:20px; line-height:20px; width:315px;}
+.xiuchang_r input{ width:205px; height:20px; line-height:20px; border:#7e9db9 solid 1px; padding:0 10px; color:#444; font-size:12px; line-height:20px}
+.xiuchang_rr{ float:right; width:315px;}
+.xiuchang_rr img{ margin-right:25px; cursor:pointer; width:88px; height:29px}
+</style>
+<div id="shezhi" style="display:none;">
+    <!--修改密码开始-->
+    <div class="xiuchang">
+        <div class="xiuchang_a">修改我的密码</div>
+        <div class="xiuchang_b">
+            <div style="margin:15px 0">
+                <div class="xiuchang_l">旧密码：</div>
+                <div class="xiuchang_r">
+                    <input type="password" name="oldpass" placeholder="请输入旧密码" />
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div style="margin:15px 0">
+                <div class="xiuchang_l">新密码：</div>
+                <div class="xiuchang_r">
+                    <input type="password" name="newpass" placeholder="请输入新密码" />
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div style="margin:15px 0">
+                <div class="xiuchang_l">确认新密码：</div>
+                <div class="xiuchang_r">
+                    <input type="password" name="repass" placeholder="请再次输入新密码" />
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div style="margin-top:25px">
+                <div class="xiuchang_rr">
+                    <img src="__IMG__/public/shezhi/xiugbc1.gif" onclick="newpassok()" />
+                    <img src="__IMG__/public/shezhi/xiugbc2.gif" onclick="newpassno()" />
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function newpassok () {
+        var obj = {
+            'oldpass':$('input[name=oldpass]').val(),
+            'newpass':$('input[name=newpass]').val(),
+        }
+        if (obj.newpass=='') {
+            layer.alert("密码不能为空！请输入！",8)
+            return false;
+        }
+        if ($.trim(obj.newpass).length>20||$.trim(obj.newpass).length<6) {
+            layer.alert("密码长度不符合要求！请重新输入！",8)
+            return false;
+        }
+        if (obj.oldpass==obj.newpass) {
+            layer.alert("新密码与初始密码不能相同！",8)
+            return false;
+        }
+        if (obj.newpass!=$('input[name=repass]').val()) {
+            layer.alert("确认新密码不一致！",8)
+            return false;
+        }
+        $.post('index.php?s=Home/User/newpass', {obj:obj}, function(data, textStatus, xhr) {
+            if (data=='2') {
+                layer.alert("未知异常！",8)
+            }else if(data=='1'){
+                layer.alert("修改密码成功！",1)
+                layer.closeAll()
+            }else{
+                layer.alert("原密码输入错误！",8)
+            }
+        });
+    }
+    function newpassno () {
+        layer.closeAll()
+    }
+</script>

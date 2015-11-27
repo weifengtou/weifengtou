@@ -1,0 +1,184 @@
+<extend name="Base/luyansignup"/>
+<block name="header">
+  <header>
+    <!-- <div class="littlebanner wftban">
+    <img src="__HOME__/images/luyansingup/bannwft.jpg" />
+  </div>
+  -->
+</header>
+<!-- =============================悬浮特效======================================== -->
+<include file="effect"/>
+<!-- ============================================================================= -->
+</block>
+
+<block name="body">
+<div class="all">
+        <div class="dbanner">
+            <div class="dbanner_a"></div>
+        </div>
+        <div class="wmain">
+            <div class="littlenava" >
+                <a href="{:U('videoFir?filmperiod='.'一')}">第一期</a><a href="{:U('videoFir?filmperiod='.'二')}">第二期</a><a href="{:U('videoFir?filmperiod='.'三')}">第三期</a><a href="{:U('videoFir?filmperiod='.'四')}">第四期</a><a href="{:U('videoFir?filmperiod='.'五')}">第五期</a><a href="{:U('videoFir?filmperiod='.'六')}">第六期</a><a href="{:U('videoFir?filmperiod='.'七')}">第七期</a><a href="{:U('videoFir?filmperiod='.'八')}">第八期</a><a href="{:U('videoFir?filmperiod='.'九')}">第九期</a><a href="{:U('videoFir?filmperiod='.'十')}">第十期</a>
+            </div>
+        
+            <div class="zhuanti_wvip">
+                <div>
+                    <img src="__HOME__/images/weivideo/zhuanti04.gif" width="1100" height="20" />
+                </div>
+                <div class="zhuantimm">
+                    <div class="zhuantimm_l">
+                        <?php  $x = $info[filmurl]; ?>
+                        <div id="youkuplayer" style="position:absolute;width:480px;height:400px;z-index:0;" hidden></div>
+                        <script type="text/javascript" src="http://player.youku.com/jsapi">
+                            player = new YKU.Player('youkuplayer',{
+                            styleid: '0',
+                            client_id: 'YOUR YOUKUOPENAPI CLIENT_ID',
+                            vid:"{$x}"
+                            });
+                        </script>
+                        <script>
+                            $("object").append('<param name="wmode" value="opaque">')
+                            $("#youkuplayer").show()
+                        </script>
+                    </div>
+                    <div class="zhuantimm_r">
+                        <div class="zhuantimma">
+                            第 <font style="color:#fff; font-size:20px; padding:1px 1px">{$info[filmperiod]}</font>
+                            期
+                            <span>{$info[title]}</span>
+                        </div>
+                        <div class="liness"></div>
+                        <div class="zhuantimmb">
+                            <p>导演：{$info[daoyan]}</p>
+                            <p>编剧：{$info[bianju]}</p>
+                            <p>主演：{$info[zhuyan]}</p>
+                            <p>类型：{$info[leixing]}</p>
+                            <p>上映时间：{$info[shangyingshijian]}</p>
+                            <p>片场：{$info[pianchang]}分钟</p>
+                        </div>
+                        <div class="liness"></div>
+                        <div class="zhuantimmd">
+                            <div class="zhuantimmc">内容提要：</div>
+                            {$info[tiyao]}
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div>
+                    <img src="__HOME__/images/weivideo/zhuanti02.gif" width="1100" height="30" />
+                </div>
+            </div>
+            
+            <!-- 评论 -->
+            <div class="comm">
+                <h3>
+                    <span>{$info[title]}</span>
+                    评论
+                </h3>
+                <div class="wping">
+                    <div class="wping_l">
+                        <?php $comms = M('mfilm_comm')->where("mfilm_id='$info[id]'")->select(); ?>
+                        <?php foreach ($comms as $key => $value): ?>
+                            <?php $user_detail = get_homeuser_detail($value[uid]); ?>
+                            <div>
+                                <div class="wlun_l">
+                                    <?php if ($user_detail[0][face_image]): ?>
+                                        <img src="{$user_detail[0][face_image]}">
+                                    <?php else: ?>
+                                        <img src="__STATIC__/images/nop.gif" width="80" height="80" />
+                                    <?php endif; ?>
+                                    <div class="ppooss01">
+                                        <img src="__HOME__/images/weivideo/touxiang03.png" width="80" height="80" />
+                                    </div>
+                                </div>
+                                <div class="wlun_r">
+                                    <div class="wlun_s">
+                                        <a>{$user_detail[0][username]}</a>
+                                    </div>
+                                    <div class="wlun_x">
+                                        {$value[comm_msg]}
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <div class="wping_r">
+                        <div class="dinpp">本站点评</div>
+                        <div class="wpingnr">
+                            {$info[dianping]}
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            
+            <!--点击出现-->
+            <?php if ($_SESSION[wft_home][userinfo][id]) {
+                $uid = $_SESSION[wft_home][userinfo][id];
+            } ?>
+            <div class="tjpin">
+                <div>
+                    <div class="tjpin_l">
+                        <input type="hidden" name="mfilm_id" value="{$info[id]}">
+                        <input type="hidden" name="uid" value="{$uid}">
+                        <textarea name="comm_msg" placeholder="在此添加您的电影评论"></textarea>
+                        <a onclick="javascript:mfilm_comm();">
+                            <img src="__HOME__/images/weivideo/tjpl.gif" width="76" height="24" />
+                        </a>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="tjpin_r">
+                        <a>
+                            <?php if ($login_detail[0][face_image]): ?>
+                                <img src="{$login_detail[0][face_image]}" height="134" width="134" />
+                            <?php else: ?>
+                                <img src="__STATIC__/images/nop.gif" />
+                            <?php endif; ?>
+                        </a>
+                        <div class="ppooss03">
+                            <img src="__HOME__/images/weivideo/touxiang02.png" width="134" height="134" />
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+            <!--往期微电影-->
+            <include file="Weivideo/other_mfilm" />
+
+        </div>
+
+    </div>
+
+<include file="Public/minilogin" />
+<script src="__JS__/index.js"></script>
+
+<script>
+    function mfilm_comm () {
+        var mfilm_id = $("input[name=mfilm_id]").val()
+        var comm_msg = $("textarea[name=comm_msg]").val()
+        if (!$('input[name=uid]').val()) {
+            minilogin()
+            return false
+        }
+        var uid = $('input[name=uid]').val()
+        if (comm_msg=='') {
+            layer.alert("请输入评价内容！",8)
+            return false
+        }
+        $.post('{:U(mfilm_comm)}', {mfilm_id:mfilm_id,uid:uid,comm_msg:comm_msg}, function(data, textStatus, xhr) {
+            if (data==0) {
+                layer.alert("忘络异常！",8)
+            }else{
+                layer.alert("评论成功！",1)
+                $("textarea[name=comm_msg]").text('')
+                location.reload()
+            }
+        });
+    }
+</script>
+
+</block>

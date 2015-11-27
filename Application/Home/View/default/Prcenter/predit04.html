@@ -1,0 +1,80 @@
+<extend name="Base/entrepre"/>
+
+<block name="header">
+    <header>
+        <div class="littlebanner">
+            <img src="__HOME__/images/entrepre/cailing.gif" />
+        </div>
+    </header>
+    <!-- ==============================================js特效================================================= -->
+    <include file="index/effect" />
+    <!-- =================================================================================================== -->
+</block>
+
+<block name="body">
+    <div class="all">
+        <div class="allmain">
+            <div class="test01">
+                <img src="__HOME__/images/entrepre/xixin01.gif" />
+               <!--  <div class="moxxx"><a target="_blank" href="{:U('Help/rzmx')}"><img src="__HOME__/images/entrepre/moxxx.gif" /></a></div> -->
+            </div>
+            <div class="middle">
+                <div class="w936">
+                    <!-- Tab区 -->
+                    <include file="preditTab" />
+                    <script type="text/javascript">
+                    $(document).ready(function($) {
+                        $('#tb_4').addClass('tabcss');
+                    });
+                    </script>
+                    <div class="middle">
+                        <div class="linds">
+                            <div class="titles">
+                                <div class="titlet">图片尺寸1048x524,支持jpg/jpeg/gif格式。</div>
+                                <div class="rihts">
+                                    <form id="upImgForm" name="upImgForm" enctype="multipart/form-data" action="?s=home/entrepre/upImg" method="post">
+                                        <div class="input-file" style="overflow: hidden;position: relative;width:127px;height:35px; background:url('__IMG__/Entrepre/shangcuhs.gif') no-repeat;float:left;">
+                                            <input type="file" name="upImg" id="myFile" style="opacity: 0;filter: alpha(opacity:0);top: 0;right: 0;width:127px;height:35px;cursor:pointer;">
+                                        </div>
+                                        <input type="hidden" name="prid" value="{$prid}" id="prid">
+                                    </form>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="lidsee"></div>
+
+                            <div id="imgDiv" class="thumbholder">
+                                <?php foreach ($imgs as $key =>
+                                $value): ?>
+                                <div id="{$value.id}" class="pies">
+                                    <img src="./Uploads/PrImages/{$value.thumbname}" name="{$value.name}" style='width:241px;height:157px;margin:0 0 8px;' onclick='yuantu({$value.id})' />
+                                    <img src="./Uploads/PrImages/{$value.name}" id='thumb{$value.id}' style='margin:0 auto;padding:10px;display:none;' /> 
+                                    <div class="xinse">
+                                        <a href="#" style="margin-right:30px">
+                                            <img src='./Public/Home/images/Entrepre/lezuo.gif' />                                
+                                        </a>
+                                        <a href="#" style="margin-right:30px">
+                                            <img src='./Public/Home/images/Entrepre/leyou.gif' />                                
+                                        </a>
+                                        <a href="javascript:;" onclick="imgDel({$value.id})">
+                                            <img src='./Public/Home/images/Entrepre/shanchu.gif' />                                
+                                        </a>
+                                    </div>
+                                </div>
+                                <?php endforeach ?>
+                                <br class="clear" />
+                                <div id="close"></div>
+
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div><a href="?s=home/prcenter/baseinfo" style="margin-left:430px;"><img src="__HOME__/images/entrepre/fanhui.gif"></a></div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</block>

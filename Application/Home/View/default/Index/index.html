@@ -1,0 +1,219 @@
+<extend name="Base/index"/>
+
+<block name="header" >
+<style>
+    map area{cursor: pointer;background: #000}
+</style>
+	<!-- ==========================================幻灯片================================================== -->
+	<header style="position:relative; z-index:1">
+	    <div class="full-slide">
+	        <div class="bd">
+	            <ul>
+	            	<li _src="url(__HOME__/images/index/wft8.jpg)" style="background:center 0 no-repeat; cursor:pointer" onclick="jacascript:link2wutonghui();"></li>
+	                <li _src="url(__HOME__/images/index/wft9.jpg)" style="background:center 0 no-repeat;">
+	                	<p class="imgbtn" onclick="javascript:openHelpServe();" imgw="1920" imgh="500" x1v="840" y1v="378" x2v="1081" y2v="420"></p>
+	                </li>
+	                <li _src="url(__HOME__/images/index/wft10.jpg)" style="background:center 0 no-repeat;">
+	                	<p class="imgbtn" onclick="javascript:createproject();" imgw="1920" imgh="500" x1v="956" y1v="314" x2v="1116" y2v="365"></p>
+	                	<p class="imgbtn" onclick="javascript:becomeinvestor();" imgw="1920" imgh="500" x1v="956" y1v="375" x2v="1116" y2v="416"></p>
+	                </li>
+	                <li _src="url(__HOME__/images/index/wft11.jpg)" style="background:center 0 no-repeat;">
+	                	<p class="imgbtn" onclick="javascript:createproject();" imgw="1920" imgh="500" x1v="484" y1v="352" x2v="643" y2v="394"></p>
+	                </li>
+	                <li _src="url(__HOME__/images/index/wft12.jpg)" style="background:center 0 no-repeat;">
+	                	<p class="imgbtn" onclick="javascript:becomeinvestor();" imgw="1920" imgh="500" x1v="880" y1v="398" x2v="1040" y2v="440"></p>
+	                </li>
+	                <li _src="url(__HOME__/images/index/wft13.jpg)" style="background:center 0 no-repeat;"></li>
+	            </ul>
+	            <a id="helpServe" style="display:none;" href="{:U('Help/serve')}" target="_blank"></a>
+	            <a id="wutonghui" style="display:none;" href="{:U('Help/wutonghui')}" target="_blank"></a>
+	            <script type="text/javascript">
+	            function link2wutonghui () {
+	            	$("#wutonghui")[0].click();
+	            }
+	            function openHelpServe () {
+	            	$("#helpServe")[0].click();
+	            }
+            	function imgbtnshow () {
+	            	$(".imgbtn").each(function (e) {
+	            		var x1 = $(this).attr("x1v");
+	            		var y1 = $(this).attr("y1v");
+	            		var x2 = $(this).attr("x2v");
+	            		var y2 = $(this).attr("y2v");
+	            		var w = $(this).attr("imgw");
+	            		var h = $(this).attr("imgh");
+	            		var p_w = $(this).parent().width();
+	            		var width = x2 - x1;
+	            		var height = y2 - y1;
+	            		if (eval(w)>eval(p_w)) {
+	            			var m_l = x1 - (w - p_w)/2
+	            		}else{
+	            			var m_l = x1 + (p_w - w)/2
+	            		}
+	            		m_t = y1;
+	            		if ($(this).prev().attr("class")=="imgbtn") {
+	            			m_t = $(this).prev().attr("y2v");
+	            			m_t = y1 - m_t;
+	            		}
+	            		$(this).css({
+	            			// "background":"#000",
+	            			"cursor":"pointer",
+		            		"width":width,
+		            		"height":height,
+		            		"margin-left":m_l+"px",
+		            		"margin-top":m_t+"px"
+	            		})
+	            	})
+            	}
+	            jQuery(document).ready(function($) {
+	            	imgbtnshow();
+	            	window.onresize=imgbtnshow;
+	            });
+	            </script>
+	        </div>
+	        <div class="hd">
+	            <ul></ul>
+	        </div>
+	        <span class="prev"></span>
+	        <span class="next"></span>
+	    </div>
+	    <script type="text/javascript">
+	    jQuery(".full-slide").hover(
+	        function() {
+	          jQuery(this).find(".prev,.next").stop(true, true).fadeTo("show", 0.5)
+	        },
+	        function() {
+	          jQuery(this).find(".prev,.next").fadeOut()
+	        }
+	    ); 
+	    jQuery(".full-slide").slide({
+	        titCell:".hd ul",
+	        mainCell:".bd ul",
+	        effect:"fold",
+	        autoPlay:true,
+	        autoPage:true,
+	        trigger:"click",
+	        startFun: function(i){
+	          var curLi=jQuery(".full-slide .bd li").eq(i);
+	          if (!!curLi.attr("_src")){
+	             curLi.css("background-image",curLi.attr("_src")).removeAttr("_src")
+	          }
+	        }
+	    });
+	    jQuery(document).ready(function($) {
+	    	// $(".bd ul").attr('style', 'position: relative; width: 1100px; height: 595px;');
+	    	// $(".bd ul").addClass('width_1100')
+	    });
+	    </script>
+	    <div class="allmain"></div>
+	</header>
+	<!-- ==============================================js特效 二维码 建议 客服================================================= -->
+	<include file="effect" />
+	<!-- =================================================================================================== -->
+</block>
+<block name="body">
+	
+	<div class="all">
+
+		<!--浮动结束-->
+		<!--总-->
+		<div class="allmain">
+			
+			<include file="home_luyan"/>
+			
+			<include file="home_project" />
+
+			<include file="home_investor" />
+
+			<include file="home_news" />
+
+			<div>
+				<div class="why">
+
+					<h2>
+						<img src="__HOME__/images/index/whybt1.gif" width="220" height="40" />
+					</h2>
+					<p>
+						微风投专注小微实体企业融资，线下实地考察，精选优质项目，独创分期模式确保投资人资金安全，操作模式安全透明、流程完善;让价值链的每一个环节都成为赢家。
+					</p>
+				</div>
+				<div class="why rightt">
+					<h2>
+						<img src="__HOME__/images/index/whybt2.gif" width="415" height="40" />
+					</h2>
+					<p>投资去向透明化：资金使用情况短信通知，投资人清楚资金去向。</p>
+					<p>运营项目透明化：项目运营数据定期反馈，投资人清晰项目运营状况。</p>
+					<p>监管过程透明化：项目运营监管，定期经营数据反馈，确保投资安心。</p>
+				</div>
+
+				<div class="clear"></div>
+
+			</div>
+
+			<div>
+				<div class="why">
+
+					<h2>
+						<img src="__HOME__/images/index/whybt3.gif" width="415" height="40" />
+					</h2>
+					<p>资金来自于多位投资人，融资更高效。</p>
+					<p>超长周期化整为零，减轻资金压力，化解经营风险。</p>
+					<p>以时间换空间，增加企业估值，打好发展基础。</p>
+					<p>整合企业资源，对接多方渠道，助推企业增长。</p>
+					<p>风险有效控制，资金快速流转，投资多方受益。</p>
+				</div>
+
+				<div class="why rightt">
+					<h2>
+						<img src="__HOME__/images/index/whybt4.gif" width="415" height="40" />
+					</h2>
+					<div class="why_l">
+						<div class="why_ll">
+							<img src="__STATIC__/images/weixin1.gif" width="100" height="100" alt="微风投官方微信" />
+							<p>关注微风投微信</p>
+
+						</div>
+						<div class="why_ll">
+							<img src="__STATIC__/images/xinlang1.gif" width="100" height="100" alt="微风投新浪微博" />
+							<p>关注微风投博客</p>
+
+						</div>
+						<div class="clear"></div>
+					</div>
+
+					<div class="why_r">
+						<ul>
+							<li>
+								<p>官方服务热线：400-700-8998</p>
+							</li>
+							<li>
+								<p>官方在线咨询：QQ 3206590986</p>
+							</li>
+							<li>
+								<p>官方投诉电话：15036658123</p>
+							</li>
+							<li>
+								<p>官方在线投诉：QQ 3206590986</p>
+							</li>
+						</ul>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+				<div class="clear"></div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<include file="Public:minilogin"/>
+	
+	<a href="index.php?s=home/Help/knowYou" style=" background:#eceaea" target="_black">
+		<div class="bekone">
+			<div class="bekonee">
+				<img src="__HOME__/images/index/beknow1.jpg" />
+			</div>
+		</div>
+	</a>
+</block>

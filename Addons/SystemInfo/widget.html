@@ -1,0 +1,27 @@
+<div class="span{$addons_config.width}">
+	<div class="columns-mod">
+		<div class="hd cf">
+			<h5>{$addons_config.title}</h5>
+			<div class="title-opt">
+			</div>
+		</div>
+		<?php $invall = M('Investor')->select();
+			$inv1 = M('Investor')->where("iden_status=1")->select();
+			$proall = M('Project')->select();
+			$pro_1 = M('Project')->where("prrate=-1")->select();
+		?>
+		<div class="bd">
+			<div class="sys-info">
+				<table>
+					暂无信息
+					<!-- <tr>
+						<th>1、共{:count($invall)}个投资人，有{:count($inv1)}个待审核，请及时审核。</th>
+					</tr>
+					<tr>
+						<th>2、共{:count($proall)}个项目，有{:count($pro_1)}个待审核，请及时审核。</th>
+					</tr> -->
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

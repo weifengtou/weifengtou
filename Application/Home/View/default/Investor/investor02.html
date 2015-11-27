@@ -1,0 +1,115 @@
+<extend name="Base/investor"/>
+
+<block name="header">
+	<header>
+		<div class="littlebanner">
+			<img src="__HOME__/images/entrepre/cailing.gif" />
+		</div>
+	</header>
+</block>
+
+<block name="body">
+	<div class="tzrxxt">
+		<div class="ttitlse">
+			<img src="__IMG__/investor/investor/touzi02.gif" />
+		</div>
+		<form action="__URL__/investor02" id="reg2" method="post">
+			<div class="middle">
+				<h3 id="tz">描述投资理念</h3>
+				<div class="cheos">
+					<div class="woxx"> <font style="color:#f00">*</font>
+						投资理念
+					</div>
+					<div class="kuang">
+						<textarea class="lss" name="tzidea" id="tzidea" style="width:510px;height:200px;" cols="30" rows="10">{$info[0][tzidea]}</textarea>
+						<!--<script>
+					        KindEditor.ready(function(K) {
+				                window.editor = K.create('textarea[name=tzidea]',{
+				                	width: "500px",
+				                	height: "200px",
+				                	resizeType: 0,
+				                	items: ['undo', 'redo',],
+				                	maximumWords: 200//允许的最大字符数
+				                });
+					        });
+						</script>-->
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe" style="margin:20px 0">
+					<div class="woxx"> <font style="color:#f00">*</font>
+						投资意向
+					</div>
+					<div style="float:right;display:block;width:650px;margin-right:180px;" id="trade">
+						<foreach name="alltrade" item="vo">
+							<?php 
+							if(strstr($info[0][intention],$vo[id])):
+							?>
+							<label style="padding-right:10px;">
+								<input style="width:20px;height:30px;line-height:30px;" name="trade[]" checked="checked" type="checkbox" value="{$vo.id}">{$vo.trade}</label>
+							<?php else: ?>
+							<label style="padding-right:10px;">
+								<input style="width:20px;height:30px;line-height:30px;" name="trade[]" type="checkbox" value="{$vo.id}">{$vo.trade}</label>
+							<?php endif; ?></foreach>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe" style="margin:20px 0">
+					<div class="woxx">
+						一年计划投资
+					</div>
+					<div class="kuang">
+						<input type="text" class="ldd" name="tz_num" id="tz_num" maxlength="9" placeholder="请输入您的月收入(元)" value="{$info[0][tz_num]}" />(个)
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe" style="margin:20px 0">
+					<div class="woxx">
+						<font style="color:#f00">*</font>
+						您目前的月收入
+					</div>
+					<div class="kuang">
+						<input type="text" class="ldd" name="income" id="income" maxlength="9" placeholder="请输入您的月收入(元)" value="{$info[0][income]}" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe">
+					<div class="woxx">
+						<font style="color:#f00">*</font>
+						最小投资额
+					</div>
+					<div class="kuang">
+						<input type="text" class="ldd" name="min_maney" id="min_maney" maxlength="9" placeholder="请输入您的最小投资金额(元)" value="{$info[0]['min_maney']}" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe"  style=" margin-top:20px;">
+					<div class="woxx">
+						<font style="color:#f00">*</font>
+						最大投资额
+					</div>
+					<div class="kuang">
+						<input type="text" class="ldd" name="max_maney" id="max_maney" maxlength="9" placeholder="请输入您的最大投资金额(元)" value="{$info[0]['max_maney']}" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="ese">
+					<div class="shad">
+						<?php if ($info[0][type]==2) {
+							$url = U('investorjigou');
+						}else{
+							$url = U('investor01');
+						} ?>
+						<a href="{$url}">
+							<img src="__IMG__/investor/investor/se.gif" />
+						</a>
+					</div>
+					<div class="xiae">
+						<input type="image" src="__IMG__/investor/investor/xis.gif" id="sub2">
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</form>
+	</div>
+</block>

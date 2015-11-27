@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <include file="Public/head"/>
+    
+    <!-- ========================悬浮区css============================================== -->
+    <link rel="stylesheet" type="text/css" href="__HOME__/css/xuanfu.css">
+    <link  rel="stylesheet" href="__CSS__/mingcijieshi.css" />
+    <script src="__STATIC__/jPages/js/jPages.min.js"></script>
+    <script src="__JS__/project.js"></script>
+    <!-- ========================悬浮区js============================================== -->
+    <script type="text/javascript" src="__HOME__/js/scrolltotop.js"></script>
+    <script type="text/javascript" src="__HOME__/js/index.js"></script>
+</head>
+<body>
+    <!-- 头部 -->
+    <include file="Public/header"/>
+    <!-- /头部 -->
+
+    <!-- 主体 -->
+    <include file="Public/body"/>
+    <!-- /主体 -->
+    <div id="mini_yycz" style="width:460px; height:300px; background-color:#8f8f8f; color:#fff; display:none;">
+        <div style="padding:20px;">
+            <p>
+                请输入你的预计投资金额并检查，我们将在一周内回复
+                <br>(如果你之前对这个项目提交了预约出资，将会覆盖原来的信息)</p>
+            <p>出资金额(元)：</p>
+            <input type="text" id="cz_maney" placeholder="出资金额(元)"/>
+            <p>出资信息：</p>
+            <textarea id="cz_msg" placeholder="出资信息" style="width:400px; height:130px;resize:none;"></textarea>
+            <br>
+            <a href="javascript:czok(obj);">
+                <img src="./Public/Home/images/detail/qrcz.gif" />
+            </a>
+        </div>
+    </div>
+
+    <input type="hidden" id="cz_max" value="{$attrmoney}">
+    <input type="hidden" id="cz_pid" value="{$proInfo[0][pid]}">
+    <input type="hidden" id="cz_prid" value="{$proInfo[0][id]}">
+    <script>
+        var cz_max = $('#cz_max').val()
+        var pid = $("#cz_pid").val()
+        var prid = $("#cz_prid").val()
+        var obj ={
+            cz_max:cz_max,
+            pid:pid,
+            prid:prid
+        }
+    </script>
+    <!-- 底部 -->
+    <include file="Public/footer"/>
+    <!-- /底部 -->
+</body>
+</html>

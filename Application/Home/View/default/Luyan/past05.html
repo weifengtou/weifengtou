@@ -1,0 +1,297 @@
+<extend name="Base/luyansignup"/>
+<block name="header">
+	<header>
+		<!-- <div class="littlebanner wftban">
+		<img src="__HOME__/images/luyansingup/bannwft.jpg" />
+	</div>
+	-->
+</header>
+<!-- =============================悬浮特效======================================== -->
+<include file="effect"/>
+<!-- ============================================================================= -->
+</block>
+
+<block name="body">
+<div class="all">
+
+	<div class="wbanner_a">
+		<!-- <img src="__HOME__/images/pastLuyan/w-banner02.jpg" />
+		-->
+		<div class="wbanner_b">
+			<div class="wbanner_c"></div>
+		</div>
+	</div>
+
+	<div class="wmain">
+
+		<div class="zhanwl">
+			<div class="zhuanti">
+				<div>
+					<img src="__HOME__/images/pastLuyan/zhuanti01.gif" style="width:1100px;height:20px;" />
+				</div>
+				<div class="zhuantimm">
+					<div class="zhuantimm_l">
+						<?php  $x = 'XODU3MDQxMjgw'; ?>
+						<div id="youkuplayer" style="position:absolute;width:480px;height:400px;z-index:0;" hidden></div>
+						<script type="text/javascript" src="http://player.youku.com/jsapi">
+                            player = new YKU.Player('youkuplayer',{
+                            styleid: '0',
+                            client_id: 'YOUR YOUKUOPENAPI CLIENT_ID',
+                            vid:"{$x}"
+                            });
+                        </script>
+						<script>
+                            $("object").append('<param name="wmode" value="opaque">')
+                            $("#youkuplayer").show()
+                        </script>
+					</div>
+					<?php 
+					//本次路演企业
+					$thispjname = "('西默科技','河南四鸿实业有限公司','郑州美特美家具有限公司','河南民德科技有限公司','河南晟道科技有限公司','河南省万冠实业有限公司','浙江善时医疗器械有限公司','拉比童装','前言商务','金鎏源农业')";
+			        $this_luyan = M('project')->where("pjname in ".$thispjname)->select();
+			        ?>
+					<div class="zhuantimm_r">
+						<div class="zhuantimma" style="background:none">2014.09.27&nbsp;拉比童装路演会</div>
+						<div class="liness"></div>
+						<div>
+							<div class="zhuantimme_l">路演企业</div>
+							<div class="zhuantimme_r">
+								<?php foreach ($this_luyan as $key => $value): ?>
+									<a href="?s=Home/Project/prdetail&pid={$value[id]}">{$value[pjname]}</a>
+								<?php endforeach ?>
+								<p>此次路演共10家企业参加</p>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="liness"></div>
+						<div class="zhuantimmd">
+							<div class="zhuantimmc">微风投模式简介：</div>
+							<p>
+								微风投商业模式是梧桐盛嘉公司杜志刚经过多年的潜心摸索和研究及多年的商业实践，参考各界精英和专业人士见解而创立的一款定位于小微企业中长期融资需求的金融创新产品，即“项目+投资 +经营+担保”的全产业链的商业组合，梧桐盛嘉公司依托专业平台，运用资源整合的商业思维，把项目方、投资方、经营方、担保方多方进行全方位整合，使优质的、品牌的、有前景的、可复制的、有团队的商业项目和民间资金、广大创业者、风控公司进行多项选择，互惠互利、项目落地、快速复制、创业成功。
+							</p>
+							<p>
+								微风投商业模式为民间资金搭起一个稳定收益，快速升值的桥梁。其操作模式安全透明、流程完备、项目落地、法律保障、控制风险、各方获益、社会支持、政府鼓励。微风投商业模式是创业者的福音，项目方的首选，投资者的乐园，也将使盛嘉公司成为投资行业中的一匹骏马，开拓出自己的蓝天疆土。
+							</p>
+
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div>
+					<img src="__HOME__/images/pastLuyan/zhuanti02.gif" style="width:1100px;height:30px;" />
+				</div>
+			</div>
+		</div>
+
+		<!--图片轮播-->
+		<div class="comm">
+			<h3>路演图片</h3>
+
+			<!-- 代码 开始 -->
+			<div id="zSlider">
+				<div id="picshow">
+					<div id="picshow_img">
+						<ul>
+							<li>
+								<a class="media01" target="_blank">
+									<img src="__HOME__/images/pastLuyan/past.2014.09.27/l1.jpg" style="width:780px;height:440px;"></a>
+							</li>
+							<li>
+								<a class="media02" target="_blank">
+									<img src="__HOME__/images/pastLuyan/past.2014.09.27/l2.jpg" style="width:780px;height:440px;"></a>
+							</li>
+							<li>
+								<a class="media03" target="_blank">
+									<img src="__HOME__/images/pastLuyan/past.2014.09.27/l3.jpg" style="width:780px;height:440px;"></a>
+							</li>
+							<li>
+								<a class="media04" target="_blank">
+									<img src="__HOME__/images/pastLuyan/past.2014.09.27/l4.jpg" style="width:780px;height:440px;"></a>
+							</li>
+							<li>
+								<a class="media05" target="_blank">
+									<img src="__HOME__/images/pastLuyan/past.2014.09.27/i5.jpg" style="width:780px;height:440px;"></a>
+							</li>
+							<li>
+								<a class="media06" target="_blank">
+									<img src="__HOME__/images/pastLuyan/past.2014.09.27/l2.jpg" style="width:780px;height:440px;"></a>
+							</li>
+						</ul>
+					</div>
+					<div id="picshow_tx">
+						<ul>
+							<!--i1-->
+							<li>
+								<h3>
+									<a class="media01" target="_blank">拉比童装董事长张伟香女士进行项目讲解。</a>
+								</h3>
+								<p>拉比童装董事长张伟香女士进行项目讲解。</p>
+							</li>
+							<!--i2-->
+							<li>
+								<h3>
+									<a class="media02" target="_blank">投资者认真查看项目方资料</a>
+								</h3>
+								<p>
+									投资者认真查看项目方资料。
+								</p>
+							</li>
+							<!--i3-->
+							<li>
+								<h3>
+									<a class="media03" target="_blank">投资人对拉比童装经营问题进行提问</a>
+								</h3>
+								<p>
+									投资人对拉比童装经营问题进行提问。
+								</p>
+							</li>
+							<!--i4-->
+							<li>
+								<h3>
+									<a class="media04" target="_blank">梧桐盛嘉与拉比童装签约之际，留下感激的泪水</a>
+								</h3>
+								<p>晟梧桐盛嘉与拉比童装签约之际，感谢梧桐盛嘉杜总的资金援助，留下感激的泪水</p>
+							</li>
+							<!--i5-->
+							<li>
+								<h3>
+									<a class="media05" target="_blank">梧桐盛嘉与拉比童装签约，梧桐盛嘉杜总与拉比童装张伟香女士合影留念</a>
+								</h3>
+								<p>
+									郑州香薇贸易有限公司是一家专业从事儿童品牌服饰研发、生产和销售的企业，创立于2006年，公司现已拥有一支专业而充满激情的的设计、生产及营销团队，分布在全国各地的专卖店已达数百家。
+								</p>
+							</li>
+							<!--i6-->
+							<li>
+								<h3>
+									<a class="media06" target="_blank">投资者认真查看项目方资料</a>
+								</h3>
+								<p>
+									投资者认真查看项目方资料。
+								</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="select_btn">
+					<ul>
+						<li>
+							<a class="media01" target="_blank">
+								<img src="__HOME__/images/pastLuyan/past.2014.09.27/l1.jpg">
+								<span class="select_text">拉比童装董事长张伟香女士进行项目讲解。</span>
+							</a>
+						</li>
+						<li>
+							<a class="media02" target="_blank">
+								<img src="__HOME__/images/pastLuyan/past.2014.09.27/l2.jpg">
+								<span class="select_text">投资者认真查看项目方资料</span>
+							</a>
+						</li>
+						<li>
+							<a class="media03" target="_blank">
+								<img src="__HOME__/images/pastLuyan/past.2014.09.27/l3.jpg">
+								<span class="select_text">投资人对拉比童装经营问题进行提问</span>
+							</a>
+						</li>
+						<li>
+							<a class="media04" target="_blank">
+								<img src="__HOME__/images/pastLuyan/past.2014.09.27/l4.jpg">
+								<span class="select_text">梧桐盛嘉与拉比童装签约之际，留下感激的泪水</span>
+							</a>
+						</li>
+						<li>
+							<a class="media05" target="_blank">
+								<img src="__HOME__/images/pastLuyan/past.2014.09.27/i5.jpg">
+								<span class="select_text">梧桐盛嘉与拉比童装签约，梧桐盛嘉杜总与拉比童装张伟香女士合影留念</span>
+							</a>
+						</li>
+						<li>
+							<a class="media06" target="_blank">
+								<img src="__HOME__/images/pastLuyan/past.2014.09.27/l2.jpg">
+								<span class="select_text">投资者认真查看项目方资料</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<script>
+				$(".media01").attr('href', '?s=/Home/Article/detail/id/103');
+				$(".media02").attr('href', '?s=/Home/Article/detail/id/103');
+				$(".media03").attr('href', '?s=/Home/Article/detail/id/103');
+				$(".media04").attr('href', '?s=/Home/Article/detail/id/103');
+				$(".media05").attr('href', '?s=/Home/Article/detail/id/103');
+				$(".media06").attr('href', '?s=/Home/Article/detail/id/103');
+			</script>
+			<!-- 代码 结束 -->
+
+		</div>
+		<!--结束-->
+
+		<!--本次路演企业-->
+		<div class="comm" id="luyans">
+			<h3>本次路演企业</h3>
+			<?php foreach ($this_luyan as $key => $value): ?>
+				<div class="tuwen">
+					<div class="tuwen_s">
+						<a href="?s=Home/Project/prdetail&pid={$value[id]}">
+							<img src="./Uploads/Album/{$value[logo]}" style="width:247px;height:137px;" />
+						</a>
+					</div>
+					<div class="tuwenlu_x">
+						<a href="?s=Home/Project/prdetail&pid={$value[id]}">{$value[pjname]}</a>
+					</div>
+				</div>
+			<?php endforeach ?>
+			<div class="clear"></div>
+		</div>
+		
+
+		<!--过往路演企业-->
+		<div class="comm">
+			<h3>
+				<span>2014年</span>
+				路演会
+			</h3>
+
+
+<div class="zanwu">暂无其他路演</div>
+<div class="clear"></div>
+</div>
+
+<!--过往路演企业-->
+<div class="comm" style="margin-bottom:0;min-height:200px">
+<h3>路演现场图片</h3>
+
+
+
+<div class="mortu">
+	<img src="__HOME__/images/pastLuyan/past.2014.09.27/l1.jpg">
+	<br/>
+	拉比童装董事长张伟香女士进行项目讲解<br/>
+	<img src="__HOME__/images/pastLuyan/past.2014.09.27/l2.jpg">
+	<br/>
+	投资者认真查看项目方资料<br/>
+	<br/>
+	<img src="__HOME__/images/pastLuyan/past.2014.09.27/l3.jpg">
+	<br/>
+	投资人对拉比童装经营问题进行提问<br/>
+	<br/>
+	<img src="__HOME__/images/pastLuyan/past.2014.09.27/l4.jpg">
+	<br/>
+	梧桐盛嘉与拉比童装签约之际，感谢梧桐盛嘉杜总的资金援助，留下感激的泪水<br/>
+	<br/>
+	<img src="__HOME__/images/pastLuyan/past.2014.09.27/i5.jpg">
+	<br/>
+	梧桐盛嘉与拉比童装签约
+	<br/>
+	郑州香薇贸易有限公司是一家专业从事儿童品牌服饰研发、生产和销售的企业，创立于2006年，公司现已拥有一支专业而充满激情的的设计、生产及营销团队，分布在全国各地的专卖店已达数百家。
+	<br/>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+</block>

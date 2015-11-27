@@ -1,0 +1,88 @@
+<!--微风投认证投资人-->
+
+<div class="newin_bt">
+    <div class="newin_bta">
+        认证投资人
+        <font>
+        以诚待人，信守承诺。
+        </font>
+    </div>
+</div>
+
+<div id="tzrs">
+	<?php foreach ($tzrs as $key =>
+	$v4): ?>
+	<?php 
+	$v4info = get_child_detail($v4[id],2); 
+	?>
+	<div class="tzr_new">
+        <div class="tzrnew_l">
+            <a href="{$v4info[0][url]}" target="_blank">
+                <img src="{$v4info[0][face_img]}"></a>
+        </div>
+
+        <div class="tzrnew_r">
+            <div class="tzrnewra">
+                <a href="{$v4info[0][url]}" target="_blank" style="float:left">{$v4info[0][showname]}</a>
+                <div class="tzrnewrb">
+                    <a onclick="javascript:proDelivery({$v4info[0][id]});">投递项目</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div style="padding:9px 0 0 0; border-top:#ccc solid 1px"></div>
+            <div class="tzrnewrc">
+                <p>投资意向：<?php 
+                $trade = explode('&nbsp;',$v4info[0][intentionname]);
+                if(count($trade) > 2){
+                    echo $trade[0].'&nbsp;'.$trade[1].'&nbsp;'.'<font color="#00f;" style="position:relative;" id="more'.$v4info[0][uid].'" onmouseover="mouseover('.$v4info[0][uid].')" onmouseout="mouseout('.$v4info[0][uid].')">••••<span style="display:none;position:absolute;width:200px;right:-220px;top:-10px;color:#fff;background:#8e5700;font-size:12px;padding:10px; z-index:20" id="moretrade'.$v4info[0][uid].'">'.$v4info[0][intentionname].'</span></font>';
+                }else{
+                    echo $v4info[0][intentionname];
+                }       
+                ?></p>
+            </div>
+            <script type="text/javascript">
+            function mouseover(id){
+            	var moretradeid = 'moretrade'+id;
+            	$("#"+moretradeid).show();
+            }
+            function mouseout(id){
+            	var moretradeid = 'moretrade'+id;
+            	$("#"+moretradeid).hide();
+            }
+            </script>
+
+            <div class="tzrnewrc">
+                <p>投资金额：￥<?php echo number_format($v4info[0][min_maney]); ?>—￥<?php echo number_format($v4info[0][max_maney]); ?></p>
+            </div>
+            <div>
+                <div class="tzrnewrd tzrnewrd_f">粉丝：<?php echo count(M('attention')->where("atted_id='".$v4info[0][uid]."'")->select()); ?></div>
+
+                <div class="tzrnewrd tzrnewrd_y">约谈：<?php echo count(M()->query("SELECT
+						CASE wft_webmsg.sendid 
+							WHEN '".$v4info[0][uid]."' THEN wft_webmsg.receiveuid 
+						ELSE wft_webmsg.sendid END AS other
+						FROM `wft_webmsg`
+						WHERE 
+						sendid = '".$v4info[0][uid]."' OR receiveuid = '".$v4info[0][uid]."'
+						GROUP BY other")); ?></div>
+
+                <div class="tzrnewrd tzrnewrd_t" style="margin-right:0">投资：<?php echo count(M("financing")->where("pid='".$v4info[0][uid]."'")->select()); ?></div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+	<?php endforeach; ?>
+
+	<script>$("#tzrs div.tzr_new:even").css({"float":"right"})</script>
+
+	<div class="clear"></div>
+
+</div>
+
+<!--更多-->
+<div class="xmmore">
+    <div class="xmmorea">
+        <a href="index.php?s=home/invhome/investors" target="_blank"><img src="__HOME__/images/index/newmore.gif"></a>
+    </div>
+</div>

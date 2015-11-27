@@ -1,0 +1,91 @@
+<extend name="Base/prcenter"/>
+
+<block name="header">
+	<header>
+		<div class="littlebanner">
+			<img src="__HOME__/images/entrepre/cailing.gif" />
+		</div>
+		<div class="clear"></div>
+		<script type="text/javascript">
+    jQuery(document).ready(function($) {
+      $('#baseinfo').addClass('jiben');
+    });
+    </script>
+	</header>
+	<!-- ==============================================js特效================================================= -->
+	<include file="index/effect" />
+    <!-- =================================================================================================== -->
+</block>
+
+<block name="body">
+	<div class="all">
+		<include file="main_t" />
+		<!--main-->
+		<div class="main" style="margin-bottom:20px;">
+			<include file="main_l" />
+
+			<div class="main_r">
+				<div class="yichuangjian">
+					<p>基本信息</p>
+				</div>
+
+				<div class="jbxx">
+					<div>
+						<!-- <img src="__HOME__/images/prcenter/touxiang02.gif" width="130" height="130" /> -->
+						<?php if (!$pruser[0][face_img]): ?>
+						<img class="img_one" src="__STATIC__/images/nop.gif" alt="暂无头像" width="220" height="220" />
+						<?php else: ?>
+						<img class="img_one" src="./Uploads/Album/{$pruser[0][face_img]}" width="220" height="220" />
+						<?php endif ?></div>
+					<ul>
+						<li>昵称：{$userinfo[username]}</li>
+						<!-- <li>公司名称：{$pruser[0][company]}</li> -->
+						<li>手机号码：{$pruser[0][phone]}</li>
+						<li>邮箱：{$homeuser[0][email]}</li>
+					</ul>
+					<div class="clear"></div>
+				</div>
+				<div class="yhxz">
+					<p>用户须知</p>
+				</div>
+				<div class="xznr">
+					<p>
+						用户在本网站注册时，须依服务注册表之提示提供用户本人真实、正确、最新及完整的资料，并保证个人资料的适时更新，因用户提供个人信息不准确、不完整及未及时更新给用户造成的任何损害，本公司不承担任何责任。因用户提供个人信息不准确、不完整及未及时更新给本公司造成损失的，本公司保留追偿的权利。
+					</p>
+					<p>
+						用户一旦注册成功成为用户，即得到一个密码和帐号。如果用户未保管好自己的帐号和密码而对用户、 微风投平台造成的损害，用户将负全部责任。另外，每个用户应对其帐户中的所有活动和事件负全责。用户可随时改变您的密码和图标，也可以结束旧的帐户重开一个新帐户。用户同意若发现任何非法使用用户帐号或安全漏洞的情况，应立即通告微风投平台。
+					</p>
+					
+				</div>
+				<div class="yhxz" style="border:none">
+					<p>联系我们</p>
+				</div>
+				<div class="qyxx">
+					<!-- <a href="#">
+						<img src="__HOME__/images/prcenter/qiyexinxi.gif" alt="企业信息" height="200" width="700" />
+					</a>
+					<div class="clear"></div> -->
+					<div>
+						<div class="qyxx_l">电话：</div>
+						<div class="qyxx_r">400-700-8998</div>
+						<div class="clear"></div>
+					</div>
+					<div>
+						<div class="qyxx_l">邮箱：</div>
+						<div class="qyxx_r">kefu@weifengtou.com</div>
+						<div class="clear"></div>
+					</div>
+					<div>
+						<div class="qyxx_l">地址：</div>
+						<div class="qyxx_r">郑州市金水区健康路49号(市七中对面) </div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</block>

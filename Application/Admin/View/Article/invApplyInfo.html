@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>投资人审核详细信息</title>
+	
+	<script src="__STATIC__/jquery-1.10.2.min.js"></script>
+	<script src="__STATIC__/common.js"></script>
+</head>
+<body>
+	<div>
+		<?php if ($invinfo[0][iden_status]==-1&&$invinfo[0][deny][0][denymsg]): ?>
+			<div style="float:left;">拒绝原因:</div>
+			<div style="float:left">
+				{$invinfo[0][deny][0][denymsg]}
+			</div>
+			<div class="clear"></div>
+		<?php endif ?>
+	</div>
+	<br />
+	<hr />
+	<div>
+		<div style="float:left;">类型:</div>
+		<div style="float:left">
+			<?php if ($invinfo[0][type]==2): ?>
+				机构投资者
+			<?php else: ?>
+				个人投资者
+			<?php endif ?>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<br />
+	<hr />
+	<div>
+		<div style="float:left;">邮箱:</div>
+		<div style="float:left">
+			{$invinfo[0][email]}
+		</div>
+		<div class="clear"></div>
+	</div>
+	<br />
+	<hr />
+	<div>
+		<div style="float:left;">昵称:</div>
+		<div style="float:left">
+			{$invinfo[0]['username']}
+		</div>
+		<div class="clear"></div>
+	</div>
+	<br />
+	<hr />
+	<div>
+		<?php if ($invinfo[0][type]==2): ?>
+			<div style="float:left;">联系人:</div>
+		<?php else: ?>
+			<div style="float:left;">真实姓名:</div>
+		<?php endif ?>
+		<div style="float:left">
+			{$invinfo[0][realname]}
+		</div>
+		<div class="clear"></div>
+	</div>
+	<br />
+	<hr />
+	<?php if ($invinfo[0][type]==2): ?>
+		<div>
+			<div style="float:left;">投资阶段:</div>
+			<div style="float:left">
+				<script>
+					document.write(tou_zi_jie_duan['{$invinfo[0][jieduan]}'])
+				</script>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<br />
+		<hr />
+		<div>
+			<div style="float:left;">机构性质:</div>
+			<div style="float:left">
+				<script>
+					document.write(ji_gou_tou_zi_ren_xing_zhi['{$invinfo[0][xingzhi]}'])
+				</script>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<br />
+		<hr />
+		<div>
+			<div style="float:left;">机构类别:</div>
+			<div style="float:left">
+				<script>
+					document.write(ji_gou_tou_zi_ren_lei_bie['{$invinfo[0][leibie]}'])
+				</script>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<br />
+		<hr />
+		<div>
+			<div style="float:left;">团队简介:</div>
+			<div style="float:left">
+					{$invinfo[0][tddetail]}
+			</div>
+			<div class="clear"></div>
+		</div>
+		<br />
+		<hr />
+		<div style="width:300px;float:left;">
+			<div style="">执照:</div>
+			<div style="">
+				<?php if ($invinfo[0][zhizhao]): ?>
+					<img src="./uploads/Investor/{$invinfo[0][zhizhao]}" alt="" style="max-width:220;max-height:170px;"/>
+				<?php else: ?>
+					无执照
+				<?php endif; ?>
+			</div>
+		</div>
+		<div class="clear" style="clear:both"></div>
+		<hr />
+		<?php foreach ($invinfo[0][cys] as $key => $value): ?>
+			<div style="height:200px;">
+				<div style="width:250px;float:left;">
+					<div style=""><h5>成员{$key+1}</h5></div><br />
+					<div style="margin-left:15px;">
+						成员姓名：<br />
+						{$value[cyname]} <br />
+					</div>
+				</div>
+				<div style="">
+					成员简介：
+					<p>{$value[cydetail]}</p>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<br />
+			<hr />
+		<?php endforeach; ?>
+	<?php endif; ?>
+	<div>
+		<div style="float:left;">手机号码:</div>
+		<div style="float:left">
+			{$invinfo[0]['phone']}
+		</div>
+		<div class="clear"></div>
+	</div>
+	<br />
+	<hr />
+	<div>
+		<div style="float:left;">所在公司:</div>
+		<div style="float:left">
+			{$invinfo[0]['company']}
+		</div>
+		<div class="clear"></div>
+	</div>
+	<br />
+	<hr />
+	<div>
+		<div style="float:left;">目前的年收入:</div>
+		<div style="float:left">
+			{$invinfo[0]['income']} 
+				(元)
+		</div>
+		<div class="clear"></div>
+	</div>
+	<br />
+	<hr />
+	<div>
+		<div style="float:left;">最小投资额:</div>
+		<div style="float:left">
+			{$invinfo[0]['min_maney']} 
+				(元)
+		</div>
+		<div class="clear"></div>
+	</div>
+	<br />
+	<hr />
+	<div>
+		<div style="float:left;">最大投资额:</div>
+		<div style="float:left">
+			{$invinfo[0]['max_maney']} 
+				(元)
+		</div>
+		<div class="clear"></div>
+	</div>
+	<br />
+	<hr />
+	<div style="height:200px;">
+		<div style="width:300px;float:left;">
+			<div style="">投资者信息:</div>
+			<div style="">
+				<?php if ($invinfo[0]['inv_info']): ?>
+					<img src="./uploads/Investor/{$invinfo[0]['inv_info']}" alt="" style="max-width:220;max-height:170px;"/>
+				<?php else: ?>
+					无信息名片
+				<?php endif; ?>
+			</div>
+		</div>
+		<div style="width:300px;float:left;">
+			<div style="">身份证正面:</div>
+			<div style="">
+				<?php if ($invinfo[0]['f_image']): ?>
+					<img src="./uploads/Investor/{$invinfo[0]['f_image']}" alt="" style="max-width:220;max-height:170px;"/>
+				<?php else: ?>
+					无身份证正面
+				<?php endif; ?>
+			</div>
+		</div>
+		<div style="width:300px;float:left;">
+			<div style="">身份证背面:</div>
+			<div style="">
+				<?php if ($invinfo[0]['b_image']): ?>
+					<img src="./uploads/Investor/{$invinfo[0]['b_image']}" alt="" style="max-width:220;max-height:170px;"/>
+				<?php else: ?>
+					无身份证背面
+				<?php endif; ?>
+			</div>
+		</div>
+		<div class="clear" style="clear:both"></div>
+	</div>
+	<hr />
+	<?php foreach ($invinfo[0][cases] as $key => $value): ?>
+		<div style="height:200px;">
+			<div style="width:250px;float:left;">
+				<div style=""><h5>案例{$key+1}</h5></div><br />
+				<div style="margin-left:15px;">
+					案例名称：<br />
+					{$value[pname]} <br />
+					案例链接：<br />
+					<a href="{$value[purl]}">{$value[purl]}</a> <br />
+				</div>
+			</div>
+			<div style="">
+				描述：
+				<p>{$value[pdetail]}</p>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<br />
+		<hr />
+	<?php endforeach; ?>
+</body>
+</html>

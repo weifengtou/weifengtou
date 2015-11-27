@@ -1,0 +1,524 @@
+<extend name="Base/entrepre03" />
+
+<block name="header"> <header>
+	<div class="littlebanner">
+		<img src="__HOME__/images/entrepre/cailing.gif" />
+	</div>
+</header> <!-- ==============================================js特效================================================= -->
+<include file="index/effect" /> <!-- =================================================================================================== -->
+</block>
+
+<block name="body">
+<div class="all">
+	<div class="allmain">
+		<div class="test01">
+			<img src="__HOME__/images/entrepre/xixin01.gif" />
+		</div>
+		<div class="middle">
+			<div class="w936">
+				<!-- Tab区 -->
+				<include file="preditTab" />
+				<script type="text/javascript">
+                    $(document).ready(function($) {
+                        $('#tb_3').addClass('tabcss');
+                    });
+                    </script>
+				<div class="ctt">
+					<div class="dis" id="tbc_03">
+						<if condition="!$result"> <!-- 融资需求提交表单 -->
+						<div class="middle" id="cd01">
+							<div class="gezi">
+								<form name="investform01" id="investform01" method="post"
+									action="?s=home/entrepre/saveinvest" style="width: 800px">
+									<div class="gezitwo">
+										<div class="woqq">
+											<font style="color: #f00; font-weight: normal">*</font> 预融资金额
+										</div>
+										<div class="kuang">
+											<textarea class="ldd" id="budget01" name="budget01"
+												placeholder="请输入正整数"
+												style="line-height: 30px; width: 350px; padding-left: 10px; font-size: 17px; resize: none;"></textarea>
+											&nbsp;元
+										</div>
+										<div style="line-height: 30px; color: #ccc; height: 30px;">
+											<img src="__HOME__/images/entrepre/wrong.png"
+												id="budgeterror01"
+												style="width: 30px; height: 30px; display: none;"> <img
+												src="__HOME__/images/entrepre/right.png" id="budgetright01"
+												style="width: 30px; height: 30px; display: none;">
+										</div>
+										<input name="prid" id="prid" type="hidden" value="{$prid}">
+										<input name="companyid" id="companyid" type="hidden"
+											value="{$companyid}">
+										<div class="clear"></div>
+									</div>
+									<div class="gezitwo">
+										<div class="woqq">
+											<font style="color: #f00; font-weight: normal">*</font>
+											单笔最低投资额
+										</div>
+										<div class="kuang">
+											<textarea class="ldd" id="singleinvest01"
+												name="singleinvest01" placeholder="请输入正整数"
+												style="line-height: 30px; width: 350px; padding-left: 10px; font-size: 17px; resize: none;"></textarea>
+											&nbsp;元
+										</div>
+										<div style="line-height: 30px; color: #ccc; height: 30px;">
+											<img src="__HOME__/images/entrepre/wrong.png"
+												id="singleinvesterror01"
+												style="width: 30px; height: 30px; display: none;"> <img
+												src="__HOME__/images/entrepre/right.png"
+												id="singleinvestright01"
+												style="width: 30px; height: 30px; display: none;">
+										</div>
+										<div class="clear"></div>
+									</div>
+									<div class="gezitwo">
+										<div class="woqq">
+											<font style="color: #f00; font-weight: normal">*</font> 资金用途
+										</div>
+										<div class="kuang">
+											<textarea class="ldd" id="purpose01" name="purpose01"
+												placeholder="不能超过80个字"
+												style="line-height: 30px; width: 350px; padding-left: 10px; font-size: 17px; resize: none;"></textarea>
+										</div>
+										<div style="line-height: 30px; color: #ccc; height: 30px;">
+											<img src="__HOME__/images/entrepre/wrong.png"
+												id="purposeerror01"
+												style="width: 30px; height: 30px; display: none;"> <img
+												src="__HOME__/images/entrepre/right.png" id="purposeright01"
+												style="width: 30px; height: 30px; display: none;">
+										</div>
+										<div class="clear"></div>
+									</div>
+									<!-- <div class="gezione">
+										<div class="woqq">
+											<font style="color: #f00; font-weight: normal">*</font> 商业计划书
+										</div>
+										<div class="kuang" style="width: 450px;">
+											请使用8-15页PPT <a href="__HOME__/loads/《商业计划书》模板.doc"
+												style="color: #3b70e1; text-decoration: underline">模板下载</a>
+											，文件大小不超过10M。
+											<div
+												style="float: right; width: 100px; height: 30px; overflow: hidden;"
+												id="upplan01">
+												<input type="file" name="file_upload" id="file_upload">
+												<script type="text/javascript">
+                                                $(document).ready(function($) {
+                                                    $('#file_upload').uploadify({
+                                                        'fileObjName':'businessplan',//设置一个名字，在服务器处理程序中根据该名字来取上传文件的数据
+                                                        'height' : 30,
+                                                        'swf' : '__STATIC__/uploadify/uploadify.swf',
+                                                        //'uploader' : '?s=home/entrepre/upplan',//上传文件触发的url
+                                                        'uploader': '{:U("Entrepre/upplan")}',//上传文件触发的url
+                                                        'folder': '__STATIC__/Uploads/Bussinessplan',//服务端的上传目录 
+                                                        'width' : 100,	//浏览按钮的宽度
+                                                        'fileExt' : '*.doc',    //可以选择的文件的类型
+                                                        'fileTypeExts' : '*.doc',   //允许上传的文件类型
+                                                        'fileSizeLimit' : '25MB',   //允许上传文件最大值
+                                                        'buttonText' : '文件上传',//上传按钮的文字
+                                                        'auto' : true,//文件选择完成后，是否自动上传
+                                                        'cancelImage' : '__STATIC__/uploadify/uploadify-cancel.png',//[必须设置]取消图片的路径
+                                                        'onUploadSuccess' : function(file, data, response) {
+                                                            var t = JSON.parse(data);
+                                                                $('#upplan01').hide();
+                                                                $('#upplan011').show();
+                                                                $('#planoldname01').html(t.oldname); 
+                                                                $('#planoldname01').attr('href','__BUSINESSPLAN__/'+t.name); 
+                                                                $('#businessplan01').val(t.name); 
+                                                                $('#businessplanold01').val(t.oldname); 
+                                                            },
+                                                        });
+                                                    });
+                                                </script>
+											</div>
+											<div class="clear"></div>
+											<div style="display: none; float: left;" id="upplan011">
+												上传成功
+												<div class="succeedd">
+													<a href="" id="planoldname01"></a> 上传成功
+												</div>
+												<div class="clear"></div>
+											</div>
+											<div class="clear"></div>
+										</div>
+										商业计划书保存名
+										<input type="hidden" name="businessplan01" id="businessplan01"
+											value=""> <input type="hidden"
+											name="businessplanold01" id="businessplanold01" value="">
+										<div class="clear"></div>
+									</div> -->
+									<div class="gezitwo">
+										<div class="woqq">
+											<font style="color: #f00; font-weight: normal">*</font> 隐私设置
+										</div>
+										<div class="kuang" id="privacyset01">
+											<p>
+												<input type="radio" name="privacyset01" id="radio1"
+													class="input1" value="1" /> <label for="radio1">所有投资人可见</label>
+											</p>
+											<p>
+												<input type="radio" name="privacyset01" id="radio2"
+													class="input2" value="0" /> <label for="radio2">设为隐私</label>
+											</p>
+											<p>
+												<label>
+												如果设为隐私，则前台的页面不会显示融资金额</label>
+											</p>
+										</div>
+										<div id="privacyseterror01"
+											style="width: 95px; line-height: 30px; color: red; float: right; margin-right: 100px; margin-top: 30px;"></div>
+										<div class="clear"></div>
+									</div>
+									<div class="gezione">
+										<div class="woqq">其他信息补充</div>
+										<div class="kuang" style="width: 480px">
+											<textarea class="lpp" id="addinfo01" name="addinfo01"
+												placeholder="补充性内容，自行填写。"
+												style="font-size: 17px; resize: none;"></textarea>
+										</div>
+										<div class="clear"></div>
+									</div>
+									<div style="width: 630px; height: 30px; padding-top: 10px;">
+										<div style="width: 120px; height: 30px; margin: 0 auto;">
+											<input type="image" src="__HOME__/images/entrepre/chesl.gif"
+												id="saveinvest01" /> <input type="image"
+												src="__HOME__/images/entrepre/quxiao.gif" id="reset01">
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<else /> <!-- 融资需求信息显示 -->
+						<div class="middle" id="cd02">
+							<div class="gezi">
+								<input type="hidden" name="investid" class="investid"
+									value="{$investid}" />
+								<div class="gezitwo">
+									<div class="woqq">
+										<font style="color: #f00; font-weight: normal">*</font> 预融资金额
+									</div>
+									<div class="kuang" id="budget02">{$budget}&nbsp;元</div>
+									<div class="clear"></div>
+								</div>
+								<div class="gezitwo">
+									<div class="woqq">
+										<font style="color: #f00; font-weight: normal">*</font>
+										单笔最低投资额
+									</div>
+									<div class="kuang" id="singleinvest02">{$singleinvest}&nbsp;元</div>
+									<div class="clear"></div>
+								</div>
+								<!-- <div class="gezitwo">
+									<div class="woqq">
+										<font style="color: #f00; font-weight: normal">*</font> 附加资源
+									</div>
+									<div class="kuang" style="width: 450px;" id="extras02">{$extras}</div>
+									<div class="clear"></div>
+								</div> -->
+								<div class="gezitwo">
+									<div class="woqq">
+										<font style="color: #f00; font-weight: normal">*</font> 资金用途
+									</div>
+									<div class="kuang" id="purpose02">{$purpose}</div>
+									<div class="clear"></div>
+								</div>
+								<!-- <div class="gezione">
+									<div class="woqq">
+										<font style="color: #f00; font-weight: normal">*</font> 商业计划书
+									</div>
+									<div class="kuang">
+										<div id="businessplan02" style="float: left;">{$oldname}</div>
+										<a href="__BUSINESSPLAN__/{$businessplan}"
+											id="businessplanurl" style="padding-left: 10px; color: blue;">http://{$businessplan}</a>
+									</div>
+									<div class="clear"></div>
+								</div> -->
+								<div class="gezitwo">
+									<div class="woqq">
+										<font style="color: #f00; font-weight: normal">*</font> 隐私设置
+									</div>
+									<div class="kuang" id="privacyset02">
+										<?php if($privacy == 1){echo '所有投资人可见';}else{echo '设为隐私';} ?>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<div class="gezione">
+									<div class="woqq">其他信息补充</div>
+									<div class="kuang" style="width: 480px; word-wrap: break-word;"
+										id="addinfo02">{$addinfo}</div>
+									<div class="clear"></div>
+								</div>
+								<div class="clear"></div>
+								<div style="width: 630px; height: 30px;">
+									<div style="width: 55px; height: 30px; margin: 0 auto;">
+										<input type="image" src="__HOME__/images/entrepre/bianji.gif"
+											id="editinvest">
+									</div>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						</if>
+						<!-- 融资需求信息显示 -->
+						<div class="middle" id="cd02" style="display: none;">
+							<div class="gezi">
+								<input type="hidden" name="investid" class="investid"
+									value="{$investid}" />
+								<div class="gezitwo">
+									<div class="woqq">
+										<font style="color: #f00; font-weight: normal">*</font> 预融资金额
+									</div>
+									<div class="kuang" id="budget02">{$budget}&nbsp;元</div>
+									<div class="clear"></div>
+								</div>
+								<div class="gezitwo">
+									<div class="woqq">
+										<font style="color: #f00; font-weight: normal">*</font>
+										单笔最低投资额
+									</div>
+									<div class="kuang" id="singleinvest02">{$singleinvest}&nbsp;元</div>
+									<div class="clear"></div>
+								</div>
+								<div class="gezitwo">
+									<div class="woqq">
+										<font style="color: #f00; font-weight: normal">*</font> 资金用途
+									</div>
+									<div class="kuang" id="purpose02">{$purpose}</div>
+									<div class="clear"></div>
+								</div>
+								<!-- <div class="gezione">
+									<div class="woqq">
+										<font style="color: #f00; font-weight: normal">*</font> 商业计划书
+									</div>
+									<div class="kuang">
+										<div id="businessplan02" style="float: left;">{$oldname}</div>
+										<a href="__BUSINESSPLAN__/{$businessplan}"
+											id="businessplanurl"
+											style="float: right; padding-left: 10px; color: blue;">http://{$businessplan}</a>
+									</div>
+									<div class="clear"></div>
+								</div> -->
+								<div class="gezitwo">
+									<div class="woqq">
+										<font style="color: #f00; font-weight: normal">*</font> 隐私设置
+									</div>
+									<div class="kuang" id="privacyset02">
+										<?php if($privacy == 1){echo '所有投资人可见';}else{echo '设为隐私';} ?>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<div class="gezione">
+									<div class="woqq">其他信息补充</div>
+									<div class="kuang" style="width: 480px; word-wrap: break-word;"
+										id="addinfo02">{$addinfo}</div>
+									<div class="clear"></div>
+								</div>
+								<div class="clear"></div>
+								<div style="width: 630px; height: 30px;">
+									<div style="width: 55px; height: 30px; margin: 0 auto;">
+										<input type="image" src="__HOME__/images/entrepre/bianji.gif"
+											id="editinvest">
+									</div>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<!-- 融资需求信息修改 -->
+						<div class="middle" id="cd03" style="display: none;">
+							<div class="gezi">
+								<form name="investform03" id="investform03" method="post"
+									action="?s=home/entrepre/updateinvest"
+									enctype="multipart/form-data">
+									<div>
+										<input type="hidden" name="investid" class="investid"
+											value="{$investid}" />
+									</div>
+									<div class="gezitwo">
+										<div class="woqq">
+											<font style="color: #f00; font-weight: normal">*</font> 预融资金额
+										</div>
+										<div class="kuang">
+											<textarea class="ldd" id="budget03" name="budget03"
+												placeholder="请输入正整数"
+												style="line-height: 30px; width: 350px; padding-left: 10px; font-size: 17px; resize: none;" />
+											</textarea>
+											&nbsp;元
+										</div>
+										<div style="line-height: 30px; color: #ccc; height: 30px;">
+											<img src="__HOME__/images/entrepre/wrong.png"
+												id="budgeterror31"
+												style="width: 30px; height: 30px; display: none;"> <img
+												src="__HOME__/images/entrepre/right.png" id="budgetright31"
+												style="width: 30px; height: 30px; display: none;">
+										</div>
+										<div class="clear"></div>
+									</div>
+									<div class="gezitwo">
+										<div class="woqq">
+											<font style="color: #f00; font-weight: normal">*</font>
+											单笔最低投资额
+										</div>
+										<div class="kuang">
+											<textarea class="ldd" id="singleinvest03"
+												name="singleinvest03" placeholder="请输入正整数"
+												style="line-height: 30px; width: 350px; padding-left: 10px; font-size: 17px; resize: none;" />
+											</textarea>
+											&nbsp;元
+										</div>
+										<div style="line-height: 30px; color: #ccc; height: 30px;">
+											<img src="__HOME__/images/entrepre/wrong.png"
+												id="singleinvesterror31"
+												style="width: 30px; height: 30px; display: none;"> <img
+												src="__HOME__/images/entrepre/right.png"
+												id="singleinvestright31"
+												style="width: 30px; height: 30px; display: none;">
+										</div>
+										<div class="clear"></div>
+									</div>
+									<div class="gezitwo">
+										<div class="woqq">
+											<font style="color: #f00; font-weight: normal">*</font> 资金用途
+										</div>
+										<div class="kuang">
+											<textarea class="ldd" id="purpose03" name="purpose03"
+												placeholder="项目名称不能超过80个字"
+												style="line-height: 30px; width: 350px; padding-left: 10px; font-size: 17px; resize: none;" />
+											</textarea>
+										</div>
+										<div style="line-height: 30px; color: #ccc; height: 30px;">
+											<img src="__HOME__/images/entrepre/wrong.png"
+												id="purposeerror31"
+												style="width: 30px; height: 30px; display: none;"> <img
+												src="__HOME__/images/entrepre/right.png" id="purposeright31"
+												style="width: 30px; height: 30px; display: none;">
+										</div>
+										<div class="clear"></div>
+									</div>
+									<!-- <div class="gezione">
+										<div class="woqq">
+											<font style="color: #f00; font-weight: normal">*</font> 商业计划书
+										</div>
+										<div class="kuang" style="width: 450px;">
+											请使用8-15页PPT <a href="__HOME__/loads/《商业计划书》模板.doc"
+												style="color: #3b70e1; text-decoration: underline">模板下载</a>
+											，文件大小不超过10M。
+											<div style="float: right" id="upplan03">
+												<input type="file" name="file_upload" id="file_upload03">
+												<script type="text/javascript">
+                                            $(document).ready(function($) {
+                                                $('#file_upload03').uploadify({
+                                                    'fileObjName':'businessplan',//设置一个名字，在服务器处理程序中根据该名字来取上传文件的数据
+                                                    'height' : 30,
+                                                    'swf' : '__STATIC__/uploadify/uploadify.swf',
+                                                    'uploader': '{:U("Entrepre/upplan")}',//上传文件触发的url
+                                                    'folder': '__STATIC__/Uploads/Bussinessplan',//服务端的上传目录
+                                                    'width' : 100,
+                                                    'fileExt' : '*.doc',    //可以选择的文件的类型
+                                                    'fileTypeExts' : '*.doc',   //允许上传的文件类型
+                                                    'fileSizeLimit' : '25MB',   //允许上传文件最大值
+                                                    'buttonText' : '重新上传',//上传按钮的文字
+                                                    'auto' : true,//文件选择完成后，是否自动上传
+                                                    'cancelImage' : '__STATIC__/uploadify/uploadify-cancel.png',//[必须设置]取消图片的路径
+                                                    'onUploadSuccess' : function(file, data, response) {
+                                                        var t = JSON.parse(data);
+                                                        $('#upplan03').hide();
+                                                        $('#upplan031').hide();
+                                                        $('#upplan032').show();
+                                                        $('#planoldname031').html(t.oldname); 
+                                                        $('#planoldname031').attr('href','__BUSINESSPLAN__/'+t.name); 
+                                                        $('#businessplan03').val(t.name); 
+                                                        $('#businessplanold03').val(t.oldname); 
+                                                    },
+                                                });
+                                            });
+                                        </script>
+											</div>
+											<div class="clear"></div>
+											文件显示
+											<div style="float: left;" id="upplan031">
+												<div class="succeedd">
+													<a href="" id="planoldname03"></a>
+												</div>
+												<div class="clear"></div>
+											</div>
+											<div style="float: left; display: none;" id="upplan032">
+												上传成功
+												<div class="succeedd">
+													<a href="" id="planoldname031"></a> 上传成功
+												</div>
+												<div class="clear"></div>
+											</div>
+										</div>
+										<div class="clear"></div>
+										商业计划书保存名
+										<input type="hidden" name="businessplan03" id="businessplan03"
+											value=""> <input type="hidden"
+											name="businessplanold03" id="businessplanold03" value="">
+										<div class="clear"></div>
+									</div> -->
+									<div class="gezitwo">
+										<div class="woqq">
+											<font style="color: #f00; font-weight: normal">*</font> 隐私设置
+										</div>
+										<div class="kuang">
+											<p>
+												<input type="radio" name="privacyset03" id="privacyset031"
+													class="input1" value="1" /> <label for="privacyset031">所有投资人可见</label>
+											</p>
+											<p>
+												<input type="radio" name="privacyset03" id="privacyset032"
+													class="input2" value="0" /> <label for="privacyset032">设为隐私</label>
+											</p>
+											<p>
+												<label>
+												如果设为隐私，则前台的页面不会显示融资金额</label>
+											</p>
+										</div>
+										<div id="privacyseterror31"
+											style="width: 95px; line-height: 30px; color: red; float: right; margin-right: 100px; margin-top: 30px;"></div>
+										<div class="clear"></div>
+									</div>
+									<div class="gezione">
+										<div class="woqq">其他信息补充</div>
+										<div class="kuang" style="width: 480px">
+											<textarea class="lpp" id="addinfo03" name="addinfo03"
+												placeholder="补充性内容，自行填写。"
+												style="resize: none; font-size: 17px;"></textarea>
+										</div>
+										<div class="clear"></div>
+									</div>
+									<div style="width: 630px; height: 30px; padding-top: 10px;">
+										<div style="width: 120px; height: 30px; margin: 0 auto;">
+											<input type="image" src="__HOME__/images/entrepre/chesl.gif"
+												id="updateinvest01" /> <a href="javascript:backinvest()">
+												<img src="__HOME__/images/entrepre/quxiao.gif">
+											</a>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div style="width: 758px; height: 35px;">
+							<div style="width: 244px; margin: 0 auto;">
+								<div class="next"
+									style="background: url('./Public/home/images/entrepre/xis.gif') no-repeat;">
+									<a href="__URL__/predit02&prid={$prid}">上一步</a>
+								</div>
+								<div class="next"
+									style="background: url('./Public/home/images/entrepre/xis.gif') no-repeat;">
+									<a href="__URL__/predit04&prid={$prid}" id="li4">下一步</a>
+								</div>
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</block>

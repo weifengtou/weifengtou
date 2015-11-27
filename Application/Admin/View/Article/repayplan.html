@@ -1,0 +1,189 @@
+<extend name="Public/base"/>
+
+<!-- 子导航 -->
+<block name="sidebar">
+  <include file="sidemenu" />
+</block>
+
+<block name="body">
+  <!-- 标题 -->
+  <div class="main-title">
+    <h2>投资人({$_total})</h2>
+  </div>
+
+  <!-- 按钮工具栏 -->
+  <div class="cf"></div>
+
+  <!-- 数据表格 -->
+  <div class="data-table">
+    <table class="">
+      <thead>
+        <tr>
+          <th class="row-selected row-selected">
+            <input class="check-all" type="checkbox"/>
+          </th>
+          <th class="">编号</th>
+          <th class="">投资人</th>
+          <th class="">投资金额</th>
+          <th class="">投资日期</th>
+          <th class="">还款状态</th>
+          <th class="">还款金额</th>
+          <th class="">还款明细</th>
+        </tr>
+      </thead>
+      <tbody>
+        <foreach name="list" item="vo">
+          <tr>
+            <td>
+              <input class="ids" type="checkbox" name="ids[]" value="{$vo.id}" />
+            </td>
+            <td id="prid">{$vo.id}</td>
+            <td>
+              <a href="{:U('Article/index?cate_id='.$vo['category_id'].'&pid='.$vo['id'])}" id="prname">{$vo.pjname}</a>
+            </td>
+            <td>{$vo.submit_time}</td>
+            <td>{$vo.update_time}</td>
+            <td>{$vo.status}</td>
+            <td>
+              <a href="{:U('Article/predit?id='.$vo['id'])}">编辑</a>
+            </td>
+
+            <td id="ratetd1{$vo.id}">
+              <!--进度1-->
+              <if condition="$vo.prrate eq -1">
+                <a href="javascript:rate1({$vo.id});" id="rate1{$vo.id}">通过</a>
+                <a href="javascript:rate0({$vo.id});" id="rate0{$vo.id}">不通过</a>
+                <elseif condition="$vo.prrate eq 0"/>
+                审核未通过
+                <elseif condition="$vo.prrate eq 1"/>
+                <a href="javascript:rate2({$vo.id})" id="rate2{$vo.id}">预热中</a>
+                <a href="javascript:rate3({$vo.id})" id="rate3{$vo.id}">正式上线</a>
+                <elseif condition="$vo.prrate eq 2"/>
+                <a href="javascript:rate3({$vo.id})" id="rate3{$vo.id}">正式上线</a>
+                <elseif condition="$vo.prrate eq 3"/>
+                正式上线
+              </if>
+            </td>
+
+            <td id="ratetd2{$vo.id}" style="display:none;">
+              <!--进度2-->
+              <a href="javascript:rate2({$vo.id})" id="rate2{$vo.id}">预热中</a>
+              <a href="javascript:rate3({$vo.id})" id="rate3{$vo.id}">正式上线</a>
+            </td>
+            <td>
+              <a href="javascript:fianacing({$vo.id})" id="fianacing{$vo.id}">{$vo.totalmoney}&frasl;{$vo.budget}</a>
+            </td>
+            <td>
+              <a href="{:U('Article/repayplan?id='.$vo['id'])}">生成还款计划</a>
+            </td>
+          </tr>
+        </foreach>
+      </tbody>
+    </table>
+
+  </div>
+
+  <!-- 分页 -->
+  <div class="page">{$_page}</div>
+</div>
+
+</block>
+<block name="script">
+<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+<php>
+  if(C('COLOR_STYLE')=='blue_color') echo '
+  <link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript" src="__STATIC__/json2.js"></script>
+<script type="text/javascript" src="__STATIC__/layer.min.js"></script>
+<script type="text/javascript" src="__STATIC__/layer.ext.js"></script>
+<script type="text/javascript">
+  function selectfun(obj,i) {    //项目分配
+    var prreviewid = $(obj).val();
+    var prreview = $(obj).find("option:selected").text();
+      var prname = $('#prname').html();
+      var prid = i;
+      var prreviewer = 'prreviewer'+i;
+      $.ajax({
+          type: "GET",
+          url: "__URL__/distribute&prid="+prid+"&prreviewid="+prreviewid+"&prreview="+prreview,
+          beforeSend:function(){
+            var r = confirm('是否确定将项目'+prname+'分配给'+prreview+'？');
+            if(r == true){
+              alert('项目'+prname+'分配给'+prreview+'!');
+              return true;
+            }else{
+              alert('请重新分配项目'+prname+'!');
+              return false;
+            }
+          },
+          success:function(data){
+            if(data==1){
+              $('#'+prreviewer).html(prreview);
+            }else{
+              $('#'+prreviewer).html('未分配');
+            }
+          } 
+        });
+    } 
+    function rate1(id){      //通过
+      var prid = id;
+      $.ajax({
+        type: "get",
+        url: "__URL__/rate1&prid="+prid,
+        success:function(data){
+          $('#ratetd1'+id).hide();
+          $('#ratetd2'+id).show();
+        }
+      });
+    }
+    function rate0(id){        //不通过
+      var prid = id;
+      layer.prompt({title: '输入原因，并确认',type: 3}, function(val,index){  //原因弹出层
+        var why = val;
+        layer.close(index); 
+        $.ajax({
+          type:"get",
+          url:"__URL__/why&prid="+prid+"&why="+why,
+          success:function(data){
+            if(data==1){
+              $('#ratetd1'+id).html('审核未通过');
+            } 
+          }
+        })
+      });
+    }
+    function rate2(id){    //预热中
+      var prid = id;
+      $.ajax({         
+        type: "get",
+        url: "__URL__/rate2&prid="+prid,
+        success:function(data){
+          $('#rate2'+id).hide();
+        }
+      });
+    }
+    function rate3(id){     //正式上线
+      var prid = id;
+      $.ajax({
+        type: "get",
+        url: "__URL__/rate3&prid="+prid,
+        success:function(data){
+          $('#rate2'+id).hide();
+        }
+      });
+    } 
+    function fianacing(id){   //已融资/总融资
+      var prid = id;
+      $.layer({
+        type: 2,
+        title: "融资信息", //不显示默认标题栏
+        shade: [0.8, '#000'], //不显示遮罩
+        area: ['850px', '600px'],
+        iframe: {src: '?s=article/financing&prid='+prid}
+      });
+    }
+</script>
+</block>

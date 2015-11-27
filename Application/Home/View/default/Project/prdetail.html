@@ -1,0 +1,54 @@
+<extend name="Base/prdetail"/>
+
+<block name="header">
+    <header>
+        <div class="bann" style="margin-top:10px;">
+            <?php if ($proInfo[0][top_show_img]): ?>
+            <img src="./Uploads/Banner/{$proInfo[0][top_show_img]}" style="width:1100px;height:295px;" />
+            <?php else: ?>
+            <img src="__HOME__/images/detail/bannwft.jpg" style="width:1100px;height:295px;" />
+            <?php endif ?></div>
+    </header>
+    <!-- ==============================================js特效================================================= -->
+    <include file="index/effect" />
+    <!-- ===================================================================================================== -->
+</block>
+
+<block name="body">
+
+    <div class="all">
+
+        <!--总-->
+
+        <div class="allmain">
+
+            <!--pjname and create_person-->
+            <include file="Project:pjname_person" />
+
+            <!--项目简介-->
+            <include file="Project:xmjj" />
+
+            <!--证件展示-->
+            <include file="Project:zjzs" />
+
+            <!--图片展示（js部分）-->
+            <include file="Project:tpzs" />
+
+            <!--项目团队-->
+            <include file="Project:xmtd" />
+
+            <!--收益模型解释-->
+            <include file="Project:pinglun" />
+
+            <!--评论-->
+            
+
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    <include file="Public:minilogin" />
+    
+    
+
+</block>

@@ -1,0 +1,111 @@
+<?php 
+    $is_att = M('attention')->where("uid='$userinfo[id]' AND atted_childid='$_GET[pid]'")->limit(1)->select();
+    $atts = M('attention')->where("atted_childid='$_GET[pid]'")->select();
+    if ($is_att) {
+        $att_status = "已关注";
+    }else{
+        $att_status = "关注";
+    }
+
+    $yts = M('Webmsg')->where("receiveid='$_GET[pid]'")->select();
+?>
+<div class="mendingr_s"></div>
+<div class="xmainr_a">
+
+    <div class="attention">
+        <div class="attention_l">
+            <img src="__IMG__/project/prdetail/gz1.gif" />
+        </div>
+        <div class="attention_r">
+            <a id="guan_zhu">
+                {:count($atts)} <span><font>{$att_status}</font></span>
+            </a>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script>
+    jQuery(document).ready(function($) {
+        var pid = "{$proInfo[0][id]}"
+        $('#guan_zhu').on('click','span', function(e) {
+            if ($("#guan_zhu>span").html()=="<font>关注</font>") {
+                $.post('?s=home/user/showloginStyle', {pid:pid}, function(data, textStatus, xhr) {
+                    if (data==0) {
+                        minilogin()
+                    }
+                    if (data==1||data==2) {
+                        $.post('?s=home/project/attention',{pid:pid}, function(data, textStatus, xhr) {
+                            if (data=="关注成功！") {
+                                layer.alert(data,1)
+                                location.reload() 
+                            }
+                            if (data=="不能关注自己！") {
+                                layer.alert(data)
+                            }
+                        });
+                    }
+                    if (data==3) {
+                        layer.alert("你尚未注册完成！",8)
+                    }
+                });
+            }else{
+                $.post('?s=Home/Project/delAtt',{pid:pid}, function(data, textStatus, xhr) {
+                    if(data=="取消成功!"){
+                        location.reload() 
+                    }
+                    layer.alert(data)
+                });
+            }
+        });
+    });
+    </script>
+
+    <div class="attention" style="border-right:none; padding:12px 0px 14px 20px;">
+        <div class="attention_l">
+            <img src="__IMG__/project/prdetail/ytan2.gif" />
+        </div>
+        <div class="attention_r">
+            <a id="yue_tan">
+                {:count($yts)} <span><font>约谈</font></span>
+            </a>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <script>
+    jQuery(document).ready(function($) {
+        var pid = "{$proInfo[0][id]}"
+        $("#yue_tan").on('click', 'span', function(event) {
+            $.post('?s=home/user/showloginStyle',{pid:pid}, function(data, textStatus, xhr) {
+                if (data==0) {
+                    minilogin()
+                }
+                if (data==1||data==2) {
+                    $.post('?s=Home/Project/isWebMsgYou',{pid:pid}, function(data, textStatus, xhr) {
+                        if (data=="不能对自己发送！") {
+                            layer.alert(data)
+                            return false;
+                        }
+                        layer.prompt({
+                            type: 3, 
+                            title: '站内信'
+                        }, function(val, index, elem){
+                            if (val=='') {
+                                layer.alert("不能为空！")
+                                return false;
+                            }
+                            $.post('?s=home/project/webMsg', {pid:pid,val:val}, function(data, textStatus, xhr) {
+                                layer.alert(data,1)
+                                location.reload() 
+                            });
+                        })
+                    });
+                }
+                if (data==3) {
+                    layer.alert("你尚未注册完成！",8)
+                }
+            });
+        });
+    });
+    </script>
+    <div class="clear"></div>
+</div>
+<div class="mendingr_x"></div>

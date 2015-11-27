@@ -1,0 +1,29 @@
+<div class="article_rd">
+	<ul>
+		<li>
+			<span><a href="{:U('Article/lists?category=news')}">
+				新闻中心
+			</a></span>
+		</li>
+		<volist name="category" id="cate">
+			<eq name="current" value="$cate['id']">
+				<li class="active">
+					<a href="{:U('Article/lists?category='.$cate['name'])}">
+						{$cate.title}
+					</a>
+				</li>
+			<else/>
+				<li>
+					<a href="{:U('Article/lists?category='.$cate['name'])}">
+						{$cate.title}
+					</a>
+				</li>
+			</eq>
+		</volist>
+	</ul>
+</div>
+
+<div class="ewm">
+	<img src="__STATIC__/images/weixin1.gif" width="189" height="189" alt="微风投官方微信" />
+	关注【微风投】微信订阅号
+</div>

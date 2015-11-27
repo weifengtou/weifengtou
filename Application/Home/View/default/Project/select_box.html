@@ -1,0 +1,449 @@
+<div class="selectArea">
+    <ul class="select">
+        <?php
+        if (I("get.renzheng")=="other") {
+            $where_renzheng = "/renzheng/other";
+        }
+        if (I("get.renzheng")!="other"&&is_array($project)) {
+            $is_attr_display = '';
+        }else{
+            $is_attr_display = 'none';
+        }      
+        ?>
+        <li class="select-list" style="display:{$is_attr_display}">
+            <dl>
+                <dt class="select_s"><a href="?s=Home/Project/project"></a></dt>
+
+                <if condition="$prrateid eq ''">
+                    <dd class="selected"> 
+                        <a href="?s=Home/Project/project" class="rightnow" id="li_1">所有项目[{$cs[t]}]</a>
+                    </dd>
+                        <else/>
+                    <dd>
+                        <a href="?s=Home/Project/project" id="li_1">所有项目[{$cs[t]}]</a>
+                    </dd>
+                </if>
+                <if condition="$prrateid eq 2">
+                    <dd class="selected"> 
+                        <a href="?s=Home/Project/project&prrateid={$prrates[3][prrateid]}" class="rightnow">{$prrates[3][prratename]}[{$cs[3]}]</a>
+                    </dd>
+                        <else />
+                    <dd>
+                        <a href="?s=Home/Project/project&prrateid={$prrates[3][prrateid]}" id="li_2">{$prrates[3][prratename]}[{$cs[3]}]</a>
+                    </dd>
+                </if>
+                <if condition="$prrateid eq 3">
+                    <dd class="selected"> 
+                        <a href="?s=Home/Project/project&prrateid={$prrates[4][prrateid]}" class="rightnow">{$prrates[4][prratename]}[{$cs[4]}]</a>
+                    </dd>
+                        <else/>
+                    <dd>
+                        <a href="?s=Home/Project/project&prrateid={$prrates[4][prrateid]}" id="li_3">{$prrates[4][prratename]}[{$cs[4]}]</a>
+                    </dd>
+                </if>
+                <if condition="$prrateid eq 4">
+                    <dd class="selected"> 
+                        <a href="?s=Home/Project/project&prrateid={$prrates[5][prrateid]}" class="rightnow">{$prrates[5][prratename]}[{$cs[5]}]</a>
+                    </dd>
+                        <else/>
+                    <dd>
+                        <a href="?s=Home/Project/project&prrateid={$prrates[5][prrateid]}" id="li_4">{$prrates[5][prratename]}[{$cs[5]}]</a>
+                    </dd>
+                </if>
+            </dl>
+            <div class="clear"></div>
+
+        </li>
+        <!--热门行业-->
+        <li class="select-list">
+            <dl id="select1">
+                <dt class="select_h"><a href="__URL__/selectResult{$where_renzheng}&trade=&area={$area}"></a></dt>
+                <!-- <if condition="$trade eq ''">
+                <dd class="select-all selected">
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=&area={$area}">全部</a>
+
+                </dd>
+                <else />
+                <dd class="select-all">
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=&area={$area}">全部</a>
+                </dd>
+            </if>
+            -->
+            <if condition="$trade eq 100100">
+                <dd class="selected">
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=100100&area={$area}">餐饮</a>
+                </dd>
+                <else />
+                <dd >
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=100100&area={$area}">餐饮</a>
+                </dd>
+            </if>
+            <if condition="$trade eq 110100">
+                <dd  class="selected">
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=110100&area={$area}">电子电信</a>
+                </dd>
+                <else />
+                <dd>
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=110100&area={$area}">电子电信</a>
+                </dd>
+            </if>
+            <if condition="$trade eq 120100">
+                <dd class="selected">
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=120100&area={$area}">服装纺织</a>
+                </dd>
+                <else />
+                <dd>
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=120100&area={$area}">服装纺织</a>
+                </dd>
+            </if>
+            <if condition="$trade eq 130100">
+                <dd class="selected">
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=130100&area={$area}">广告/出版</a>
+                </dd>
+                <else />
+                <dd>
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=130100&area={$area}">广告/出版</a>
+                </dd>
+            </if>
+            <if condition="$trade eq 140100">
+                <dd class="selected">
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=140100&area={$area}">互联网</a>
+                </dd>
+                <else />
+                <dd>
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=140100&area={$area}">互联网</a>
+                </dd>
+            </if>
+            <if condition="$trade eq 150100">
+                <dd class="selected">
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=150100&area={$area}">教育培训</a>
+                </dd>
+                <else />
+                <dd>
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=150100&area={$area}">教育培训</a>
+                </dd>
+            </if>
+            <if condition="$trade eq 160100">
+                <dd class="selected">
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=160100&area={$area}">家居/装潢</a>
+                </dd>
+                <else />
+                <dd>
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=160100&area={$area}">家居/装潢</a>
+                </dd>
+            </if>
+            <if condition="$trade eq 170100">
+                <dd class="selected">
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=170100&area={$area}">建筑/房地产</a>
+                </dd>
+                <else />
+                <dd>
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=170100&area={$area}">建筑/房地产</a>
+                </dd>
+            </if>
+            <if condition="$trade eq 180100">
+                <dd class="selected">
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=180100&area={$area}">交通运输</a>
+                </dd>
+                <else />
+                <dd>
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=180100&area={$area}">交通运输</a>
+                </dd>
+            </if>
+            <if condition="$trade eq 190100">
+                <dd class="selected">
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=190100&area={$area}">金融</a>
+                </dd>
+                <else />
+                <dd>
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=190100&area={$area}">金融</a>
+                </dd>
+            </if>
+            <if condition="$trade eq 200100">
+                <dd class="selected">
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=200100&area={$area}">娱乐</a>
+                </dd>
+                <else />
+                <dd>
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=200100&area={$area}">娱乐</a>
+                </dd>
+            </if>
+            <if condition="$trade eq 210100">
+                <dd class="selected">
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=210100&area={$area}">生活服务</a>
+                </dd>
+                <else />
+                <dd>
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=210100&area={$area}">生活服务</a>
+                </dd>
+            </if>
+            <if condition="$trade eq 220100">
+                <dd class="selected">
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=220100&area={$area}">生物医药</a>
+                </dd>
+                <else />
+                <dd>
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=220100&area={$area}">生物医药</a>
+                </dd>
+            </if>
+            <if condition="$trade eq 230100">
+                <dd class="selected">
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=230100&area={$area}">农产品</a>
+                </dd>
+                <else />
+                <dd>
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=230100&area={$area}">农产品</a>
+                </dd>
+            </if>
+            <if condition="$trade eq 240100">
+                <dd class="selected">
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=240100&area={$area}">其他</a>
+                </dd>
+                <else />
+                <dd>
+                    <a href="__URL__/selectResult{$where_renzheng}&trade=240100&area={$area}">其他</a>
+                </dd>
+            </if>
+        </dl>
+        <div class="clear"></div>
+    </li>
+    <!--热门地区-->
+    <li class="select-list">
+        <dl id="select2">
+            <dt class="select_d"><a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area="></a></dt>
+            <!-- <if condition="$area eq ''">
+            <dd class="select-all selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=">全部</a>
+            </dd>
+            <else />
+            <dd class="select-all">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=">全部</a>
+            </dd>
+        </if>
+        -->
+        <if condition="$area eq 110000">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=110000">北京</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=110000">北京</a>
+            </dd>
+        </if>
+        <if condition="$area eq 310000">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=310000">上海</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=310000">上海</a>
+            </dd>
+        </if>
+        <if condition="$area eq 440100">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=440100">广州</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=440100">广州</a>
+            </dd>
+        </if>
+        <if condition="$area eq 410100">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=410100">郑州</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=410100">郑州</a>
+            </dd>
+        </if>
+        <if condition="$area eq 410200">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=410200">开封</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=410200">开封</a>
+            </dd>
+        </if>
+        <if condition="$area eq 410300">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=410300">洛阳</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=410300">洛阳</a>
+            </dd>
+        </if>
+        <if condition="$area eq 410400">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=410400">平顶山</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=410400">平顶山</a>
+            </dd>
+        </if>
+
+        <if condition="$area eq 410500">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=410500">安阳</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=410500">安阳</a>
+            </dd>
+        </if>
+
+        <if condition="$area eq 410600">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=410600">鹤壁</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=410600">鹤壁</a>
+            </dd>
+        </if>
+
+        <if condition="$area eq 410700">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=410700">新乡</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=410700">新乡</a>
+            </dd>
+        </if>
+
+        <if condition="$area eq 410800">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=410800">焦作</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=410800">焦作</a>
+            </dd>
+        </if>
+
+        <if condition="$area eq 410900">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=410900">濮阳</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=410900">濮阳</a>
+            </dd>
+        </if>
+
+        <if condition="$area eq 411000">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=411000">许昌</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=411000">许昌</a>
+            </dd>
+        </if>
+
+        <if condition="$area eq 411100">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=411100">漯河</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=411100">漯河</a>
+            </dd>
+        </if>
+
+        <if condition="$area eq 411200">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=411200">三门峡</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=411200">三门峡</a>
+            </dd>
+        </if>
+
+        <if condition="$area eq 411300">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=411300">南阳</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=411300">南阳</a>
+            </dd>
+        </if>
+
+        <if condition="$area eq 411400">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=411400">商丘</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=411400">商丘</a>
+            </dd>
+        </if>
+
+        <if condition="$area eq 411500">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=411500">信阳</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=411500">信阳</a>
+            </dd>
+        </if>
+
+        <if condition="$area eq 411600">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=411600">周口</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=411600">周口</a>
+            </dd>
+        </if>
+
+        <if condition="$area eq 411700">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=411700">驻马店</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=411700">驻马店</a>
+            </dd>
+        </if>
+
+        <if condition="$area eq 411800">
+            <dd class="selected">
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=411800">济源</a>
+            </dd>
+            <else />
+            <dd>
+                <a href="__URL__/selectResult{$where_renzheng}&trade={$trade}&area=411800">济源</a>
+            </dd>
+        </if>
+
+    </dl>
+    <div class="clear"></div>
+</li>
+<!--统计-->
+<li>
+    <dl>
+        <dt class="select_t"></dt>
+        <dd>
+        <?php if (is_array($project)): ?>
+            &nbsp;&nbsp;目前共计拥有 <font style="color:#ff4d4d">{$cs[t]}项好项目</font>
+        <?php endif; ?>
+        <?php if (is_array($invs)): ?>
+            &nbsp;&nbsp;目前共计拥有 <font style="color:#ff4d4d">{:count(M('investor')->where("iden_status>1")->field("id")->select())}个投资人</font>
+        <?php endif; ?>
+            <!-- ，今日 <font style="color:#ff4d4d">更新2项</font>
+        -->
+    </dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="clear"></div>

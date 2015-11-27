@@ -1,0 +1,87 @@
+<extend name="Base/news"/>
+<block name="header">
+
+<?php 
+	C('TITLE',$info[title]."—微风投");
+	C("KEYWORDS",$info[keywords]);
+    C('DESCRIPTION',mb_substr($info[description] , 0 , 150));
+?>
+	<div class="all">
+
+		<!--总-->
+
+		<div class="allmain">
+
+			<div class="biaotii">
+					
+					<a href="index.php?s=home">微风投</a><span> > <a href="index.php?s=/Home/Article/lists/category/news.html">新闻中心</a> > <a href="{:U('Article/lists?category='.get_category_name($info[category_id]))}">{:get_category($info[category_id],'title')}</a> > {$info[title]}</span>
+				
+			</div>
+
+			<div class="fen"></div>
+
+			<!--主体-->
+			<div class="article">
+
+				<div class="article_r">
+					{:W('Category/lists', array(41, true))}
+				</div>
+
+
+				<div class="article_lll">
+
+					<div class="article_l">
+
+						<div class="article_ls">
+							<h2>{$info.title}</h2>
+
+							<p style="text-align:center">
+								作者：{$info.uid|get_username} &nbsp;&nbsp;&nbsp;&nbsp;
+                                           发布时间：{$info.create_time|date='Y-m-d H:i',###}
+							</p>
+
+						</div>
+
+						<div class="content">
+
+							{$info.content}
+
+						</div>
+
+						<div class="preene">
+							<?php 
+								$pv = M()->query("select * from __DOCUMENT_ARTICLE__ where id<'$_GET[id]' order by id DESC LIMIT 1");
+								$pv_title = M('Document')->where("id=".$pv[0][id])->find();
+								$pv_title = $pv_title[title];
+								$nt = M()->query("select * from __DOCUMENT_ARTICLE__ where id>'$_GET[id]' order by id ASC LIMIT 1");
+								$nt_title = M('Document')->where("id=".$nt[0][id])->find();
+								$nt_title = $nt_title[title];
+							?>
+							<p>上一篇： <?php if($pv): ?>
+											<a href="{:U('?id='.$pv[0][id])}">{$pv_title}</a>
+										<?php else: ?>
+											没有了
+										<?php endif; ?>	
+							</p>
+							<p>下一篇：	<?php if($nt): ?>
+											<a href="{:U('?id='.$nt[0][id])}">{$nt_title}</a>
+										<?php else: ?>
+											没有了
+										<?php endif; ?>
+							</p>
+						</div>
+
+					</div>
+
+				</div>
+
+				
+				<div class="clear"></div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</block>

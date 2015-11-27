@@ -1,0 +1,53 @@
+<extend name="Base/invDisplay"/>
+
+<block name="header">
+	<header>
+		<div class="littlebanner">
+			<img src="__HOME__/images/entrepre/cailing.gif" />
+		</div>
+	</header>
+	<!-- ==============================================js特效================================================= -->
+	<include file="index/effect" />
+	<!-- =================================================================================================== -->
+</block>
+<block name="body">
+	<?php $inv_detail = get_child_detail($investor[0][id],2); ?>
+	<div class="all">
+		<!--总-->
+		<div class="allmain">
+			<!--投资人简介-->
+			<include file="Invhome:inv_person" />
+
+			<!--投资理念-->
+			<include file="Invhome:tzln" />
+
+			<!-- 团队成员 -->
+			<?php if ($inv_detail[0][type]==2): ?>
+			<include file="Invhome:tdcy" />
+			<?php endif ?>
+
+			<!--评论-->
+			<include file="Invhome:pinglun" />
+
+			<!--过往投资案例-->
+			<include file="Invhome:gwal" />
+
+		</div>
+
+	</div>
+
+	<include file="Public:minilogin" />
+
+	<!--预约出资-->
+	<div id="mini_yycz" style="width:460px; height:280px; background-color:#8f8f8f; color:#fff;display:none;">
+		<div style="padding:20px;">
+			<p>请输入你的预计投资金额并检查，我们将在一周内回复</p>
+			<input type="text" id="cz_maney" placeholder="出资金额(元)"/>
+			<textarea id="cz_msg" placeholder="出资信息" style="width:400px; height:150px;resize:none;"></textarea>
+			<br>
+			<a href="javascript:czok();">
+				<img src="./Public/Home/images/detail/qrcz.gif" alt="确认出资" />
+			</a>
+		</div>
+	</div>
+</block>

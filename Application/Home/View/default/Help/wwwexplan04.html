@@ -1,0 +1,118 @@
+<extend name="Base/register"/>
+
+<block name="header">
+	<header>
+		<div class="littlebanner">
+			<img src="__HOME__/images/entrepre/cailing.gif" />
+		</div>
+	</header>
+	<!-- ==============================================js特效================================================= -->
+	<include file="index/effect" />
+    <!-- ===================================================================================================== -->
+</block>
+
+<block name="body">
+	<div class="all">
+		<div class="all_main">
+			<include file="wwwexplanTab"/>
+			<script type="text/javascript">
+			$('#tab04').addClass('now');
+			$('#tab01').removeClass('now');
+			$('#tab02').removeClass('now');
+			$('#tab03').removeClass('now');
+			</script>
+			<!--融资后流程详解-->
+			<div class="shuomm">
+				<div class="enzz">
+					<h3>融资后流程详解</h3>
+				</div>
+				<div>
+					<img src="__HOME__/images/wwwexplan/lct06.jpg" alt="融资后流程" />
+				</div>
+				<div class="liness"></div>
+				<div>
+
+					<div class="zuo_l" style="height:160px"></div>
+
+					<div class="you_r">
+
+						<div class="contentn">
+							<h3>1.封闭期(3-6个月)</h3>
+							<p>资金按用款计划书分批到位，根据不用项目情况3—6个月内分批次划拨借款金额。</p>
+							<div class="linee"></div>
+						</div>
+
+						<div class="contentn">
+							<h3>2.回本期(12-15个月)</h3>
+							<p>根据《微风投商业模式投资合作协议》制定项目方回本周期，在12—15个月内依次归还借款金额，减轻还款压力。</p>
+							<div class="linee"></div>
+						</div>
+
+						<div class="contentn">
+							<h3>3.利润期(36个月)</h3>
+							<p>需支付投资人收益周期为期36个月，年化利润率在15%---18%之间</p>
+
+						</div>
+
+					</div>
+
+					<div class="clear"></div>
+				</div>
+
+			</div>
+
+			<!--融资后的权利和义务-->
+			<div class="shuomm">
+				<div class="enzz">
+					<h3>融资后的权利和义务</h3>
+				</div>
+				<div>
+					<img src="__HOME__/images/wwwexplan/lct07.jpg" />
+					<img src="__HOME__/images/wwwexplan/lct013.jpg" />
+				</div>
+			</div>
+
+			<!--了解合作协议-->
+			<div class="shuomm">
+				<div class="enzz">
+					<h3>了解合作协议</h3>
+				</div>
+
+				<div>
+
+					<div class="zuo_l" style="height:0px"></div>
+
+					<div class="you_r">
+
+						<div class="conten">
+
+							<p>《微风投商业模式投资合作协议》是依法由项目方和投资人协商一致、以书面形式签订的契约。</p>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+        
+        
+    
+			</div>
+
+			<div>
+				<div class="anrzh">
+					<a href="javascript:createproject();">
+						<img src="__HOME__/images/wwwexplan/renzheng02.gif" width="160" height="45" alt="提交融资店铺" />
+					</a>
+				</div>
+				<div class="antzrz">
+					<a href="javascript:becomeinvestor();">
+						<img src="__HOME__/images/wwwexplan/renzheng03.gif" width="160" height="45" alt="投资人认证" />
+					</a>
+				</div>
+				<div class="clear"></div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- =====================小登录窗口===================================== -->
+<include file="Public:minilogin"/>
+</block>

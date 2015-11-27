@@ -1,0 +1,147 @@
+* { margin: 0; padding: 0; }
+body {font: 14px; color: #444; background:#f6f6f6; font-family:"微软雅黑" }
+img { border: 0; vertical-align: bottom; }
+ul, li, dt { margin: 0; padding: 0; list-style: none; }
+a { text-decoration: none; }
+a:link { color: #000000; text-decoration: none; }
+a:hover {  cursor: pointer; color:#FF0099; text-decoration: none;}
+a.underline { text-decoration: underline; }
+a:visited { color: #000000; text-decoration: none; }
+form, ul, li, p, h1, h2, h3, h4, h5, h6 { padding:0; margin:0}
+.clear { clear: both; line-height:0px;height:1px;overflow:hidden;*display:inline; }
+/*----------------------顶部-------------------------*/
+
+.beknowa_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa1.jpg) center center no-repeat}
+
+.beknowa_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc1.jpg) center center no-repeat}
+
+.beknowb_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa2.jpg) center center no-repeat}
+
+.beknowb_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc2.jpg) center center no-repeat}
+
+.beknowc_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa3.jpg) center center no-repeat}
+
+.beknowc_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc3.jpg) center center no-repeat}
+
+.beknowd_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa4.jpg) center center no-repeat}
+
+.beknowd_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc4.jpg) center center no-repeat}
+
+.beknowe_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa5.jpg) center center no-repeat}
+
+.beknowe_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc5.jpg) center center no-repeat}
+
+.beknowf_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa6.jpg) center center no-repeat}
+
+.beknowf_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc6.jpg) center center no-repeat}
+
+.beknowg_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa7.jpg) center center no-repeat}
+
+.beknowg_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc7.jpg) center center no-repeat}
+
+.beknowh_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa8.jpg) center center no-repeat}
+
+.beknowh_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc8.jpg) center center no-repeat}
+
+.beknowi_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa9.jpg) center center no-repeat}
+
+.beknowi_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc9.jpg) center center no-repeat}
+
+.beknowj_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa10.jpg) center center no-repeat}
+
+.beknowj_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc10.jpg) center center no-repeat}
+
+.beknowk_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa11.jpg) center center no-repeat}
+
+.beknowk_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc11.jpg) center center no-repeat}
+
+.beknowl_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa12.jpg) center center no-repeat}
+
+.beknowl_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc12.jpg) center center no-repeat}
+
+.beknowm_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa13.jpg) center center no-repeat}
+
+.beknowm_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc13.jpg) center center no-repeat}
+
+.beknown_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa14.jpg) center center no-repeat}
+
+.beknown_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc14.jpg) center center no-repeat}
+
+.beknowo_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa15.jpg) center center no-repeat}
+
+.beknowo_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc15.jpg) center center no-repeat}
+
+.beknowp_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa16.jpg) center center no-repeat}
+
+.beknowp_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc16.jpg) center center no-repeat}
+
+.beknowq_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa17.jpg) center center no-repeat}
+
+.beknowq_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc17.jpg) center center no-repeat}
+
+.beknowr_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa18.jpg) center center no-repeat}
+
+.beknowr_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc18.jpg) center center no-repeat}
+
+.beknows_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa19.jpg) center center no-repeat}
+
+.beknows_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc19.jpg) center center no-repeat}
+
+.beknowt_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa20.jpg) center center no-repeat}
+
+.beknowt_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc20.jpg) center center no-repeat}
+
+.beknowu_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa21.jpg) center center no-repeat}
+
+.beknowu_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc21.jpg) center center no-repeat}
+
+.beknowv_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa22.jpg) center center no-repeat}
+
+.beknowv_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc22.jpg) center center no-repeat}
+
+.beknoww_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa23.jpg) center center no-repeat}
+
+.beknoww_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc23.jpg) center center no-repeat}
+
+.beknowx_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa24.jpg) center center no-repeat}
+
+.beknowx_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc24.jpg) center center no-repeat}
+
+.beknowy_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa25.jpg) center center no-repeat}
+
+.beknowy_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc25.jpg) center center no-repeat}
+
+.beknowz_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa26.jpg) center center no-repeat}
+
+.beknowz_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc26.jpg) center center no-repeat}
+
+.beknowaa_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa27.jpg) center center no-repeat}
+
+.beknowaa_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc27.jpg) center center no-repeat}
+
+.beknowab_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa28.jpg) center center no-repeat}
+
+.beknowab_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc28.jpg) center center no-repeat}
+
+.beknowac_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa29.jpg) center center no-repeat}
+
+.beknowac_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc29.jpg) center center no-repeat}
+
+.beknowad_a{ width:100%; height:200px; margin:0 auto; background:url(../images/knowYou/knowa30.jpg) center center no-repeat}
+
+.beknowad_c{ width:1366px; height:200px; margin:0 auto; background:url(../images/knowYou/knowc30.jpg) center center no-repeat}
+
+.beknowae_a{ width:100%; height:192px; margin:0 auto; background:url(../images/knowYou/knowa31.jpg) center center no-repeat}
+.beknowae_b{ width:1920px; height:192px; margin:0 auto; background:url(../images/knowYou/knowb31.jpg) center center no-repeat}
+.beknowae_c{ width:1366px; height:192px; margin:0 auto; background:url(../images/knowYou/knowc31.jpg) center center no-repeat}
+
+.beknowaf_a{ width:100%; height:70px; margin:0 auto; background:url(../images/knowYou/knowa32.jpg) center center no-repeat}
+
+.beknowaf_c{ width:1366px; height:70px; margin:0 auto; background:url(../images/knowYou/knowc32.jpg) center center no-repeat}
+.beknowaf_d a{ width:423px; height:70px; background:url(../images/knowYou/anniu02.jpg) center center no-repeat; margin:0 auto; cursor:pointer; display:block;}
+.beknowaf_d a:hover{ background:url(../images/knowYou/anniu03.jpg) center center no-repeat}
+
+
+.beknowag_a{ width:100%; height:149px; margin:0 auto; background:url(../images/knowYou/knowa33.jpg) center center no-repeat}
+
+.beknowag_c{ width:1366px; height:149px; margin:0 auto; background:url(../images/knowYou/knowc33.jpg) center center no-repeat}

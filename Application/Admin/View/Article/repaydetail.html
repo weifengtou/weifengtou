@@ -1,0 +1,289 @@
+<extend name="Public/base"/>
+
+<!-- 子导航 -->
+<block name="sidebar">
+	<include file="sidemenu" />
+</block>
+
+<block name="body">
+<script type="text/javascript" src="__STATIC__/laydate/laydate.js"></script>
+<script type="text/javascript" src="__STATIC__/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="__STATIC__/jQueryValidation/lib/jquery.validate.js"></script>
+<script type="text/javascript" src="__STATIC__/jQueryValidation/lib/jquery.metadata.js"></script>
+<script type="text/javascript" src="__STATIC__/jQueryValidation/lib/jquery.validate.messages_cn.js"></script>
+
+	<div>
+		<!-- 标题 -->
+		<div class="main-title">
+			<h2>还款详情({$_total})</h2>
+			<p style="float:right;font-size:16px;"><a href="javascript:history.go(-1);">返回</a></p>
+			<br><br><hr>
+			<div id="hkxm">
+				<div class="hkxm"> <span><strong>项目名:</strong></span> <?php $proinfo = M('project')->where("id='".$fininfo[0][prid]."'")->limit("1")->select();echo $proinfo[0][pjname]; ?></div>
+				<div class="hkxm"> <span><strong>投资人:</strong></span> <?php $userinfo = M('homeuser')->where("id='".$fininfo[0][pid]."'")->limit("1")->select();echo $userinfo[0][username]; ?></div>
+				<div class="hkxm"> <span><strong>投资日期:</strong></span> {$fininfo[0][investtime]}</div>
+				<div class="hkxm"> <span><strong>投资金额:</strong></span> {$fininfo[0][money]}(元)</div>
+				<div class="hkxm"> <span><strong>还款开始时间:</strong></span> {$fininfo[0][paybacktime]}</div>
+				<div class="hkxm"> <span><strong>回本期:</strong></span> {$fininfo[0][catipalperiod]}</div>
+				<div class="hkxm"> <span><strong>收益期:</strong></span> {$fininfo[0][interestperiod]}</div>
+				<div class="hkxm"> <span><strong>收益率:</strong></span> 千分之{$fininfo[0][yield]}</div>
+			</div>
+		</div>
+
+		<!-- 信息和操作 -->
+		<div id="ined">
+			<div class="ined">实际应还款总金额:<?php echo $total_money = $fininfo[0][money]+intval(($fininfo[0][money]*$fininfo[0][yield]/1000)*$fininfo[0][interestperiod]); ?>(元)</div>
+			<div class="ined"> 已还款:
+			<?php 
+				$total_repay = 0; 
+				foreach ($repays as $key => $value) {
+					$total_repay += $value[repay_money];
+				}
+				echo $total_repay; 
+			?>(元)</div>
+			<div class="ined"><a href="?s=Article/hasrepay&fin_id={$fininfo[0][id]}">还款记录</a></div>
+			<div class="ined"><a href="javascript:repaymoney();">进行还款</a></div>
+			<div class="clear"></div>
+		</div>
+		<br>
+		<hr>
+		<!-- 按钮工具栏 -->
+		<div class="cf"></div>
+		<!-- 数据表格 -->
+		<div class="data-table">
+			<table class="">
+				<thead>
+					<tr>
+						<th class="row-selected row-selected">
+							<input class="check-all" type="checkbox"/>
+						</th>
+						<th class="">编号</th>
+						<th class="">第几期</th>
+						<th class="">期名</th>
+						<!-- <th class="">开始日期</th> -->
+						<th class="">截止日期</th>
+						<th class="">应还款(元)</th>
+						<th class="">本期实还(元)</th>
+						<th class="">应还款总额(元)</th>
+						<th class="">截止日期实还(元)</th>
+						<th class="">拖欠状态</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="list" item="vo">
+						<tr>
+							<td>
+								<input class="ids" type="checkbox" name="ids[]" value="{$vo.id}" />
+							</td>
+							<td id="prid">{$vo.id}</td>
+							<td>{$vo[m_id]}</td>
+							<td>{$vo[m_name]}</td>
+							<!-- <td>{$vo[begin_time]}</td> -->
+							<td>{$vo[end_time]}</td>
+							<td>{$vo[plan_money]}</td>
+							<td>
+								<?php 
+									$fin_id = $fininfo[0][id];
+									$sql = "SELECT repay_money FROM `wft_repay` WHERE
+									fin_id = '$fin_id' AND
+									repay_time BETWEEN '$vo[begin_time]' AND '$vo[end_time]' 
+									AND repay_time<'$vo[end_time]'";
+									$thisrepay = M('')->query($sql);
+									$thispays = 0;
+									foreach ($thisrepay as $key => $value) {
+										$thispays +=$value[repay_money];
+									}
+									echo $thispays;
+								?>
+							</td>
+							<td>
+								<?php 
+									$fin_id = $fininfo[0][id];
+									$fin_m_huiben = $fininfo[0][catipalperiod];
+									if ($vo[m_id]>$fin_m_huiben) {
+										echo $yhze = $fininfo[0][money]+intval(($vo[m_id]-$fin_m_huiben)*$fininfo[0][money]*$fininfo[0][yield]/1000);
+									}else if($vo[m_id]==$fin_m_huiben){
+										echo $yhze = $fininfo[0][money];
+									}else{
+										echo $yhze = intval($vo[m_id]*$fininfo[0][money]/$fin_m_huiben);
+									}
+								?>
+							</td>
+							<td>
+								<?php if (time() < strtotime($vo[end_time])): ?>
+									空
+								<?php else: ?>
+									<?php 
+										$sql="SELECT
+											SUM(wft_repay.repay_money) AS yh
+											FROM `wft_repay`
+											WHERE
+											fin_id = '$fin_id' AND
+											wft_repay.repay_time < '$vo[end_time]'";
+										$tmp = M()->query($sql);
+										echo $tmp[0][yh]?$tmp[0][yh]:0;
+									?>
+								<?php endif; ?>
+							</td>
+							<td>
+								<?php if (time() < strtotime($vo[end_time])): ?>
+									空
+								<?php else: ?>
+									<?php if ($yhze>$tmp[0][yh]): ?>
+										拖欠<?php echo $yhze-$tmp[0][yh]; ?>(元)
+									<?php else: ?>
+										还款正常
+									<?php endif; ?>
+								<?php endif; ?>
+							</td>
+						</tr>
+					</foreach>
+				</tbody>
+			</table>
+
+		</div>
+
+		<!-- 分页 -->
+		<div class="page">{$_page}</div>
+	</div>
+
+	<!-- 进行还款 -->
+	<div id="repaymoney" style="display:none;">
+		<div class="repaymoney">
+			<form id="rpmy" action="{:U(repay)}" method="post">
+				<input type="hidden" name="fin_id" value="{$fininfo[0][id]}">
+				
+				<div class="woxx"><strong>第几期还款:</strong></div>
+				<div class="kuang">
+					<input type="text" name="repay_m_id" style="width:260px; height:28px; padding-left:10px; line-height:28px; color:#444">
+				</div>
+				<div class="clear"></div>
+
+				<div class="woxx"><strong>还款时间:</strong></div>
+				<div class="kuang">
+					<input id="time" name="time" class="laydate-icon" style="width:260px; height:28px; padding-left:10px; line-height:28px; color:#444">
+					<script type="text/javascript">
+		            laydate({
+		              elem:'#time',
+		              event:'focus'
+		            });
+		            </script>
+				</div>
+				<div class="clear"></div>
+
+				<div class="woxx"><strong>还款金额(元):</strong></div>
+				<div class="kuang">
+					<input type="text" name="money" style="width:260px; height:28px; padding-left:10px; line-height:28px; color:#444">
+				</div>
+				<div class="clear"></div>
+
+				<div class="woxx"><strong>还款信息:</strong></div>
+				<div class="kuang">
+					<textarea name="msg" maxlength="200" style="resize:none;min-width:250px;"></textarea>
+				</div>
+				<div class="clear"></div>
+				<br>
+
+				<input type="hidden" name="m_total" value="<?php echo $fininfo[0][catipalperiod]+$fininfo[0][interestperiod]; ?>">
+				<img src="./Public/Home/images/investor/invcenter/subm.gif" alt="" onclick="javascript:repay({$fininfo[0][id]});">
+				<a href="javascript:xclose();"><img src="./Public/Home/images/investor/invcenter/rese.gif" alt="" style="float:right;"></a>
+			</form>
+			<script>
+			jQuery(document).ready(function($) {
+				$("#rpmy").validate({
+					rules:{
+						repay_m_id:{
+							required:true,
+							number:true
+						},
+						time:{
+							required:true
+						},
+						money:{
+							required:true,
+							number:true
+						},
+						msg:{
+							required:true
+						}
+					}
+				})
+				$("#rpmy").ajaxForm(function (e) {
+					if (e=='1') {
+						alert("操作成功")
+						$("input[name=repay_m_id]").val("")
+						$("input[name=time]").val("")
+						$("input[name=money]").val("")
+						$("textarea[name=msg]").val("")
+					}else{
+						alert("操作失败")
+					}
+					location.reload();
+				});
+			});
+			function repay (fin_id) {
+				if ($("input[name=repay_m_id]").val()<1||$("input[name=repay_m_id]").val()>$("input[name=m_total]").val()) {
+					alert("请输入正确的期数");
+					return;
+				}
+				$("#rpmy").trigger('submit')
+			}
+			</script>
+		</div>
+	</div>
+
+</block>
+<block name="script">
+<style>
+	/*错误样式*/
+  	input.error { border: 1px dashed red;background:yellow; padding:2px; }
+  	select.error { border: 1px dashed red; background:yellow; padding:2px; }
+  	.error {
+	    /*float: left;*/
+	    /*height: 30px;
+	    line-height: 30px;*/
+	    padding-left: 16px;
+	    margin-left: 2px;
+	    color:red;
+	    font-family:Verdana, Geneva, sans-serif;
+	    font-size:13px;
+    }
+	#hkxm{
+		width: 800px;	
+	}
+	.hkxm{
+		width: 400px;
+		float: left;
+	}
+	#ined{
+		width: 100%;
+	}
+	.ined{
+		margin-right: 40px;
+		height: 25px;
+		float: left;
+	}
+</style>
+<script type="text/javascript" src="__STATIC__/layer.min.js"></script>
+<script type="text/javascript" src="__STATIC__/layer.ext.js"></script>
+
+<script>
+	//弹出还款层
+	function repaymoney () {
+		// alert(fin_id)
+		$.layer({
+		    type: 1,
+		    shade: [0],
+		    area: ['300', '400'],
+		    title: "进行还款",
+		    border: [0],
+		    page: {dom : '#repaymoney'}
+		});
+	}
+	
+	//关闭弹出层
+	function xclose () {
+		$('.xubox_close').trigger('click')
+	}
+</script>
+</block>

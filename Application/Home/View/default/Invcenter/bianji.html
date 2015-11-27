@@ -1,0 +1,246 @@
+<extend name="Base/invcenter"/>
+
+<block name="header">
+    <header>
+        <!--banner-->
+        <div class="littlebanner">
+            <img src="__IMG__/investor/invcenter/cailing.gif" />
+        </div>
+    </header>
+    <!-- ==============================================js特效================================================= -->
+    <include file="index/effect" />
+    <!-- =================================================================================================== -->
+</block>
+<block name="body">
+    <div class="all">
+
+        <include file="main_t" />
+        <!--main-->
+        <div class="main">
+            <include file="main_l" />
+            <div class="main_r" style="margin-bottom:20px">
+
+                <div class="tx">
+
+                    <p>头像设置</p>
+
+                    <form action="{:U(txup)}" id="update_tx" method="post" enctype="multipart/form-data">
+                        <div class="tx_img">
+                            <div id="show_img" class="cicun">
+                                <?php if (!$investor[0][face_img]): ?>
+                                <img class="img_one" src="__IMG__/investor/invcenter/touxiangshangchuan.gif" alt="头像上传" width="220" height="220" />
+                                <?php else: ?>
+                                <img class="img_one" src="./Uploads/Investor/{$investor[0][face_img]}" width="220" height="220" />
+                                <?php endif; ?>
+                                图片比例：1:1
+                            </div>
+                            <div style="width:280px;height:140px;float:left;">
+                                <div class="input-file" style="overflow: hidden;position: relative;width:105px;height:35px; background:url('__IMG__/investor/shangcus.gif') no-repeat;float:right;margin-top:90px">
+                                    <input type="file" name="upImg" onchange="txup()" style="opacity: 0;filter: alpha(opacity:0);top: 0;right: 0;margin:0;width:105px;height:35px;cursor:pointer;"></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </form>
+
+                </div>
+
+                <!--表单-->
+
+                <form action="{:U(bianJi)}" method="post" id="bianjiSub">
+                    <input type="hidden" name="face_img" id="subImg" value="{$investor[0][face_img]}" />
+                    <div class="regist">
+                        <div style="margin:25px 0">
+                            <div class="woxx"><font style="color:#f00">*</font>案例：</div>
+                            <div class="kuang">
+                                查看编辑过往投资案例
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div style="margin:25px 0">
+                            <div class="woxx">Email：</div>
+                            <div class="kuang">{$homeuser[0][email]}
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div style="margin:25px 0">
+                            <div class="woxx"><font style="color:#f00">*</font>类型：</div>
+                            <div class="kuang" id="type" ckd="{$investor[0][type]}">
+                                <input type="radio" name="type" value="1" <?php if ($investor[0][type]==1): ?>
+                                    checked="checked"
+                                <?php endif; ?> /> <font style="font-size:14px">个人投资者</font>
+                                <input type="radio" name="type" value="2" <?php if ($investor[0][type]==2): ?>
+                                    checked="checked"
+                                <?php endif; ?> /> <font style="font-size:14px">机构投资者</font>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div style="margin:25px 0">
+                            <div class="woxx"><font style="color:#f00">*</font>隐私公开：</div>
+                            <div class="kuang" id="privacy" ckd="{$investor[0][privacy]}">
+                                <input type="radio" name="privacy" value="1" <?php if ($investor[0][privacy]==1): ?>
+                                    checked="checked"
+                                <?php endif; ?> /> <font style="font-size:14px">是</font>
+                                <input type="radio" name="privacy" value="0" <?php if ($investor[0][privacy]==0): ?>
+                                    checked="checked"
+                                <?php endif; ?> /> <font style="font-size:14px">否</font>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div style="margin:25px 0">
+                            <div class="woxx"><font style="color:#f00">*</font>手机号码：</div>
+                            <div class="kuang">
+                                <textarea name="phone" class="ldd" id="phone" maxlength="11">{$investor[0][phone]}</textarea>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div style="margin:25px 0">
+                            <div class="woxx"> <font style="color:#f00">*</font>真实姓名：</div>
+                            <div class="kuang">
+                                <textarea name="realname" class="ldd" id="realname" maxlength="20">{$investor[0][realname]}</textarea>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        
+                        <div style="margin:25px 0">
+                            <div class="woxx"><font style="color:#f00">*</font>性别：</div>
+                            <div class="kuang" id="sex" ckd="{$investor[0][sex]}">
+                                <input type="radio" name="sex" value="1" checked="checked" /> <font style="font-size:14px">男</font>
+                                <input type="radio" name="sex" value="2" /> <font style="font-size:14px">女</font>
+                                <?php if ($investor[0][sex]): ?>
+                                <script>
+                                    var ckdid = $("#sex").attr("ckd")-1
+                                    // alert(ckdid)
+                                    jQuery("input[name=sex]").eq(ckdid).attr("checked",true)
+                                </script>
+                                <?php endif ?></div>
+                            <div class="clear"></div>
+                        </div>
+
+
+                        <div style="margin:25px 0">
+                            <div class="woxx"> <font style="color:#f00">*</font>公司：</div>
+                            <div class="kuang">
+                                <textarea name="company" class="ldd" id="company" maxlength="20">{$investor[0][company]}</textarea>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div style="margin:25px 0">
+                            <div class="woxx">职务：</div>
+                            <div class="kuang">
+                                <textarea name="postion" class="ldd" maxlength="20">{$investor[0][postion]}</textarea>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div style="margin:25px 0">
+                            <div class="woxx"><font style="color:#f00">*</font>月收入：</div>
+                            <div class="kuang">
+                                <textarea name="income" class="ldd" id="income" maxlength="9">{$investor[0][income]}</textarea>(元)
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div style="margin:25px 0">
+                            <div class="woxx"><font style="color:#f00">*</font>最小投资金额：</div>
+                            <div class="kuang">
+                                <textarea name="min_maney" class="ldd" id="min_maney" maxlength="9">{$investor[0][min_maney]}</textarea>(元)
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div style="margin:25px 0">
+                            <div class="woxx"><font style="color:#f00">*</font>最大投资金额：</div>
+                            <div class="kuang">
+                                <textarea name="max_maney" class="ldd" id="max_maney" maxlength="9">{$investor[0][max_maney]}</textarea>(元)
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+
+                        
+                    <div class="gezitwo">
+                        <div class="woxx"><font style="color:#f00">*</font>所在地区：</div>
+                        <div class="kuang">
+                            <select name="sheng" id="province" style="width:160px;height:30px;font-size:14px;padding-left:7px;">
+                                <option class="oparea" value="">省/自治区</option>
+                                <foreach item="vo" name="allprovince">
+                                    <?php if($investor[0][shengid] == $vo[id]): ?>                            
+                                    <option value="{$vo.id}" selected=selected>{$vo.name}</option>
+                                    <?php else: ?>                            
+                                    <option value="{$vo.id}" >{$vo.name}</option>
+                                    <?php endif;?></foreach>
+                            </select>
+                            <select name="shi" id="city" style="width:160px;height:30px;font-size:14px;padding-left:7px;">
+                                <?php if(!empty($investor[0][shiid])): ?>                            
+                                <option value="{$investor[0][shiid]}" >{$investor[0][shi]}</option>
+                                <?php endif; ?></select>
+                            <select name="qu" id="town" style="width:160px;height:30px;font-size:14px;padding-left:7px;">
+                                <?php if(!empty($investor[0][quid])): ?>                            
+                                <option value="{$investor[0][quid]}" >{$investor[0][qu]}</option>
+                                <?php endif; ?></select>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    
+                    <div class="gezitwo">
+                        <div class="woxx"><font style="color:#f00">*</font>投资意向：</div>
+                        <div class="kuang" id="trade" style="width:520px;">
+                            <foreach name="alltrade" item="vo">
+                                <?php 
+                                if(strstr($investor[0][intention],$vo[id])):
+                                ?>                            
+                                <label style="padding-right:10px;">
+                                    <input style="width:20px;height:30px;line-height:30px;" name="trade[]" checked="checked" type="checkbox" value="{$vo.id}">{$vo.trade}</label>
+                                <?php else: ?>                            
+                                <label style="padding-right:10px;">
+                                    <input style="width:20px;height:30px;line-height:30px;" name="trade[]" type="checkbox" value="{$vo.id}">{$vo.trade}</label>
+                                <?php endif; ?></foreach>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div style="margin:25px 0">
+                        <div class="woxx">QQ：</div>
+                        <div class="kuang">
+                            <textarea name="qq" class="ldd" id="qq" maxlength="11">{$investor[0][qq]}</textarea>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div style="margin:25px 0">
+                        <div class="woxx">微博：</div>
+                        <div class="kuang">
+                            <textarea name="weibo" class="ldd" id="weibo" maxlength="50">{$investor[0][weibo]}</textarea>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div style="margin:25px 0">
+                        <div class="woxx">投资理念：</div>
+                        <div class="kuang">
+                            <textarea name="tzidea" id="tzidea" maxlength="200">{$investor[0][tzidea]}</textarea>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </form>
+                <div class="ese">
+                    <div class="shad">
+                        <a href="javascript:bianjiSub();">
+                            <img src="__IMG__/investor/invcenter/subm.gif" />
+                        </a>
+                    </div>
+                    <div class="xiae">
+                        <a href="{:U(index)}">
+                            <img src="__IMG__/investor/invcenter/rese.gif" />
+                        </a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</block>

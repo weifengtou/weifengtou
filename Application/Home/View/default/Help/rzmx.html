@@ -1,0 +1,155 @@
+<extend name="Base/rzmx"/>
+<block name="header">
+    <header>
+        <div class="littlebanner">
+            <img src="__HOME__/images/entrepre/cailing.gif" />
+        </div>
+    </header>
+</block>
+<block name="body">
+    <div class="all">
+
+        <div class="mcjss">
+
+            <div class="shangim">
+                <img src="__IMG__/detail/jssrzmx.jpg" />
+                <img src="__IMG__/detail/mcjsyz.jpg" />
+
+                <div class="myg">
+
+                    <div class="yc001">
+                        
+                        计算模型每月为一期默认回本期12期，收益期36期，收益率千分之5，开始时间为2020-01-01来计算(仅作为参考以实际协议为准)
+                    </div>
+                    <div class="woxx">投资总额：</div>
+                    <div class="kuang">
+                        <textarea name="js1" class="ldd" maxlength="9" placeholder="请输入投资金额"></textarea>
+                    </div>
+
+                    <div class="kuang" style="margin-left:5px">元</div>
+                    <div class="clear"></div>
+
+                </div>
+
+                <div class="myg">
+                    <div class="woxx">回本期：</div>
+                    <div class="kuang">
+                        <textarea name="js2" class="ldd" maxlength="2" disabled="true" placeholder="请输入回本期">12</textarea>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="myg">
+                    <div class="woxx">收益期：</div>
+                    <div class="kuang">
+                        <textarea name="js3" class="ldd" maxlength="2" disabled="true" placeholder="请输入收益期">36</textarea>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="myg">
+                    <div class="woxx">收益率：</div>
+                    <div class="kuang">
+                        <textarea name="js4" class="ldd" maxlength="3" disabled="true" placeholder="收益率为千分之几">5</textarea>(千分之)
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="myg">
+                    <div class="woxx">还款时间：</div>
+                    <div class="kuang">
+                        <textarea name="js5" class="ldd" disabled="true" maxlength="10">2020-01-01</textarea>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="jisuan">
+                    
+                        <img src="__IMG__/detail/jisuan.gif" alt="jisuan" onclick="js()" />
+                    
+                         <img src="__IMG__/detail/jsquxiao.gif" alt="jisuan" onclick="qx_js()" />
+ 
+                </div>
+
+                <div class="biaoge">
+                    <div class='zbg'>
+                        <div class='baog'>期名</div>
+                        <div class='baog'>期数</div>
+                        <div class='baog'>每期还款(元)</div>
+                        <div class='clear'></div>
+                    </div>
+                    <div class='zbg'>
+                        <div class='baog b1'>回本期</div>
+                        <div class='baog b2'>b2</div>
+                        <div class='baog b5'>b5</div>
+                        <div class='clear'></div>
+                    </div>
+                    <div class='zbg'>
+                        <div class='baog b6'>收益期</div>
+                        <div class='baog b7'>b7</div>
+                        <div class='baog ba'>ba</div>
+                        <div class='clear'></div>
+                    </div>
+                    总收益：<span class="bb"></span>(元)
+                </div>
+                <script>
+                    $(".biaoge").hide()
+                    function js () {
+                        var js1 = $("textarea[name=js1]").val() //总额
+                        var js2 = $("textarea[name=js2]").val() //回本期
+                        var js3 = $("textarea[name=js3]").val() //收益期
+                        var js4 = $("textarea[name=js4]").val() //收益率
+                        var js5 = $("textarea[name=js5]").val() //开始时间
+                        if (js1=='') {
+                            alert("投资金额不能为空")
+                            return;
+                        }else if(js2==''){
+                            alert("回本期不能为空")
+                            return;
+                        }else if(js3==''){
+                            alert("收益期不能为空")
+                            return;
+                        }else if(js4==''){
+                            alert("收益率不能为空")
+                            return;
+                        }else if(js5==''){
+                            alert("开始时间不能为空")
+                            return;
+                        }else if(js1.search("^-?\\d+$") != 0){
+                            alert("投资金额必须填数字类型")
+                            return;
+                        }else if(js2.search("^-?\\d+$") != 0){
+                            alert("回本期必须填数字类型")
+                            return;
+                        }else if(js3.search("^-?\\d+$") != 0){
+                            alert("收益期必须填数字类型")
+                            return;
+                        }else if(js4.search("^-?\\d+$") != 0){
+                            alert("开始时间必须填数字类型")
+                            return;
+                        }
+                        $.post('?s=Home/Help/syjs', {js1:js1,js2:js2,js3:js3,js4:js4,js5:js5}, function(data, textStatus, xhr) {
+                            var info = jQuery.parseJSON(data);
+                            $(".b2").text(info.b2)
+                            $(".b3").text(info.b3)
+                            $(".b4").text(info.b4)
+                            $(".b5").text(info.b5)
+                            $(".b7").text(info.b7)
+                            $(".b8").text(info.b8)
+                            $(".b9").text(info.b9)
+                            $(".ba").text(info.ba)
+                            $(".bb").text(info.bb)
+                        });
+                        $(".biaoge").show()
+                    }
+                    function qx_js () {
+                        $(".biaoge").hide()
+                    }
+                </script>
+
+        </div>
+
+    </div>
+
+</div>
+</block>

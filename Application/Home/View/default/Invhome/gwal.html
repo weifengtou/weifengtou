@@ -1,0 +1,25 @@
+<div class="gongtong ytxm">
+	<div>
+		<h3>过往投资案例
+		<?php if (!$inv_cases): ?>
+			(暂未填写案例)
+		<?php endif; ?></h3>
+		<div id="ytals">
+			<?php foreach ($inv_cases as $key =>
+			$value): ?>
+			<div class="gwall">
+				<h2>
+					<a href="{$value[purl]}">{$value[pname]}</a>
+				</h2>
+				<div class="gwallms">
+					<p>{$value[pdetail]}</p>
+				</div>
+
+			</div>
+
+			<?php endforeach; ?></div>
+		<div class="clear"></div>
+	</div>
+
+	<script>$('#ytals :nth-child(2n)').addClass('gwallm')</script>
+</div>

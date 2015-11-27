@@ -1,0 +1,282 @@
+<extend name="Base/prcenter"/>
+
+<block name="header">
+	<header>
+		<div class="littlebanner">
+			<img src="__HOME__/images/entrepre/cailing.gif" />
+		</div>
+	</header>
+	<script type="text/javascript">
+    jQuery(document).ready(function($) {
+      $('#createdproject').addClass('jiben');
+    });
+  </script>
+  <!-- ==============================================js特效================================================= -->
+	<include file="index/effect" />
+    <!-- =================================================================================================== -->
+</block>
+
+<block name="body">
+	<div class="all">
+
+		<include file="main_t" />
+		<!--main-->
+		<div class="main" style="margin-bottom:20px;">
+			<include file="main_l" />
+
+			<div class="main_r">
+
+				<!-- <div class="yichuangjian">
+					<p>已创建项目</p>
+
+				</div> -->
+				<div class="redayy">
+					<!--项目审核-->
+					<?php if (!$_GET[rzxq]&&!$_GET[hkxq]): ?>
+						<!--标题栏。。。不能改-->
+						<div class="beiiji_a">
+							<div class="xmnamea" style="color:#fff;">项目名称</div>
+							<div class="xmnameb" style="color:#fff;">审核</div>
+							<div class="xmnameb" style="color:#fff;">已融资/总融资</div>
+							<div class="xmnamec" style="color:#fff;">操作</div>
+							<div class="clear"></div>
+						</div>
+
+						<?php foreach ($pros as $key => $v1): ?>
+							<div class="beiiji_item1 beiiji_b">
+								<div class="xmnamea">{$v1[pjname]}</div>
+								<div class="xmnameb">
+									<?php switch ($v1[stageid]) {
+										case -1:
+											echo "未审核";
+											break;
+										case 0:
+											echo "不通过";
+											break;
+										case 1:
+											echo "通过";
+											break;
+										case 2:
+											echo "预热中";
+											break;
+										case 3:
+											echo "正式上线";
+											break;
+										default:
+											# code...
+											break;
+									} ?>
+								</div>
+								<div class="xmnameb">{$v1[money]}/{$v1[budget]}</div>
+								<div class="xmnamec">
+									<a href="?s=Home/Prcenter/predit01&prid={$v1[id]}">编辑</a>
+									<?php if ($v1[money]): ?>
+									<a href="?s=/Home/Prcenter/createdproject&rzxq={$v1[id]}">融资详情</a>
+									<?php else: ?>
+										<!-- 无 -->
+									<?php endif; ?>
+								</div>
+								<div class="clear"></div>
+							</div>
+						<?php endforeach; ?>
+						<script>
+						jQuery(document).ready(function($) {
+							$(".beiiji_item1:odd").removeClass('beiiji_b').addClass('beiiji_c')
+						});
+						</script>
+					<?php endif ?>
+
+
+					<!--融资详情-->
+					<!--标题栏。。。不能改-->
+					<?php if ($_GET[rzxq]): ?>
+						<?php 
+							$prid = $_GET[rzxq];
+							$sql = "SELECT
+								wft_homeuser.username,
+								wft_financing.pid,
+								wft_financing.id,
+								wft_financing.investtime,
+								wft_financing.money,
+								wft_financing.paybacktime,
+								wft_financing.yield,
+								wft_financing.interestperiod,
+								wft_financing.catipalperiod
+								FROM
+								wft_financing
+								LEFT JOIN wft_homeuser ON wft_financing.pid = wft_homeuser.id
+								WHERE 
+								prid = '$_GET[rzxq]'";
+							$rzs = M()->query($sql);
+						?>
+						<a href="?s=/Home/Prcenter/createdproject"><div class="fhpre"><img src="./Public/home/images/prcenter/fhpre.gif"></div></a>
+						<div class="beiiji_a">
+							<div class="rixqinga" style="color:#fff;">投资人</div>
+							<div class="rixqingb" style="color:#fff;">投资金额</div>
+							<div class="rixqingc" style="color:#fff;">投资日期</div>
+							<div class="rixqingd" style="color:#fff;">还款日期</div>
+							<div class="rixqinge" style="color:#fff;">收益率(‰)</div>
+							<div class="rixqingf" style="color:#fff;">已还款金额</div>
+							<div class="rixqingg" style="color:#fff;">操作</div>
+							<div class="clear"></div>
+						</div>
+						
+						<?php foreach ($rzs as $key => $v2): ?>
+							<div class="beiiji_item2  beiiji_b">
+								<div class="rixqinga">{$v2[username]}[<a href="?s=/Home/Invhome/invDisplay&uid={$v2[pid]}" target="_blank">详情</a>]</div>
+								<div class="rixqingb">{$v2[money]}</div>
+								<div class="rixqingc">{$v2[investtime]}</div>
+								<div class="rixqingd">{$v2[paybacktime]}</div>
+								<div class="rixqinge">{$v2[yield]}</div>
+								<div class="rixqingf">暂无</div>
+								<div class="rixqingg">
+									<?php $hkmx = M("repaydetail")->where("fin_id='$v2[id]'")->limit("1")->select();
+									if ($hkmx): ?>
+										<a href="?s=/Home/Prcenter/createdproject&hkxq={$v2[id]}&x={$_GET[rzxq]}">还款明细</a>
+									<?php else: ?>
+										暂无
+									<?php endif; ?>
+								</div>
+								<div class="clear"></div>
+							</div>
+						<?php endforeach ?>
+						<script>
+						jQuery(document).ready(function($) {
+							$(".beiiji_item2:odd").removeClass('beiiji_b').addClass('beiiji_c')
+						});
+						</script>
+					<?php endif; ?>
+					<!--融资详情结束-->
+
+
+					<!--还款详情-->
+					<?php if ($_GET[hkxq]): ?>
+						<?php 
+							$fin_id = $_GET[hkxq];
+							$sql = "SELECT
+								wft_project.pjname,
+								wft_homeuser.username,
+								wft_financing.investtime,
+								wft_financing.money,
+								wft_financing.paybacktime,
+								wft_financing.catipalperiod,
+								wft_financing.interestperiod,
+								wft_financing.yield
+								FROM
+								wft_financing
+								LEFT JOIN wft_project ON wft_financing.prid = wft_project.id
+								LEFT JOIN wft_homeuser ON wft_financing.pid = wft_homeuser.id
+								WHERE 
+								wft_financing.id = '$fin_id' 
+								LIMIT 1";
+							$fininfo = M()->query($sql);//融资信息
+							$repaydetail = M('repaydetail')->where("fin_id='$fin_id'")->select(); //还款明细列
+						?>
+						<a href="?s=/Home/Prcenter/createdproject&rzxq={$_GET[x]}"><div class="fhpre"><img src="./Public/home/images/prcenter/fhpre.gif"></div></a>
+						<div class="hkxqin">
+							<div class="hkxqin_l">
+								<div class="jjti"><span>项目名：</span>{$fininfo[0][pjname]}</div>
+								<div class="jjti"><span>投资日期：</span>{$fininfo[0][investtime]}</div>
+								<div class="jjti"><span>开始还款时间：</span>{$fininfo[0][paybacktime]}</div>
+								<div class="jjti"><span>收益期：</span>{$fininfo[0][interestperiod]}</div>
+							</div>
+							<div class="hkxqin_r">
+								<div class="jjti"><span>投资人：</span>{$fininfo[0][username]}</div>
+								<div class="jjti"><span>投资金额：</span>{$fininfo[0][money]}(元)</div>
+								<div class="jjti"><span>回本期：</span>{$fininfo[0][catipalperiod]}</div>
+								<div class="jjti"><span>收益率：</span>千分之{$fininfo[0][yield]}</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<!--标题栏。。。不能改-->
+						<div class="beiiji_a">
+							<div class="hkxqinga" style="color:#fff;">第几期</div>
+							<div class="hkxqingb" style="color:#fff;">期名</div>
+							<div class="hkxqingc" style="color:#fff;">截止日期</div>
+							<div class="hkxqingd" style="color:#fff;">应还款(元)</div>
+							<div class="hkxqingd" style="color:#fff;">实际还款(元)</div>
+							<div class="hkxqinge" style="color:#fff;">应还款总额(元)</div>
+							<div class="hkxqingf" style="color:#fff;">实际款总额(元)</div>
+							<div class="hkxqingg" style="color:#fff;">拖欠状态</div>
+							<div class="clear"></div>
+						</div>
+						<?php foreach ($repaydetail as $key => $v3): ?>
+							<div class="beiiji_item3 beiiji_b">
+								<div class="hkxqinga">{$v3[m_id]}</div>
+								<div class="hkxqingb">{$v3[m_name]}</div>
+								<div class="hkxqingc">{$v3[end_time]}</div>
+								<div class="hkxqingd">{$v3[plan_money]}</div>
+								<div class="hkxqingd">
+									<?php //实际还款
+										$sql = "SELECT repay_money FROM `wft_repay` WHERE
+										fin_id = '$fin_id' AND
+										repay_time BETWEEN '$v3[begin_time]' AND '$v3[end_time]' 
+										AND repay_time<'$v3[end_time]'";
+										$thisrepay = M('')->query($sql);
+										// echo M()->getlastsql();
+										$thispays = 0;
+										foreach ($thisrepay as $key => $value) {
+											$thispays +=$value[repay_money];
+										}
+										echo $thispays;
+									?>
+								</div>
+								<div class="hkxqinge">
+									<?php //应还款总额
+										$fin_m_huiben = $fininfo[0][catipalperiod];
+										if ($v3[m_id]>$fin_m_huiben) {
+											echo $yhze = $fininfo[0][money]+intval(($v3[m_id]-$fin_m_huiben)*$fininfo[0][money]*$fininfo[0][yield]/1000);
+										}else if($v3[m_id]==$fin_m_huiben){
+											echo $yhze = $fininfo[0][money];
+										}else{
+											echo $yhze = intval($v3[m_id]*$fininfo[0][money]/$fin_m_huiben);
+										}
+									?>
+								</div>
+								<div class="hkxqingf"><!-- 实际款总额 -->
+									<?php if (time() < strtotime($v3[end_time])): ?>
+										空
+									<?php else: ?>
+										<?php 
+											$sql="SELECT
+												SUM(wft_repay.repay_money) AS yh
+												FROM `wft_repay`
+												WHERE
+												fin_id = '$fin_id' AND
+												wft_repay.repay_time < '$v3[end_time]'";
+											$tmp = M()->query($sql);
+											echo $tmp[0][yh]?$tmp[0][yh]:0;
+										?>
+									<?php endif; ?>
+								</div>
+								<div class="hkxqingg"><!-- 拖欠状态 -->
+									<?php if (time() < strtotime($v3[end_time])): ?>
+										空
+									<?php else: ?>
+										<?php if ($yhze>$tmp[0][yh]): ?>
+											拖欠<?php echo $yhze-$tmp[0][yh]; ?>(元)
+										<?php else: ?>
+											还款正常
+										<?php endif; ?>
+									<?php endif; ?>
+								</div>
+								<div class="clear"></div>
+							</div>
+						<?php endforeach ?>
+						<script>
+						jQuery(document).ready(function($) {
+							$(".beiiji_item3:odd").removeClass('beiiji_b').addClass('beiiji_c')
+						});
+						</script>
+					<?php endif; ?>
+						<!--还款详情结束-->
+				</div>
+
+				
+			<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</block>

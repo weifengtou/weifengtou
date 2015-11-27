@@ -1,0 +1,95 @@
+* { margin: 0; padding: 0; }
+body {font: 14px; color: #444; background:#f6f6f6; font-family:"微软雅黑" }
+img { border: 0; vertical-align: bottom; }
+ul, li, dt { margin: 0; padding: 0; list-style: none; }
+a { text-decoration: none; }
+a:link { color: #000000; text-decoration: none; }
+a:hover {  cursor: pointer; color:#FF0099; text-decoration: none;}
+a.underline { text-decoration: underline; }
+a:visited { color: #000000; text-decoration: none; }
+form, ul, li, p, h1, h2, h3, h4, h5, h6 { padding:0; margin:0}
+.clear { clear: both; line-height:0px;height:1px;overflow:hidden;*display:inline; }
+/*----------------------顶部-------------------------*/
+
+
+/*----------------------中间-------------------------*/
+
+
+
+/*----------------------文章页-------------------------*/
+
+.all{width:100%; height:100%;}
+
+.lzong{ width:1100px; margin:0px auto}
+.wftban{ margin:10px 0 0px 0}
+
+
+.wftdoa{ width:550px; float:left; display:inline; height:60px; background:#ffa133; color:#fff; font-size:24px; line-height:60px; text-align:center}
+.wftdoa a{ color:#fff !important; padding:15px}
+.wftdoa a:hover{ color:white}
+.wftdox{ background:#0296db}
+
+.hyjs{ width:878px; border:#dcdcdc solid 1px; background:#fff; margin:20px 0; padding:20px 110px}
+.hyjs_la{ float:left; width:140px; padding-left:90px; background:url(../images/luyansingup/hyjs01.gif) 5px 0  no-repeat; height:40px; line-height:40px; font-size:18px; color:#249ff1}
+.hyjs_lb{ float:left; width:140px; padding-left:90px; background:url(../images/luyansingup/hyjs02.gif) 5px 0  no-repeat; height:40px; line-height:40px; font-size:18px; color:#249ff1}
+.hyjs_lc{ float:left; width:140px; padding-left:90px; background:url(../images/luyansingup/hyjs03.gif) 5px 0  no-repeat; height:40px; line-height:40px; font-size:18px; color:#249ff1}
+.hyjs_ld{ float:left; width:140px; padding-left:90px; background:url(../images/luyansingup/hyjs04.gif) 5px 0  no-repeat; height:40px; line-height:40px; font-size:18px; color:#249ff1}
+.hyjs_le{ float:left; width:140px; padding-left:90px; background:url(../images/luyansingup/hyjs05.gif) 5px 0  no-repeat; height:40px; line-height:40px; font-size:18px; color:#249ff1}
+.hyjs_lf{ float:left; width:140px; padding-left:90px; background:url(../images/luyansingup/hyjs06.gif) 5px 0  no-repeat; height:40px; line-height:40px; font-size:18px; color:#249ff1}
+.hyjs_lg{ float:left; width:140px; padding-left:90px; background:url(../images/luyansingup/hyjs07.gif) 5px 0  no-repeat; height:40px; line-height:40px; font-size:18px; color:#249ff1}
+.hyjs_lh{ float:left; width:140px; padding-left:90px; background:url(../images/luyansingup/hyjs08.gif) 5px 0  no-repeat; height:40px; line-height:40px; font-size:18px; color:#249ff1}
+
+
+
+
+
+
+.hyjs_r{ float:right; width:640px; min-height:40px; line-height:40px; margin-bottom:15px; font-size:14px}
+.hyjs_r ul{ padding-top:5px}
+.hyjs_r ul li{ float:left; width:213px; font-size:14px; display:inline; line-height:2.0}
+.hyjs_r ul li a{ color:#444}
+.hyjs_r ul li a:hover{ color:#444 !important; text-decoration:underline}
+.hdsm{ padding-top:8px; line-height:2.0}
+
+
+.baomo{ width:878px; border:#dcdcdc solid 1px; background:#fff; padding:100px 110px; border-top:none !important; margin-bottom:20px}
+.baogg{ width:438px; float:left}
+.kkua{ border:#ffa133 dashed 2px; padding:30px 0;width:878px; height:285px}
+.kkub{ border:#0296db dashed 2px; padding:30px 0;width:878px; height:285px}
+
+.chsoe{ font-size:12px;}
+.woss{ font-size:12px;width:80px;float:left; text-align:right; margin-right:20px; line-height:30px}
+.woxx{ font-size:12px;width:100px;float:left; text-align:right; margin-right:20px; line-height:30px}
+.kuang{ float:left; line-height:30px;}
+.kuang textarea.ldd{ line-height:30px; padding-left:10px; height:30px;width:350px; color:#444}
+.kusng{ float:left; padding-top:8px}
+.lised{ float:left; padding-top:5px}
+.kuang input.ldd{line-height:30px; padding-left:10px; height:30px;width:260px; color:#444}
+.kuang textarea.lss{ line-height:30px; padding-left:10px; height:110px !important; width:260px !important; color:#444; font-size:12px}
+.ttjio{ margin-left:170px; margin-top:20px}
+.ttjio img{ width:96px; height:34px}
+
+
+.fangss{ float:right; display:inline; width:358px;}
+.fanga{ font-weight:bold; font-size:16px; margin:15px 0}
+.fangb p{ line-height:2.0; font-size:12px}
+
+
+.ewm{ margin:0px 0; width:120px; text-align:center; padding:5px 0; background:#fff; font-size:12px}
+
+.csucce{ padding:0 120px; width:200px}
+.csucce ul li{ }
+.csucce_a{ padding-left:50px; background:url(../images/luyansingup/success.gif) 15px 10px no-repeat; font-size:24px;line-height:40px; margin:30px 0 40px 0;}
+.csucce_b{ font-size:12px; text-align:center; width:200px; height:20px; line-height:20px; margin-bottom:50px}
+.csucce_c{ padding-left:35px;}
+
+
+
+
+
+
+
+
+
+
+

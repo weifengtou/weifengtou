@@ -1,0 +1,186 @@
+<extend name="Base/investor"/>
+
+<block name="header">
+	<header>
+		<div class="littlebanner">
+			<img src="__HOME__/images/entrepre/cailing.gif" />
+		</div>
+	</header>
+</block>
+
+<block name="body">
+	<div class="tzrxxt">
+		<div class="ttitlse">
+			<img src="__IMG__/investor/investor/touzi01.gif" />
+		</div>
+		<form id="jigou" action="{:U('investorjigou')}" method="post" >
+			<div class="middle">
+				<h3 id="baseinfo">机构信息</h3>
+				<div class="chsoe">
+					<div class="woss"> <font style="color:#f00">*</font>
+						投资阶段
+					</div>
+					<div class="kuang">
+						<input type="radio" name="jieduan" value="1" <?php if ($info[0][jieduan]!=2||$info[0][jieduan]!=3): ?>
+						checked="checked"
+						<?php endif; ?>
+						/>
+						初创期
+						<input type="radio" name="jieduan" value="2" <?php if ($info[0][jieduan]==2): ?>
+						checked="checked"
+						<?php endif; ?>
+						/>
+						扩长期
+						<input type="radio" name="jieduan" value="2" <?php if ($info[0][jieduan]==3): ?>
+						checked="checked"
+						<?php endif; ?>
+						/>
+						成熟期
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe" style="margin:20px 0">
+					<div class="woss"> <font style="color:#f00">*</font>
+						性质
+					</div>
+					<div class="kuang">
+						<input type="radio" name="xingzhi" value="1" <?php if ($info[0][xingzhi]!=2||$info[0][xingzhi]!=3): ?>
+						checked="checked"
+						<?php endif; ?>
+						/>
+						中资
+						<input type="radio" name="xingzhi" value="2" <?php if ($info[0][xingzhi]==2): ?>
+						checked="checked"
+						<?php endif; ?>
+						/>
+						外资
+						<input type="radio" name="xingzhi" value="2" <?php if ($info[0][xingzhi]==3): ?>
+						checked="checked"
+						<?php endif; ?>
+						/>
+						中外合资
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe"  >
+					<div class="woss">
+						<font style="color:#f00">*</font>
+						类别
+					</div>
+					<div class="kuang">
+						<?php $x = $info[0][leibie]; ?>
+						<select class="ldd" name="leibie" id="leibie">
+							<script>
+							$.each(ji_gou_tou_zi_ren_lei_bie, function(index, val) {
+								document.write('<option value="'+index+'" >'+val+'</option>')
+							});
+							$("select").find("option[value='{$x}']").attr("selected",true);
+							</script>
+						</select>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe" style="margin:20px 0">
+					<div class="woss">
+						<font style="color:#f00">*</font>
+						团队简介
+					</div>
+					<div class="kuang">
+						<textarea class="lss" name="tddetail" id="tddetail" maxlength="50" placeholder="请输入公司/团队简介" cols="30" rows="10">{$info[0][tddetail]}</textarea>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe" style="margin:20px 0">
+					<div class="woss">
+						相关网址
+					</div>
+					<div class="kuang">
+						<input type="text" class="ldd" name="tdurl" id="tdurl" maxlength="50" placeholder="请输入公司/团队相关网址地址" value="{$info[0][tdurl]}" />
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</form>
+		<div class="middle">
+			<h3>团队成员</h3>
+			<div id="choses">
+				<?php foreach ($cys as $key => $value): ?>
+					<!--保存后样式-->
+					<form class="editcy" action="{:U(editcy)}" id="editcy{$value.id}" attrid="{$value.id}" method="post">
+						<input type="hidden" name="cy_id" value="{$value.id}">
+						<div id="cy{$value.id}">
+							<div class="chsoe">
+								<div class="woss">
+									<font style="color:#f00">*</font>
+									成员姓名
+								</div>
+								<div class="kuang">
+									<input type="text"  class="ldd" id="cyname{$value.id}" name="cyname" maxlength="20" placeholder="未填写" value="{$value.cyname}" disabled="disabled">
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="chsoe" style="margin:20px 0">
+								<div class="woss">
+									成员简介
+								</div>
+								<div class="kuang" style="width:855px">
+									<textarea class="lss" name="cydetail" id="cydetail{$value.id}" maxlength="100" cols="30" rows="10" placeholder="未填写" disabled="disabled">{$value.cydetail}</textarea>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div style=" margin:20px 0 20px 88px;">
+								<div style=" float:left;">
+									<a href="javascript:delcy({$value.id});">
+										<img src="__IMG__/investor/investor/shanc.gif" width="55" height="30" alt="删除" />
+									</a>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="linsss" style=" margin-left:88px"></div>
+						</div>
+					</form>
+				<?php endforeach ?>
+			</div>
+			<!--添加-->
+			<form action="{:U('addcy')}" id="addcy" method="post">
+				<div class="chsoe">
+					<div class="woss">
+						<font style="color:#f00">*</font>
+						成员姓名
+					</div>
+					<div class="kuang">
+						<input type="text" class="ldd addcyname" id="cyname" name="cyname" maxlength="20" placeholder="请输入成员姓名" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="chsoe"  style="margin:20px 0">
+					<div class="woss">
+						成员简介
+					</div>
+					<span class="kuang">
+						<textarea class="lss" name="cydetail" id="cydetail{$value.id}" maxlength="100" cols="30" rows="10" placeholder="请输入成员简介">{$value.cydetail}</textarea>
+					</span>
+					<div class="kuang"></div>
+					<div class="clear"></div>
+				</div>
+
+				<div class="sdle">
+					<a id="cyadd">
+						<img src="__IMG__/investor/investor/addcy.gif" />
+					</a>
+				</div>
+
+			</form>
+			<div class="ese">
+				<div class="shad">
+					<a href="{:U(investor01)}">
+						<img src="__IMG__/investor/investor/se.gif" />
+					</a>
+				</div>
+			</div>
+			<div class="xiae">
+				<input type="image" src="__IMG__/investor/investor/xis.gif" id="subjigou"></div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</block>

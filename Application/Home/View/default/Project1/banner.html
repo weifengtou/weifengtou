@@ -1,0 +1,38 @@
+<!-- banner -->
+<div class="xmdal_banner">
+    <?php if ($proInfo[0][top_show_img]): ?>
+    <!-- <img src="./Uploads/Banner/{$proInfo[0][top_show_img]}" class="img-responsive center-block " style="min-width:1100px;" /> -->
+    <img usemap="#pr_fabu" src="__HOME__/images/detail/xm_banner.jpg" style="min-width:1100px;" />
+    <?php else: ?>
+    <img usemap="#pr_fabu" src="__HOME__/images/detail/xm_banner.jpg" style="min-width:1100px;" />
+    <?php endif; ?>
+    <style>
+    map area{cursor: pointer;}
+    </style>
+</div>
+<script>
+var fabu_obj = {}
+function pr_fabu_add (fabu_obj) {
+    var w = $(".xmdal_banner").width()
+    var h = $(".xmdal_banner").height()
+    fabu_obj.x1 = 947*w/1920
+    fabu_obj.y1 = 249*h/443
+    fabu_obj.x2 = 1115*w/1920
+    fabu_obj.y2 = 286*h/443
+    $("map[name=pr_fabu]").remove()
+    var pr_fabu = '<map name="pr_fabu"><area shape="rect" coords="'+fabu_obj.x1+' '+fabu_obj.y1+' '+fabu_obj.x2+' '+fabu_obj.y2+'" alt="我要发布项目" onclick="javascript:createproject();"></map>'
+    $(".xmdal_banner").append(pr_fabu)
+}
+function fabu_change () {
+    var w = $(".xmdal_banner").width()
+    var h = $(".xmdal_banner").height()
+    fabu_obj.x1 = 947*w/1920
+    fabu_obj.y1 = 249*h/443
+    fabu_obj.x2 = 1115*w/1920
+    fabu_obj.y2 = 286*h/443
+    pr_fabu_add(fabu_obj)
+}
+jQuery(document).ready(function($) {
+    fabu_change()
+});
+</script>

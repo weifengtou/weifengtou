@@ -1,0 +1,173 @@
+<extend name="Base/register"/>
+
+<block name="header">
+	<header>
+		<div class="littlebanner">
+			<img src="__HOME__/images/entrepre/cailing.gif" />
+		</div>
+	</header>
+	<!-- ==============================================js特效================================================= -->
+	<include file="index/effect" />
+    <!-- ===================================================================================================== -->
+</block>
+
+<block name="body">
+	<div class="all">
+		<div class="all_main">
+			<include file="wwwexplanTab"/>
+			<!--微风投商业模式-->
+			<div class="shuomm">
+
+				<div class="biatt">
+					<h3>微风投商业模式</h3>
+				</div>
+
+				<div>
+
+					<div class="zuo_l" style="height:160px"></div>
+
+					<div class="you_r">
+
+						<div class="conten">
+							<h3>1.封闭期(3-6个月)</h3>
+							<p>依据项目方提供的用款计划书，在3-6个月之内分批次划拨借款金额。</p>
+							<div class="linee"></div>
+						</div>
+
+						<div class="conten">
+							<h3>2.回本期(12-15个月)</h3>
+							<p>根据《微风投商业模式投资合作协议》制定项目方回本周期，在12—15个月内依次归还借款金额，减轻还款压力。</p>
+							<div class="linee"></div>
+						</div>
+
+						<div class="conten">
+							<h3>3.回报期(36个月)</h3>
+							<p>根据【微风投商业模式投资合作协议】制定的项目方回报周期，按月回报投资人收益。</p>
+
+						</div>
+
+					</div>
+
+					<div class="clear"></div>
+				</div>
+
+			</div>
+
+			<!--微风投收取的费用-->
+			<div class="shuomm">
+
+				<div class="biatt">
+					<h3>微风投收取的费用</h3>
+				</div>
+
+				<div>
+
+					<div class="zuo_l" style="height:81px"></div>
+
+					<div class="you_r">
+
+						<div class="conten">
+							<h3>1.保证金</h3>
+							<p>为了保证合同的顺利履行，其无违约行为。需缴纳10%的保证金，待合同约定的投资周期完整结束后退还借款人。</p>
+							<div class="linee"></div>
+						</div>
+
+						<div class="conten">
+							<h3>2.居间服务费(54个月)</h3>
+							<p>为了保证投资人的收益，受投资人的委托，必须每月定期或不定期的到项目地视察调研。持续54个月。</p>
+
+						</div>
+
+					</div>
+
+					<div class="clear"></div>
+				</div>
+
+			</div>
+
+			<!--商业模式简介-->
+			<div class="shuomm">
+
+				<div class="biatt">
+					<h3>微风投模式简介</h3>
+				</div>
+
+				<div>
+
+					<div class="you_r">
+
+						<div class="conten" style="background:url(__HOME__/images/wwwexplan/bg03.gif) 0 0 no-repeat">
+
+							<p style="text-indent:2em">
+								微风投商业模式是梧桐盛嘉公司杜志刚经过多年的潜心摸索和研究及多年的商业实践，参考各界精英和专业人士见解而创立的一款定位于小微企业中长期融资需求的金融创新产品，即“项目+投资 +经营+担保”的全产业链的商业组合，梧桐盛嘉公司依托专业平台，运用资源整合的商业思维，把项目方、投资方、经营方、担保方多方进行全方位整合，使优质的、品牌的、有前景的、可复制的、有团队的商业项目和民间资金、广大创业者、风控公司进行多项选择，互惠互利、项目落地、快速复制、创业成功。此商业模式为民间资金搭起一个稳定收益，快速升值的桥梁。其操作模式安全透明、流程完备、项目落地、法律保障、控制风险、各方获益、社会支持、政府鼓励。微风投商业模式是创业者的福音，项目方的首选，投资者的乐园，也将使盛嘉公司成为投资行业中的一匹骏马，开拓出自己的蓝天疆土。
+							</p>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+			</div>
+
+			<!--优势-->
+			<div class="youss">
+				<div class="youss_l">
+					<img src="__HOME__/images/wwwexplan/youss01.gif" alt="微风投优势" />
+				</div>
+				<div class="youss_r">
+					<div class="baotti">
+						<h3>微风投优势</h3>
+					</div>
+					<p style="text-indent:2em">
+						微风投商业模式整个周期是54个月，为了扶植小微企业，减轻其资金压力，采取以时间换空间的概念理论，随着企业成长发展时间的推移，拔高企业，让企业进入良性循环，再创造的利润足以覆盖微风投后期收益利润，产生双赢的局面。微风投年化利息在15%--18%之间，收益值高于同行业水平。
+					</p>
+
+				</div>
+				<div class="clear"></div>
+			</div>
+
+			<!--我们保证-->
+			<div class="shuomm">
+
+				<div class="biatt">
+					<h3>我们保证</h3>
+				</div>
+
+				<div>
+
+					<div class="zuo_l" style="height:149px"></div>
+
+					<div class="you_r">
+
+						<div class="conten">
+
+							<p>先用资金后付息。（封闭期和回本期无息用款长达18个月）</p>
+							<div class="linee"></div>
+						</div>
+
+						<div class="conten">
+
+							<p>资金按月回款，减轻用款压力。</p>
+							<div class="linee"></div>
+						</div>
+
+						<div class="conten">
+
+							<p>资金回款正常的情况下，不参与企业管理，避免与企业管理团队的管理思维不一致导致企业管理经营混乱。</p>
+							<div class="linee"></div>
+						</div>
+
+						<div class="conten">
+
+							<p>不控股，项目落地发展后，4年半退出，不参与其他额外分红，项目所属权完整性不被破坏。</p>
+
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+</block>

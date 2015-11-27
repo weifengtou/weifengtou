@@ -1,0 +1,225 @@
+<extend name="Public/base"/>
+
+<!-- 子导航 -->
+<block name="sidebar">
+    <include file="sidemenu" />
+</block>
+
+<block name="body">
+    <div class="main-title">
+        <h2>项目编辑</h2>
+        <!-- 下载 -->
+		<div style="float:left;width:150px;height:30px; line-height:30px; text-align:center; color:#007300"><a id="download" style="color:#007300" href="{:U('Article/exportLookover03Excel','prid='.$prid)}">下载</a></div>
+    </div>
+    <div class="w936" style="margin:0 auto;">
+        <include file="lookoverTab" />
+        <script type="text/javascript">
+        $(document).ready(function($) {
+            $('#tb_3').addClass('tabcss');
+        });
+        </script>
+        <div class="ctt">
+            <div class="dis" id="tbc_03">
+                <if condition="!$result">
+                    <!-- 融资需求提交表单 -->
+                    <div class="middle" id="cd01">
+                        <div class="gezi">
+                            <form name="investform01" id="investform01" method="post" action="__URL__/saveinvest" enctype="multipart/form-data">
+                                <div class="gezitwo">
+                                    <div class="woqq"> <font style="color:#f00; font-weight:normal">*</font>
+                                        预融资金额
+                                    </div>
+                                    <div class="kuang">
+                                        <textarea class="ldd" id="budget01" name="budget01" maxlength="15" placeholder="请输入正整数" style="line-height:30px;width:350px;padding-left:10px;color:#ccc;font-size:17px;"></textarea>
+                                        &nbsp;元
+                                    </div>
+                                    <div style="line-height:30px;color:#ccc;height:30px;">
+                                        <img src="__HOME__/images/entrepre/wrong.png" id="budgeterror01" style="width:30px; height:30px;display:none;">
+                                        <img src="__HOME__/images/entrepre/right.png" id="budgetright01" style="width:30px; height:30px;display:none;"></div>
+                                    <input name="prid" id="prid" type="hidden" value="{$prid}">
+                                    <input name="companyid" id="companyid" type="hidden" value="{$companyid}">
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="gezitwo">
+                                    <div class="woqq"> <font style="color:#f00; font-weight:normal">*</font>
+                                        单笔最低投资额
+                                    </div>
+                                    <div class="kuang">
+                                        <textarea  class="ldd" id="singleinvest01" name="singleinvest01" maxlength="15" placeholder="请输入正整数" style="line-height:30px;width:350px;padding-left:10px;font-size:17px;"></textarea>
+                                        &nbsp;元
+                                    </div>
+                                    <div style="line-height:30px;color:#ccc;height:30px;">
+                                        <img src="__HOME__/images/entrepre/wrong.png" id="singleinvesterror01" style="width:30px; height:30px;display:none;">
+                                        <img src="__HOME__/images/entrepre/right.png" id="singleinvestright01" style="width:30px; height:30px;display:none;"></div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="gezione">
+                                    <div class="woqq">
+                                        <font style="color:#f00; font-weight:normal">*</font>
+                                        附加资源
+                                    </div>
+                                    <div class="kuang">
+                                        <textarea  class="lpp" id="extras01" name="extras01" maxlength="50" placeholder="你的项目帮什么人解决什么问题(200字以内)" style="resize: none;"></textarea>
+                                    </div>
+                                    <div style="line-height:30px;color:#ccc;height:30px;">
+                                        <img src="__HOME__/images/entrepre/wrong.png" id="extraserror01" style="width:30px; height:30px;display:none;">
+                                        <img src="__HOME__/images/entrepre/right.png" id="extrasright01" style="width:30px; height:30px;display:none;"></div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="gezitwo">
+                                    <div class="woqq">
+                                        <font style="color:#f00; font-weight:normal">*</font>
+                                        资金用途
+                                    </div>
+                                    <div class="kuang">
+                                        <textarea  class="ldd" id="purpose01" name="purpose01" maxlength="80" placeholder="资金用途不能超过80个字" style="line-height:30px;width:350px;padding-left:10px;color:#ccc;font-size:17px;"></textarea>
+                                    </div>
+                                    <div style="line-height:30px;color:#ccc;height:30px;">
+                                        <img src="__HOME__/images/entrepre/wrong.png" id="purposeerror01" style="width:30px; height:30px;display:none;">
+                                        <img src="__HOME__/images/entrepre/right.png" id="purposeright01" style="width:30px; height:30px;display:none;"></div>
+                                    <div class="clear"></div>
+                                </div>
+                                <!-- <div class="gezione">
+                                    <div class="woqq">
+                                        <font style="color:#f00; font-weight:normal">*</font>
+                                        商业计划书
+                                    </div>
+                                    <div class="kuang">
+                                        请使用8-15页PPT
+                                        <a href="__HOME__/loads/xiangmu.doc" style="color:#3b70e1; text-decoration:underline">模板下载</a>
+                                        ，文件大小不超过20M。
+                                    </div>
+                                    <div style="float:right;width:200px;">
+                                        <div class="input-file" style="overflow: hidden;position: relative;background:url('./Public/home/images/entrepre/scwj.gif') no-repeat;float:left;">
+                                            <input type="file" name="businessplan01" id="businessplan01" style="opacity: 0;filter: alpha(opacity:0);top: 0;right: 0;width:89px;height:30px;cursor:pointer;"></div>
+                                        <div id="businessplanerror01" style="width:95px;color:red;float:right;height:30px;"></div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div> -->
+                                <div class="gezitwo">
+                                    <div class="woqq">
+                                        <font style="color:#f00; font-weight:normal">*</font>
+                                        隐私设置
+                                    </div>
+                                    <div class="kuang" id="privacyset01">
+                                        <p>
+                                            <input type="radio" name="privacyset01" id="radio1" class="input1" value="1"/>
+                                            <label for="radio1">所有投资人可见</label>
+                                        </p>
+                                        <p>
+                                            <input type="radio" name="privacyset01" id="radio2" class="input2" value="0"/>
+                                            <label for="radio2">设为隐私</label>
+                                        </p>
+                                        <p>
+                                            <label>
+                                            如果设为隐私，则前台的页面不会显示融资金额</label>
+                                        </p>
+                                    </div>
+                                    <div id="privacyseterror01" style="width:95px;line-height:30px;color:red;float:right;margin-right:100px;margin-top:30px;"></div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="gezione">
+                                    <div class="woqq">其他信息补充</div>
+                                    <div class="kuang" style="width:480px">
+                                        <textarea  class="lpp" id="addinfo01" name="addinfo01" placeholder="补充性内容，自行填写。" style="resize: none;"></textarea>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <else />
+                    <!-- 融资需求信息显示 -->
+                    <div class="middle"  id="cd02">
+                        <div class="gezi">
+                            <input type="hidden" name="investid" class="investid" value="{$investid}"/>
+                            <div class="gezitwo">
+                                <div class="woqq">
+                                    <font style="color:#f00; font-weight:normal">*</font>
+                                    预融资金额
+                                </div>
+                                <div class="kuang" id="budget02">{$budget}&nbsp;元</div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="gezitwo">
+                                <div class="woqq">
+                                    <font style="color:#f00; font-weight:normal">*</font>
+                                    单笔最低投资额
+                                </div>
+                                <div class="kuang" id="singleinvest02">{$singleinvest}&nbsp;元</div>
+                                <div class="clear"></div>
+                            </div>
+                            <!-- <div class="gezitwo">
+                                <div class="woqq">
+                                    <font style="color:#f00; font-weight:normal">*</font>
+                                    附加资源
+                                </div>
+                                <div class="kuang" style="width:450px;" id="extras02">{$extras}</div>
+                                <div class="clear"></div>
+                            </div> -->
+                            <div class="gezitwo">
+                                <div class="woqq">
+                                    <font style="color:#f00; font-weight:normal">*</font>
+                                    资金用途
+                                </div>
+                                <div class="kuang" id="purpose02">{$purpose}</div>
+                                <div class="clear"></div>
+                            </div>
+                            <!-- <div class="gezione">
+                                <div class="woqq">
+                                    <font style="color:#f00; font-weight:normal">*</font>
+                                    商业计划书
+                                </div>
+                                <div class="kuang" >
+                                    <div id="businessplan02" style="float:left;">{$oldname}</div>
+                                    <a href="__BUSINESSPLAN__/{$businessplan}" id="businessplanurl" style="float:right;padding-left:10px;color:blue;">http://{$businessplan}</a>
+                                </div>
+                                <div class="clear"></div>
+                            </div> -->
+                            <div class="gezitwo">
+                                <div class="woqq">
+                                    <font style="color:#f00; font-weight:normal">*</font>
+                                    隐私设置
+                                </div>
+                                <div class="kuang" id="privacyset02">
+                                    <?php if($privacy == 1){echo '所有投资人可见';}else{echo '设为隐私';} ?></div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="gezione">
+                                <div class="woqq">其他信息补充</div>
+                                <div class="kuang" style="width:480px;word-wrap:break-word;" id="addinfo02">{$addinfo}</div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </if>
+                <div style="width:758px;height:35px;">
+                    <div style="width:244px;margin:0 auto;">
+                        <div class="next" style=" background:url('./Public/home/images/entrepre/xis.gif') no-repeat;">
+                            <a href="__URL__/lookover05&prid={$prid}">上一步</a>
+                        </div>
+                        <div class="next" style=" background:url('./Public/home/images/entrepre/xis.gif') no-repeat;">
+                            <a href="__URL__/lookover04&prid={$prid}">下一步</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+    <php>
+        if(C('COLOR_STYLE')=='blue_color') echo '
+        <link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+    <link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+    <link href="__HOME__/css/entrepre.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+</block>

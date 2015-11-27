@@ -1,0 +1,31 @@
+<div class="xmainl_a">
+    <div class="xlml">
+        <?php if ($investor[0][face_img]): ?>
+        <img src="./Uploads/Investor/{$investor[0][face_img]}" width="160" height="160" />
+        <?php else: ?>
+        <img src="__STATIC__/images/nop.gif" width="160" height="160" />
+        <?php endif; ?>
+    </div>
+    <div class="xlmr">
+        <div class="kleid">{$inv_detail[0][showname]}</div>
+        <div class="xiqdddd">
+            {$investor[0][introduce]}
+            <?php if (!$investor[0][introduce]): ?>
+                暂无简介
+            <?php endif; ?>
+            <br>
+        </div>
+        <div class="biaoao">
+            <div class="biao1">
+                <a href="javascript:proDelivery({$investor[0][id]});">投递项目</a>
+            </div>
+            <div class="biao2">
+                <a href="javascript:attention2 ({$investor[0][id]});">关注</a>
+            </div>
+            <div class="biao3">
+                <a href="javascript:webMsg({$investor[0][id]});">发消息</a>
+            </div>
+        </div>
+    </div>
+    <div style="clear:both"></div>
+</div>

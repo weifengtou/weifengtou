@@ -1,0 +1,60 @@
+<?php 
+$fans = M("Attention")->where("atted_childid='".$investor[0][id]."'")->select();
+// yc_vp($fans,1);
+?>
+<div class="xmainr_b">
+    <div class="question">
+        <div class="question_l">粉丝</div>
+        <div class="clear"></div>
+    </div>
+    <div>
+        <div class="answer">
+            <div id="fans_local">
+                <?php $i = 0;foreach ($fans as $k => $v): ?>
+                    <?php 
+                    $fan_detail = get_homeuser_detail($v[uid]);
+                    ?>
+                    <?php if ($i<12): ?>
+                    <div class="aleald">
+                        <?php if ($fan_detail[0][face_img]): ?>
+                        <img src="{$fan_detail[0][face_img]}" width="54" height="54" />
+                        <?php else: ?>
+                        <img src="__STATIC__/images/nop.gif" width="54" height="54" />
+                        <?php endif; ?>
+                    </div>
+                    <?php endif;$i++; ?>
+                <?php endforeach; ?>
+            </div>
+
+            <div id="fans_all" style="display:none;">
+                <?php foreach ($fans as $k => $v): ?>
+                    <?php 
+                    $fan_detail = get_homeuser_detail($v[uid]);
+                    ?>
+                    <div class="aleald">
+                        <?php if ($fan_detail[0][face_img]): ?>
+                        <img src="{$fan_detail[0][face_img]}" width="54" height="54" />
+                        <?php else: ?>
+                        <img src="__STATIC__/images/nop.gif" width="54" height="54" />
+                        <?php endif; ?>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+            <div style="clear:both"></div>
+
+            <?php if (count($fans)>12): ?>
+                <div class="fealefet">
+                    <a onclick="toggle_fans()">...显示全部粉丝</a>
+                </div>
+            <?php endif; ?>
+        </div>
+
+    </div>
+</div>
+<script>
+    function toggle_fans () {
+        $("#fans_local").toggle()
+        $("#fans_all").toggle()
+    }
+</script>

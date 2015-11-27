@@ -1,0 +1,136 @@
+<extend name="Base/register"/>
+
+<block name="header">
+	<header>
+		<div class="littlebanner">
+			<img src="__HOME__/images/entrepre/cailing.gif" />
+		</div>
+	</header>
+	<!-- ==============================================js特效================================================= -->
+	<include file="index/effect" />
+	<!-- ===================================================================================================== -->
+</block>
+<block name="body">
+	<div class="all">
+		<div class="fankui">
+			<div class="comm">
+				<h3>我要建议</h3>
+				<div class="dear">
+					尊敬的客户：
+					<br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您在微风投网站遇到的任何问题，请在这里告诉我们，我们的工作人员会及时处理，多谢您的宝贵意见和建议！
+				</div>
+				<form name="suggestForm" id="suggestForm" method="post" action="__URL__/suggestInsert">
+					<div class="yjfkk">
+						我要反馈：
+						<span>（内容不能为空!&nbsp;不超过1200字）</span>
+						<textarea placeholder="请输入您的意见或建议" id="suggest" name="suggest"></textarea>
+					</div>
+
+					<div class="yjfkkk">
+						联系方式：
+						<span>（请正确填写信息，以便于我们的反馈）</span>
+					</div>
+					<div class="teone" style="margin:25px 0">
+						<div class="chofs" onmouseover="down_menu();" onmouseout="up_menu();">
+							<p>邮&nbsp;箱</p>
+							<ul style="display:none;" id="li_menu">
+								<li id="li_1" class="yxiang">邮&nbsp;箱</li>
+								<li id="li_2" class="phone" onclick="li_2()">手&nbsp;机</li>
+							</ul>
+								
+						</div>
+						<div class="mail" id="mail">
+							<input type="text" placeholder="请输入邮箱" name="email" id="email" />
+						</div>
+						<div class="telphone" id="telNub" style="display:none">
+							<input type="text" placeholder="请输入手机号码" name="phone" id="phone" />
+						</div>
+						<input type="hidden" value="1" id="contant" name="contant">
+						<div class="clear"></div>
+
+					</div>
+
+
+					<div class="qrtj">
+						<input type="image" id="subSuggest" src="__HOME__/images/wwwsuggest/tijiao02.gif">
+					</div>
+				</form>
+
+			</div>
+
+		</div>
+
+	</div>
+</block>
+<block name="script">
+	<link rel="stylesheet" type="text/css" href="__HOME__/css/wwwsuggest.css">
+	<script type="text/javascript">
+	function down_menu(){
+		$('#li_menu').show();
+	}
+	function up_menu(){
+		$('#li_menu').hide();
+	}
+	function li_2(){
+		if($('#li_2').html()=='手&nbsp;机'){
+			$('#li_1').html('手&nbsp;机');
+			$('#li_2').html('邮&nbsp;箱');
+			$('.chofs p').html('手&nbsp;机');
+			$('#contant').val('2');
+			$('#email').val('');
+			$('#mail').hide();
+			$('#telNub').show();
+		}else if($('#li_2').html()=='邮&nbsp;箱'){
+			$('#li_1').html('邮&nbsp;箱');
+			$('#li_2').html('手&nbsp;机');
+			$('.chofs p').html('邮&nbsp;箱');
+			$('#contant').val('1');
+			$('#phone').val('');
+			$('#mail').show();
+			$('#telNub').hide();
+		}
+	}
+	//页面刷新（所有表单置空）
+	window.onload=function() {
+        document.forms[0].reset();
+        placeFocus();
+    }
+    function placeFocus() {
+        document.forms[0].elements[0].focus(); // assuming the first element
+        $('#contant').val('1');
+    }
+    jQuery(document).ready(function($) {
+    	$('#subSuggest').on('click',function(){
+    		var tel = /^(13[0-9]|15[0|1|2|3|5|6|7|8|9]|17[7|8]|18[0-9])\d{8}$/;			//手机号正则表达式
+    		var email = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/ ; 	//邮箱正则表达式
+    		var text = $.trim($('#suggest').val()).length;
+    		// alert(text);
+    		if(text < 2 || text > 1200){
+    			layer.tips('字数在2~1200之间','#suggest',{time:3,guide:1});
+    			return false;
+    		}
+    		if($('#contant').val()==1){
+    			if(!email.test($('#email').val())){
+    				layer.tips('邮箱格式不正确','#mail',{time:3,guide:1});
+    				return false;
+    			}
+    		}else if($('#contant').val()==2){
+    			if(!tel.test($('#phone').val())){
+    				layer.tips('手机号码不正确','#telNub',{time:3,guide:1});
+    				return false;
+    			}
+    		}else{
+				$('#suggestForm').trigger('submit');
+				return true;
+			}
+    	});
+    	$('#suggestForm').ajaxForm(function(data){
+    		if(data > 0){
+    			window.location.href="?s=home/help/successSuggest";
+    		}
+    	});
+    });
+    
+	</script>
+</block>

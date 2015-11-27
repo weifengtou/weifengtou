@@ -1,0 +1,155 @@
+<div id="ping_lun_include" style="display:none;">
+    <div class="mending_x">
+        <div class="review">
+            <textarea name="pingjia" id="pingjia" placeholder="您必须登陆以后才能发表评论"></textarea>
+            <input type="hidden" name="uid" value="{$userinfo[id]}">
+            <a href="javascript:pinglun({$proInfo[0][id]});">
+                <img src="__IMG__/project/prdetail/xfb.gif" />
+            </a>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <!--pinglun1-->
+
+    <div class="mendings_s"></div>
+    <div class="xmainl_a">
+        <div class="repaly_a">会员评论</div>
+        <?php if (!$cmts): ?>
+        <h5 style="text-align:center;">无评论</h5>
+        <?php else: ?>
+        <?php 
+            $cmttree = list_to_tree($cmts);
+        ?>
+        <div id="items">
+            <?php foreach ($cmttree as $k =>
+            $v): ?>
+            <?php 
+                $cmt_user_detail = get_homeuser_detail($v[cmtid]);
+                $cmted_user_detail = get_homeuser_detail($v[cmteduid]);
+            ?>
+
+            <div>
+                <div class="repaly">
+                    <div class="repaly_l">
+                        <?php if (!$cmt_user_detail[0][face_img]): ?>
+                        <img src="__STATIC__/images/nop.gif" />
+                        <?php else: ?>
+                        <img src="{$cmt_user_detail[0][face_img]}" />
+                        <?php endif; ?></div>
+
+                    <div class="repaly_r">
+                        <div class="repaly_b">{$cmt_user_detail[0][username]}</div>
+                        <div class="repaly_c">{$v[cmtmsg]}</div>
+                        <div class="repaly_d">
+                            {:date("Y-m-d H:m",$v[cmt_time])}·
+                            <a id="ck_hui_fu_{$v[id]}">查看回复</a>
+                        </div>
+                        <div id="child_{$v[id]}" class="repaly_e" style="display:none;">
+                            <div class="repaly_f">
+                                <?php if ($v[_child]): ?>
+                                <?php foreach ($v[_child] as $k1 =>
+                                $v1): ?>
+                                <?php 
+                                    $child_cmt_user_detail = get_homeuser_detail($v1[cmtid]);
+                                    $child_cmted_user_detail = get_homeuser_detail($v1[cmteduid]);
+                                ?>
+                                <div class="repaly_h">
+                                    <a>{$child_cmt_user_detail[0][username]}</a>
+                                    回复
+                                    <a>{$child_cmted_user_detail[0][username]}</a>
+                                    {$v1[cmtmsg]}
+                                    <br>{:date("Y-m-d H:m",$v1[cmt_time])}</div>
+                                <?php endforeach; ?>
+                                <?php endif; ?>
+                                <textarea id="text_hui_fu_{$v[id]}" placeholder="请登录输入回复"></textarea>
+                                <div class="repaly_i">
+                                    <a id="hui_fu_{$v[id]}">
+                                        <img src="__IMG__/project/prdetail/xfb2.gif" />
+                                    </a>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <script>
+                        $("#ck_hui_fu_{$v[id]}").on('click', function(event) {
+                            var id = "{$v[id]}"
+                            $(".repaly_e").each(function(index, el) {
+                                if ($(this).attr('id')!="child_"+id) {
+                                    $(this).hide() 
+                                };
+                            });
+                            $("#child_"+id).toggle()
+                            height = $('.prodeta_b').height()
+                            $("div.row").css('height',height);
+                        });
+                        $("#hui_fu_{$v[id]}").on('click', function(event) {
+                            event.preventDefault();
+                            var id = "{$v[id]}"
+                            var child_obj = {
+                                "pid":id,
+                                "cmteduid":'{$v[cmtid]}',
+                                "cmtd_style":'{$v[cmt_style]}',
+                                "cmtedid":'{$v[cmtedid]}'
+                            }
+                            var cmtmsg = $("#text_hui_fu_{$v[id]}").val()
+                            $.post('?s=Home/User/showloginstyle', {}, function(data, textStatus, xhr) {
+                                if (data==0) {
+                                    minilogin()
+                                }else{
+                                    $.post('{:U(hui_fu)}', {data:child_obj,cmtmsg:cmtmsg}, function(data, textStatus, xhr) {
+                                        if (data==1) {
+                                            layer.alert("回复成功！",1)
+                                            location.reload() 
+                                        }else{
+                                            layer.alert("回复失败！")
+                                        }
+                                    });
+                                }
+                            })
+                        });
+                        </script>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <?php endforeach; ?></div>
+        <?php endif; ?>
+
+        <div class="paging"></div>
+        <script>
+            $("div.paging").jPages({
+                containerID : "items",
+                perPage : 3,
+                previous : "上一页",
+                next : "下一页",
+                minHeight: false,
+                callback:function  (e) {
+                    var height = $('.prodeta_b').height()
+                    $("div.row").css('height',height);
+                }
+            });
+        </script>
+        <script>
+        jQuery(document).ready(function($) {
+            $(".jp-previous").text("<")
+            $(".jp-next").text(">")
+        });
+        </script>
+
+        <!-- <div class="paging">
+        <a href="#">首页</a>
+        <a href="#">&lt;</a>
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">&gt;</a>
+        <a href="#">尾页</a>
+    </div>
+    -->
+</div>
+<div class="mendings_x"></div>
+<!--pinglun2-->
+</div>

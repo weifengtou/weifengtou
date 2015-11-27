@@ -1,0 +1,48 @@
+<div class="span{$addons_config.width}">
+	<div class="columns-mod">
+		<div class="hd cf">
+			<h5>{$addons_config.title}</h5>
+			<div class="title-opt">
+			</div>
+		</div>
+		<div class="bd">
+			<div class="sys-info">
+				<table>
+					<tr>
+						<th>1、有新的用户注册申请，请及时审核。</th>
+						<!-- <td>{$Think.ONETHINK_VERSION}&nbsp;&nbsp;&nbsp;
+							<notempty name="addons_config.new_version">
+								<a href="http://www.onethink.cn" target="_blank">
+									发现新版本[{$addons_config.new_version}]
+								</a>
+							</notempty> 
+						</td>-->
+					</tr>
+					<tr>
+						<th>2、有新的用户注册申请，请及时审核。</th>
+						<!-- <td>{$Think.const.PHP_OS}</td> -->
+					</tr>
+					<tr>
+						<th>3、有新的用户注册申请，请及时审核。</th>
+						<!-- <td>{$Think.VERSION}</td> -->
+					</tr>
+					<tr>
+						<th>4、有新的用户注册申请，请及时审核。</th>
+						<!-- <td>{$_SERVER['SERVER_SOFTWARE']}</td> -->
+					</tr>
+					<tr>
+						<th>5、有新的用户注册申请，请及时审核。</th>
+						<!-- <php>
+							$system_info_mysql = M()->query("select version() as v;");
+						</php>
+						<td>{$system_info_mysql.0.v}</td> -->
+					</tr>
+					<tr>
+						<th>6、有新的用户注册申请，请及时审核。</th>
+						<!-- <td>{:ini_get('upload_max_filesize')}</td> -->
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

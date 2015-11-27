@@ -1,0 +1,61 @@
+* { margin: 0; padding: 0; }
+body {font: 14px; color: #444; background:#f6f6f6; font-family:"微软雅黑" }
+img { border: 0; vertical-align: bottom; }
+ul, li, dt,tr, td, table { margin:0; padding:0; list-style: none; }
+a { text-decoration: none; }
+a:link { color: #000000; text-decoration: none; }
+a:hover {  cursor: pointer; color:#FF0099; text-decoration: none;}
+a.underline { text-decoration: underline; }
+a:visited { color: #000000; text-decoration: none; }
+form, ul, li, p, h1, h2, h3, h4, h5, h6 { padding:0; margin:0}
+.clear { clear: both; }
+/*----------------------顶部-------------------------*/
+
+
+/*----------------------中间-------------------------*/
+
+
+
+/*----------------------创业项目-------------------------*/
+
+.all{width:100%; height:100%;}
+.littlebanner{ width:100%; background:#e1e5ed; text-align:center}
+
+.mcjss{width:1098px;margin:10px auto; border:#dcdcdc solid 1px; padding:30px 30px 30px 30px; background:#fff}
+.shangim{ width:1038px;}
+
+
+
+.myg{ margin:25px 0}
+.woxx{ font-size:16px;width:100px;float:left; text-align:right; margin-right:20px; line-height:30px; margin-left:300px; display:inline}
+.kuang{ float:left; line-height:30px; font-size:16px; display:inline}
+.kuang textarea.ldd{ line-height:30px; padding-left:10px; height:30px;width:260px; color:#444}
+
+.jisuan{ margin-left:420px;padding-right: 75px; margin-bottom:50px}
+.jisuan img{
+	padding: 0 75px 0 0; width:95px; height:33px; cursor:pointer;
+}
+
+
+.biaoge{ width:871px; margin:0 auto;}
+.zbg{ border-top:#88a18e solid 1px; border-left:#88a18e solid 1px;border-bottom: #88a18e solid 1px; width:870px}
+.baog{ display:block; width:289px; height:30px; line-height:30px; float:left; border-right:#88a18e solid 1px; text-align:center}
+
+.yc001{
+	text-align: center;
+	margin-bottom: 60px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+<meta charset="UTF-8">
+<script src="__STATIC__/jquery-2.0.3.min.js"></script>
+<html xmlns:wb="http://open.weibo.com/wb">
+<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey={:C('WEIBO_APP_ID')}&debug=true" type="text/javascript" charset="utf-8"></script>
+<script>
+	WB2.checkLogin()
+	// WB2.login(function() {
+	//     //callback function
+	// });
+	// window.location.href = "https://api.weibo.com/oauth2/access_token?client_id={:C('WEIBO_APP_ID')}&client_secret={:C('WEIBO_APP_SERCET')}&grant_type=authorization_code&code={$_GET[code]}&redirect_uri={:C('WEB_URL')}/index.php?s=Home/Test"
+</script>
+<?php 
+$uri = "https://api.weibo.com/oauth2/access_token?client_id={:C('WEIBO_APP_ID')}&client_secret={:C('WEIBO_APP_SERCET')}&grant_type=authorization_code&code={$_GET[code]}";
+$uri = "https://api.weibo.com/oauth2/access_token?client_id=".C('WEIBO_APP_ID')."&client_secret=".C('WEIBO_APP_SERCET')."&grant_type=authorization_code&redirect_uri=".C('WEB_URL')."/index.php?s=Home/Test&code=".$_GET[code];
+$data = array(
+	'client_id' => C('WEIBO_APP_ID'), 
+	'client_secret' => C('WEIBO_APP_SERCET'), 
+	'grant_type' => 'authorization_code', 
+	// 'redirect_uri' => C('WEB_URL').'/index.php?s=Home/User/weibologin'
+	'code' => $_GET[code], 
+);
+// yc_vp($data);
+$ch = curl_init ();
+// print_r($ch);
+curl_setopt ( $ch, CURLOPT_URL, $uri );
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
+curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
+curl_setopt ( $ch, CURLOPT_POST, 1 );
+// curl_setopt ( $ch, CURLOPT_HEADER, 0 );
+curl_setopt ( $ch, CURLOPT_POSTFIELDS, $data );
+// curl_exec ( $ch );
+$return = curl_exec ( $ch );
+curl_close ( $ch );
+yc_vp($return);
+?>
+<script>
+	// $.ajax({
+	// 	url: "https://api.weibo.com/oauth2/access_token?client_id={:C('WEIBO_APP_ID')}&client_secret={:C('WEIBO_APP_SERCET')}&grant_type=authorization_code&code={$_GET[code]}&redirect_uri={:C('WEB_URL')}/index.php?s=Home/User/weibologin",
+	// 	type: 'POST',
+	// 	dataType: 'json',
+	// 	data: {test:''},
+	// })
+	// .done(function() {
+	// 	alert("success");
+	// })
+	// .fail(function() {
+	// 	alert("error");
+	// })
+	// .always(function() {
+	// 	alert("complete");
+	// });
+	
+</script>

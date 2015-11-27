@@ -1,0 +1,78 @@
+<extend name="Base/login"/>
+
+<block name="header">
+	<header>
+		<!-- <div class="littlebanner">
+		<img src="__HOME__/images/entrepre/cailing.gif" />
+	</div>
+	-->
+</header>
+</block>
+
+<block name="body">
+<div class="all">
+	<div class="allmain"  style="margin-bottom:130px;">
+		<div class="mainleft">
+			<img src="__HOME__/images/user/picc.jpg" alt="微风投" width="100%"/>
+		</div>
+		<div class="mainright">
+			<div class="mansec">
+				<div id="result"></div>
+				<div id="list"></div>
+				<form name="loginform" id="loginform" action="__URL__/denglu"  method="post" >
+					<div class="man">
+						<input name="username" id="username" type="text" placeholder="请输入邮箱/昵称" autocomplete="off" maxlength="20" />
+						<span id="usernamecue"></span>
+					</div>
+					<div class="sec">
+						<input name="password" id="password" type="password" placeholder="请输入密码" autocomplete="off" />
+						<span id="passwordcue"></span>
+					</div>
+					<div class="rem">
+						<span class="yesme" style="background-position: 0px -33px;">
+							<input type="checkbox" id="rememberusername" checked="checked"></span>
+						<span class="rember">记住用户名</span>
+						<a class="forgot" href="?s=Home/User/forgetpd01">忘记密码</a>
+					</div>
+
+					<div class="lgoinin">
+						<input type="hidden" name="ajax" value="1" />
+						<input type="image" style="width:165px;height:40px;" id="login" name="submit" src="__HOME__/images/user/login.gif"></div>
+				</form>
+				<div class="lgoword">
+					没有账号？
+					<a href="{:U('register')}">免费注册</a>
+				</div>
+
+			</div>
+			<div class="qier">
+				<span>您还可以使用合作账号登录</span>
+				<div class="partner-qq" id="_qqLoginBtn">
+					<a></a>
+				</div>
+				<div class="partner-weibo" id="_wb_connect_btn">
+					<!-- <a href="https://api.weibo.com/oauth2/authorize?client_id={:C('WEIBO_APP_ID')}&response_type=code&redirect_uri={:C('WEB_URL')}/index.php?s=Home/User/weibologin" target="_blank"></a> -->
+					<a onclick="javascript:hasnofun();"></a>
+				</div> 
+				<Div class="clear"></Div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>    
+
+<!-- qq登录 -->
+<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" charset="utf-8"></script>
+<script type="text/javascript">
+    $("#_qqLoginBtn").on('click', function(event) {
+    	QC.Login.showPopup({
+		   appId:"{:C('QQ_APP_ID')}",
+		   redirectURI:'{:C("WEB_URL")}' + "/index.php?s=Home/User/qqlogin"
+		});
+    });
+</script>
+
+<!-- 微博登录 -->
+
+
+</block>

@@ -1,0 +1,69 @@
+* { margin: 0; padding: 0; }
+body {font: 14px; color: #666; background:#f6f6f6; font-family:"微软雅黑"  }
+img { border: 0; vertical-align: bottom; }
+ul, li, dt { margin: 0; padding: 0; list-style: none; }
+a { text-decoration: none; }
+a:link { color: #000000; text-decoration: none; }
+a:hover {  cursor: pointer; color:#FF0099; text-decoration: none;}
+a.underline { text-decoration: underline; }
+a:visited { color: #000000; text-decoration: none; }
+form, ul, li, p, h1, h2, h3, h4, h5, h6 { padding: 0; margin-left: 0; margin-right: 0; margin-top: 0; }
+.clear { clear: both; }
+/*----------------------顶部-------------------------*/
+
+
+/*----------------------中间-------------------------*/
+
+.all{width:100%; height:100%;}
+.littlebanner{ width:100%; background:#e1e5ed; text-align:center}
+.allmain{ width:1100px;  background:#fff;margin:20px auto; padding-bottom:30px; font-family:"微软雅黑"; border:1px solid #dfdfdf }
+.buzhou{ margin:30px auto; width:747px; height:82px;}
+.zhanghao{ text-align:right; padding-right:120px;font-size:14px; color:#444; margin-bottom:20px}
+.zhanghao a{ color:#5bb1e0 !important;font-size:14px; font-weight:bold;}
+.zhanghao a:hover{ color:#79d0ff}
+/*.buzhou{ margin:60px 0 45px 0px ; height:30px; line-height:30px; font-size:30px; font-weight:bold; padding-left:500px; color:#444 }
+.buzhou span{ font-size:14px !important; color:#888; margin-left:10px}
+.buzhou span a{ color:#5bb1e0; font-size:14px !important;}
+.buzhou span a:hover{color:#79d0ff}*/
+.mansec{ padding:50px 10px 10px 20px;}
+.midtel{ padding-left:180px; font-size:14px; color:#555}
+.words{ width:70px; float:left; text-align:right; margin-right:10px; line-height:40px;}
+.youx{ float:left;width:222px; height:30px; padding:5px 10px 5px 55px;background:url(../images/user/email.gif);}
+.youx input{ color:#444 !important}
+.man{ float:left;width:222px; height:30px; padding:5px 10px 5px 55px;; background:url(../images/user/man.gif);}
+.man input{ color:#444 !important}
+.teone span{ line-height:40px; color:#aaa; font-size:14px; margin-left:30px}
+.midtel input{ width:220px; height:30px; border:0; color:#ccc;font-family:"微软雅黑"; line-height:30px;}
+.telphone{ float:left;width:222px; height:30px; padding:5px 10px 5px 55px;; background:url(../images/user/tel.gif);}
+.telphone input{ color:#444 !important}
+.sec{float:left;width:222px; height:30px; padding:5px 10px 5px 55px;; background:url(../images/user/sec.gif);}
+.sec input{ color:#444 !important}
+.ma{ float:left; width:160px;}
+.ma input{ width:115px; height:40px; border:1px solid #ccc; color:#444; padding-left:10px }
+.yanzheng{ float:left; margin-right:20px}
+.zhuan{ float:left}
+.rell{ margin:20px 0 20px 60px}
+.rell input{ width:40px; display:block; float:left}
+.les{ line-height:36px; float:left}
+.les a{ color:#5bb1e0}
+.les a:hover{ color:#79d0ff}
+.relg{ margin-left:80px;}
+
+.telephone{ margin:35px 0}
+.yzs{ margin:35px 0 35px 80px}
+.wodtd{ margin-left:80px;}
+.wodtd a{ color:#5bb1e0;font-size:14px;}
+.wodtd a:hover{ color:#79d0ff}
+.yuyin{ margin-left:260px;}
+.yuyin span{ line-height:40px; margin-left:15px}
+
+.midttt{ padding-left:30px}
+.duihao{text-align:center}
+.sucess{ margin:20px 0 20px 0;text-align:center; font-size:20px; font-family:"微软雅黑"; color:#40c54a;}
+.tips{ text-align:center; margin-bottom:30px}
+.midttt input{ width:220px; height:30px; border:0; color:#ccc;font-family:"微软雅黑"; line-height:30px;}
+.tettt{ margin:10px 0 30px 300px }
+.telptt{float:left;width:222px; height:30px; padding:5px 10px 5px 55px;; background:url(../images/user/shfe.gif)}
+.tettt span{ margin-left:15px; line-height:40px;}
+.renzheng{ text-align:center}
+/*----------------------底部-------------------------*/

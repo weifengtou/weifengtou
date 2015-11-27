@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js邮箱地址跳转</title>
+	<script type="text/javascript" src="__STATIC__/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript"> 
+	var hash={ 
+		'qq.com': 'http://mail.qq.com', 
+		'gmail.com': 'http://mail.google.com', 
+		'sina.com': 'http://mail.sina.com.cn', 
+		'163.com': 'http://mail.163.com', 
+		'126.com': 'http://mail.126.com', 
+		'yeah.net': 'http://www.yeah.net/', 
+		'sohu.com': 'http://mail.sohu.com/', 
+		'tom.com': 'http://mail.tom.com/', 
+		'sogou.com': 'http://mail.sogou.com/', 
+		'139.com': 'http://mail.10086.cn/', 
+		'hotmail.com': 'http://www.hotmail.com', 
+		'live.com': 'http://login.live.com/', 
+		'live.cn': 'http://login.live.cn/', 
+		'live.com.cn': 'http://login.live.com.cn', 
+		'189.com': 'http://webmail16.189.cn/webmail/', 
+		'yahoo.com.cn': 'http://mail.cn.yahoo.com/', 
+		'yahoo.cn': 'http://mail.cn.yahoo.com/', 
+		'eyou.com': 'http://www.eyou.com/', 
+		'21cn.com': 'http://mail.21cn.com/', 
+		'188.com': 'http://www.188.com/', 
+		'foxmail.coom': 'http://www.foxmail.com' 
+	};
+	// alert(hash['gmail.com'])
+	$(function(){ 
+		$(".mail").each(function() { 
+			var url = $(this).text().split('@')[1]; 
+			// alert(url)
+			for (var j in hash){ 
+				$(this).attr("href", hash[url]); 
+			} 
+		}); 
+	}) 
+	</script>
+</head>
+<body>
+	<a href="#" target="_blank" class="mail">laike@qq.com</a>
+	<br>
+	<a href="#" target="_blank" class="mail">laike@gmail.com</a>
+	<br>
+	<a href="#" target="_blank" class="mail">laike@sina.com</a>
+	<br>
+	<a href="#" target="_blank" class="mail">laike@163.com</a>
+	<br>
+	<a href="#" target="_blank" class="mail">laike@souhu.com</a>
+	<br>
+	<a href="#" target="_blank" class="mail">laike@hotmail.com</a>
+</body>
+</html>

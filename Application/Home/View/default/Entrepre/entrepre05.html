@@ -1,0 +1,210 @@
+<extend name="Base/entrepre05" />
+
+<block name="header"> <header>
+	<div class="littlebanner">
+		<img src="__HOME__/images/entrepre/cailing.gif" />
+	</div>
+</header> <!-- ==============================================js特效================================================= -->
+<include file="index/effect" /> <!-- =================================================================================================== -->
+</block>
+
+<block name="body">
+<div class="all">
+	<div class="allmain">
+		<div class="test01">
+			<img src="__HOME__/images/entrepre/xixin01.gif" />
+		</div>
+		<div class="middle">
+			<div class="w936">
+				<!-- Tab区 -->
+				<include file="entrepreTab" />
+				<script type="text/javascript">
+					$(document).ready(function($) {
+						$('#tb_5').addClass('tabcss');
+					});
+				</script>
+				<div class="ctt">
+					<div class="dis" id="tbc_03">
+						<!-- <if condition="!($prdescription)"> -->
+							<div class="middle" id="cd51">
+								<form name='MyForm' id='MyForm' method='POST' action="__URL__/saveprdes" >
+    								<script id="editor" name="editor" type="text/plain" style="width:750px;height:500px">{$prdes|htmlspecialchars_decode}</script>
+    								<input class="prid" type="hidden" name="prid" value="{$prid}">
+    								<div class="form-item cf">
+    									<button id="submit">确 定</button>
+    									<!-- <input type="reset" value="返回"> -->
+									</div>
+								</form>
+							</div>
+						<div class="clear"></div>
+					</div>
+					<script type="text/javascript">
+						
+					$('#submit').on('click',function(){
+						$('#MyForm').ajaxSubmit({
+							beforeSubmit: function(){
+								var ue = UE.getEditor('editor').getPlainTxt().length-1;
+								
+								if(ue>2000){
+									layer.tips('字符数超出最大允许值','#editor',{time:3,guide:1});
+									return false;
+								}
+								if(ue<5){
+									layer.tips('请认真填写项目描述','#editor',{time:3,guide:1});
+									return false;
+								}
+							},
+							success: function(data){
+								if(data==-1){
+									layer.alert('提交失败，请登录', 8);
+								}else{
+									layer.alert('项目描述已成功保存！',8);
+								}
+							}
+						});
+						return false;
+					});
+					$("#back").on('click',function(){
+						$("#cd51").hide();
+						$("#cd53").show();
+					})
+					</script>
+					<div style="width: 988px; height: 35px;">
+						<div style="width: 244px; margin: 0 auto;">
+							<div class="next"
+								style="background: url('./Public/home/images/entrepre/xis.gif') no-repeat;">
+								<a href="__URL__/entrepre02" id="li2">上一步</a>
+							</div>
+							<div class="next"
+								style="background: url('./Public/home/images/entrepre/xis.gif') no-repeat;">
+								<a href="__URL__/entrepre03">下一步</a>
+							</div>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    //UEDITOR_HOME_URL、config、all这三个顺序不能改变(绝对路径)
+    window.UEDITOR_HOME_URL = "/ThinkPHP/Public/Ueditor/";    
+    
+    //实例化编辑器
+    var ue = UE.getEditor('editor',{
+    	toolbars: [
+        	['undo', 'redo', 'bold','italic','indent','formatmatch','horizontal','unlink','paragraph','link',
+        	 'fontfamily', //字体
+             'fontsize', //字号
+             'insertimage', //多图上传
+        	 'justifyleft', //居左对齐
+             'justifyright', //居右对齐
+             'justifycenter', //居中对齐
+             'justifyjustify', //两端对齐
+             'forecolor' //字体颜色
+             ]
+        ],
+        maximumWords:2000
+    });
+    function insertHtml() {
+        var value = prompt('插入html代码', '');
+        ue.execCommand('insertHtml', value)
+    }
+    
+    function createEditor() {
+        enableBtn();
+        UE.getEditor('editor');
+    }
+    function getAllHtml() {
+        alert(UE.getEditor('editor').getAllHtml())
+    }
+    function getContent() {
+        var arr = [];
+        arr.push("使用editor.getContent()方法可以获得编辑器的内容");
+        arr.push("内容为：");
+        arr.push(UE.getEditor('editor').getContent());
+        alert(arr.join("\n"));
+    }
+    function getPlainTxt() {
+        var arr = [];
+        arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
+        arr.push("内容为：");
+        arr.push(UE.getEditor('editor').getPlainTxt());
+        alert(arr.join('\n'))
+    }
+    function setContent(isAppendTo) {
+        var arr = [];
+        arr.push("使用editor.setContent('欢迎使用ueditor')方法可以设置编辑器的内容");
+        UE.getEditor('editor').setContent('欢迎使用ueditor', isAppendTo);
+        alert(arr.join("\n"));
+    }
+    function setDisabled() {
+        UE.getEditor('editor').setDisabled('fullscreen');
+        disableBtn("enable");
+    }
+    function setEnabled() {
+        UE.getEditor('editor').setEnabled();
+        enableBtn();
+    }
+    function getText() {
+        //当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
+        var range = UE.getEditor('editor').selection.getRange();
+        range.select();
+        var txt = UE.getEditor('editor').selection.getText();
+        alert(txt)
+    }
+    function getContentTxt() {
+        var arr = [];
+        arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
+        arr.push("编辑器的纯文本内容为：");
+        arr.push(UE.getEditor('editor').getContentTxt());
+        alert(arr.join("\n"));
+    }
+    function hasContent() {
+        var arr = [];
+        arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
+        arr.push("判断结果为：");
+        arr.push(UE.getEditor('editor').hasContents());
+        alert(arr.join("\n"));
+    }
+    function setFocus() {
+        UE.getEditor('editor').focus();
+    }
+    function deleteEditor() {
+        disableBtn();
+        UE.getEditor('editor').destroy();
+    }
+    
+    //提交方法
+    function submitEditor()    {
+        //此处以非空为例
+        if(ue.hasContents()){
+            ue.sync();       //同步内容
+            document.MyForm.submit();
+        }
+    }    
+    
+    function disableBtn(str) {
+        var div = document.getElementById('btns');
+        var btns = domUtils.getElementsByTagName(div, "button");
+        for (var i = 0, btn; btn = btns[i++];) {
+            if (btn.id == str) {
+                domUtils.removeAttributes(btn, ["disabled"]);
+            } else {
+                btn.setAttribute("disabled", "true");
+            }
+        }
+    }
+    function enableBtn() {
+        var div = document.getElementById('btns');
+        var btns = domUtils.getElementsByTagName(div, "button");
+        for (var i = 0, btn; btn = btns[i++];) {
+            domUtils.removeAttributes(btn, ["disabled"]);
+        }
+    }
+</script>
+</block>

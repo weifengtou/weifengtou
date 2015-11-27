@@ -1,0 +1,128 @@
+<!--证件展示-->
+<div class="zjzs">
+
+    <div class="zjzs_l">
+
+        <div class="zjjj">
+
+            <div class="zjjj_l">法人身份证正面</div>
+
+            <div class="zjjj_r">
+                <?php if ($companyInfo[0][fornt]): ?>
+                <img src="__HOME__/images/detail/yes.gif" width="20" height="20" />
+                <?php else: ?>
+                <img src="__HOME__/images/detail/no.gif" width="20" height="20" />
+                <?php endif; ?></div>
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="zjjj">
+
+            <div class="zjjj_l">法人身份证反面</div>
+
+            <div class="zjjj_r">
+                <?php if ($companyInfo[0][rear]): ?>
+                <img src="__HOME__/images/detail/yes.gif" width="20" height="20" />
+                <?php else: ?>
+                <img src="__HOME__/images/detail/no.gif" width="20" height="20" />
+                <?php endif; ?></div>
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="zjjj">
+
+            <div class="zjjj_l">法人证信报告</div>
+
+            <div class="zjjj_r">
+                <?php if ($companyInfo[0][legalperson]): ?>
+                <img src="__HOME__/images/detail/yes.gif" width="20" height="20" />
+                <?php else: ?>
+                <img src="__HOME__/images/detail/no.gif" width="20" height="20" />
+                <?php endif; ?></div>
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="zjjj">
+
+            <div class="zjjj_l">营业执照副本</div>
+
+            <div class="zjjj_r">
+                <?php if ($companyInfo[0][businesslicence]): ?>
+                <img src="__HOME__/images/detail/yes.gif" width="20" height="20" />
+                <?php else: ?>
+                <img src="__HOME__/images/detail/no.gif" width="20" height="20" />
+                <?php endif; ?></div>
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="zjjj">
+
+            <div class="zjjj_l">税务登记证副本</div>
+
+            <div class="zjjj_r">
+                <?php if ($companyInfo[0][taxcertificate]): ?>
+                <img src="__HOME__/images/detail/yes.gif" width="20" height="20" />
+                <?php else: ?>
+                <img src="__HOME__/images/detail/no.gif" width="20" height="20" />
+                <?php endif; ?></div>
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="zjjj">
+
+            <div class="zjjj_l">公司照片</div>
+
+            <div class="zjjj_r">
+                <?php if ($companyInfo[0][companyimg]): ?>
+                <img src="__HOME__/images/detail/yes.gif" width="20" height="20" />
+                <?php else: ?>
+                <img src="__HOME__/images/detail/no.gif" width="20" height="20" />
+                <?php endif; ?></div>
+
+            <div class="clear"></div>
+        </div>
+
+        <div class="clear"></div>
+
+    </div>
+
+    <div class="zjzs_r">
+        <ul>
+            <li>
+                关注:
+                <span>{:count($attentions)}</span>
+            </li>
+
+            <li>
+                约谈人数:
+                <span>{:count($webmsgs)}</span>
+            </li>
+
+            <li>
+                投资人数:
+                <span>
+                    <?php $fin_invs = M('financing')->
+                    where("prid='$_GET[pid]'")->select();echo count($fin_invs); ?>
+                </span>
+            </li>
+
+            <li>
+                单笔投资额:
+                <span>
+                    ￥
+                    <?php $fin_need = M('financingneeds')->
+                    where("prid='$_GET[pid]'")->find();echo number_format($fin_need[singleinvest]); ?>
+                </span>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="clear"></div>
+
+</div>

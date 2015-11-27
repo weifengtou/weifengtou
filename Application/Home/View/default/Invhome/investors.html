@@ -1,0 +1,161 @@
+<extend name="Base/investors" />
+
+<block name="header"> <header>
+	<div class="littlebanner">
+		<img src="__HOME__/images/entrepre/cailing.gif" />
+	</div>
+	<div class="allmain"></div>
+</header> <!-- ==============================悬浮区====================== --> <include
+	file="index/effect" /> <!-- ========================================================== -->
+</block>
+<block name="body">
+<div class="allmain">
+
+	<!--创业项目-->
+	<div class="program">
+		<ul>
+			<li><a href="{:U(investors)}" <?php if (!$_GET[type]): ?>
+				class="rightnow"
+			<?php endif; ?>>所有投资人[<?php echo $x1+x2; ?>]</a></li>
+			<li>·</li>
+			<li><a href="{:U('investors?type=1')}" <?php if ($_GET[type]==1): ?>
+				class="rightnow"
+			<?php endif; ?>>个人投资者[{$x1}]</a></li>
+			<li>·</li>
+			<li><a href="{:U('investors?type=2')}" <?php if ($_GET[type]==2): ?>
+				class="rightnow"
+			<?php endif; ?>>机构投资者[{$x2}]</a></li>
+		</ul>
+	</div>
+
+	<!--tou-->
+
+	<div class="headeer">
+		<!-- =========================筛选区============================== -->
+		<include file="Project/select_box" />
+		<!-- ============================================================= -->
+
+	</div>
+
+	<!--main-->
+	<div id="item">
+		<?php foreach ($invs as $key =>
+                $value): ?>
+		<?php 
+                $invinfo = get_child_detail($value[id],2); 
+                ?>
+		<div class="investor">
+			<a href="{$invinfo[0][url]}" target="_blank">
+				<div class="positiontwwo">
+					<img src="__IMG__/investor/invhome/touxiang02.png"
+						style="position: relative; width: 134px; height: 134px;" />
+				</div>
+				<div class="touxiang">
+					<?php if ($invinfo[0][face_img]): ?>
+					<img src="{$invinfo[0][face_img]}"
+						style="width: 134px; height: 134px;" />
+					<?php else: ?>
+					<img src="__STATIC__/images/nop.gif"
+						style="width: 134px; height: 134px;" />
+					<?php endif ?>
+				</div>
+			</a>
+			<div class="mxx">
+				<div class="td">
+					<div class="td_l">
+						<?php if ($invinfo[0][type]==2): ?>
+							<a style="float:left;" href="{$invinfo[0][url]}" target="_blank">{$invinfo[0][company]}</a>
+						<?php else: ?>
+							<a style="float:left;" href="{$invinfo[0][url]}" target="_blank">{$invinfo[0][showname]}</a>
+						<?php endif; ?>
+						<img src="__IMG__/investor/invhome/renzheng.gif" /> <span>{$invinfo[0][level_name]}</span>
+					</div>
+					<div class="td_r">
+						<img src="__IMG__/investor/invhome/tdxm.gif"
+							onclick="javascript:proDelivery({$invinfo[0][id]});" />
+					</div>
+					<div class="clear"></div>
+				</div>
+				<input type="hidden" value="{$invinfo[0][intentionname]}"
+					id="trade{$invinfo[0][uid]}">
+				<p class="intention">
+					投资意向：
+					<?php 
+                        $trade = explode('&nbsp;',$invinfo[0][intentionname]);
+                        if(count($trade) >
+                            2){
+                            echo $trade[0].'&nbsp;'.$trade[1].'&nbsp;'.' <font color="#00f;" style="position:relative;" id="more'.$invinfo[0][uid].'" id="more'.$invinfo[0][uid].'" onmouseover="mouseover('.$invinfo[0][uid].')" onmouseout="mouseout('.$invinfo[0][uid].')">••••<span style="display:none;position:absolute;width:200px;right:-220px;top:-10px;color:#fff;background:#8e5700;font-size:12px;padding:10px; z-index:20" id="moretrade'.$invinfo[0][uid].'">'.$invinfo[0][intentionname].'</span></font>
+                            ';
+                        }else{
+                            echo $invinfo[0][intentionname];
+                        }
+                        
+                    ?>
+				</p>
+				<script type="text/javascript">
+                    /* function mouseover(id){
+                        var moreid = 'more'+id;
+                        var tradeid = 'trade'+id; 
+                        layer.tips($("#"+tradeid).val(),'#'+moreid,{
+                            guide:1,
+                            closeBtn: [0, true],
+                            style: ['background-color:#005; color:#fff', '#005'],
+                            maxWidth:194
+                        });
+                    } */
+                    function mouseover(id){
+                    	var moretradeid = 'moretrade'+id;
+                    	$("#"+moretradeid).show();
+                    }
+                    function mouseout(id){
+                    	var moretradeid = 'moretrade'+id;
+                    	$("#"+moretradeid).hide();
+                    }
+                    </script>
+				<div class="tzje">
+					<h2>
+						投资金额： ￥
+						<?php echo number_format($invinfo[0][min_maney]) ?>
+						—￥
+						<?php echo number_format($invinfo[0][max_maney]) ?>
+					</h2>
+				</div>
+				<div class="gyt">
+					<ul>
+						<li class="gyt_g">粉丝： <?php echo count(M('attention')->where("atted_id='".$invinfo[0][uid]."'")->select()); ?></li>
+						<li class="gyt_y">约谈： <?php echo count(M()->
+                                    query("SELECT
+                                CASE wft_webmsg.sendid 
+                                    WHEN '$invinfo[0][uid]' THEN wft_webmsg.receiveuid 
+                                ELSE wft_webmsg.sendid END AS other
+                                FROM `wft_webmsg`
+                                WHERE 
+                                sendid = '$invinfo[0][uid]' OR receiveuid = '".$invinfo[0][uid]."'
+                                GROUP BY other")); ?>
+						</li>
+						<li class="gyt_t">投资： <?php echo count(M("financing")->where("pid='".$invinfo[0][uid]."'")->select()); ?></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<?php endforeach; ?>
+	</div>
+	<!-- =================================分页==========================-->
+	<div class="pages">
+		<script>
+                $("div.pages").jPages({
+                    containerID : "item",
+                    perPage : 8,
+                    previous : "上一页",
+                    next : "下一页"
+                });
+                </script>
+	</div>
+	<!-- ============================================================== -->
+</div>
+
+<script>
+        jQuery(document).ready(function($) {
+          $('.investor:odd').addClass('right')
+        });
+        </script> <include file="Public:minilogin" /> </block>

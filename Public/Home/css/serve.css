@@ -1,0 +1,134 @@
+* { margin: 0; padding: 0; }
+body {font: 14px; color: #444; background:#f6f6f6; font-family:"微软雅黑" }
+img { border: 0; vertical-align: bottom; }
+ul, li, dt { margin: 0; padding: 0; list-style: none; }
+a { text-decoration: none; }
+a:link { color: #000000; text-decoration: none; }
+a:hover {  cursor: pointer; color:#FF0099; text-decoration: none;}
+a.underline { text-decoration: underline; }
+a:visited { color: #000000; text-decoration: none; }
+form, ul, li, p, h1, h2, h3, h4, h5, h6 { padding:0; margin:0}
+.clear { clear: both; line-height:0px;height:1px;overflow:hidden;*display:inline; }
+/*----------------------顶部-------------------------*/
+
+.wfta_a{ background:url(../images/serve/xuanca1.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wfta_c{ background:url(../images/serve/xuancc1.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wftb_a{ background:url(../images/serve/xuanca2.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wftb_c{ background:url(../images/serve/xuancc2.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wftc_a{ background:url(../images/serve/xuanca3.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wftc_c{ background:url(../images/serve/xuancc3.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wftd_a{ background:url(../images/serve/xuanca4.jpg) center center no-repeat; width:100%; height:65px; margin:0 auto;}
+
+.wftd_c{ background:url(../images/serve/xuancc4.jpg) center center no-repeat; width:1366px; height:65px; margin:0 auto}
+
+.wfte_a{ background:url(../images/serve/xuanca5.jpg) center center no-repeat; width:100%; height:149px; margin:0 auto;}
+
+.wfte_c{ background:url(../images/serve/xuancc5.jpg) center center no-repeat; width:1366px; height:149px; margin:0 auto}
+
+.wftf_a{ background:url(../images/serve/xuanca6.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wftf_c{ background:url(../images/serve/xuancc6.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wftg_a{ background:url(../images/serve/xuanca7.jpg) center center no-repeat; width:100%; height:180px; margin:0 auto;}
+
+.wftg_c{ background:url(../images/serve/xuancc7.jpg) center center no-repeat; width:1366px; height:180px; margin:0 auto}
+
+.wfth_a{ background:url(../images/serve/xuanca8.jpg) center center no-repeat; width:100%; height:170px; margin:0 auto;}
+
+.wfth_c{ background:url(../images/serve/xuancc8.jpg) center center no-repeat; width:1366px; height:170px; margin:0 auto}
+
+.wfti_a{ background:url(../images/serve/xuanca9.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wfti_c{ background:url(../images/serve/xuancc9.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wftj_a{ background:url(../images/serve/xuanca10.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wftj_c{ background:url(../images/serve/xuancc10.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wftk_a{ background:url(../images/serve/xuanca11.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wftk_c{ background:url(../images/serve/xuancc11.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wftl_a{ background:url(../images/serve/xuanca12.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wftl_c{ background:url(../images/serve/xuancc12.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wftm_a{ background:url(../images/serve/xuanca13.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wftm_c{ background:url(../images/serve/xuancc13.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wftn_a{ background:url(../images/serve/xuanca14.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wftn_c{ background:url(../images/serve/xuancc14.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wfto_a{ background:url(../images/serve/xuanca15.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wfto_c{ background:url(../images/serve/xuancc15.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wftp_a{ background:url(../images/serve/xuanca16.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wftp_c{ background:url(../images/serve/xuancc16.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wftq_a{ background:url(../images/serve/xuanca17.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wftq_c{ background:url(../images/serve/xuancc17.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wftr_a{ background:url(../images/serve/xuanca18.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wftr_c{ background:url(../images/serve/xuancc18.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wfts_a{ background:url(../images/serve/xuanca19.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wfts_c{ background:url(../images/serve/xuancc19.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wftt_a{ background:url(../images/serve/xuanca20.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wftt_c{ background:url(../images/serve/xuancc20.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wftu_a{ background:url(../images/serve/xuanca21.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wftu_c{ background:url(../images/serve/xuancc21.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wftv_a{ background:url(../images/serve/xuanca22.jpg) center center no-repeat; width:100%; height:132px; margin:0 auto;}
+
+.wftv_c{ background:url(../images/serve/xuancc22.jpg) center center no-repeat; width:1366px; height:132px; margin:0 auto}
+
+.wftw_a{ background:url(../images/serve/xuanca23.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wftw_c{ background:url(../images/serve/xuancc23.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wftx_a{ background:url(../images/serve/xuanca24.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wftx_c{ background:url(../images/serve/xuancc24.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wfty_a{ background:url(../images/serve/xuanca25.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wfty_c{ background:url(../images/serve/xuancc25.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wftz_a{ background:url(../images/serve/xuanca26.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wftz_c{ background:url(../images/serve/xuancc26.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wftaa_a{ background:url(../images/serve/xuanca27.jpg) center center no-repeat; width:100%; height:150px; margin:0 auto;}
+
+.wftaa_c{ background:url(../images/serve/xuancc27.jpg) center center no-repeat; width:1366px; height:150px; margin:0 auto}
+
+.wftab_a{ background:url(../images/serve/xuanca28.jpg) center center no-repeat; width:100%; height:116px; margin:0 auto;}
+
+.wftab_c{ background:url(../images/serve/xuancc28.jpg) center center no-repeat; width:1366px; height:116px; margin:0 auto}
+
+.wftac_a{ background:url(../images/serve/xuanca29.jpg) center center no-repeat; width:100%; height:80px; margin:0 auto;}
+
+.wftac_c{ background:url(../images/serve/xuancc29.jpg) center center no-repeat; width:1366px; height:80px; margin:0 auto}
+.wftac_c img{ margin-left:439px; cursor:pointer}
+
+.wftad_a{ background:url(../images/serve/xuanca30.jpg) center center no-repeat; width:100%; height:103px; margin:0 auto;}
+
+.wftad_c{ background:url(../images/serve/xuancc30.jpg) center center no-repeat; width:1366px; height:103px; margin:0 auto}
+

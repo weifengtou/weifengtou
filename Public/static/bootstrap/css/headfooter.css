@@ -1,0 +1,78 @@
+* { margin: 0; padding: 0; }
+body {font: 14px; color: #444; background:#f6f6f6; font-family:"微软雅黑" }
+img { border: 0; vertical-align: bottom; }
+ul, li, dt { margin: 0; padding: 0; list-style: none; }
+a { text-decoration: none; }
+a:link { color: #000000; text-decoration: none; }
+a:hover {  cursor: pointer; color:#FF0099; text-decoration: none;}
+a.underline { text-decoration: underline; }
+a:visited { color: #000000; text-decoration: none; }
+form, ul, li, p, h1, h2, h3, h4, h5, h6 { padding:0; margin:0}
+.clear { clear: both;  line-height:0px;height:1px;overflow:hidden;*display:inline;}
+
+
+
+/*----------------------顶部-------------------------*/
+
+
+/*----------------------中间-------------------------*/
+
+.all{width:100%; height:100%;}
+
+.wftbg{ width:100%; height:107px; background:url(img/top_x.gif) repeat-x}
+.wftt{ width:1100px; margin:0 auto; height:107px}
+.wftl{ float:left; display:block; width:865px; height:107px}
+.shouye_l{ float:left; display:block; width:445px; height:55px; padding:25px 0 27px 0}
+.shouye_r{ width:360px; height:40px; padding:40px 60px 27px 0px; float:right; display:block}
+.sy{ float:left; width:120px; height:40px; display:block}
+.dlzc{ width:190px; float:right; height:50px; padding:30px 0 27px 45px; display:block;}
+.dlzc_l{ float:left; display:inline; width:84px; height:40px; padding-top:10px}
+.dlz{ float:left; width:42px; height:40px; line-height:40px; text-align:center}
+.dlz a{ color:#fff !important; font-weight:bold}
+.zcd{ float:right}
+.dlzc_r{ float:right; display:block; width:63px; height:20px; padding:19px 0 11px  43px}
+.dlzc_r a img{ width:20px; height:20px; margin-right:7px}
+
+
+
+
+.afdl{ width:75px; height:50px; display:block; float:left}
+.afdl_img{ padding:0 25px 10px 25px; width:25px; height:25px; display:block}
+.afdl_w{ height:15px; line-height:15px; width:75px; text-align:center}
+.afdl_w a{ text-align:center; color:#fff; font-size:13px}
+.afdl_w a span{ color:#f00}
+.afdl_x{ padding:4px 25px 13px 25px; height:18px; display:block}
+
+
+
+.dfoot{ width:100%; height:200px}
+.dfootn{ width:715px; height:120px; padding:30px 200px 50px 200px; margin:0 auto}
+.lianfo{ height:50px}
+.lianfo ul li{ float:left; padding:0 7px 0 8px; margin-bottom:20px}
+.dfootw{ width:715px; text-align:center; font-size:10px; line-height:25px}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

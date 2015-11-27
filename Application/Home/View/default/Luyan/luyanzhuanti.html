@@ -1,0 +1,137 @@
+<extend name="Base/luyansignup"/>
+<block name="header">
+    <header></header>
+    <!-- =============================悬浮特效======================================== -->
+    <include file="Index:effect"/>
+</block>
+
+<block name="body">
+    <div class="all">
+        <div class="wbanner_a">
+            <div class="wbanner_b">
+                <div class="wbanner_c"></div>
+            </div>
+        </div>
+
+        <div class="wmain">
+
+            <div class="zhanwwvip">
+                <!--上边样式-->
+                <div class="zhuanti">
+                    <img src="__HOME__/images/pastLuyan/zhuanti03.gif" width="1100" height="20" />
+                </div>
+            </div>
+            <div class="zhuantiaa">
+
+                <!--大型路演会-->
+                <div class="comm" style="margin:0; padding-bottom:0">
+                    <h3>{$info[title]}</h3>
+                    <div class="luvip" >
+                        <!-- <div class="luvip_a">
+                        -->
+                        <!-- <img src="__HOME__/images/pastLuyan/vip.gif" />
+                        -->
+                        <div style="height:500px;">
+                            <?php  $x = $_GET[prvedio]?$_GET[prvedio]:$info[shipin]; ?>
+                            <div id="youkuplayer" style="position:absolute;width:1048px;height:500px;z-index:0;" hidden></div>
+                            <script type="text/javascript" src="http://player.youku.com/jsapi">
+                                    player = new YKU.Player('youkuplayer',{
+                                    styleid: '0',
+                                    client_id: 'YOUR YOUKUOPENAPI CLIENT_ID',
+                                    vid:"{$x}"
+                                    });
+                                </script>
+                            <script>
+                                    jQuery(document).ready(function($) {
+                                        $("object").append('<param name="wmode" value="opaque">')
+                                        $("#youkuplayer").show()
+                                    });
+                            </script>
+                        </div>
+                        <div class="clear"></div>
+                        <!-- </div>
+                        -->
+                        <div class="luvip_bl">
+                            什么是微风投：
+                            <br />
+                            <p>微风投商业模式是一款定位于小微企业中长期融资需求的金融创新产品。</p>
+                            <p>是“好项目+投资人+创业者+监管方”的全产业链的多方共赢的商业组合。</p>
+                        </div>
+                        <div class="luvip_br">
+                            为什么要参加路演：
+                            <br />
+                            <p>与投资人现场对接，真实呈现项目详情，避免优质项目错失融资机会。</p>
+                            <p>多方资源现场对接，分享成功投资经验，实现资源价值最大化。</p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                </div>
+
+                <!--路演视频-->
+                <include file="luyan_selectbox"/>
+
+                <!--下边样式-->
+                <div>
+                    <img src="__HOME__/images/pastLuyan/zhuanti02.gif" width="1100" height="30" />
+                </div>
+            </div>
+
+            <!--本次路演企业-->
+            <div class="comm">
+                <h3>参加路演</h3>
+                <div>
+                    <!-- <img src="__HOME__/images/pastLuyan/helps.jpg" />
+                    <div class="benifis">
+                        <a href="#">
+                            <img src="__HOME__/images/pastLuyan/bmm.gif" />
+                        </a>
+                    </div>
+                    -->
+                    <div class="ccyyan_b">
+                        <p style="text-align:center; font-size:28px; line-height:40px">微风投</p>
+                        <p style="text-align:center; font-size:18px; margin:5px 0 20px 0">创业者的福音&nbsp;&nbsp;投资人的首选&nbsp;&nbsp;项目方的乐园</p>
+                        <p style="text-indent:2em">一、投资人与项目方零距离接触，项目方现场详细解读项目情况，投资人深入了解与思考，做出最准确的判断，避免错失好项目。</p>
+                        <p style="text-indent:2em">二、针对部分技术性很强的项目，投资人不理解项目，项目方细致的讲解，与投资人深入沟通，可避免融资弯路，实现快速对接。</p>
+                        <p style="text-indent:2em">三、路演是对项目方的一种极大宣传，路演视频将在微风投网络平台及各大平台视频网站进行宣传，快速打响项目知名度。</p>
+                        <p style="text-indent:2em">
+                            四、路演是一次投资人与项目方的盛宴，路演现场各种经验深入交流，各种资源快速对接，为投资人和项目方的事业发展提供了一个良好平台。
+                        </p>
+                        <div style=" margin:10px 0; margin-top:20px">
+                            <div class="ccyyan_b_l">联系电话：</div>
+                            <div class="ccyyan_b_r">400-700-8998</div>
+                            <div class="clear"></div>
+                        </div>
+                        <div style=" margin:10px 0">
+                            <div class="ccyyan_b_l">公司邮箱：</div>
+                            <div class="ccyyan_b_r">kefu@weifengtou.com</div>
+                            <div class="clear"></div>
+                        </div>
+                        <div style=" margin:10px 0">
+                            <div class="ccyyan_b_l">地址：</div>
+                            <div class="ccyyan_b_r">郑州市金水区健康路49号(市七中对面)</div>
+                            <div class="clear"></div>
+                        </div>
+
+                        <!-- <div class="ccyyan_c">
+                            <img onclick="javascript:signup();" src="__HOME__/images/pastLuyan/bmm02.jpg">
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width:100%; height:250px; background:#ededf1">
+            <div class="wybmm_a">
+                <div class="wybmm">
+                    <img src="__HOME__/images/pastLuyan/bmm02.jpg" onclick="javascript:signup();" />
+                </div>
+            </div>
+        </div>
+    </div>
+<include file="Public:minilogin" />
+<script>
+    function signup () {
+        location.href ="{:U(luyansignup)}"
+    }
+</script> 
+</block>

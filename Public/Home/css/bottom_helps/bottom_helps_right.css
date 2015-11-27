@@ -1,0 +1,31 @@
+* { margin: 0; padding: 0; }
+body {font: 14px; color: #444; background:#f6f6f6; font-family:"微软雅黑" }
+img { border: 0; vertical-align: bottom; }
+ul, li, dt { margin: 0; padding: 0; list-style: none; }
+a { text-decoration: none; }
+a:link { color: #000000; text-decoration: none; }
+a:hover {  cursor: pointer; color:#FF0099; text-decoration: none;}
+a.underline { text-decoration: underline; }
+a:visited { color: #000000; text-decoration: none; }
+form, ul, li, p, h1, h2, h3, h4, h5, h6 { padding:0; margin:0}
+.clear { clear: both; }
+
+
+
+
+
+
+
+
+.article_r{ float:right; border-top:#e05b3d solid 3px; width:215px}
+.article_rd{ width:153px; background:#fff; border:#dcdcdc solid 1px; padding:10px 30px;}
+.article_rd ul{ padding:10px 0 15px 0}
+.article_rd ul li{ height:35px; border-bottom:#dcdcdc dotted 1px; font-size:18px; width:153px; text-align:center; font-weight:bold; padding:5px 0}
+.article_rd ul li a{ height:35px; line-height:35px; font-weight:normal; width:153px; display:block;}
+.article_rd ul li a:hover{ color:#000; background:#dce2ef;}
+.article_rd ul li a.current{ color:#000; background:#dce2ef;}
+.article_rd ul li.last{ border:none}
+.article_rd ul li span a{ font-size:20px; color:#e05b3d}
+.article_rd ul li span a:hover{ background:none !important; color:#e05b3d}
+.ewm{ margin:10px 0; width:189px; text-align:center; padding:13px; background:#fff}
+

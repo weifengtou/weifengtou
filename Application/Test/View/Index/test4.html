@@ -1,0 +1,26 @@
+<div class="container">
+	<script>
+	jQuery(document).ready(function($) {
+		$("form").validate({
+			// debug:true,
+			rules:{
+				test1:{},
+				test2:{
+					required:true,
+					number:true,
+				}
+			}
+		})
+	});
+	</script>
+	<form action="" method="post">
+		<input type="text" name="test1" class="required">
+		<textarea id="test2" name="test2" style="width:700px;height:300px;"></textarea>
+		<script>
+	        KindEditor.ready(function(K) {
+	                window.editor = K.create('#test2');
+	        });
+		</script>
+	    <input type="submit" class="btn btn-primary" name="test" value="提交">
+	</form>
+</div>

@@ -1,0 +1,156 @@
+<!--评价-->
+<div class="gongtong pingjia">
+    <div>
+        <h3>
+            对
+            <a>{$proInfo[0][pjname]}</a>
+            进行咨询
+        </h3>
+    </div>
+
+    <div>
+        <div class="pingjiak_l">
+            <textarea name="pingjia" id="pingjia" placeholder="请输入评价内容" style="font-size:14px; color:#444; border:#f8dcd6 1px solid; line-height:2.0;width:866px; padding:3px 10px; height:148px;"></textarea>
+            <input type="hidden" name="uid" value="{$userinfo[id]}">
+            <div class="tijiao">
+                <a href="javascript:pinglun({$proInfo[0][id]});">
+                    <img src="__IMG__/investor/invdisplay/tijiao02.gif" alt="提交" width="96" height="34" />
+                </a>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="pingjiak_r">
+            <a>
+                <?php if ($loginInfo[0][face_img]): ?>
+                <img src="{$loginInfo[0][face_img]}" style="width:134px;height:134px;" width="134" height="134" />
+                <?php else: ?>
+                <img src="__STATIC__/images/nop.gif" width="134" height="134" />
+                <?php endif; ?></a>
+
+            <div class="positiont">
+                <a>
+                    <img src="__HOME__/images/detail/touxiang02.png" width="134" height="134" />
+                </a>
+            </div>
+
+        </div>
+
+        <div class="clear"></div>
+
+    </div>
+
+
+
+
+
+    <?php if (!$cmts): ?>
+    <h5>无评论</h5>
+    <?php else: ?>
+    <!--评论展示开始-->
+    <div id="items">
+        <?php foreach ($cmts as $key => $cmt1): ?>
+            <?php $cmtinfo = get_homeuser_detail($cmt1[cmtid]); 
+            ?>
+            <div class="pjys">
+                <div class="pjys_l">
+                    <a>
+                        <?php if ($cmtinfo[0][face_img]): ?>
+                            <img src="{$cmtinfo[0][face_img]}" width="80" height="80" />
+                        <?php else: ?>
+                            <img src="__STATIC__/images/nop.gif" alt="暂无头像" width="80" height="80" />
+                        <?php endif; ?>
+                    </a>
+
+                    <div class="positionth">
+                        <a>
+                            <img src="__HOME__/images/detail/touxiang03.png" width="80" height="80" />
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="pjys_r">
+                    <h2>
+                        {$cmtinfo[0][username]}
+                        <img src="__HOME__/images/detail/renzheng.gif" width="20" height="20" />
+                    </h2>
+                    
+                    <?php $_cmt = M('Comment')->where("cmtid='$cmt1[cmtid]' AND cmtedid = '$_GET[pid]' OR cmteduid = '$cmt1[cmtid]' AND cmtedid = '$_GET[pid]'")->select(); 
+                    ?>
+                    <!-- 评论列表 -->
+                    <div class="_item">
+                        <?php foreach ($_cmt as $key => $cmt2): ?>
+                            <div class="_item1" <?php if ($cmt2[cmteduid]==$cmt1[cmtid]): ?>
+                                style="display:none;"
+                            <?php endif; ?>>
+                                <p>
+                                    {$cmt2[cmtmsg]}
+                                </p>
+                                <h6>{:date("Y-m-d H:m",$cmt2[cmt_time])}</h6>
+                                <br>
+                                <div class="clear"></div>
+                            </div>
+
+                            <!--提交过后会出现的-->
+                            
+                            <div class="_item2" <?php if ($cmt2[cmtid]==$cmt1[cmtid]): ?>
+                                style="display:none;"
+                            <?php endif; ?>>
+                                <div class="hfh">
+                                    <div class="hfh_l">
+                                        <a>
+                                            <?php if ($pruser[0][face_img]): ?>
+                                                <img src="./Uploads/Album/{$pruser[0][face_img]}" width="80" height="80" /> 
+                                            <?php else: ?>
+                                                <img src="__STATIC__/images/nop.gif" width="80" height="80" /> 
+                                            <?php endif ?>
+                                        </a>
+                                        <div class="positionf">
+                                            <a>
+                                                <img src="__HOME__/images/detail/touxiang04.png" width="80" height="80" />
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="hfh_r">
+                                        <h2>
+                                            <a>{$homeuser[0][username]}</a>
+                                            回复
+                                            <a>{$cmtinfo[0][username]}</a>
+                                            :
+                                        </h2>
+                                        <div>
+                                            {$cmt2[cmtmsg]}
+                                        </div>
+                                        <div class="hfh_t">{:date("Y-m-d H:m",$cmt2[cmt_time])}</div>
+                                    </div>
+
+                                    <div class="clear"></div>
+
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <!--所属人回复-->
+                    <?php if ($cmt1[cmteduid]==$loginInfo[0][user_id]): ?>
+                        <textarea pid="{$cmt1[cmtedid]}" from="{$cmt1[cmteduid]}" to="{$cmt1[cmtid]}" placeholder="回复给{$cmtinfo[0][username]}:"></textarea>
+                        <div class="pjys_rm">
+                            <a>
+                                <img onclick="javascript:huifu({$cmt1[cmtid]});" src="__HOME__/images/detail/tijiao02.gif" alt="提交" width="96" height="34" />
+                            </a>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    <?php endif; ?>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
+    <div class="clear"></div>
+</div>

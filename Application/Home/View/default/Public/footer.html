@@ -1,0 +1,180 @@
+<!-- 底部
+================================================== -->
+<title>{:C('TITLE')}</title>
+<meta name="KEYWORDS" content="{:C('keywords')}">
+<meta name="DESCRIPTION" content="{:C('description')}" />
+
+<div class="ttt">
+
+    <div class="ttte">
+
+        <?php $category=D('Category')->
+        getChildrenId(bottom_helps);
+        $_vars = explode(',',$category); 
+        $j = 1;
+        for ($i=0; $i
+        < count($_vars); $i++) { ?>
+            <ul id="ul{$i}">
+                <?php $catInfo = M("category")->
+                where("id='".$_vars[$i]."'")->find();
+            if(empty($catInfo[name])){
+                $this->error('没有指定文档分类！');
+            }
+            $cat2 = D('Category')->info($catInfo[name]);
+            if($cat2 && 1 == $cat2['status']){
+                switch ($cat2['display']) {
+                    case 0:
+                        $this->error('该分类禁止显示！');
+                        break;
+                }
+            } else {
+                $this->error('分类不存在或被禁用！');
+            }
+            $_list = D('Document')->lists($_vars[$i], '`level` DESC,`id` DESC', 1,true); ?>
+                <li id="li{$i}">{$catInfo[title]}</li>
+                <?php foreach ($_list as $key =>
+                $value): ?>
+                <li id="sli{$j++}">
+                    <a attrtitle="{$value[title]}" href="{:U('Article/detail?id='.$value['id'])}" target="_black">{$value[title]}</a>
+                </li>
+                <?php endforeach; ?></ul>
+            <?php }?>
+            <script>
+                $("a[attrtitle='媒体报道']").attr({"href":"index.php?s=/Home/Article/lists/category/media_show","target":"_black"})
+                $("a[attrtitle='网站说明']").attr({"href":"index.php?s=/Home/Help/wwwexplan","target":"_black"})
+                $("a[attrtitle='新手须知']").attr({"href":"index.php?s=/Home/Help/serve","target":"_black"})
+                $("a[attrtitle='新浪微博']").attr({'href':'http://weibo.com/u/3936877309',"target":"_black"})
+                $("a[attrtitle='微信']").removeAttr('href')
+                $("a[attrtitle='意见反馈']").attr({'href':'index.php?s=Home/Help/wwwsuggest',"target":"_black"})
+                $(".article_rd ul li").each(function(){
+                    if ($(this).children("a").text()=="新手须知") {
+                        $(this).children("a").attr({"href":"index.php?s=/Home/Help/serve","target":"_black"})
+                    };
+                    if ($(this).children("a").text()=="意见反馈") {
+                        $(this).children("a").attr({'href':'index.php?s=Home/Help/wwwsuggest',"target":"_black"})
+                    };
+                })
+                $("a[attrtitle='平台公告']").parent('li').remove()
+                $("a[attrtitle='招贤纳士']").parent('li').remove()
+                $("a[attrtitle='注册流程']").attr({"href":"index.php?s=/Home/Help/xinshou","target":"_black"})
+                $("a[attrtitle='我要投资']").attr({"href":"index.php?s=/Home/Help/xinshou","target":"_black"})
+                $("a[attrtitle='我要融资']").attr({"href":"index.php?s=/Home/Help/xinshou","target":"_black"})
+                $("a[attrtitle='资金保障']").attr({"href":"index.php?s=/Home/Help/baozhang","target":"_black"})
+                $("a[attrtitle='风控保障']").attr({"href":"index.php?s=/Home/Help/baozhang","target":"_black"})
+                $("a[attrtitle='法律保障']").attr({"href":"index.php?s=/Home/Help/baozhang","target":"_black"})
+            </script>
+            <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                $("a[attrtitle='微信']").on('click',function(){
+                    // alert('11');
+                    var pageii = $.layer({
+                        type: 1,
+                        title: false,
+                        area: ['460px', '380px'],
+                        border: [0], //去掉默认边框
+                        // shade: [0], //去掉遮罩
+                        shade: [0.5, '#000'],
+                        closeBtn: [0, true], //去掉默认关闭按钮
+                        shift: 'top', //从左动画弹出
+                        page: {
+                            html: '<div style="width:460px; height:380px; border:1px solid #ccc; background-color:#fff;"><\div style="width:440px; height:45px; background:url(..\/public\/home\/images\/handf\/weix1.gif) 0 0 repeat-x; padding-left:20px; font-size:16px; font-weight:bold; line-height:45px; color:#000">关注微风投官方微信</div><\div style="width:160px; height:190px; font-size:14px; text-align:center; line-height:30px; margin:40px 150px 60px 150px"><\img src="__STATIC__\/images\/weixin1.gif" />【微风投】微信订阅号<\/div><\div style="width:460px; height:44px; text-align:center; line-height:45px; color:#006576; font-size:14px;">打开微信，使用“扫一扫”即可关注微风投官方微信<\/div></div>'
+                            // html: '<\div style="width:460px; height:380px; margin:30px auto; background:#fff; border:#ccc solid 1px;">
+                            //         <\div style="width:440px; height:45px; background:url(..\/images\/handf\/weix1.gif) 0 0 repeat-x; padding-left:20px; font-size:16px; font-weight:bold; line-height:45px; color:#000">
+                            //             关注微风投官方微信
+                            //         </div>
+                            //         <\div style="width:160px; height:190px; font-size:14px; text-align:center; line-height:30px; margin:40px 150px 60px 150px">
+                            //             <\img src="__HOME__\/images\/handf\/weix2.gif" />
+                            //             【微风投】微信订阅号
+                            //         <\/div>
+                            //         <\div style="width:460px; height:44px; text-align:center; line-height:45px; color:#006576; font-size:14px;">
+                            //         打开微信，使用“扫一扫”即可关注微风投官方微信
+                            //         <\/div>
+                            //     <\/div>'
+                        }
+                    });
+                });
+            });
+                
+            </script>
+
+            <div class="clear"></div>
+
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="dfoot">
+
+            <div class="dfootn">
+
+                <!-- <div class="lianfo">
+                <ul>
+                    <li>
+                        <a>
+                            <img src="__HOME__/images/handf/wljc.gif" width="120" height="50" alt="wljc" />
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <img src="__HOME__/images/handf/bawz.gif" alt="bawz" width="139" height="50" />
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <img src="__HOME__/images/handf/wlgs.gif" alt="wlgs" width="120" height="50" />
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <img src="__HOME__/images/handf/xylm.gif" alt="zylm" height="50" width="120" />
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <img src="__HOME__/images/handf/sfyz.gif" width="139" height="50" alt="sfyz" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            -->
+            <div class="dfootw">
+                客服热线 400-700-8998 &nbsp;&nbsp; 客服邮箱 kefu@weifengtou.com
+                <br />
+                COPYRIGHT©2011-2016 www.weifengtou.com 豫ICP备11020081号-2 版权所有 微风投
+                <?php if ($_GET['machine']=="pc"): ?>
+                	<br>
+	                <a style="color:#fff" href="http://wap.weifengtou.com">返回手机版</a>
+	            <?php endif; ?>
+            </div>
+            <div class="clear"></div>
+            
+
+        </div>
+        <div class="clear"></div>
+
+    </div>
+</footer>
+
+<!-- ===========================================账号设置============================================================ -->
+<include file="Public:shezhi" />
+<script>
+    function shezhi () {
+        shezhimima()
+    }
+</script>
+<!-- ===========================================账号设置============================================================ -->
+
+<!-- cncc 统计 -->
+<script src="http://s11.cnzz.com/z_stat.php?id=1254172912&web_id=1254172912" language="JavaScript"></script>
+<script>$("a[title=站长统计]").hide()</script>
+
+<include file="Public/var"/>
+<block name="script"></block>
+<!-- 用于加载js代码 -->
+<!-- 页面footer钩子，一般用于加载插件JS文件和JS代码 -->
+{:hook('pageFooter', 'widget')}
+<div class="hidden">
+    <!-- 用于加载统计代码等隐藏元素 -->
+    <block name="hidden"></block>
+</div>

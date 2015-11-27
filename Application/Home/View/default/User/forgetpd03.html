@@ -1,0 +1,71 @@
+01<extend name="Base/register"/>
+<block name="header">
+	<link rel="stylesheet"  href="__CSS__/forgetpassword.css" type="text/css" />
+	<header>
+		<div class="littlebanner">
+			<img src="__HOME__/images/entrepre/cailing.gif" />
+		</div>
+	</header>
+</block>
+
+<block name="body">
+	<div class="all">
+    	
+        <div class="forgot">
+	    	<div class="forgoa">找回密码</div>
+	        <div><img src="__IMG__/user/forgetpassword/forget03.gif" /></div>
+	        
+	        <div class="forgomm">
+	        	<div class="wendder">
+	                	验证成功！请重新设置密码，提交成功后可使用新密码登陆微风投。
+	            </div>
+	            
+	        	
+	            <form action="{:U(forgetpd03)}" method="post" id="form">
+	            	<input type="hidden" name="email" value="{$_GET[email]}">
+		            <div class="wodedea" style="margin-top:40px">
+		            	<div class="woded_l">
+		                	<font style="color:#f00">*</font>设置密码：
+		                </div>
+		                <div class="seco">
+		                	<input type="password" name="password" id="password" maxlength="16" placeholder="请输入新密码" />
+		                </div>
+		                <div class="clear"></div>
+		            </div>
+		            
+		            <div class="wodedea">
+		            	<div class="woded_l">
+		                	<font style="color:#f00">*</font>重复密码：
+		                </div>
+		                <div class="seco">
+		                	<input type="password" id="repassword" maxlength="16" placeholder="请再次输入新密码" />
+		                </div>
+		                <div class="clear"></div>
+		            </div>
+	            </form>
+	            <div class="yessubt">
+	            	<img onclick="chongzhi()" src="__IMG__/user/forgetpassword/submit2.gif" />
+	            </div>
+	            <script>
+	            	function chongzhi () {
+	            				if($('#password').val().length==''){
+	            					layer.tips('密码不能为空！','#password',{time:3,guide:1});
+									return false;
+								}else if($('#password').val().length>20||$('#password').val().length<6){
+									layer.tips('密码不符合要求！','#password',{time:3,guide:1});
+									return false;
+								}
+								if($('#repassword').val().length==''){
+									layer.tips('请输入确认密码！','#repassword',{time:3,guide:1});
+									return false;
+								}else if($('#repassword').val()!=$('#password').val()){
+									layer.tips('密码不一致！','#repassword',{time:3,guide:1});
+									return false;
+								}
+	            		$("#form").trigger('submit')
+	            	}
+	            </script>
+	        </div>
+	    </div>
+    </div>
+</block>

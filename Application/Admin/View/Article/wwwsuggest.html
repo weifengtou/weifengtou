@@ -1,0 +1,196 @@
+<extend name="Public/base"/>
+
+<!-- 子导航 -->
+<block name="sidebar">
+	<include file="sidemenu" />
+</block>
+
+<block name="body">
+	<div>
+		<!-- 标题 -->
+		<div class="main-title">
+			<h2>共计({$_total})</h2>
+		</div>
+
+		<!-- 按钮工具栏 -->
+		<div class="cf">
+			<div style="float:left">
+				<!-- 下载 -->
+				<div style="float:left;width:200px;height:30px;"><a href="admin.php?s=/Article/exportSuggestExcel&start={$start}&end={$end}">下载查询结果</a></div>
+				<div style="float:left;width:200px;height:30px;"><a href="{:U('Article/exportSuggestExcel')}">下载所有</a></div>
+				<div class="clear"></div>
+			</div>
+			<!-- 高级搜索 -->
+		    <div style="float:right">
+				<form name="luyanForm" id="luyanForm" action="{:U('Article/selectSuggest')}" method="post">
+					<input id="start" name="start" class="laydate-icon">-<input id="end" name="end" class="laydate-icon">
+					<input type="submit" value="查询">
+				</form>
+				<script>
+					var start = {
+						elem : '#start',
+						format : 'YYYY-MM-DD hh:mm:ss',
+						//min: laydate.now(), //设定最小日期为当前日期
+						min : '2014-01-01 23:59:59', //设定最小日期为当前日期
+						max : '2099-06-16 23:59:59', //最大日期
+						istime : true,
+						istoday : false,
+						choose : function(datas) {
+							end.min = datas; //开始日选好后，重置结束日的最小日期
+							end.start = datas; //将结束日的初始值设定为开始日
+						}
+					};
+					var end = {
+						elem : '#end',
+						format : 'YYYY-MM-DD hh:mm:ss',
+						min : '2014-01-01 23:59:59',
+						max : '2099-06-16 23:59:59',
+						istime : true,
+						istoday : false,
+						choose : function(datas) {
+							start.max = datas; //结束日选好后，重置开始日的最大日期
+						}
+					};
+					laydate(start);
+					laydate(end);
+				</script>
+			</div>
+			<div class="clear"></div>
+			<!-- <div class="search-form fr cf">
+					<div class="sleft">
+						<div class="drop-down" style="display:none;">
+							<span class="sort-txt"">所有</span>
+							<i class="arrow arrow-down""></i>
+							<ul id="sub-sch-menu" class="nav-list hidden">
+								<li><a href="javascript:;">所有</a></li>
+								<li><a href="javascript:;">正常</a></li>
+								<li><a href="javascript:;">禁用</a></li>
+								<li><a href="javascript:;">待审核</a></li>
+							</ul>
+							<script>
+							$(function(){
+								$(".sort-txt,.arrow-down").click(function(){
+									$("#sub-sch-menu").show();
+								});
+								$(document).on("click",function(e){
+									var target  = $(e.target);
+										if(target.closest(".sort-txt,.arrow-down,#sub-sch-menu").length == 0){
+											/*.closest()沿 DOM 树向上遍历，直到找到已应用选择器的一个匹配为止，返回包含零个或一个元素的 jQuery 对象。*/
+										$("#sub-sch-menu").hide();
+									};
+									e.stopPropagation();
+								})
+							})
+							</script>
+						</div>
+						<input type="text" name="title" class="search-input" placeholder="请输入项目名称">
+						<a class="sch-btn" id="search"><i class="btn-search"></i></a>
+					</div>
+				</div> -->
+		</div>
+
+		<!-- 数据表格 -->
+		<div class="data-table">
+			<table class="">
+				<thead>
+					<tr>
+						<th class="row-selected row-selected">
+							<input class="check-all" type="checkbox"/>
+						</th>
+						<th class="">编号</th>
+						<th class="">建议内容</th>
+						<th class="">联系方式</th>
+						<th class="">提交时间</th>
+						<th class="">状态</th>
+						<th class="">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="list" item="vo">
+						<tr>
+							<td>
+								<input class="ids" type="checkbox" name="ids[]" value="{$vo.id}" />
+							</td>
+							<td id="prid">{$vo.id}</td>
+							<td style="width:590px;">
+								<a href="javascript:alertSuggest({$vo.id});" id="more{$vo.id}">
+								<?php 
+								$mb = mb_strlen($vo[suggestText],'utf-8');
+								$st = strlen($vo[suggestText]); 
+								if($mb == $st){        //纯英文
+									if($st > 60){echo substr($vo[suggestText],0,60)."...";}else{echo $vo[suggestText];}
+								}else if($st%$mb==0 && $st%3==0){	//纯汉字
+									if($st >120){echo substr($vo[suggestText],0,120)."...";}else{echo $vo[suggestText];}
+								}else{			//混合
+									if($st > 50){echo substr($vo[suggestText],0,50)."...";}else{echo $vo[suggestText];}
+								}
+								?> 
+								</a>
+							</td>
+							<input type="hidden" value="{$vo.suggestText}" id="suggest{$vo.id}">
+							<td>{$vo.contant}</td>
+							<td>{$vo.subTime}</td>
+							<td id="statue{$vo.id}"><if condition="$vo[statue] eq 0"><font color="red">待处理</font><elseif condition="$vo[statue] eq 1"/>已处理</if></td>
+							<td>
+								<a href="javascript:readed({$vo.id});">已处理</a>
+								<a href="javascript:willread({$vo.id});">待处理</a>
+							</td>
+						</tr>
+					</foreach>
+				</tbody>
+			</table>
+
+		</div>
+
+		<!-- 分页 -->
+		<div class="page">{$_page}</div>
+	</div>
+
+</block>
+<block name="script">
+	<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+	<php>
+		if(C('COLOR_STYLE')=='blue_color') echo '
+		<link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+	<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="__STATIC__/json2.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer.ext.js"></script>
+	<script type="text/javascript">
+	function alertSuggest(data){		//阅读建议
+		var suggestid = 'suggest'+data;
+		var suggest = $('#'+suggestid).val();
+		var pageii = $.layer({
+                    type: 1,
+                    title: false,
+                    area: ['auto', 'auto'],
+                    border: [0], //去掉默认边框
+                    shade: [0], //去掉遮罩
+                    closeBtn: [0, true], //去掉默认关闭按钮
+                    shift: 'top', //从左动画弹出
+                    page: {
+                        html: '<div style="width:650px; min-height:260px; padding:20px 20px; border:1px solid #ccc; background-color:#fff;word-wrap:break-word;">'+suggest+'</div>'
+                    }
+          		});
+    }
+    function readed(sid){			//操作：已处理
+    	var statueid = 'statue'+sid;
+    	$.post('__URL__/suggestStatue', {id:sid,statue:1}, function(data) {
+    		if(data == 1){
+    			$('#'+statueid).html('已处理');
+    		}
+    	});
+    }
+    function willread(sid){		//操作：待处理
+    	// alert(data);
+    	var statueid = 'statue'+sid;
+    	$.post('__URL__/suggestStatue', {id:sid,statue:0}, function(data) {
+    		if(data == 1){
+    			$('#'+statueid).html('<font color="red">待处理</font>');
+    		}
+    	});
+    }
+	</script>
+</block>

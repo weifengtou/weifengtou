@@ -1,0 +1,64 @@
+<?php 
+$atts = M("Attention")->where("uid='".$inv_detail[0][uid]."' AND attd_style=1")->select();
+?>
+<div class="xmmain_lt">
+    <div class="feade">
+        <img src="__HOME__/images/investor/invdisplay/img/gzde.gif"/>
+    </div>
+
+    <div id="gz_pros">
+        <?php foreach ($atts as $k => $v): ?>
+            <?php 
+            $att_pr_detail = get_child_detail($v[atted_childid],1);
+            ?>
+            <div class="fmaid">
+                <div class="fmaidimg">
+                    <a href="{$att_pr_detail[0][url]}">
+                        <img src="./Uploads/Album/{$att_pr_detail[0][logo]}" width="215" height="121" />
+                    </a>
+                </div>
+                <div class="fmaletd">
+                    <h3>
+                        <a href="{$att_pr_detail[0][url]}">{$att_pr_detail[0][pjname]}</a>
+                    </h3>
+                    <p>
+                        <a href="{$att_pr_detail[0][url]}">
+                            {$att_pr_detail[0][pjintroduce]}
+                        </a>
+                    </p>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+    <div class="fenys" id="gz_pro_page" style=" text-align:center"></div>
+    <?php if ($atts): ?>
+    <script>
+        $("div#gz_pro_page").jPages({
+            containerID : "gz_pros",
+            perPage : 3,
+            previous : "上一页",
+            next : "下一页",
+            minHeight: false,
+            // callback:function  (e) {
+            //     var height = $('.prodeta_b').height()
+            //     $("div.row").css('height',height);
+            // }
+        });
+        jQuery(document).ready(function($) {
+            $(".jp-previous").text("<")
+            $(".jp-next").text(">")
+        });
+    </script>
+    <?php else: ?>
+    <script>
+         $("div#gz_pro_page").text("暂无")
+    </script>
+    <?php endif; ?>
+
+    <!-- <div class="fenys" style=" text-align:center">
+        <img src="__HOME__/images/investor/invdisplay/img/fena.gif" />
+    </div> -->
+
+</div>

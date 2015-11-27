@@ -1,0 +1,113 @@
+<div class="mendingr_s"></div>
+<div class="xmainr_b">
+    <div class="renmoney">
+        <div class="renmoney_a">目前已预约认购金额</div>
+        <div class="renmoney_b">￥<?php $money = 0; foreach ($fins as $key =>$value) {
+                                $money += $value[money];
+                            } echo number_format($money); ?></div>
+        <div class="renmoney_c">
+            需完成 <?php $attrmoney = $fin_needs[0][budget]-$money; ?>
+                                 <font>￥<?php echo number_format($attrmoney>0?$attrmoney:"0"); ?></font>
+            才可成功
+        </div>
+    </div>
+    <div class="exmoney">
+        <!-- <div class="exmoney_er">
+            <div class="exmoney_a">￥1,750,000</div>
+            <div class="exmoney_b">项目方出资</div>
+        </div> -->
+        <div class="exmoney_er">
+            <div class="exmoney_a">￥<?php $money = 0; foreach ($fins as $key =>$value) {
+                                $money += $value[money];
+                            } echo number_format($money); ?></div>
+            <div class="exmoney_b">已预约认购</div>
+        </div>
+        <div class="exmoney_er">
+            <div class="exmoney_a">￥<?php echo number_format($fin_needs[0][budget]); ?></div>
+            <div class="exmoney_b">融资总额</div>
+        </div>
+        <div class="exmoney_er" style="border-right:none">
+            <div class="exmoney_a">{:count($fins)}</div>
+            <div class="exmoney_b">认购人数</div>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <?php  ?>
+    <div class="relabel">
+        <div class="relabel_er">
+            <div class="relabel_l">法人身份证正面</div>
+            <div class="relabel_r">
+                <?php if ($companyInfo[0][fornt]): ?>
+                <img src="__IMG__/project/prdetail/yes.gif" />
+                <?php else: ?>
+                <img src="__IMG__/project/prdetail/no.gif" />
+                <?php endif; ?>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="relabel_er">
+            <div class="relabel_l">法人身份证反面</div>
+            <div class="relabel_r">
+                <?php if ($companyInfo[0][rear]): ?>
+                <img src="__IMG__/project/prdetail/yes.gif" />
+                <?php else: ?>
+                <img src="__IMG__/project/prdetail/no.gif" />
+                <?php endif; ?>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="relabel_er">
+            <div class="relabel_l">法人证信报告</div>
+            <div class="relabel_r">
+                <?php if ($companyInfo[0][legalperson]): ?>
+                <img src="__IMG__/project/prdetail/yes.gif" />
+                <?php else: ?>
+                <img src="__IMG__/project/prdetail/no.gif" />
+                <?php endif; ?>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="relabel_er">
+            <div class="relabel_l">营业执照副本</div>
+            <div class="relabel_r">
+                <?php if ($companyInfo[0][businesslicence]): ?>
+                <img src="__IMG__/project/prdetail/yes.gif" />
+                <?php else: ?>
+                <img src="__IMG__/project/prdetail/no.gif" />
+                <?php endif; ?>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="relabel_er">
+            <div class="relabel_l">税务登记证副本</div>
+            <div class="relabel_r">
+                <?php if ($companyInfo[0][taxcertificate]): ?>
+                <img src="__IMG__/project/prdetail/yes.gif" />
+                <?php else: ?>
+                <img src="__IMG__/project/prdetail/no.gif" />
+                <?php endif; ?>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="relabel_er">
+            <div class="relabel_l">公司照片</div>
+            <div class="relabel_r">
+                <?php if ($companyInfo[0][companyimg]): ?>
+                <img src="__IMG__/project/prdetail/yes.gif" />
+                <?php else: ?>
+                <img src="__IMG__/project/prdetail/no.gif" />
+                <?php endif; ?>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="getover"><!--距结束24天6小时35分44秒--></div>
+
+    <div class="sendp">
+        <a onclick="chuzi()">预约认购</a>
+    </div>
+
+</div>
+<div class="mendingr_x"></div>

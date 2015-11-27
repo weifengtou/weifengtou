@@ -1,0 +1,387 @@
+<extend name="Public/base"/>
+
+<!-- 子导航 -->
+<block name="sidebar">
+    <include file="sidemenu" />
+</block>
+
+<block name="body">
+    <div class="main-title">
+        <h2>项目编辑</h2>
+        <!-- 下载 -->
+		<div style="float:left;width:150px;height:30px; line-height:30px; text-align:center; color:#007300"><a id="download" style="color:#007300" href="{:U('Article/exportLookover01Excel','prid='.$prid)}">下载</a></div>
+    </div>
+    <div class="w936" style="margin:0 auto;">
+        <include file="lookoverTab" />
+        <script type="text/javascript">
+        $(document).ready(function($) {
+            $('#tb_1').addClass('tabcss');
+        });
+        </script>
+        <div class="ctt">
+            <div class="undis" id="tbc_01">
+                <!-- 显示项目基本资料 -->
+                <div class="middle" id="pr02">
+                    <div style="width:758px;height:275px;">
+                        <div class="logd">
+                            <img src="__ALBUM__/{$logo}" style="width:95px; height:84px;" id="logo02"/>
+                            <p style="width:95px;" align="center">图片尺寸：1:1</p>
+                        </div>
+                        <div class="gezi">
+                            <div class="gezitwo">
+                                <div class="woss"> <font style="color:#f00; font-weight:normal">*</font>
+                                    项目名称
+                                </div>
+                                <div class="kuang" id="prname02">{$name}</div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="gezitwo">
+                                <div class="woss"> <font style="color:#f00; font-weight:normal">*</font>
+                                    联系人
+                                </div>
+                                <div class="kuang" id="linkman02">{$linkman}</div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="gezitwo">
+                                <div class="woss"> <font style="color:#f00; font-weight:normal">*</font>
+                                    联系方式
+                                </div>
+                                <div class="kuang" id="prname02">{$prphone}</div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="gezione">
+                                <div class="woss"> <font style="color:#f00; font-weight:normal">*</font>
+                                    一句话介绍
+                                </div>
+                                <div class="kuang" id="printroduce02">{$introduce}</div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="gezitwo">
+                                <div class="woss">
+                                    <font style="color:#f00; font-weight:normal">*</font>
+                                    视频地址
+                                </div>
+                                <div class="kuang" id="videoweb02"><?php if ($videoweb): ?>
+                                    <a href="http://v.youku.com/v_show/id_{$videoweb}.html" target="_blank">{$videoweb}</a>
+                                <?php else: ?>
+                                    暂无
+                                <?php endif; ?></div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="gezione">
+                                <div class="woss">
+                                    <font style="color:#f00; font-weight:normal">*</font>
+                                    所处阶段
+                                </div>
+                                <div class="kuang" id="prstage02">{$stage}</div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="gezitwo">
+                                <div class="woss">
+                                    <font style="color:#f00; font-weight:normal">*</font>
+                                    所在城市
+                                </div>
+                                <div class="kuang" id="prarea02">{$area}</div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="gezitwo">
+                                <div class="woss">
+                                    <font style="color:#f00; font-weight:normal">*</font>
+                                    所属行业
+                                </div>
+                                <div class="kuang" id="prindustry02">{$industry}</div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="linfes"></div>
+                <!-- 关于我们 -->
+                <if condition="!($about)">
+                    <!-- 关于我们填写 -->
+                    <div class="middle" id="pr11">
+                        <form id="prform11" name="prform11" action="__URL__/praboutinsert" method="post">
+                            <div style="width:758px;height:200px;">
+                                <div class="lodd">简单介绍项目的亮点和不足，市场规模和产品的使用场景，已经取得的成绩和优势。</div>
+                                <div class="gezi">
+                                    <div class="gezione">
+                                        <div class="woss">
+                                            <font style="color:#f00; font-weight:normal">*</font>
+                                            关于我们
+                                        </div>
+                                        <div class="kuang" style="width:510px" >
+                                            <textarea name="prabout11" id="prabout11"  class="lxx" style="resize: none;" placeholder="项目简介不能超过200个字" ></textarea>
+                                        </div>
+                                        <input type="hidden" name="prid" class="prid" value="{$prid}"/>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <else />
+                    <!-- 关于我们显示 -->
+                    <div class="middle" id="pr12">
+                        <div style="width:758px;min-height:100px;">
+                            <div class="lodd">简单介绍项目的亮点和不足，市场规模和产品的使用场景，已经取得的成绩和优势。</div>
+                            <div class="gezi">
+                                <div class="gezione">
+                                    <div class="woss">
+                                        <font style="color:#f00; font-weight:normal">*</font>
+                                        关于我们
+                                    </div>
+                                    <div class="kuang" style="width:510px;word-wrap:break-word;" id="prabout12">{$about}</div>
+                                    <input type="hidden" name="prid" class="prid" value="{$prid}"/>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </if>
+                <div class="linfes"></div>
+                <!-- 为什么支持我们 -->
+                <if condition="!$whysupport">
+                    <!-- 为什么支持我们保存 -->
+                    <div class="middle" id="pr41">
+                        <form id="prform41" name="prform41" action="__URL__/prwhysupportinsert" method="post">
+                            <div style="width:758px;height:200px;">
+                                <div class="lodd">简单介绍项目的亮点和不足，市场规模和产品的使用场景，已经取得的成绩和优势。</div>
+                                <div class="gezi">
+                                    <div class="gezione">
+                                        <div class="woss">
+                                            <font style="color:#f00; font-weight:normal">*</font>
+                                            为什么我们需要你的支持
+                                        </div>
+                                        <div class="kuang" style="width:510px" >
+                                            <textarea name="prwhysupport41" id="prwhysupport41"  class="lxx" style="resize: none;" placeholder="项目简介不能超过200个字" ></textarea>
+                                        </div>
+                                        <input type="hidden" name="prid" class="prid" value="{$prid}"/>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <else />
+                    <!-- 为什么支持我们显示 -->
+                    <div class="middle" id="pr42">
+                        <div style="width:758px;min-height:100px;">
+                            <div class="lodd">简单介绍项目的亮点和不足，市场规模和产品的使用场景，已经取得的成绩和优势。</div>
+                            <div class="gezi">
+                                <div class="gezione">
+                                    <div class="woss">
+                                        <font style="color:#f00; font-weight:normal">*</font>
+                                        为什么我们需要你的支持
+                                    </div>
+                                    <div class="kuang" style="width:510px;word-wrap:break-word;" id="prwhysupport42">{$whysupport}</div>
+                                    <input type="hidden" name="prid" class="prid" value="{$prid}"/>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </if>
+                <div class="linfes"></div>
+                <!-- 承诺与回报 -->
+                <if condition="!$promise">
+                    <!-- 承诺保存 -->
+                    <div class="middle" id="pr51">
+                        <form id="prform51" name="prform51" action="__URL__/prpromiseinsert" method="post">
+                            <div style="width:758px;height:200px;">
+                                <div class="lodd">简单介绍项目的亮点和不足，市场规模和产品的使用场景，已经取得的成绩和优势。</div>
+                                <div class="gezi">
+                                    <div class="gezione">
+                                        <div class="woss">
+                                            <font style="color:#f00; font-weight:normal">*</font>
+                                            我们的承诺与回报
+                                        </div>
+                                        <div class="kuang" style="width:510px" >
+                                            <textarea name="prpromise51" id="prpromise51"  class="lxx" style="resize: none;" placeholder="项目简介不能超过800个字" ></textarea>
+                                        </div>
+                                        <input type="hidden" name="prid" class="prid" value="{$prid}"/>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <else />
+                    <!-- 承诺显示 -->
+                    <div class="middle" id="pr52">
+                        <div style="width:758px;min-height:100px;">
+                            <div class="lodd">简单介绍项目的亮点和不足，市场规模和产品的使用场景，已经取得的成绩和优势。</div>
+                            <div class="gezi">
+                                <div class="gezione">
+                                    <div class="woss">
+                                        <font style="color:#f00; font-weight:normal">*</font>
+                                        我们的承诺与回报
+                                    </div>
+                                    <div class="kuang" style="width:510px;word-wrap:break-word;" id="prpromise52">{$promise}</div>
+                                    <input type="hidden" name="prid" class="prid" value="{$prid}"/>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </if>
+                <div class="linfes"></div>
+                <!-- 风险 -->
+                <if condition="!$danger">
+                    <!-- 风险保存 -->
+                    <div class="middle" id="pr61">
+                        <form id="prform61" name="prform61" action="__URL__/prdangerinsert" method="post">
+                            <div style="width:758px;height:200px;">
+                                <div class="lodd">简单介绍项目的亮点和不足，市场规模和产品的使用场景，已经取得的成绩和优势。</div>
+                                <div class="gezi">
+                                    <div class="gezione">
+                                        <div class="woss">
+                                            <font style="color:#f00; font-weight:normal">*</font>
+                                            项目风险
+                                        </div>
+                                        <div class="kuang" style="width:510px" >
+                                            <textarea name="prdanger61" id="prdanger61"  class="lxx" style="resize: none;" placeholder="项目简介不能超过200个字" ></textarea>
+                                        </div>
+                                        <input type="hidden" name="prid" class="prid" value="{$prid}"/>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <else />
+                    <!-- 风险显示 -->
+                    <div class="middle" id="pr62">
+                        <div style="width:758px;min-height:100px;">
+                            <div class="lodd">简单介绍项目的亮点和不足，市场规模和产品的使用场景，已经取得的成绩和优势。</div>
+                            <div class="gezi">
+                                <div class="gezione">
+                                    <div class="woss">
+                                        <font style="color:#f00; font-weight:normal">*</font>
+                                        项目风险
+                                    </div>
+                                    <div class="kuang" style="width:510px;word-wrap:break-word;" id="prdanger62">{$danger}</div>
+                                    <input type="hidden" name="prid" class="prid" value="{$prid}"/>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </if>
+                <div class="linfes"></div>
+                <!-- 公司banner图 -->
+                <div class="middle">
+                    <div class="lodd">上传公司Banner图(1100*295)</div>
+                    <div class="gezi">
+                        <div class="gezione" style="height:220px;">
+                            <div class="woss" >
+                                <font style="color:#f00; font-weight:normal">*</font>
+                                公司Banner图
+                            </div>
+                            <div class="kuang">
+                                <if condition="!$banner">
+                                    <img src="__HOME__/images/entrepre/shenfu08.gif" id="bannerimg71" />
+                                    
+                                    <else />
+                                    <img src="__BANNER__/{$banner}" id="bannerimg72" style="width:220px;height:220px;"/>
+                                    
+                                </if>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="linfes"></div>
+
+                <!-- 项目团队成员 -->
+                <div class="middle">
+                    <div class="lodd">天使投资很大程度就是“投人”，所以请认真填写以获得投资人的信任。</div>
+                    <div class="gezi">
+                        <div class="gezione">
+                            <div class="woss">
+                                <font style="color:#f00; font-weight:normal">*</font>
+                                团队信息
+                            </div>
+                            <div class="wodts" style="margin-bottom:20px;">成员添加流程：1.线上添加 2.线下邀请他注册微风投 3.发出邀请 4.请他在系统私信中接受邀请</div>
+                            <div class="clear"></div>
+                        </div>
+                        <if condition="$member">
+                            <!-- 成员信息显示 -->
+                            <volist name="member" id="vo">
+                                <div class="lades" id="pr{$vo.id}">
+                                    <div class="leaeft">
+                                        <img src="__PORTRAIT__/{$vo.photo}" style="width:80px;height:80px;" id="photo{$vo.id}"/>
+                                    </div>
+                                    <div class="learht">
+                                        <div class="els">
+                                            <span id="name{$vo.id}">{$vo.membername}</span>
+                                            <span id="position{$vo.id}">[{$vo.memberposition}]</span>
+                                        </div>
+                                        <div class="xel" id="role{$vo.id}">
+                                            <if condition="$vo[memberroleid] eq 0">
+                                                创建人
+                                                <elseif condition="$vo[memberroleid] eq 1"/>
+                                                其他成员
+                                            </if>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div class="shuoming" style="width:425px;min-height:20px;word-wrap:break-word;" id="introduce{$vo.id}">{$vo.memberintroduce}</div>
+                                        <input type ="hidden" name="memberid" class="memberid" value="{$vo.id}"></div>
+                                    <div class="clear"></div>
+                                </div>
+                            </volist>
+                            <else />
+                            <!-- 显示模型 -->
+                            <div class="lads" id="pr31">
+                                <div class="leaeft">
+                                    <img src="__HOME__/images/entrepre/logg.gif" style="width:80px;height:80px;" />
+                                </div>
+                                <div class="learht">
+                                    <div class="els">
+                                        <span>张学良</span>
+                                        <span>[ 副总监 ]</span>
+                                    </div>
+                                    <div class="xel">项目创建人</div>
+                                    <div class="clear"></div>
+                                    <div class="shuoming">电子商务运用推广，产品线上推广策划运营。</div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </if>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="lies"></div>
+                </div>
+                <!-- 下一步 -->
+                <div class="nextt">
+                    <div style="width:112px;height:35px;margin:0 auto;">
+                        <div class="next" style=" background:url('./Public/home/images/entrepre/xis.gif') no-repeat;">
+                            <a href="__URL__/lookover02&prid={$prid}">下一步</a>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+    <php>
+        if(C('COLOR_STYLE')=='blue_color') echo '
+        <link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+    <link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+    <link href="__HOME__/css/entrepre.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+</block>

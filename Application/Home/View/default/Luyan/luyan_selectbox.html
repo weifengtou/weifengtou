@@ -1,0 +1,125 @@
+<div class="comm" style="margin:0">
+    <h3>企业路演视频集</h3>
+    <!--时间选择-->
+    <div>
+        <div class="timee_s">
+            <?php $year = date("Y"); for ($i=$year; $i >= 2014; $i--) { ?>
+                <div class="timee_ss">
+                    <a class="year_select">{$i}</a>
+                </div>
+            <?php } ?>
+            <div class="clear"></div>
+        </div>
+        <div class="timee_x">
+            <?php for ($i=12; $i >= 1 ; $i--) { ?>
+                <div class="timee_xx">
+                    <a class="month_select">{$i}月</a>
+                </div>
+            <?php } ?>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <script>
+        jQuery(document).ready(function($) {
+            var today = new Date()
+            var year_select = today.getFullYear()
+            var month_select = today.getMonth()+1
+            $("a.year_select").on('click', function(event) {
+                $(".year_select").each(function() {
+                    $(this).removeClass('lyyear')
+                });
+                $(this).addClass('lyyear')
+                $("a.month_select").first().trigger('click')
+            });
+            $("a.month_select").on('click', function(event) {
+                $(".month_select").each(function() {
+                    $(this).removeClass('lymonth')
+                });
+                $(this).addClass('lymonth')
+                year_select = $(".lyyear").text()
+                month_select = $(".lymonth").text()
+                luyan_select(year_select,month_select);
+            });
+            month_select = month_select+"月"
+            $("a.year_select:contains('"+year_select+"')").addClass('lyyear')
+            $("a.month_select:contains('"+month_select+"')").addClass('lymonth')
+            month_select = "1"+month_select
+            $("a.month_select:contains('"+month_select+"')").removeClass('lymonth')
+        });
+        function luyan_select (y,m) {
+            $(".ccjqyy").hide()
+            m = parseInt(m)
+            if (m<10) {
+                m = '0'+m
+            }
+            var reg_str = y+'-'+m
+            $(".ccjqyy").each(function() {
+                var str = $(this).attr('attrtime').substr(0,7)
+                if (reg_str == str) {
+                    $(this).show();
+                };
+            })
+        }
+    </script>
+
+    <!--时间选择结束-->
+    
+    <?php $luyanpros = M("Document_luyanpro")->select();
+    // yc_vp($luyanpros); ?>
+    <div>
+        <?php foreach ($luyanpros as $key => $value): ?>
+            <?php $proinfo = get_child_detail($value[prid],1);
+            // yc_vp($proinfo); ?>
+            <div class="ccjqyy" style="display:none;" attrtime="{$value[luyan_riqi]}">
+                <a href="index.php?s=/Home/Luyan/luyanzhuanti&riqi={$value[luyan_riqi]}&prvedio={$value[prvedio]}">
+                    <?php if ($value[vedioimage]):
+                        $x = get_cover($value['vedioimage']); ?>
+                        <img src="./{$x[path]}" />
+                    <?php else: ?>
+                        <img src="__STATIC__/images/nop.gif" />
+                    <?php endif; ?>
+                    &nbsp;{$proinfo[0][pjname]}
+                    <img src="__HOME__/images/pastLuyan/playon.png" style="position:absolute; left:90px; top:35px; z-index:10; width:70px; height:70px">
+                </a>
+                <div>
+                    <div class="ccyyan">
+                        <a href="javascript:webMsg({$value[prid]});">约谈</a>
+                    </div>
+                    <div class="ccyyan">
+                        <a href="javascript:chuzi()">预约投资</a>
+                    </div>
+                    
+                    <script>
+                    var obj={
+                        cz_max:100000000,
+                        pid:{$proinfo[0][pid]},
+                        prid:{$proinfo[0][id]}
+                    }
+                    </script>
+                    <div id="mini_yycz" style="width:460px; height:300px; background-color:#8f8f8f; color:#fff; display:none;">
+                        <div style="padding:20px;">
+                            <p>
+                                请输入你的预计投资金额并检查，我们将在一周内回复
+                                <br>(如果你之前对这个项目提交了预约出资，将会覆盖原来的信息)</p>
+                            <p>出资金额(元)：</p>
+                            <input type="text" id="cz_maney" placeholder="出资金额(元)"/>
+                            <p>出资信息：</p>
+                            <textarea id="cz_msg" placeholder="出资信息" style="width:400px; height:130px;resize:none;"></textarea>
+                            <br>
+                            <a href="javascript:czok(obj);">
+                                <img src="./Public/Home/images/detail/qrcz.gif" style="width:95px;height:33px;" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ccyyan">
+                        <a href="index.php?s=/Home/Project/prdetail&pid={$value[prid]}">查看项目</a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+        
+        <div class="clear"></div>
+    </div>
+</div>

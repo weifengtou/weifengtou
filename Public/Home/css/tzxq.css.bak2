@@ -1,0 +1,171 @@
+* { margin: 0; padding: 0; }
+body {font:14px; color: #444; background:#f6f6f6; font-family:"微软雅黑" }
+img { border: 0; vertical-align: bottom; }
+ul, li, dt { margin: 0; padding: 0; list-style: none; }
+a { text-decoration: none; }
+a:link { color: #000000; text-decoration: none; }
+a:hover {  cursor: pointer; text-decoration: none;}
+a.underline { text-decoration: underline; }
+a:visited { color: #000000; text-decoration: none; }
+form, ul, li, p, h1, h2, h3, h4, h5, h6 { padding:0; margin:0}
+.clear { clear: both; line-height:0px;height:1px;overflow:hidden;*display:inline; }
+/*----------------------顶部-------------------------*/
+
+.prodeta_a{ width:100%; height:100%; background:url(../images/investor/invdisplay/img/xmxq-bg1.gif) 0 0 repeat;}
+.prodeta_b{margin:0 auto}
+
+.xmdal_banner{height:425px; margin:0 auto; background:url(../images/investor/invdisplay/img/xm_banner1.jpg); }
+.xmdal_main{ width:1100px; padding:20px 0; margin:auto }
+.xmmain_l{ float:left; width:763px}
+
+.xmainl_a{ width:733px; border-radius:4px; background:#fff; margin-bottom:13px; padding:25px 15px;}
+.xlml{ float:left; margin:15px 25px 25px 35px; display:inline}
+.xlmr{ float:left; margin-top:35px; width:450px; }
+.kleid{ font-size:18px;}
+.xlml img{border-radius:50%}
+.xiqdddd{font-size:14px; margin-top:8px; line-height:22px;}
+.biaoao{ width:450px; margin-top:15px;}
+.biao1{ float:left;}
+.biao1 a{width:159px; height:34px; text-align:center; line-height:34px; color:#fff; background:url(../images/investor/invdisplay/img/ti1.gif) 0 0 no-repeat;  display:block;font-size:14px;}
+.biao1 a:hover{width:159px; height:34px; text-align:center; line-height:34px; color:#fff; background:url(../images/investor/invdisplay/img/ti11.gif) 0 0 no-repeat;  display:block;font-size:14px;}
+
+.biao2{ float:left; margin:0 10px; display:inline}
+.biao2 a{width:124px; height:34px; text-align:center; line-height:34px; color:#fff; background:url(../images/investor/invdisplay/img/ti2.gif) 0 0 no-repeat;  display:block;font-size:14px;}
+.biao2 a:hover{width:124px; height:34px; text-align:center; line-height:34px; color:#fff; background:url(../images/investor/invdisplay/img/ti22.gif) 0 0 no-repeat;  display:block;font-size:14px;}
+
+.biao3{ float:left;}
+.biao3 a{width:124px; height:34px; text-align:center; line-height:34px; color:#fff; background:url(../images/investor/invdisplay/img/ti2.gif) 0 0 no-repeat;  display:block;font-size:14px;}
+.biao3 a:hover{width:124px; height:34px; text-align:center; line-height:34px; color:#fff; background:url(../images/investor/invdisplay/img/ti22.gif) 0 0 no-repeat;  display:block;font-size:14px;}
+
+
+.xmmain_lt{width:733px; border-radius:4px; background:#fff;font-size:14px; margin-bottom:13px; padding:25px 15px}
+.feade{ padding-left:40px;}
+.fnam{padding-left:101px; }
+.efla{ padding-left:101px; margin:25px 0 7px 0;}
+.eeafed{padding-left:101px;}
+
+.fmaid{ padding:15px 40px;}
+.fmaidimg{ margin-right:18px; float:left;}
+.fmaletd{ float:left;; width:350px}
+.fmaletd h3{font-weight:normal; margin-bottom:15px; }
+.fmaletd h3 a{ font-size:16px;}
+.fmaletd h3 a:hover{ color:#FF9900; font-size:16px;}
+.fmaletd p{font-size:16px; }
+.fmaletd p a{ font-size:14px;line-height:22px; color:#5d5d5d}
+.fmaletd p a:hover{ color:#FF9900; font-size:14px;line-height:22px;}
+
+.fadkle{padding:10px 25px 0 102px;}
+.fkels{ margin-top:8px; line-height:22px; padding-bottom:10px; border-bottom:1px dashed #ccc;}
+
+
+
+
+
+.xmainl_c{ width:763px; background:#fff; position:absolute}
+.compa_n{ height:40px; line-height:40px; font-size:24px; text-align:center}
+.compa_f{ text-align:center; font-size:14px; color:#f66d12; height:30px; line-height:30px; margin-bottom:5px}
+
+.compa_fo{ margin:0 auto; width:340px}
+.compa_ev{ float:left; border:#d0d0d0 solid 1px; font-size:12px; color:#d0d0d0; text-align:center; height:15px; line-height:15px; padding:5px 20px; margin:0 12px}
+.compa_jj{ width:700px; margin:15px 30px; line-height:24px; text-indent:2em; font-size:13px}
+.projct_l{ float:left}
+.projct_r{ float:right; width:230px; height:23px; padding:13px 0}
+.compa_fe{ float:left; width:120px; height:50px; line-height:50px; text-align:center}
+.compa_fe a{ background:#f6f6f6; color:#444; width:120px; height:50px; display:block; line-height:50px}
+.compa_fe a:hover{ background:#c9c9c9; color:#444}
+.projct_ev{ width:23px; height:23px; display:inline; float:left; margin-right:8px}
+.payget{ width:763px; padding:25px 0}
+.payget-ev{ width:630px; padding:23px 65px 0 65px}
+.payget_l{ float:left; width:50px; }
+.payget_r{ float:right; width:535px; margin-right:30px; padding-bottom:30px; border-bottom:#ccc dashed 1px; display:inline}
+.payget_r h3{ height:50px; line-height:50px; font-size:18px; font-weight:normal}
+.payget_r p{ font-size:12px; line-height:24px}
+.liinee{ height:2px; overflow:hidden; border-bottom:#ccc dashed 1px}
+
+.teamm_l{ float:left; width:52px}
+.taem{ width:555px; padding:0 95px 40px 113px}
+.taem_l{ float:left; width:128px; height:128px; }
+.taem_l img{ border-radius:50%}
+.taem_r{ float:right; width:370px}
+.taem_r h3{ margin-top:25px; font-size:18px; font-weight:normal; height:25px; padding-bottom:5px}
+.taem_r h3 font{ padding:8px 0 0 12px; font-size:12px}
+.taem_r p{ line-height:1.5; font-size:12px}
+
+.xmainl_b{ width:733px; border-radius:4px; background:#fff; margin-bottom:13px; padding:5px 15px}
+
+
+
+
+
+
+
+
+/*********************右边*****************************/
+.xmmain_r{ float:right; width:317px}
+.xmainr_a{ width:276px; border-radius:4px; background:#fff; margin-bottom:13px; padding:10px 18px 8px 23px}
+.attention{ width:105px; float:left; display:inline; height:24px; padding:12px 14px 14px 12px; border-right:solid 1px #ebebeb}
+.attention_l{ float:left; width:25px; height:24px;}
+.attention_r{ height:24px; width:75px; float:right}
+.attention_r a{ height:24px; font-size:23px; color:#666;}
+.attention_r a font{ font-size:12px; padding:9px 0 0 5px; height:15px}
+.attention_r a:hover{ color:#666}
+
+.xmainr_b{ width:317px; border-radius:4px; background:#fff; margin-bottom:13px;}
+.renmoney{ width:266px; padding:15px 23px 12px 28px; }
+.renmoney_a{font-size:16px;}
+
+.elsfee{ background:#f9f9f9;width:240px; margin:0 auto 10px auto; padding:15px 10px; font-size:14px;}
+.fels01{ color:#9f9f9f; margin-bottom:5px;}
+.fels02{ color:#333}
+.fels03{ float:left; width:115px; margin-right:5px;}
+.geshe{ color:#333; text-align:center}
+.geshe span{ font-size:28px}
+.geshefse{color:#9f9f9f; text-align:center}
+
+.fels04{ float:left; width:115px;}
+.felse span{ font-size:28px}
+.feaese{color:#9f9f9f; text-align:center}
+
+.aleald{ width:54px; height:54px; float:left; margin:0 5px 5px 0;}
+.aleald img{border-radius:50%}
+
+.fealefet{ margin-top:15px}
+.fealefet a{ font-size:12px; color:#a4a4a4}
+.fealefet a:hover{ font-size:12px; color:#FF9933}
+
+.renmoney_c font{ color:#fb3301}
+.exmoney{ width:317px; background:#e4506c; padding:10px 0 7px}
+.exmoney_er{ min-width:45px; float:left; display:inline; border-right:#fff dashed 1px; padding:0 10px 0 20px}
+.exmoney_a{ height:17px; line-height:17px; color:#fff; font-size:13px;}
+.exmoney_b{ height:25px; line-height:25px; color:#fff; font-size:12px}
+
+.relabel{ width:257px; padding:17px 30px 8px 28px}
+.relabel_er{ width:257px; height:20px; padding:7px 0 8px 0}
+.relabel_l{ width:235px; height:20px; line-height:20px; color:#000; float:left; display:inline}
+.relabel_r{ width:20px; height:20px; float:right}
+.getover{ width:317px; height:30px; background:#55c379; text-align:center; color:#fff; font-size:13px; line-height:30px}
+
+.sendp{width:282px; height:43px; padding:15px 17px 45px 17px;}
+.sendp a{ width:282px; height:43px; text-align:center; line-height:43px; color:#fff; background:url(../images/investor/invdisplay/img/td1.gif) 0 0 no-repeat;  display:block}
+.sendp a:hover{ background:url(../images/investor/invdisplay/img/td2.gif) 0 0 no-repeat;}
+
+.question{ width:250px; height:26px; line-height:26px; padding:16px 22px 9px 45px; background:url(../images/investor/invdisplay/img/qaaee.gif) 15px 16px no-repeat}
+.question_l{ float:left; width:200px; }
+.question_r{ float:right; width:40px; font-size:11px}
+.question_r a{ color:#000;} 
+.question_r a:hover{ color:#000; text-decoration:underline} 
+
+
+.answer{ padding:0 10px 25px 45px; width:262px; }
+.answer_er{ padding:5px 0}
+
+
+
+
+/*********************分页*****************************/
+
+.paging{ padding:30px; height:35px; margin:0 auto;text-align:center; }
+.paging a{ margin:0 3px; border-radius:50%; background:#ccc; width:35px; height:35px; line-height:35px; display:inline-block; font-size:12px; color:#fff}
+.paging a:hover{ background:#2a91d7; }
+
+

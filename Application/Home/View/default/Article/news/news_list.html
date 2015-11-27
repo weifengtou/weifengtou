@@ -1,0 +1,317 @@
+<extend name="Base/news"/>
+<block name="header">
+
+<?php 
+	switch ($_GET[category]) {
+		case 'news_company':
+			$title = "公司新闻_创业新闻_投资风向—微风投";
+			$keywords = "微风投新闻，公司新闻";
+			$description = "微风投-中国首家小微实体企业融资创业服务平台，公司新闻栏目小微实体企业及投资人提供详尽的微风投新闻、微风投活动报道等，找资金、找项目就上微风投！";
+			break;
+		case 'news_industry':
+			$title = "行业新闻_金融资讯_融资资讯—微风投";
+			$keywords = "行业新闻，金融资讯，融资资讯，微风投";
+			$description = "微风投-中国首家小微实体企业融资创业服务平台，公司新闻栏目小微实体企业及投资人提供详尽的行业新闻、金融资讯、融资资讯等，找资金、找项目就上微风投！";
+			break;
+		case 'news_cy':
+			$title = "创业新闻_创业信息_创业资讯—微风投";
+			$keywords = "创业新闻，创业信息，创业资讯";
+			$description = "微风投-中国首家小微实体企业融资创业服务平台，创业新闻栏目为小微实体企业及投资人提供详尽的创业新闻、创业信息、创业资讯等，找资金、找项目就上微风投！";
+			break;
+		case 'inv_wind':
+			$title = "投资风向_投资指南_投资理财—微风投";
+			$keywords = "投资风向，投资指南，投资理财，微风投";
+			$description = "微风投-中国首家小微实体企业融资创业服务平台，公司新闻栏目小微实体企业及投资人提供详尽的投资风向、投资指南、投资理财，等，找资金、找项目就上微风投！";
+			break;
+		case 'fin_plan':
+			$title = "理财指南—微风投";
+			$keywords = "金融资讯，融资资讯, 投资风向, 投资指南, 创业新闻, 创业信息";
+			$description = "微风投-中国首家小微实体企业融资创业服务平台，新闻资讯版块为小微实体企业及投资人提供最新最及时的金融资讯、融资资讯、投资风向、投资指南、创业新闻、创业信息等资讯内容。";
+			break;
+		case 'media_show':
+			$title = "媒体报道—微风投";
+			$keywords = "微风投，中小企业融资，投融资平台";
+			$description = "微风投是中国首家小微实体企业融资创业服务平台，微风投独创资金分期模式，找资金、找项目就上微风投！";
+			break;
+		default:
+			$title = "金融资讯_创业新闻_投资风向_融资资讯—微风投";
+			$keywords = "金融资讯，融资资讯, 投资风向, 投资指南, 创业新闻, 创业信息";
+			$description = "微风投-中国首家小微实体企业融资创业服务平台，新闻资讯版块为小微实体企业及投资人提供最新最及时的金融资讯、融资资讯、投资风向、投资指南、创业新闻、创业信息等资讯内容。";
+			break;
+	}
+	C('TITLE',$title);
+	C("KEYWORDS",$keywords);
+    C('DESCRIPTION',$description);
+?>
+<style>
+	.ckxq{
+		float:right; color:#fa9a00 !important;
+	}
+	.ckxq a{ color:#fa9a00 !important; font-size:13px}
+	
+	.ckxq a:hover{
+		color:#fa9a00;
+		text-decoration: underline;
+	}
+</style>
+
+	<div class="all">
+
+		<!--总-->
+
+		<div class="allmain">
+
+			<div class="biaotii">
+				
+					<a href="index.php?s=home">微风投</a><span> > <a href="index.php?s=/Home/Article/lists/category/news.html">新闻中心</a> > <a href="">
+						<?php switch ($_GET[category]) {
+							case 'news_company':
+								echo "公司新闻";
+								break;
+							case 'news_industry':
+								echo "行业新闻";
+								break;
+							case 'news_cy':
+								echo "创业新闻";
+								break;
+							case 'inv_wind':
+								echo "投资风向";
+								break;
+							case 'fin_plan':
+								echo "理财指南";
+								break;
+							case 'media_show':
+								echo "媒体报道";
+								break;
+							default:
+								echo "所有新闻";
+								break;
+						} ?>
+					</a></span>
+				
+			</div>
+
+			<div class="fen"></div>
+
+			<!--主体-->
+			<div class="article">
+
+				<div class="article_lll">
+
+					<div class="ttouti">
+
+						<div class="listnew" style="width:823px; height:422px">
+
+							<!-- <img src="__IMG__/article/news_top/news-top.jpg"> -->
+							<style type="text/css">
+								#banner_news { position: relative; width: 823px; height: 422px; overflow: hidden; }
+								#banner_list img { border: 0px; width:823px; height:422px;}
+								#banner_bg { position: absolute; bottom: 0; background-color: #000; height: 30px; filter: Alpha(Opacity=30); opacity: 0.8; z-index: 1000; cursor: pointer; width: 823px; }
+								#banner_info { position: absolute; bottom: 0; left: 5px; height: 22px; color: #fff; z-index: 1001; cursor: pointer }
+								#banner_text { position: absolute; width: 120px; z-index: 1002; right: 3px; bottom: 3px; }
+								#banner_news ul { position: absolute; list-style-type: none; filter: Alpha(Opacity=30); opacity: 1; z-index: 1002; margin: 0; padding: 0; bottom: 3px; right: 5px; }
+								#banner_news ul li { padding: 0px 8px; float: left; display: block; color:#f39c11 !important; background: #fff; cursor: pointer; border: 1px solid #333;}
+								#banner_news ul li.on { background-color:#ffe7c5; color:#7b7b7b !important; }
+								#banner_list a { position: absolute; }
+								<!--
+								让四张图片都可以重叠在一起-->
+							</style>
+
+							<script type="text/javascript">
+								var t = n =0, count;
+								$(document).ready(function(){ 
+								count=$("#banner_list a").length;
+								$("#banner_list a:not(:first-child)").hide();
+								$("#banner_info").html($("#banner_list a:first-child").find("img").attr('alt'));
+								$("#banner_info").click(function(){window.open($("#banner_list a:first-child").attr('href'), "_blank")});
+								$("#banner_news li").click(function() {
+								var i = $(this).text() -1;//获取Li元素内的值，即1，2，3，4
+								n = i;
+								if (i >= count) return;
+								$("#banner_info").html($("#banner_list a").eq(i).find("img").attr('alt'));
+								$("#banner_info").unbind().click(function(){window.open($("#banner_list a").eq(i).attr('href'), "_blank")})
+								$("#banner_list a").filter(":visible").fadeOut(500).parent().children().eq(i).fadeIn(1000);
+								document.getElementById("banner_news").style.background="";
+								$(this).toggleClass("on");
+								$(this).siblings().removeAttr("class");
+								});
+								t = setInterval("showAuto()", 4000);
+								$("#banner_news").hover(function(){clearInterval(t)}, function(){t = setInterval("showAuto()", 4000);});
+								})
+
+								function showAuto()
+								{
+								n = n >=(count -1) ?0 : ++n;
+								$("#banner_news li").eq(n).trigger('click');
+								}
+							</script>
+
+							<div id="banner_news">
+								<div id="banner_bg"></div>
+								<!--标题背景-->
+								<div id="banner_info"></div>
+								<!--标题-->
+								<ul>
+									<li class="on">1</li>
+									<li>2</li>
+									<li>3</li>
+									<li>4</li>
+								</ul>
+								<div id="banner_list">
+									<?php $category=D('Category')->getChildrenId(news);
+									$__LIST__ = D('Document')->lists($category, '`level` DESC,`id` DESC', 1,true);
+									if(is_array($__LIST__)): $i = 0; 
+									if( count($__LIST__)==0 ) : echo "" ;
+									else: foreach($__LIST__ as $key=>$article): $mod = ($i % 2 );
+									++$i; 
+									if ($article[position]==2||$article[position]==3||$article[position]==6||$article[position]==7): ?>
+										<?php $info = D('Document')->detail($article[id]); ?>
+										<a class="index_news_img" href="<?php echo U('Article/detail?id='.$article['id']);?>" target="_blank">
+											<?php $index_image = M('picture')->where("id='$info[index_image]'")->find(); ?>
+											<?php if ($index_image[path]): ?>
+											<img src=".{$index_image[path]}" title="{$article[title]}" alt="{$article[title]}" />
+											<?php else: ?>
+											<img src="__STATIC__/images/nop.gif" titele="{$article[title]}" alt="{$article[title]}" />
+											<?php endif; ?>
+										</a>
+									<?php endif; endforeach; endif; else: echo "" ;endif; ?>
+								</div>
+								<script>
+									$(".index_news_img:gt(3)").remove()
+								</script>
+							</div>
+						</div>
+
+						
+
+					</div>
+
+					<div class="article_l">
+
+						<?php if ($_GET['category']=='news'): ?>
+
+							<?php 
+							$category=D('Category')->getChildrenId(news);
+							$c = count(D('Document')->lists($category, '`level` DESC,`id` DESC', 1,true));
+							$__LIST__ = D('Document')->page(!empty($_GET["p"])?$_GET["p"]:1,10)->lists($category, '`level` DESC,`id` DESC', 1,true);
+							 if(is_array($__LIST__)): $i = 0;
+							 if( count($__LIST__)==0 ) : echo "" ;
+							else: foreach($__LIST__ as $key=>$article): $mod = ($i % 2 );
+							++$i;
+							?>
+						
+							<div class="list">
+								<div class="list_l">
+									<a href="{:U('Article/detail?id='.$article['id'])}">
+										<?php $covimg = M('picture')->where("id='$article[cover_id]'")->find(); ?>
+										<?php if ($covimg[path]): ?>
+										<img src=".{$covimg[path]}" width="170" height="120" />
+										<?php else: ?>
+										<img src="__STATIC__/images/nop.gif" width="170" height="120" />
+										<?php endif ?></a>
+								</div>
+
+								<div class="list_r">
+									<div class="biaot">
+										<h3>
+											<a href="{:U('Article/detail?id='.$article['id'])}">{$article.title}</a>
+										</h3>
+
+									</div>
+
+									<div class="baiot_a">
+										<div style="float:left">{$article.uid|get_username}&nbsp;&nbsp;&nbsp;&nbsp;发布时间：{$article.create_time|date='Y-m-d',###}</div>
+										<div class="ckxq">
+											<a href="{:U('Article/detail?id='.$article['id'])}">[查看详情]</a>
+										</div>
+										<div class="clear"></div>
+									</div>
+
+									<div class="biaot_c">
+										{:substr($article[description],0,400)}...
+										<!-- <a class="ckxq" href="{:U('Article/detail?id='.$article['id'])}">[查看详情]</a> -->
+									</div>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<?php endforeach; endif; else: echo "" ;endif; ?>
+
+							<div class="pages">
+
+								<?php $_page = new \Think\Page($c, 10);$_page->setConfig('prev','上一页');$_page->setConfig('next','下一页');echo $_page->show(); ?>
+
+							</div>
+							
+
+						<?php else: ?>
+							
+							<volist name="list" id="data">
+
+								<div class="list">
+
+									<div class="list_l">
+										<a href="{:U('Article/detail?id='.$data['id'])}">
+											<?php $covimg = M('picture')->
+											where("id='$data[cover_id]'")->find(); ?>
+											<?php if ($covimg[path]): ?>
+											<img src=".{$covimg[path]}" width="170" height="120" />
+											<?php else: ?>
+											<img src="__STATIC__/images/nop.gif" width="170" height="120" />
+											<?php endif ?></a>
+									</div>
+
+									<div class="list_r">
+										<div class="biaot">
+											<h3>
+												<a href="{:U('Article/detail?id='.$data['id'])}">{$data.title}</a>
+											</h3>
+
+										</div>
+
+										<div class="baiot_a">
+											{$data.uid|get_username}&nbsp;&nbsp;&nbsp;&nbsp;发布时间：{$data.create_time|date='Y-m-d',###}
+											<div class="ckxq">
+												<a href="{:U('Article/detail?id='.$data['id'])}">[查看详情]</a>
+											</div>
+											<div class="clear"></div>
+										</div>
+
+										<div class="biaot_c">
+											{:substr($data[description],0,400)}...
+											<!-- <a class="ckxq" href="{:U('Article/detail?id='.$data['id'])}">[查看详情]</a> -->
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+
+							</volist>
+							<div class="pages">
+								<?php 
+								$_name = $_GET['category'];
+								$_category = M('category')->where("name='$_name'")->find();
+								$_list = D('Document')->lists($_category['id']);
+								?>
+								<?php
+								$_config = array('next'=>'下一页','prev'=>'上一页');
+								$_page = new \Think\Page(count($_list),$_category[list_row]);$_page->setConfig('prev','上一页');$_page->setConfig('next','下一页');echo $_page->show(); ?>
+							</div>
+							
+						<?php endif; ?>
+
+						<!--分页-->
+						
+
+					</div>
+
+				</div>
+
+				<div class="article_r">{:W('Category/lists', array(41, true))}</div>
+
+				<div class="clear"></div>
+
+			</div>
+
+		</div>
+
+	</div>
+</block>

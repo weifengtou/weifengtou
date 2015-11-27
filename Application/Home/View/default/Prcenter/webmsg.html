@@ -1,0 +1,152 @@
+<extend name="Base/prcenter"/>
+
+<block name="header">
+    <header>
+        <!--banner-->
+        <div class="littlebanner">
+            <img src="__IMG__/investor/invcenter/cailing.gif" />
+        </div>
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                $('#webMsg').addClass('jiben');
+            });
+        </script>
+    </header>
+    <!-- ==============================================js特效================================================= -->
+    <include file="index/effect" />
+    <!-- =================================================================================================== -->
+</block>
+<block name="body">
+    <div class="all">
+        <include file="main_t" />
+        <div class="main" style="margin-bottom:20px;">
+            <include file="main_l" />
+            <div class="main_r">
+                <div class="yichuangjian">
+                    <p>
+                        约谈 总计({:count($yts)})
+                    </p>
+                </div>
+                 
+                <div id="items">
+                    <?php foreach ($yt_count_user as $key => $value): ?>
+                        <div class="yt">
+
+                            <div id="yt1" class="communication">
+                                
+                                <div class="whoo">
+                                    与
+                                    <span><a href=""><?php $other = M('homeuser')->where("id='$value[other]'")->limit('1')->select();
+                                    echo $other[0][username]; ?></a></span>
+                                    的约谈:
+                                </div>
+                                <?php foreach ($yts as $key => $value2): ?>
+                                    <?php if ($value[other]==$value2[other]): ?>
+                                        <?php if ($value2[send_style]==1): ?>
+
+                                            <div class="meme">
+                                                
+                                                <div class="meme_l">
+                                                	<?php if($face_img): ?>
+                                                    	<img src="./Uploads/Album/{$pruser[0][face_img]}">
+                                                    <?php else: ?>
+                                                    	<img src="__STATIC__/images/nop.gif" >
+                                                    <?php endif; ?>
+                                                </div>
+
+                                                <div class="meme_r">
+                                                    <div class="meme_s">
+                                                        {$userinfo[username]}
+                                                    </div>
+                                                    <div class="meme_x">
+                                                        {$value2[webmsg]}
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="clear"></div>
+
+                                            </div>
+
+                                        <?php else: ?>
+                                            <div class="otherer">
+                                                
+                                                <div class="otherer_l">
+                                                    <?php if ($value2[other_style]==1): ?>
+                                                        <?php $otherimg = M('pruser')->where("uid='$value2[other]'")->limit("1")->select(); ?>
+                                                        <?php if ($otherimg[0][face_img]): ?>
+                                                            <img src="./Uploads/Album/{$otherimg[0][face_img]}">
+                                                        <?php else: ?>
+                                                            <img src="__STATIC__/images/nop.gif">
+                                                        <?php endif; ?>
+                                                    <?php else: ?>
+                                                        <?php $otherimg = M('investor')->where("uid='$value2[other]'")->limit("1")->select(); ?>
+                                                        <?php if ($otherimg[0][face_img]): ?>
+                                                            <img src="./Uploads/Investor/{$otherimg[0][face_img]}">
+                                                        <?php else: ?>
+                                                            <img src="__STATIC__/images/nop.gif">
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                </div>
+
+                                                <div class="otherer_r">
+                                                    <div class="otherer_s">
+                                                        {$other[0][username]}
+                                                    </div>
+                                                    <div class="otherer_x">
+                                                        {$value2[webmsg]}
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="clear"></div>
+
+                                            </div>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                                <div class="yangb">
+                                    <input type="hidden" name="other_style" value="{$value[other_style]}">
+                                    <a href="javascript:webMsg({$value[other]})">快速回复</a>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <div class="pages">
+                    <script>
+                    $("div.pages").jPages({
+                        containerID : "items",
+                        perPage : 10,
+                        previous : "上一页",
+                        next : "下一页",
+                        minHeight: false
+                    });
+                    </script>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!-- layer -->
+    <script>
+    function webMsg (i) {
+        var j = $("input[name=other_style]").val()
+        layer.prompt({
+                type: 3, 
+                title: '站内信'
+            }, function(val, index, elem){
+                if (val=='') {
+                    layer.alert("不能为空！",8)
+                    return;
+                }
+                $.post('{:U(quickreply)}',{receiveuid:i,webmsg:val,ytd_style:j}, function(data, textStatus, xhr) {
+                    alert(data)
+                    $(".xubox_close").trigger('click')
+                    location.reload()
+                });
+            })
+    }
+    </script>
+</block>

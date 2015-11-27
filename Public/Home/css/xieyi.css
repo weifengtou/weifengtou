@@ -1,0 +1,31 @@
+* { margin: 0; padding: 0; }
+body {font: 14px; color: #444; font-family:"微软雅黑"; background:#f6f6f6}
+img { border: 0; vertical-align: bottom; }
+ul, li, dt { margin: 0; padding: 0; list-style: none; }
+a { text-decoration: none; }
+a:link { color: #000000; text-decoration: none; }
+a:hover {  cursor: pointer; color:#FF0099; text-decoration: none;}
+a.underline { text-decoration: underline; }
+a:visited { color: #000000; text-decoration: none; }
+form, ul, li, p, h1, h2, h3, h4, h5, h6 { padding:0; margin:0}
+.clear { clear: both; line-height:0px;height:1px;overflow:hidden;*display:inline; }
+/*----------------------顶部-------------------------*/
+
+.all{ width:100%; height:100%}
+.littlebanner{ width:100%; background:#e1e5ed; text-align:center}
+
+.xieyi{ width:700px; margin:20px auto; background:#fff; border:#dcdcdc solid 1px; padding:25px 50px}
+.xieyi_a{ width:700px; text-align:center; font-weight:bold; font-size:25px; margin:20px 0 20px 0}
+.xieyi_b{ width:700px;}
+.xieyi_b p{ text-indent:2em; line-height:2.0; font-size:14px;word-wrap:break-word;}
+.xieyi_b font{ font-weight:bold; font-size:14px; line-height:2.0;}
+
+
+
+
+
+
+
+
+
+

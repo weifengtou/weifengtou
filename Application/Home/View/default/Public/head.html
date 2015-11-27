@@ -1,0 +1,88 @@
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta charset="UTF-8">
+<meta name='renderer' content='webkit' />
+<meta name="author" content="wodrow451611cv@gmail.com">
+<meta http-equiv="content－Type" content="text/html; charset=utf8">
+
+<link rel="shortcut icon" href="__STATIC__/images/wft.png">
+
+
+<link href="__STATIC__/bootstrap/css/bootstrap.css" rel="stylesheet">
+<!-- <link href="__STATIC__/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="__STATIC__/bootstrap/css/docs.css" rel="stylesheet">
+<link href="__STATIC__/bootstrap/css/onethink.css" rel="stylesheet"> -->
+
+<link rel="stylesheet" type="text/css" href="__HOME__/css/headfooter.css">
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="__STATIC__/bootstrap/js/html5shiv.js"></script>
+<![endif]-->
+<block name="style"></block>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__STATIC__/jquery-1.10.2.min.js"></script>
+<![endif]--><!--[if gte IE 9]><!-->
+<script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+<!-- <script type="text/javascript" src="__JS__/jquery.mousewheel.js"></script> -->
+<!--<![endif]-->
+
+<!--兼容插件-->
+<!-- <script src="__STATIC__/jquery-migrate-1.2.1.min.js"></script> -->
+<!-- <script>
+	$(function () {
+	    var rtype = /(open|close)/i, getData = function (dt) {
+	        var parentDl = dt.data('parent_dl') || dt.parent(), minHeight = dt.data('min_height') || dt.height(), maxHeight = dt.data('max_height') || parentDl.height();
+	        if (!dt.data('parent_dl')) { dt.data('parent_dl', parentDl); dt.data('min_height', minHeight); dt.data('max_height', maxHeight); }
+	        return { parentDl: parentDl, minHeight: minHeight, maxHeight: maxHeight };
+	    }, maxLength = 13, rchs = /[^\u0000-\u00ff]/g, shell = $('.category_slider');
+	    shell.click(function (e) {
+	        var isOpen, data, tar = e.target, dt = $(tar).parent();
+	        if (rtype.test(tar.className) && dt[0].nodeName.toUpperCase() === 'DT') { isOpen = RegExp.$1.toLowerCase() === 'close'; (data = getData(dt)).parentDl.animate({ height: isOpen ? data.minHeight : data.maxHeight }); tar.className = isOpen ? 'open' : 'close'; e.preventDefault(); }
+	    });
+	});
+</script> -->
+
+<!-- 添加 -->
+<!--jquery兼容插件-->
+<script src="__STATIC__/jquery-migrate-1.2.1.min.js"></script>
+
+<!-- 云适配 -->
+<!-- <script id="allmobilize" charset="utf-8" src="http://a.yunshipei.com/353f49a64bc882918ddef00b32872e96 /allmobilize.min.js"></script><meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />  -->
+
+
+
+<!-- 百度统计 -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?5120fa4bf3e83b5a2c0553990c80325e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!-- qq登陆 -->
+<meta property="qc:admins" content="1533320576675165674756375" />
+<!-- <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" charset="utf-8" data-callback="true"></script> -->
+
+<!-- 微博登录 -->
+<meta property="wb:webmaster" content="b1628fb33d28a7bf" />
+
+<!-- 手机端 -->
+<?php if ($_GET['machine']!="pc"): ?>
+	<script>
+	if (navigator.userAgent.match(/mobile/i)){
+		location.href = "http://wap.weifengtou.com"
+	}
+	</script>
+<?php endif; ?>
+
+<!-- ==========================layer插件==================================== -->
+<script type="text/javascript" src="__STATIC__/layer/layer.min.js"></script>
+<script type="text/javascript" src="__STATIC__/layer/extend/layer.ext.js"></script>
+
+<script type="text/javascript" src="__STATIC__/common.js"></script>
+
+<!-- 页面header钩子，一般用于加载插件CSS文件和代码 -->
+{:hook('pageHeader')}

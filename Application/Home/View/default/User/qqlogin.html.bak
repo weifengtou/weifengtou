@@ -1,0 +1,116 @@
+<block name="body">
+    <script src="__STATIC__/jquery-2.0.3.min.js"></script>
+	<!-- <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" charset="utf-8" data-callback="true"></script>
+-->
+<?php yc_vp($_SERVER['REQUEST_URI']); ?>
+<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="{:C('QQ_APP_ID')}" data-redirecturi="{:C('WEB_URL')}/index.php?s=Home/User/qqlogin" charset="utf-8"></script>
+
+<script type="text/javascript">
+    var qq_unique = function() {
+        openId:'',
+        accessToken:''
+    }
+    function getToken() {
+        if(QC.Login.check()){
+            QC.Login.getMe(function(openId, accessToken){
+                // alert(["当前登录用户的", "openid为："+openId, "accessToken为："+accessToken].join("n")); 
+                alert(openId)
+                qq_unique.openId = openId
+            });
+        }else{
+            alert("请登录后体验");
+        }
+    }
+    // //调用QC.Login方法，指定btnId参数将按钮绑定在容器节点中
+    // QC.Login({
+    //    //btnId：插入按钮的节点id，必选
+    //    btnId:"qqLoginBtn",    
+    //    //用户需要确认的scope授权项，可选，默认all
+    //    scope:"all",
+    //    //按钮尺寸，可用值[A_XL| A_L| A_M| A_S|  B_M| B_S| C_S]，可选，默认B_S
+    //    size: "A_XL"
+    // });
+    //从页面收集OpenAPI必要的参数。get_user_info不需要输入参数，因此paras中没有参数
+    var paras = {};
+    //用JS SDK调用OpenAPI
+    QC.api("get_user_info", paras)
+    //指定接口访问成功的接收函数，s为成功返回Response对象
+    .success(function(s){
+    //成功回调，通过s.data获取OpenAPI的返回数据
+        alert("获取用户信息成功！当前用户昵称为："+s.data.nickname);
+    })
+	//指定接口访问失败的接收函数，f为失败返回Response对象
+	.error(function(f){
+        //失败回调
+        alert("获取用户信息失败！");
+	 	})
+    //指定接口完成请求后的接收函数，c为完成请求返回Response对象
+    .complete(function(c){
+        getToken()
+        alert(qq_unique.openId)
+        //完成请求回调
+        // window.location.href="{:C('WEB_URL')}"; 
+	})
+
+    // if(QC.Login.check()){//如果已登录
+    //     QC.Login.getMe(function(openId, accessToken){
+    //         alert(["当前登录用户的", "openId为："+openId, "accessToken为："+accessToken].join("n"));
+    //     });
+    //     //这里可以调用自己的保存接口
+    //     //...
+    //  }
+</script>
+
+<script type="text/javascript">
+
+ // 	function getInfo() {
+ //  		if(QC.Login.check()){
+ //  	 		QC.api("get_user_info")
+ //    		.success(function(s){//成功回调
+ //     		alert("获取用户信息成功！当前用户昵称为："+s.data.nickname);
+	//     	})
+	//     	.error(function(f){//失败回调
+	//      		alert("获取用户信息失败！");
+	//     	})
+	//     	.complete(function(c){//完成请求回调
+	//      		alert(c.stringifyData());
+	//      		//通过QQ OpenAPI提供的各种方法提取数据
+	//     	});
+	//   	}else{
+	//    		alert("请登录后体验");
+	//   	}
+ // 	}
+ // 	function getToken() {
+ //  		if(QC.Login.check()){
+	//    		QC.Login.getMe(function(openId, accessToken){
+	//     		alert(["当前登录用户的", "openid为："+openId, "accessToken为："+accessToken].join("n")); 
+	//    		});
+	//    		alert(s.data.nickname);
+ //  		}else{
+ //   			alert("请登录后体验");
+ //  		}
+ // 	}
+ // 	//callback为jssdk保留字，测试是否会覆盖当前页面函数
+ // 	function callback(){
+ //  		alert("已经成功回调！");
+ // 	}
+
+ // 	function pageInit() {
+ //  		document.getElementByIdx_x("qq_login_btn").innerHTML = document.getElementByIdx_x("qq_login_btn").getAttribute("_origText");
+ // 	}
+ // 	//获取jsdoc示例
+ // 	function getDoc() {
+ //  		QC.api.getDoc("get_user_info", function(doc){
+	//    		var str = QC.JSON.stringify(doc);
+	//    		alert(str);
+ //  		});
+ // 	}
+ // 	pageInit();
+ // 	//加入QQ登录按钮
+ // 	QC.Login({
+	//   	btnId:"qq_login_btn"
+	// });
+ 
+</script>
+
+</block>

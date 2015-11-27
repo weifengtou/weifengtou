@@ -1,0 +1,55 @@
+<?php 
+$anlis = M("InvCase")->where("inv_id='".$inv_detail[0][id]."'")->select();
+// yc_vp($anlis,1);
+?>
+<div class="xmmain_lt">
+    <div class="feade">
+        <img src="__HOME__/images/investor/invdisplay/img/anleise.gif"/>
+    </div>
+
+    <div id="anlis">
+        <?php foreach ($anlis as $k => $v): ?>
+            <div class="fadkle">
+                <div class="lnafd">
+                    <span>项目名称: {$v[pname]}</span>
+                    <span>项目网址: {$v[purl]}</span>
+                </div>
+                <div class="fkels">
+                    {$v[pdetail]}
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+    <div class="fenys" id="anli_page" style=" text-align:center"></div>
+    <?php if ($anlis): ?>
+    <script>
+        $("div#anli_page").jPages({
+            containerID : "anlis",
+            perPage : 3,
+            previous : "上一页",
+            next : "下一页",
+            minHeight: false,
+            // callback:function  (e) {
+            //     var height = $('.prodeta_b').height()
+            //     $("div.row").css('height',height);
+            // }
+        });
+    </script>
+    <script>
+        jQuery(document).ready(function($) {
+            $(".jp-previous").text("<")
+            $(".jp-next").text(">")
+        });
+    </script>
+    <?php else: ?>
+    <script>
+         $("div#anli_page").text("暂无")
+    </script>
+    <?php endif; ?>
+
+    <!-- <div class="fenys" style=" text-align:center">
+        <img src="__HOME__/images/investor/invdisplay/img/fena.gif" />
+    </div> -->
+
+</div>

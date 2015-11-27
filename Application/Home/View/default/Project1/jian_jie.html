@@ -1,0 +1,93 @@
+<!--简介-->
+<div class="mending_s">
+    <div class="xmainl_c ">
+        <div class="compa_n">{$proInfo[0][pjname]}</div>
+        <div class="compa_f">
+            发起人：{$prcreater[0][membername]}&nbsp;[{$prcreater[0][memberposition]}]
+        </div>
+        <?php
+            $x = M("project")->
+        where("id='".$proInfo[0][id]."'")->limit(1)->select();
+        ?>
+        <div class="compa_fo">
+            <p>
+                <span>{$x[0][city]}</span>
+                <span>{$proInfo[0][fathertrade]}</span>
+                <?php 
+                    $x = M("Prrate")->
+                where("prrateid=".$proInfo[0][prrate])->limit(1)->select();
+                ?>
+                <span>{$x[0][prratename]}</span>
+            </p>
+        </div>
+        <div class="compa_jj">{$proInfo[0][pjintroduce]}</div>
+        <!--认证与未认证-->
+        <div style=" position:absolute; top:0; right:50px">
+            <?php if ($proInfo[0][prrate]>
+            1): ?>
+            <img src="__IMG__/project/prdetail/yrz1.gif">
+            <?php else: ?>
+            <img src="__IMG__/project/prdetail/yrz2.gif">
+            <?php endif ?></div>
+        <!--分项-->
+        <div>
+            <div style="background:#f6f6f6">
+                <!--滑动门-->
+                <div class="projct_l">
+                    <ul class="idTabs">
+                        <li class="compa_fe">
+                            <a href="#jie_shao">介绍</a>
+                        </li>
+                        <li class="compa_fe">
+                            <a href="#xiang_shu">项目描述</a>
+                        </li>
+                        <li class="compa_fe">
+                            <a href="#ping_lun">{:count($cmts)}评论</a>
+                        </li>
+                        <li class="compa_fe">
+                            <a href="#mo_shi">微风投模式</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--分享链接-->
+				<div class="projct_r">
+					<div class="bdsharebuttonbox">
+						<a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"
+							style="margin-top: 3px; background: url('__IMG__/project/prdetail/xinlang.gif') no-repeat;"></a>
+						<a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"
+							style="margin-top: 3px; background: url('__IMG__/project/prdetail/wchat.gif') no-repeat;"></a>
+						<a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"
+							style="margin-top: 3px; background: url('__IMG__/project/prdetail/tencent.gif') no-repeat;"></a>
+						<a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"
+							style="margin-top: 3px; background: url('__IMG__/project/prdetail/q-zone.gif') no-repeat;"></a>
+						<a title="分享到豆瓣网" href="#" class="bds_douban" data-cmd="douban"
+							style="margin-top: 3px; background: url('__IMG__/project/prdetail/doub.gif') no-repeat;"></a>
+						<a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"
+							style="margin-top: 3px; background: url('__IMG__/project/prdetail/ren.gif') no-repeat;"></a>
+						<a href="#" class="bds_more" data-cmd="more"
+							style="margin-top: 3px; background: url('__IMG__/project/prdetail/share.gif') no-repeat;"></a>
+					</div>
+					<script>
+						window._bd_share_config = {
+							"common" : {
+								"bdSnsKey" : {},
+								"bdText" : "",
+								"bdMini" : "2",
+								"bdPic" : "",
+								"bdStyle" : "0",
+								"bdSize" : "24"
+							},
+							"share" : {}
+						};
+						with (document)
+							0[(getElementsByTagName('head')[0] || body)
+									.appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='
+									+ ~(-new Date() / 36e5)];
+					</script>
+				</div>
+				<div class="clear"></div>
+        </div>
+
+    </div>
+</div>
+</div>

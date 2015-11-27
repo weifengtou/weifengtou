@@ -1,0 +1,199 @@
+<extend name="Base/register"/>
+
+<block name="header">
+	<header>
+		<!-- <div class="littlebanner">
+			<img src="__HOME__/images/entrepre/cailing.gif" />
+		</div> -->
+	</header>
+</block>
+
+<block name="body">
+	<div>
+
+		<div class="wfta_a">
+			<div class="wfta_b">
+				<div class="wfta_c"></div>
+			</div>
+		</div>
+
+		<div class="wftb_a">
+			<div class="wftb_b">
+				<div class="wftb_c"></div>
+			</div>
+		</div>
+
+		<div class="wftc_a">
+			<div class="wftc_b">
+				<div class="wftc_c"></div>
+			</div>
+		</div>
+
+		<div class="wftd_a">
+			<div class="wftd_b">
+				<div class="wftd_c"></div>
+			</div>
+		</div>
+
+		<div class="wfte_a">
+			<div class="wfte_b">
+				<div class="wfte_c"></div>
+			</div>
+		</div>
+
+		<div class="wftf_a">
+			<div class="wftf_b">
+				<div class="wftf_c"></div>
+			</div>
+		</div>
+
+		<div class="wftg_a">
+			<div class="wftg_b">
+				<div class="wftg_c"></div>
+			</div>
+		</div>
+
+		<div class="wfth_a">
+			<div class="wfth_b">
+				<div class="wfth_c"></div>
+			</div>
+		</div>
+
+		<div class="wfti_a">
+			<div class="wfti_b">
+				<div class="wfti_c"></div>
+			</div>
+		</div>
+
+		<div class="wftj_a">
+			<div class="wftj_b">
+				<div class="wftj_c"></div>
+			</div>
+		</div>
+
+		<div class="wftk_a">
+			<div class="wftk_b">
+				<div class="wftk_c"></div>
+			</div>
+		</div>
+
+		<div class="wftl_a">
+			<div class="wftl_b">
+				<div class="wftl_c"></div>
+			</div>
+		</div>
+
+		<div class="wftm_a">
+			<div class="wftm_b">
+				<div class="wftm_c"></div>
+			</div>
+		</div>
+
+		<div class="wftn_a">
+			<div class="wftn_b">
+				<div class="wftn_c"></div>
+			</div>
+		</div>
+
+		<div class="wfto_a">
+			<div class="wfto_b">
+				<div class="wfto_c"></div>
+			</div>
+		</div>
+
+		<div class="wftp_a">
+			<div class="wftp_b">
+				<div class="wftp_c"></div>
+			</div>
+		</div>
+
+		<div class="wftq_a">
+			<div class="wftq_b">
+				<div class="wftq_c"></div>
+			</div>
+		</div>
+
+		<div class="wftr_a">
+			<div class="wftr_b">
+				<div class="wftr_c"></div>
+			</div>
+		</div>
+
+		<div class="wfts_a">
+			<div class="wfts_b">
+				<div class="wfts_c"></div>
+			</div>
+		</div>
+
+		<div class="wftt_a">
+			<div class="wftt_b">
+				<div class="wftt_c"></div>
+			</div>
+		</div>
+
+		<div class="wftu_a">
+			<div class="wftu_b">
+				<div class="wftu_c"></div>
+			</div>
+		</div>
+
+		<div class="wftv_a">
+			<div class="wftv_b">
+				<div class="wftv_c"></div>
+			</div>
+		</div>
+
+		<div class="wftw_a">
+			<div class="wftw_b">
+				<div class="wftw_c"></div>
+			</div>
+		</div>
+
+		<div class="wftx_a">
+			<div class="wftx_b">
+				<div class="wftx_c"></div>
+			</div>
+		</div>
+
+		<div class="wfty_a">
+			<div class="wfty_b">
+				<div class="wfty_c"></div>
+			</div>
+		</div>
+
+		<div class="wftz_a">
+			<div class="wftz_b">
+				<div class="wftz_c"></div>
+			</div>
+		</div>
+
+		<div class="wftaa_a">
+			<div class="wftaa_b">
+				<div class="wftaa_c"></div>
+			</div>
+		</div>
+
+		<div class="wftab_a">
+			<div class="wftab_b">
+				<div class="wftab_c"></div>
+			</div>
+		</div>
+
+		<div class="wftac_a">
+			<div class="wftac_b">
+				<div class="wftac_c">
+					<a href="?s=home/user/register"><img src="__HOME__/images/serve/anniu01.gif" width="491" height="80" alt="即可发起我的创业" /></a>
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="wftad_a">
+			<div class="wftad_b">
+				<div class="wftad_c"></div>
+			</div>
+		</div>
+
+	</div>
+</div>
+</block>

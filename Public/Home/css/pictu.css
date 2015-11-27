@@ -1,0 +1,122 @@
+* { margin: 0; padding: 0; min-height: 0px; }
+body {font: 14px; color: #444; background:#f6f6f6; font-family:"微软雅黑" }
+img { border: 0; vertical-align: bottom; }
+ul, li, dt { margin: 0; padding: 0; list-style: none; }
+a { text-decoration: none; }
+a:link { color: #000000; text-decoration: none; }
+a:hover {  cursor: pointer; color:#FF0099; text-decoration: none;}
+a.underline { text-decoration: underline; }
+a:visited { color: #000000; text-decoration: none; }
+form, ul, li, p, h1, h2, h3, h4, h5, h6 { padding:0; margin:0}
+.clear { clear: both; }
+/*----------------------顶部-------------------------*/
+
+
+/*----------------------中间-------------------------*/
+
+.all{width:100%; height:100%;}
+
+.littlebanner{ width:100%; background:#e1e5ed; text-align:center}
+.allmain{width:1000px;margin:20px auto; }
+.middle{ margin:10px auto}
+.middle{ margin:10px auto; background:#fff;}
+.linds{ font-size:12px; padding:20px 98px 20px 118px}
+.titles{ height:35px; padding-right:20px;}
+.titlet{ float:left;width:250px; height:20px;margin-top:10px; padding-top:6px; padding-left:135px; background:url(../images/entrepre/pictuse.gif) no-repeat;}
+.rihts{ float:right; width:127px; height:35px;}
+.lidsee{ border-bottom:1px dashed #ccc; margin:10px 0; width:764px; }
+.midpic{ margin-bottom:20px;}
+.picdsone{ width:241px; float:left;}
+.picdstwo{ width:241px; float:left; margin:0 20px; display:inline}
+.pies{ float:left; width:241px; background:#e5edfc; padding-bottom:8px; height:187px; margin:0 20px 20px 0; position:relative}
+.piesese{ float:left; width:241px; background:#e5edfc; padding-bottom:8px; margin:0 20px 20px 20px; display:inline; height:187px;}
+.xinse{ background:#e5edfc; height:27px; padding-left:60px; width:151px; height:26px;}
+.xinse a{ display:block;width:23px; height:23px; float:left;}
+
+
+
+
+
+
+
+/*----------------------浮动层-------------------------*/
+
+a.clickbox, a.clickbox:visited, a.clickbox:hover {text-decoration:none;}
+a.clickbox img {display:block; border:0;}
+a.clickbox b {display:block;}
+
+a.clickbox {float:left; margin:0 0px 8px 0; display:inline;}
+
+a.clickbox .lightbox {position:absolute; left:-9999px; top:0; cursor:default; z-index:500;}
+
+a.clickbox .light {position:absolute; left:0; top:0; width:100%;}
+a.clickbox .box {position:absolute; left:0; width:100%;text-align:center; top:25%; margin-top:-150px;}
+/* trigger for IE6 */
+a.clickbox:active {direction:ltr;}
+
+a.clickbox:active .lightbox {left:0; width:100%; height:100%;}
+a.clickbox .lightbox:hover,
+a.clickbox:focus .lightbox {position:fixed; left:0; width:100%; height:100%;}
+
+a.clickbox .lightbox:hover .light,
+a.clickbox:active .lightbox .light,
+a.clickbox:focus .lightbox .light {background:#000; width:100%; height:100%; filter: alpha(opacity=75);
+ filter: progid:DXImageTransform.Microsoft.Alpha(opacity=75); opacity:0.75;
+}
+
+a.clickbox .lightbox:hover .box img,
+a.clickbox:active .lightbox .box img,
+a.clickbox:focus .lightbox .box img {border:2px solid #000; margin:0 auto; padding:30px; background:#fff;}
+
+a.clickbox .lightbox:hover .box span,
+a.clickbox:active .lightbox .box span,
+a.clickbox:focus .lightbox .box span {display:block; font:normal 11px/18px verdana, sans-serif; width:400px; padding:0; margin:10px auto; text-align:center; text-decoration:none; color:#ddd;}
+
+.clear {clear:left;}
+
+a.clickbox i {display:block; width:16px; height:16px; position:fixed; right:-100px; top:0; z-index:500;}
+
+a.clickbox .lightbox:hover i,
+a.clickbox:active i,
+a.clickbox:focus i {right:10px; top:10px; background:url(../images/entrepre/close.gif);}
+
+#close {display:block; position:fixed; width:16px; height:16px; right:10px; top:10px; z-index:1000; background:url(../images/entrepre/trans.gif); cursor:pointer;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,399 @@
+		<!--融资中的项目-->
+		<div class="biaoti">
+			<div class="biaoti_l bttr">这些项目是微风投正在融资的项目，抓紧抢投，获得超额利润。</div>
+			<div class="biaoti_r">
+				<a href="index.php?s=home/project/project&prrateid={$rzs[0][prrate]}" target="_blank">更多项目>></a>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+		<!--改动后-->
+		<div id="rzs">
+			<?php foreach ($rzs as $key =>
+			$v1): ?>
+			<div class="item">
+
+				<a href="index.php?s=home/project/prdetail&pid={$v1[id]}" target="_blank">
+					<div style="width:317px;height:188px;">
+						<?php if (!$v1[logo]): ?>
+						<img src="__HOME__/images/index/item01.gif" width="317" height="175"  />
+						<?php else: ?>
+						<img onclick='location.href("index.php?s=home/project/prdetail&pid={$v1[id]}")' src="./Uploads/Album/{$v1[logo]}" style="max-width:317px;max-height:175px;" />
+						<?php endif; ?></div>
+					{$v1[pjname]}
+				</a>
+
+				<div class="zy">
+
+					<p>{$v1[pjintroduce]}</p>
+				</div>
+
+				<div class="jd">
+					<!-- <h3>项目阶段：融资中</h3>
+					<h2></h2> -->
+					<div class="jd_l">项目阶段</div>
+                    <div class="jd_r">
+                        融资中
+                    </div>
+                    <div class="clear"></div>
+				</div>
+
+				<div class="clear"></div>
+			<div class="baifen">
+				<div class="ddiiy">
+					<?php if($v1[money] > $v1[budget]){
+						$ec = 100;
+						$attrleft = 0;
+					}else{
+						$ec = round($v1[money]/$v1[budget]*100,2);
+						if ($ec<20) {
+							$attrleft = 1;
+						}else{
+							$attrleft = 0;
+						}
+					} ?>
+					<div class="yddiiy" style="width: {$ec}%;" attrleft="{$attrleft}">
+							<!-- <div class="ddiiy-fo">{$ec}%</div> -->
+					</div>
+				</div>
+
+				<div class="clear"></div>
+
+			</div>
+
+			<div class="yirongzi">
+				<if condition="($v1[privacyset] eq 1) OR ($_SESSION[wft_home][userinfo][id] neq '')">
+					<div class="yirongzi_l">
+						<p>
+							<if condition="empty($v1[money])"> 
+							￥0 
+							<else /> 
+							￥<?php echo number_format($v1[money]); ?>
+							</if>
+							<br /> 已融资金额
+						</p>
+					</div>
+
+					<div class="yirongzi_r">
+						<p>
+							￥<?php echo number_format($v1[budget]); ?>
+							<br /> 融资总额
+						</p>
+					</div>
+				<elseif condition="$v1[privacyset] eq 0" />
+					<div class="yirongzi_l">
+						<p>
+							<if condition="empty($v1[money])"> 
+							0% 
+							<else /> 
+							{$ec}%
+							</if>
+							<br /> 已融资金额
+						</p>
+					</div>
+
+					<div class="yirongzi_r">
+						<p>
+							100%
+							<br /> 融资总额
+						</p>
+					</div>
+				</if>
+
+				<div class="clear"></div>
+
+			</div>
+			<div class="clear"></div>
+
+			<!-- <div class="positionone">
+				<img src="__HOME__/images/index/rongzizhong01.png" width="63" height="61" alt="融资中的项目" />
+			</div> -->
+
+		</div>
+
+		<?php endforeach ?>
+
+		<div class="clear"></div>
+		<script>
+	            jQuery(document).ready(function($) {
+	                $('#rzs :nth-child(3n)').addClass('right')
+	            });
+	            </script>
+	</div>
+
+	<div class="fen"></div>
+
+	<!--预热中的项目-->
+
+	<div class="biaoti">
+		<div class="biaoti_l bttyr">这些项目是微风投优选项目，提前预约，先人一步把握投资机会。</div>
+		<div class="biaoti_r">
+			<a href="index.php?s=home/project/project&prrateid={$yrs[0][prrate]}" target="_blank">更多项目>></a>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+	<!--改动后-->
+	<div id="yrs">
+
+		<?php foreach ($yrs as $key =>
+		$v2): ?>
+		<div class="item">
+
+			
+			<div class="gzqy">
+				<a href="index.php?s=home/project/prdetail&pid={$v2[id]}" target="_blank">
+					<?php if (!$v2[logo]): ?>
+						<img src="./Public/home/images/index/item01.gif" width="317" height="175"  />
+						<?php else: ?>
+						<img onclick='location.href("index.php?s=home/project/prdetail&pid={$v2[id]}")' src="./Uploads/Album/{$v2[logo]}" style="max-width:317px;max-height:175px;" />
+					<?php endif ?>
+					{$v2[pjname]}
+
+				</a>
+			</div>
+			<div class="zy">
+
+				<p>{$v2[pjintroduce]}</p>
+			</div>
+
+			<div class="jd">
+				<!-- <h3>项目阶段：预热中</h3> -->
+				<!-- <h2>剩余天数：已完成</h2> -->
+				<div class="jd_l">项目阶段</div>
+                <div class="jd_r">
+                    预热中
+                </div>
+                <div class="clear"></div>
+			</div>
+
+			<div class="clear"></div>
+		<div class="baifen">
+			<div class="ddiiy">
+				<?php if($v2[money] > $v2[budget]){
+					$ec = 100;
+					$attrleft = 0;
+				}else{
+					$ec = round($v2[money]/$v2[budget]*100,2);
+					if ($ec<20) {
+						$attrleft = 1;
+					}else{
+						$attrleft = 0;
+					}
+				} ?>
+				<div class="yddiiy" style="width: {$ec}%;" attrleft="{$attrleft}">
+						<!-- <div class="ddiiy-fo">{$ec}%</div> -->
+				</div>
+			</div>
+
+			<div class="clear"></div>
+
+		</div>
+
+		<div class="yirongzi">
+			<if condition="($v2[privacyset] eq 1) OR ($_SESSION[wft_home][userinfo][id] neq '')">
+				<div class="yirongzi_l">
+					<p>
+						<if condition="empty($v2[money])"> 
+						￥0 
+						<else /> 
+						￥<?php echo number_format($v2[money]); ?>
+						</if>
+						<br /> 已融资金额
+					</p>
+				</div>
+
+				<div class="yirongzi_r">
+					<p>
+						￥<?php echo number_format($v2[budget]); ?>
+						<br/> 融资总额
+					</p>
+				</div>
+			<elseif condition="$v2[privacyset] eq 0"/>
+				<div class="yirongzi_l">
+					<p>
+						<if condition="empty($v2[money])"> 
+						0% 
+						<else /> 
+						{$ec}%
+						</if>
+						<br /> 已融资金额
+					</p>
+				</div>
+
+				<div class="yirongzi_r">
+					<p>
+						100%
+						<br /> 融资总额
+					</p>
+				</div>
+			</if>
+
+					<div class="clear"></div>
+
+		</div>
+		<div class="clear"></div>
+
+		<!-- <div class="positionone">
+			<img src="./Public/home/images/index/rongzizhong02.png" width="63" height="61" alt="预热中的项目" />
+		</div> -->
+
+	</div>
+
+	<?php endforeach ?>
+
+	<div class="clear"></div>
+
+	<script>
+    jQuery(document).ready(function($) {
+        $('#yrs :nth-child(3n)').addClass('right')
+    });
+    </script>
+
+</div>
+
+<div class="fen"></div>
+
+<!--融资成功的项目-->
+
+<div class="biaoti">
+	<div class="biaoti_l bttc">这些项目是在微风投已经融资成功的项目，融钱融人，分享成功经验。</div>
+	<div class="biaoti_r">
+		<a href="index.php?s=home/project/project&prrateid={$oks[0][prrate]}" target="_blank">更多项目>></a>
+	</div>
+	<div class="clear"></div>
+
+</div>
+
+<!--改动后-->
+<div id="oks">
+
+	<?php foreach ($oks as $key =>
+	$v3): ?>
+	<div class="item">
+
+		<a href="index.php?s=home/project/prdetail&pid={$v3[id]}" target="_blank">
+			<div style="width:317px;height:188px;">
+				<?php if (!$v3[logo]): ?>
+				<img src="./Public/home/images/index/item01.gif" width="317" height="175"  />
+				<?php else: ?>
+				<img onclick='location.href("index.php?s=home/project/prdetail&pid={$v3[id]}")' src="./Uploads/Album/{$v3[logo]}" style="max-width:317px;max-height:175px;" />
+				<?php endif ?></div>
+			{$v3[pjname]}
+		</a>
+
+		<div class="zy">
+
+			<p>{$v3[pjintroduce]}</p>
+		</div>
+
+		<div class="jd">
+			<!-- <h3>项目阶段：已融资成功</h3> -->
+			<!-- <h2>已融资成功</h2> -->
+			<div class="jd_l">项目阶段</div>
+            <div class="jd_r">
+                融资成功
+            </div>
+            <div class="clear"></div>
+		</div>
+
+		<div class="clear"></div>
+		<div class="baifen">
+			<div class="ddiiy">
+				<?php if($v3[money] > $v3[budget]){
+					$ec = 100;
+					$attrleft = 0;
+				}else{
+					$ec = round($v3[money]/$v3[budget]*100,2);
+					if ($ec<20) {
+						$attrleft = 1;
+					}else{
+						$attrleft = 0;
+					}
+				} ?>
+				<div class="yddiiy" style="width: {$ec}%;" attrleft="{$attrleft}">
+						<!-- <div class="ddiiy-fo">{$ec}%</div> -->
+				</div>
+			</div>
+
+			<div class="clear"></div>
+
+		</div>
+
+		<div class="yirongzi">
+			<if condition="($v3[privacyset] eq 1) OR ($_SESSION[wft_home][userinfo][id] neq '')">
+				<div class="yirongzi_l">
+					<p>
+						<if condition="empty($v3[money])">
+							￥<?php echo number_format($v3[money]); ?>
+							<else/>
+							￥<?php echo number_format($v3[money]); ?>
+						</if>
+						<br />
+						已融资金额
+					</p>
+				</div>
+
+				<div class="yirongzi_r">
+					<p>
+						￥<?php echo number_format($v3[budget]); ?>
+						<br />
+						融资总额
+					</p>
+				</div>
+			<elseif condition="$v3[privacyset] eq 0"/>
+				<div class="yirongzi_l">
+					<p>
+						<if condition="empty($v3[money])">
+							{$ec}%
+							<else/>
+							{$ec}%
+						</if>
+						<br />
+						已融资金额
+					</p>
+				</div>
+
+				<div class="yirongzi_r">
+					<p>
+						100%
+						<br />
+						融资总额
+					</p>
+				</div>
+			</if>
+
+			<div class="clear"></div>
+
+		</div>
+		<div class="clear"></div>
+
+		<!-- <div class="positionone">
+			<img src="./Public/home/images/index/rongzizhong03.png" width="63" height="61" alt="融资成功的项目" />
+		</div> -->
+
+	</div>
+
+	<?php endforeach ?>
+
+	<div class="clear"></div>
+
+	<script>
+	    jQuery(document).ready(function($) {
+	        $('#oks :nth-child(3n)').addClass('right')
+	    });
+    </script>
+
+</div>
+
+<div class="fen"></div>
+
+<script>
+	jQuery(document).ready(function($) {
+		$(".yddiiy").each(function(index, val) {
+			if($(this).attr("attrleft") == 1) {
+				$(this).children(".ddiiy-fo").animate({ left: "+=40px" })
+			}
+		});
+	});
+</script>

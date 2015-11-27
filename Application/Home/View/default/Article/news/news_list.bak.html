@@ -1,0 +1,259 @@
+<extend name="Base/news"/>
+<block name="header">
+<style>
+	.ckxq{
+		float:right; color:#fa9a00;
+	}
+	.ckxq a{ color:#fa9a00; font-size:13px}
+	
+	.ckxq a:hover{
+		color:#fa9a00;
+		text-decoration: underline;
+	}
+</style>
+
+	<div class="all">
+
+		<!--总-->
+
+		<div class="allmain">
+
+			<div class="biaotii">
+				
+					<a href="">新闻中心</a>
+					<span>>><a href="">
+						<?php switch ($_GET[category]) {
+							case 'news_company':
+								echo "公司新闻";
+								break;
+							case 'news_industry':
+								echo "行业新闻";
+								break;
+							case 'news_cy':
+								echo "创业新闻";
+								break;
+							case 'inv_wind':
+								echo "投资风向";
+								break;
+							case 'fin_plan':
+								echo "理财指南";
+								break;
+							case 'media_show':
+								echo "媒体报道";
+								break;
+							default:
+								echo "所有新闻";
+								break;
+						} ?>
+					</a></span>
+				
+			</div>
+
+			<div class="fen"></div>
+
+			<!--主体-->
+			<div class="article">
+
+				<div class="article_lll">
+
+					<div class="ttouti">
+
+						<div class="listnew">
+
+							<div class="list_lnew">
+
+								<div id="focus">
+									<ul>
+										<?php $category=D('Category')->getChildrenId(news);
+										$__LIST__ = D('Document')->where("position>3")->lists($category, '`level` DESC,`id` DESC', 1,true);
+										if(is_array($__LIST__)): $i = 0; 
+										if( count($__LIST__)==0 ) : echo "" ;
+										else: foreach($__LIST__ as $key=>$article): $mod = ($i % 2 );
+										++$i; 
+										if (in_array($article[position], array(2,3,6,7))): ?>
+											<li class="pd_img">
+												<a href="<?php echo U('Article/detail?id='.$article['id']);?>">
+													<?php $covimg = M('picture')->where("id='$article[cover_id]'")->find(); ?>
+													<?php if ($covimg[path]): ?>
+													<img src=".{$covimg[path]}" width="466" height="330" />
+													<?php else: ?>
+													<img src="__STATIC__/images/nop.gif" width="466" height="330" />
+													<?php endif; ?>
+												</a>
+											</li>
+										<?php endif; endforeach; endif; else: echo "" ;endif; ?>
+									</ul>
+									<script>
+										$(".pd_img:gt(2)").remove()
+									</script>
+								</div>
+
+							</div>
+
+							<div class="list_rnew">
+								<?php $category=D('Category')->getChildrenId(news);
+								// $__LIST__ = D('Document')->page(1,6)->lists($category, '`level` DESC,`id` DESC', 1,true); 
+								$__LIST__ = D('Document')->where("position>3")->lists($category, '`level` DESC,`id` DESC', 1,true);
+								if(is_array($__LIST__)): $i = 0; 
+								if( count($__LIST__)==0 ) : echo "" ;
+								else: foreach($__LIST__ as $key=>$article): $mod = ($i % 2 );
+								++$i; 
+								if (in_array($article[position], array(2,3,6,7))): ?>
+									<div class="newz">
+										<div class="biaotnew">
+											<h3>
+												<a href="<?php echo U('Article/detail?id='.$article['id']);?>">{$article["title"]}</a>
+											</h3>
+
+										</div>
+
+										<div class="baiot_anew">{$article.uid|get_username}&nbsp;&nbsp;&nbsp;&nbsp;发布时间：<?php echo (date('Y-m-d',$article["create_time"])); ?></div>
+
+										<div class="biaot_cnew">
+											{:substr($article[description],0,700)}...
+											<a href="<?php echo U('Article/detail?id='.$article['id']);?>">[查看详情]</a>
+										</div>
+									</div>
+								<?php endif; endforeach; endif; else: echo "" ;endif; ?>
+							</div>
+							<script>
+							$(".newz:gt(0)").remove()
+							</script>
+							<div class="clear"></div>
+						</div>
+
+						<div class="positionone">
+							<img src="__IMG__/article/news_top/newss.gif" alt="新闻头条" width="60"  height="60" />
+						</div>
+
+					</div>
+
+					<div class="article_l">
+
+						<?php if ($_GET['category']=='news'): ?>
+
+							<?php 
+							$category=D('Category')->getChildrenId(news);
+							$c = count(D('Document')->lists($category, '`level` DESC,`id` DESC', 1,true));
+							$__LIST__ = D('Document')->page(!empty($_GET["p"])?$_GET["p"]:1,10)->lists($category, '`level` DESC,`id` DESC', 1,true);
+							 if(is_array($__LIST__)): $i = 0;
+							 if( count($__LIST__)==0 ) : echo "" ;
+							else: foreach($__LIST__ as $key=>$article): $mod = ($i % 2 );
+							++$i;
+							?>
+						
+							<div class="list">
+								<div class="list_l">
+									<a href="{:U('Article/detail?id='.$article['id'])}">
+										<?php $covimg = M('picture')->where("id='$article[cover_id]'")->find(); ?>
+										<?php if ($covimg[path]): ?>
+										<img src=".{$covimg[path]}" width="170" height="120" />
+										<?php else: ?>
+										<img src="__STATIC__/images/nop.gif" width="170" height="120" />
+										<?php endif ?></a>
+								</div>
+
+								<div class="list_r">
+									<div class="biaot">
+										<h3>
+											<a href="{:U('Article/detail?id='.$article['id'])}">{$article.title}</a>
+										</h3>
+
+									</div>
+
+									<div class="baiot_a">
+										{$article.uid|get_username}&nbsp;&nbsp;&nbsp;&nbsp;发布时间：{$article.create_time|date='Y-m-d',###}
+										<div class="ckxq">
+											<a href="{:U('Article/detail?id='.$article['id'])}">[查看详情]</a>
+										</div>
+										<div class="clear"></div>
+									</div>
+
+									<div class="biaot_c">
+										{:substr($article[description],0,400)}...
+										<!-- <a class="ckxq" href="{:U('Article/detail?id='.$article['id'])}">[查看详情]</a> -->
+									</div>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<?php endforeach; endif; else: echo "" ;endif; ?>
+
+							<div class="pages">
+
+								<?php $_page = new \Think\Page($c, 10);$_page->setConfig('prev','上一页');$_page->setConfig('next','下一页');echo $_page->show(); ?>
+
+							</div>
+							
+
+						<?php else: ?>
+							
+							<volist name="list" id="data">
+
+								<div class="list">
+
+									<div class="list_l">
+										<a href="{:U('Article/detail?id='.$data['id'])}">
+											<?php $covimg = M('picture')->
+											where("id='$data[cover_id]'")->find(); ?>
+											<?php if ($covimg[path]): ?>
+											<img src=".{$covimg[path]}" width="170" height="120" />
+											<?php else: ?>
+											<img src="__STATIC__/images/nop.gif" width="170" height="120" />
+											<?php endif ?></a>
+									</div>
+
+									<div class="list_r">
+										<div class="biaot">
+											<h3>
+												<a href="{:U('Article/detail?id='.$data['id'])}">{$data.title}</a>
+											</h3>
+
+										</div>
+
+										<div class="baiot_a">
+											{$data.uid|get_username}&nbsp;&nbsp;&nbsp;&nbsp;发布时间：{$data.create_time|date='Y-m-d',###}
+											<div class="ckxq">
+												<a href="{:U('Article/detail?id='.$data['id'])}">[查看详情]</a>
+											</div>
+											<div class="clear"></div>
+										</div>
+
+										<div class="biaot_c">
+											{:substr($data[description],0,400)}...
+											<!-- <a class="ckxq" href="{:U('Article/detail?id='.$data['id'])}">[查看详情]</a> -->
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+
+							</volist>
+							<div class="pages">
+								<?php 
+								$_name = $_GET['category'];
+								$_category = M('category')->where("name='$_name'")->find();
+								$_list = D('Document')->lists($_category['id']);
+								?>
+								<?php
+								$_config = array('next'=>'下一页','prev'=>'上一页');
+								$_page = new \Think\Page(count($_list),$_category[list_row]);$_page->setConfig('prev','上一页');$_page->setConfig('next','下一页');echo $_page->show(); ?>
+							</div>
+							
+						<?php endif; ?>
+
+						<!--分页-->
+						
+
+					</div>
+
+				</div>
+
+				<div class="article_r">{:W('Category/lists', array(41, true))}</div>
+
+				<div class="clear"></div>
+
+			</div>
+
+		</div>
+
+	</div>
+</block>

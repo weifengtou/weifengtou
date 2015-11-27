@@ -1,0 +1,242 @@
+<html>
+<head>
+	<title></title>
+	<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+	<php>
+		if(C('COLOR_STYLE')=='blue_color') echo '
+		<link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+	<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+	<style type="text/css">
+.tese{ width:800px; margin:0 auto; background:#e3ebff;font-family:"微软雅黑";font-size:14px; padding-bottom:10px }
+.tese span{ float:left; display:block;}
+.tesone{background:#3361dd; color:#fff; line-height:40px; font-size:16px;  padding:0 10px;}
+.tese .ttwo{ width:120px}
+.testwo{ padding:10px; border-bottom:1px dashed #c4d4ff; }
+.tese .tone{ width:50px;}
+.tese .ttree{ width:100px;}
+.tese .tfore{ width:110px;}
+.tese .tfive{ width:50px;}
+
+.tese .t11{ width:75px;}
+.tese .t22{ width:75px;}
+
+.clear { clear: both; }
+.biaoge{ margin-top:10px; }
+.woxx{ font-size:14px;width:120px;float:left; text-align:right; margin-right:20px; line-height:34px}
+.kuang{ float:left; line-height:28px;}
+.kuang textarea.ldd{ line-height:28px; padding-left:10px;width:260px; max-height:28px; max-width:260px; color:#444}
+img{ border:0}
+</style>
+	<link rel="stylesheet" type="text/css" href="__STATIC__/laydate/skins/dahong/laydate.css">
+	<script type="text/javascript" src="__STATIC__/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/jquery.form.js"></script>
+	<script type="text/javascript" src="__STATIC__/json2.js"></script>
+	<script type="text/javascript" src="__STATIC__/layer.min.js" language="javascript"></script>
+	<script type="text/javascript" src="__STATIC__/laydate/laydate.js"></script>
+	<script type="text/javascript">
+    $(document).ready(function(){
+      $('#finansubmit').on('click',function(){
+        $('#finanform').ajaxSubmit({
+          beforeSubmit:function(){
+            var r = /^(0|\+?[1-9][0-9]*)$/; //判断正整数和0 
+            var investmoney = $('#investmoney').val();
+            if(!r.test($.trim($('#investmoney').val()))){
+              layer.tips('请输入正整数或0','#investmoney',{time:3,guide:1});
+              return false;
+            }else if($.trim($('#investmoney').val()).length > 7){
+              layer.tips('输入数据太大，请重填','#investmoney',{time:3,guide:1});
+              return false;
+            } else{
+              return true;
+            }
+          },
+          success:function(data){
+          	// alert(data);
+            var t = JSON.parse(data);
+            // alert(t.yield);
+            var finan = '<div class="tesone" id="finan"'+t.id+'>'+
+                          '<span class="tone">'+t.id+'</span>'+
+                          '<span class="ttwo">'+t.name+'</span>'+
+                          '<span class="ttree">'+t.money+'</span>'+
+                          '<span class="tfore" >'+t.investtime+'</span>'+
+                          '<span class="t11">'+t.catipalperiod+'</span>'+
+                          '<span class="t11">'+t.interestperiod+'</span>'+
+                          '<span class="t11">'+t.yield+'</span>'+
+                          '<span class="tfore">'+t.paybacktime+'</span>'+
+                          '<span class="tfive">'+
+                          	'<a href="javascript:finandelete('+t.id+');" id="finandelete">删除</a>'+
+                          '</span>'+
+                          '<div style="clear:both"></div>'+
+                        '</div>'
+            $('#allfinan').append(finan);
+            $('#finanform').clearForm();
+          }
+        });
+        return false;
+      });
+    });
+    function finandelete(id){
+      layer.confirm('您确定要删除此条记录吗？',function(){
+        $.ajax({
+          type: "get",
+          url: "__URL__/finandelete&id="+id,
+          success:function(data){
+            if(data==1){
+              $('#finan'+id).hide();
+              layer.alert('成功删除');
+            }else{
+              layer.alert('删除失败');
+            }
+          }
+        });
+      });
+      
+    }
+    function finanreset(){
+      $('#finanform')[0].reset();
+      //return false;
+    }
+  </script>
+</head>
+<body style="background-color: #f6f6f6;">
+	<!-- 标题 -->
+	<div class="main-title">
+		<h2>项目:{$prname}</h2>
+	</div>
+	<div style="width:800px;margin:10 auto;">
+		<!-- 进度条 -->
+		<div style="line-height:30px;margin:0 180px;">
+			<span sytle="float:left;"> <strong>融资进度:<?php if($width >1000){echo 1000;}else{echo $width;} ?>%</strong>
+			</span>
+			<div id="progress-bar" style="width:317px;height:5px;background:#f00;float:right;margin-top:12px;">
+				<div id="progress" style="height:100%;background-color:green;width: <?php if($width >100){echo 100;}else{echo $width;} ?>%;"></div>
+			</div>
+		</div>
+		<!-- 融资详情 -->
+		<div class="tese">
+
+			<div class="tesone">
+				<span class="tone">编号</span>
+				<span class="ttwo">投资人</span>
+				<span class="ttree">投资金额</span>
+				<span class="tfore">投资日期</span>
+				<span class="t11">回本期</span>
+				<span class="t11">收益期</span>
+				<span class="t11">收益率</span>
+				<span class="tfore">开始还款日期</span>
+				<span class="tfive">操作</span>
+				<div style="clear:both"></div>
+			</div>
+			<div id="allfinan">
+				<volist name="list" id="vo">
+						<div class="testwo" id="finan{$vo.id}">
+							<span class="tone">{$vo.id}</span>
+							<span class="ttwo">{$vo.name}</span>
+							<span class="ttree">{$vo.money}</span>
+
+							<span class="tfore">{$vo.investtime}</span>
+							<span class="t11">{$vo.catipalperiod}</span>
+							<span class="t11">{$vo.interestperiod}</span>
+							<span class="t11">{$vo.yield}</span>
+							<span class="tfore" >{$vo.paybacktime}</span>
+							<span class="tfive">
+							<?php $repaydetail = M('repaydetail')->where("fin_id='$vo[id]'")->limit("1")->select(); ?>
+							<?php if (!$repaydetail): ?>
+								<a href="javascript:finandelete({$vo.id});" id="finandelete">删除</a>
+							<?php else: ?>
+								已有还款计划
+							<?php endif ?>
+							</span>
+							<div style="clear:both"></div>
+						</div>
+				</volist>
+			</div>
+			<form name="finanform" id="finanform" action="__URL__/financingadd" method="post">
+				<div class="biaoge">
+					<div class="woxx">投资人：</div>
+					<div class="kuang">
+						<!-- <textarea  class="ldd" maxlength="11" id="investname" name="investname"></textarea>
+					-->
+						<select id="invest" name="invest" style="height:28px;width:150px;">
+							<volist name="investors" id="vo2">
+								<option value="{$vo2.uid}">{$vo2.username}</option>
+							</volist>
+						</select>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+				<div class="biaoge">
+					<div class="woxx">投资金额：</div>
+					<div class="kuang">
+						<textarea  class="ldd" id='investmoney' name="investmoney" style="resize: none;"></textarea>
+						元
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="biaoge">
+					<div class="woxx">投资日期：</div>
+					<div class="kuang">
+					<input id="investtime" name="investtime" class="laydate-icon" style="width:260px; height:28px; padding-left:10px; line-height:28px; color:#444" >
+						<script type="text/javascript">
+			            laydate({
+			              elem:'#investtime',
+			              event:'focus'
+			            });
+			            </script>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="biaoge">
+					<div class="woxx">回本期：</div>
+					<div class="kuang">
+						<textarea  class="ldd" id='catipalperiod' name="catipalperiod" style="resize: none;"></textarea>
+						个月
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="biaoge">
+					<div class="woxx">收益期：</div>
+					<div class="kuang">
+						<textarea  class="ldd" id='interestperiod' name="interestperiod" style="resize: none;"></textarea>
+						个月
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="biaoge">
+					<div class="woxx">收益率：</div>
+					<div class="kuang">
+						<textarea  class="ldd" id='yield' name="yield" style="resize: none;"></textarea>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="biaoge">
+					<div class="woxx">开始还款时间：</div>
+					<div class="kuang">
+						<input id="paybacktime" name="paybacktime" class="laydate-icon" style="width:260px; height:28px; padding-left:10px; line-height:28px; color:#444">
+						<script type="text/javascript">
+			            laydate({
+			              elem:'#paybacktime',
+			              event:'focus'
+			            });
+			            </script>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<input type="hidden" name="prid" value="{$prid}">
+				<div class="biaoge" style="padding-left:140px;">
+					<a href="javascript:;" style="margin-right:20px;">
+						<img src="__ADMIN__/images/financing/ss001.jpg" id="finansubmit" />
+					</a>
+					<a href="javascript:finanreset()">
+						<img src="__ADMIN__/images/financing/ss002.jpg"  />
+					</a>
+					<div class="clear"></div>
+				</div>
+			</form>
+
+		<div class="clear"></div>
+	</div>
+</div>
+</body>
+</html>

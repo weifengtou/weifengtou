@@ -1,0 +1,32 @@
+<!--项目团队-->
+<div class="gongtong xmtd">
+
+<?php $cys = M('Invmember')->where("iid='".$investor[0][id]."'")->select();
+    // echo M()->getlastsql();
+?>
+
+    <h3>团队成员</h3>
+
+    <!--人物图片-->
+
+    <div></div>
+
+    <!--文字介绍-->
+    
+    <div class="jianjie">
+        <?php foreach ($cys as $key => $value): ?>
+            <div>
+                <div class="jianjie_l">
+                            {$value[cyname]}
+                 </div>
+
+                <div class="jianjie_r">
+                    <p>{$value[cydetail]}</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            
+        <?php endforeach; ?>
+    </div>
+
+</div>

@@ -1,0 +1,54 @@
+<div class="container">
+	<script>
+	jQuery(document).ready(function($) {
+		$("form").validate({
+			// debug:true,
+			rules:{
+				test1:{
+					number:true,
+				},
+				test2:{
+					required:true,
+				}
+			}
+		})
+	});
+	</script>
+	<form action="" method="post">
+		<input type="text" name="test1" class="required">
+		<!-- 加载编辑器的容器 -->
+	    <script id="container" name="test2" type="text/plain">?</script>
+	    <!-- 实例化编辑器 -->
+	    <script type="text/javascript">
+	        var ue = UE.getEditor('container',{
+	        	initialFrameHeight:100,
+	        	// initialFrameWidth:400,
+	        	// autoHeight: false
+	        	toolbars: [
+			        [
+			        	// 'source', //源代码
+			        	'undo', //撤销
+				        'redo', //重做
+			        	'emotion', //表情
+			        	'spechars', //特殊字符
+				        'bold', //加粗
+			        	'italic', //斜体
+			        	'removeformat', //清除格式
+			        ]
+			    ],
+			    maximumWords: 100,//允许的最大字符数
+			    lang: "zh-cn",
+			    textarea: "test2",
+			    // autoHeightEnabled: true,
+			    // autoFloatEnabled: true,
+	        });
+	        //对编辑器的操作最好在编辑器ready之后再做
+			ue.ready(function() {
+			    //设置编辑器的内容
+			    ue.setContent('');
+			});
+
+	    </script>
+	    <input type="submit" class="btn btn-primary" name="test" value="提交">
+	</form>
+</div>

@@ -1,0 +1,67 @@
+<extend name="Base/register"/>
+
+<block name="header">
+	<header>
+		<div class="littlebanner">
+			<img src="__HOME__/images/entrepre/cailing.gif" />
+		</div>
+	</header>
+	<!-- ==============================================js特效================================================= -->
+	<include file="index/effect" />
+    <!-- ===================================================================================================== -->
+</block>
+
+<block name="body">
+	<div class="all">
+		<div class="all_main">
+			<include file="wwwexplanTab"/>
+			<script type="text/javascript">
+			$('#tab03').addClass('now');
+			$('#tab01').removeClass('now');
+			$('#tab02').removeClass('now');
+			$('#tab04').removeClass('now');
+			</script>
+
+			<!--认证投资人流程-->
+			<div class="shuomm">
+				<div class="enzz">
+					<h3>认证投资人流程</h3>
+				</div>
+				<div>
+					<img src="__HOME__/images/wwwexplan/lct01.jpg" alt="认证投资人流程" />
+				</div>
+				<div>
+					<img src="__HOME__/images/wwwexplan/lct02.jpg" alt="怎样成为认证投资人" />
+				</div>
+				<div class="liness"></div>
+				<div>
+					<img src="__HOME__/images/wwwexplan/lct03.jpg" alt="成为认证投资人的好处" />
+				</div>
+
+			</div>
+
+			<!--线上流程-->
+			<div class="shuomm">
+				<div class="enzz">
+					<h3>微风投投资流程</h3>
+				</div>
+				<div>
+					<img src="__HOME__/images/wwwexplan/lct04.jpg" alt="线上投资流程" />
+				</div>
+				<div>
+					<img src="__HOME__/images/wwwexplan/lct05.jpg" alt="路演" />
+				</div>
+			</div>
+
+			<div class="arenz">
+				<a href="javascript:becomeinvestor();">
+					<img src="__HOME__/images/wwwexplan/renzheng01.gif" width="272" height="53" alt="认证投资人" />
+				</a>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- =====================小登录窗口===================================== -->
+<include file="Public:minilogin"/>
+</block>

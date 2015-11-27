@@ -1,0 +1,612 @@
+<extend name="Base/index"/>
+
+<block name="header">
+
+    <script src="__HOME__/js/project.js"></script>
+    <script src="__HOME__/js/index.js"></script>
+    <script src="__STATIC__/jquery.idTabs.min.js"></script>
+
+<style>
+* { margin: 0; padding: 0; }
+body {font:14px; color: #444; background:#f6f6f6; font-family:"微软雅黑" }
+img { border: 0; vertical-align: bottom; }
+ul, li, dt { margin: 0; padding: 0; list-style: none; }
+a { text-decoration: none; }
+a:link { color: #000000; text-decoration: none; }
+a:hover {  cursor: pointer; text-decoration: none;}
+a.underline { text-decoration: underline; }
+a:visited { color: #000000; text-decoration: none; }
+form, ul, li, p, h1, h2, h3, h4, h5, h6 { padding:0; margin:0}
+.clear { clear: both; line-height:0px;height:1px;overflow:hidden;*display:inline; }
+/*----------------------顶部-------------------------*/
+
+
+.all{ width:100%; height:100%}
+.illustrateren_aa{ width:100%; height:320px; background:url(__HOME__/images/wwwexplan/04/shuoming-bg1.gif) 0 0 repeat}
+.illustrateren_ab{ margin:0 auto; background:url(__HOME__/images/wwwexplan/04/shuoming-bg2.jpg) 0 -0px no-repeat; width:1100px; height:360px}
+.illustrateren_ba{ width:100%; height:420px; background:#f9f9f9}
+.illustrateren_bb{ margin:0 auto; background:url(__HOME__/images/wwwexplan/04/shuoming-bg3.jpg) 0 -1px no-repeat; width:1100px; height:680px}
+
+.illustrateren_ca{ width:100%; height:60px; background:#f8701d;}
+.illustrateren_cb{ margin:0 auto; width:1100px; height:60px}
+.illustrateren_cb ul li{ cursor:pointer; width:220px; height:60px; line-height:60px; float:left; font-size:22px; text-align:center}
+.illustrateren_cb ul li a{ display:block; width:210px; height:60px; line-height:60px; text-align:center; margin:0 4px; padding:0 1px; color:#fff}
+.illustrateren_cb ul li a:hover{ color:#dd5d35; background:url(__HOME__/images/wwwexplan/04/shuoming-nav2.gif) 0 0 repeat-x; }
+/******************认证与未认证*********************/
+.identifi_diffa{ width:100%; height:536px; background:#a5f2f4}
+.identifi_diff{ background:url(__HOME__/images/wwwexplan/04/tishibg.jpg) center center no-repeat; width:100%; height:536px}
+.identifi_diffb{ width:1100px; height:565px; margin:0 auto}
+.identifi_diffc{ padding-top:30px}
+.identifi_diffd{ background:url(__HOME__/images/wwwexplan/04/renzhengtx1.gif) 0 0 no-repeat; width:800px; padding-left:100px; height:90px; line-height:90px; margin:0 auto; font-size:20px;}
+.identifi_diffd span{ color:#db5424}
+
+.identifi_beforea{ background:#3b3b3b; width:100%;}
+.identifi_beforeb{ width:1100px; height:480px; margin:0 auto; padding:40px 0 50px 0; background:#3b3b3b}
+.identifi_beforel{ float:left; width:535px; height:480px}
+.identifi_beforer{ float:right; width:440px; padding:120px 0 0 70px; background:url(__HOME__/images/wwwexplan/04/renzhengbt2.gif) 0 0 no-repeat}
+.identifi_beforec{ padding:60px 0 30px 0; line-height:36px; font-size:20px; color:#8f8f8f}
+.identifi_beforec span{ color:#db5424}
+.identifi_befored{ font-size:16px; line-height:36px; color:#8f8f8f}
+
+.identifi_aftera{ background:url(__HOME__/images/wwwexplan/04/yirenzhengbg.jpg) center center repeat-x; width:100%}
+.identifi_afterb{ background:url(__HOME__/images/wwwexplan/04/yirenzhengbg1.jpg) center center repeat;width:1100px; height:529px; margin:0 auto; padding:30px 0 0px 0}
+.identifi_afterl{ float:left; width:500px; padding:120px 0 0 65px; background:url(__HOME__/images/wwwexplan/04/renzhengbt3.gif) 0 0 no-repeat}
+.identifi_afterr{ float:right}
+.identifi_afterc{ padding:60px 0 30px 0; line-height:36px; font-size:20px}
+.identifi_afterc span{ color:#ff7e00}
+
+
+.greenroada{ width:100%; height:250px; background:#edeef2}
+.greenroadb{ background:url(__HOME__/images/wwwexplan/04/path.jpg) center center no-repeat;}
+.greenroadb a{ cursor:pointer; display:block; width:1100px; height:250px; margin:0 auto }
+
+/*******************融资说明**********************/
+/**白色通用**/
+.financing_aa{ width:100%; background:#fff}
+.financing_ab{ width:1100px; margin:0 auto; background:#fff}
+.financing_ac{ padding:0px 0 15px 0}
+
+/*灰色通用*/
+.financing_ba{ width:100%; background:#f6f6f6}
+.financing_bb{ width:1100px; margin:0 auto; background:#f6f6f6}
+
+
+.financing_c{ width:522px; height:460px; padding:25px 0 20px 578px; background:url(__HOME__/images/wwwexplan/04/rzsmbg1.gif) 44px 162px no-repeat}
+.financing_d{ color:#ef6765; font-size:16px; height:36; line-height:36px; padding-bottom:0px;}
+.financing_e{ color:#444; line-height:36px; font-size:16px; padding-bottom:5px}
+.fin_a{ padding:20px 0 30px 687px; background:url(__HOME__/images/wwwexplan/04/rzsmbg2.gif) 150px 45px no-repeat; width:230px; text-align:right}
+.fin_b{ font-size:20px; color:#ef6765; line-height:36px; padding-bottom:10px}
+.fin_c{ font-size:16px; line-height:36px}
+.fin_d{ padding:20px 0 30px 150px; background:url(__HOME__/images/wwwexplan/04/rzsmbg3.gif) 760px 55px no-repeat;}
+.fin_e{ padding:20px 0 20px 534px; background:url(__HOME__/images/wwwexplan/04/rzsmbg4.gif) 150px 65px no-repeat; width:390px; text-align:right}
+
+.greenroadc{ background:url(__HOME__/images/wwwexplan/04/path3.jpg) center center no-repeat;}
+
+/*******************融资管理**********************/
+
+.management_a{ padding:10px 0 55px 505px; background:url(__HOME__/images/wwwexplan/04/rzgll1.jpg) 174px -10px no-repeat}
+.management_b{ color:#88a18e; font-size:20px; height:36px; line-height:36px; }
+.management_c{ color:#444; line-height:36px; font-size:16px; padding-bottom:10px}
+
+
+/**白色通用--右标题**/
+.management_d{ padding-left:582px; padding-top:30px}
+.management_e{ width:440px; height:110px; padding:35px 0 60px 660px; background:url(__HOME__/images/wwwexplan/04/rzgl2.gif) 235px 0 no-repeat; line-height:43px; font-size:16px;}
+.management_e span{ color:#00a77a}
+
+.greenroadd{ background:url(__HOME__/images/wwwexplan/04/path5.jpg) center center no-repeat;}
+.management_f{ width:908px; height:70px; margin:0 auto; padding:70px 0 90px 192px}
+.management_f a{ display:block; float:left; margin-right:167px}
+
+
+/*******************模式讲解**********************/
+.explain_a{ padding:0px 660px 80px 67px; background:url(__HOME__/images/wwwexplan/04/jiangjiebg1.gif) 690px 0 no-repeat}
+.explain_b{ color:#444; line-height:36px; font-size:16px; padding-bottom:10px}
+.explain_b span{ color:#239bc7}
+.explain_c{ padding:10px 0 55px 505px; background:url(__HOME__/images/wwwexplan/04/jiangjiel1.jpg) 174px -10px no-repeat}
+.explain_e{ padding-left:430px; padding-top:30px}
+.explain-adv_a{ background:#e7f9ff; width:100%;}
+.explain-adv_b{ width:1100px; margin:0 auto; }
+.explain_d{ padding:0 0 65px 255px; color:#444; line-height:43px; font-size:16px; position:relative;}
+.explain_f{ padding:0px 0 30px 607px; background:url(__HOME__/images/wwwexplan/04/jiangjiebg3.gif) 90px 0 no-repeat}
+.explain_g{ padding-left:542px; padding-top:30px}
+.explain_h{ padding:0px 0 50px 608px; background:url(__HOME__/images/wwwexplan/04/jiangjiebg4.gif) 200px 0px no-repeat; color:#444; line-height:36px; font-size:16px;}
+
+/*******************投资人认证**********************/
+.invest-cera{ padding:0 0 0px 540px; background:url(__HOME__/images/wwwexplan/04/touzirenbg1.gif) 170px 25px no-repeat}
+.invest-cerb{ padding:10px 0 10px 180px; background:url(__HOME__/images/wwwexplan/04/touzirenbg2.gif) 790px 45px no-repeat}
+.invest-cerc{ padding:0 0 20px 80px; background:url(__HOME__/images/wwwexplan/04/touzirenbg3.gif) 827px 90px no-repeat}
+.selected{ color:#dd5d35 !important; background:url(__HOME__/images/wwwexplan/04/shuoming-nav2.gif) 0 0 repeat-x}
+</style>
+</block>
+
+<block name="body">
+<div>
+    <div class="all">
+        <!--banner-->
+        <div class="illustrateren_aa">
+            <div class="illustrateren_ab">
+            </div>
+        </div>
+        <div class="illustrateren_ba">
+            <div class="illustrateren_bb">
+            </div>
+        </div>
+        
+        <!--导航-->
+        <div class="illustrateren_ca">
+            <div class="illustrateren_cb">
+                <ul class="idTabs">
+                    <li><a href="#wftms">微风投模式讲解</a></li>
+                    <li><a href="#rzsm">融资说明</a></li>
+                    <li><a href="#tzrrz">投资人认证</a></li>
+                    <li><a href="#rzgl">融资管理</a></li>
+                    <li><a href="#rzywrz">项目认证说明</a></li>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+        </div> 
+        
+        <!--微风投模式讲解-->
+        <div id="wftms">
+            <div class="financing_aa">
+                <div class="financing_ab">
+                    <div class="identifi_diffc">
+                        <img src="__HOME__/images/wwwexplan/04/jiangjiebt1.gif" />
+                    </div>
+                    <div class="explain_a">
+                        <div class="management_b" style="color:#239bc7">微风投商业模式</div>
+                        <div class="explain_b">杜志刚先生创立的一款金融创新产品<br />
+
+定位于<span>小微实体企业</span>中长期融资需求<br />
+
+以时间换空间助力小微企业快速发展<br />
+
+<span>“项目+投资+经营+担保”</span>的全产业链的商业组合</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="financing_ba">
+                <div class="financing_bb">
+                    <div class="explain_e">
+                        <img src="__HOME__/images/wwwexplan/04/jiangjiebt2.gif" />
+                    </div>
+                    <div class="explain_c">
+                        <div class="management_b" style="color:#239bc7">1.封闭期(3-6个月)</div>
+                        <div class="financing_e">资金按用款计划书分批到位，根据不用项目情况3―6个月内分批次划拨借款金额。</div>
+                        <div class="management_b" style="color:#239bc7">2.回本期(12-15个月)</div>
+                        <div class="financing_e">根据《微风投商业模式投资合作协议》制定项目方回本周期，<br />
+在12―15个月内依次归还借款金额，减轻还款压力。</div>
+                        <div class="management_b" style="color:#239bc7">3.利润期(36个月)</div>
+                        <div class="financing_e">需支付投资人收益周期为期36个月，年化利润率在15%---18%之间。</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="explain-adv_a">
+                <div class="explain-adv_b">
+                    <div class="identifi_diffc" style="position:relative">
+                        <img src="__HOME__/images/wwwexplan/04/jiangjiebt3.gif" />
+                        <img style="position:absolute; top:150px; left:88px" src="__HOME__/images/wwwexplan/04/jiangjiebt31.gif" />
+                    </div>
+                    <div class="explain_d">
+                    ①整合优质资源，运营模式稳健&nbsp;&nbsp;&nbsp;&nbsp;
+
+②专注实体企业，项目真实落地<br />
+
+③超长周期分散，减轻资金压力&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+④时间换取空间，提升企业估值<br />
+
+⑤对接多方渠道，助推企业发展&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+⑥风险有效把控，稳定高额收益
+<img src="__HOME__/images/wwwexplan/04/jiangjiebg2.gif" style="position:absolute; top:-60px; left:828px" />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="financing_ba">
+                <div class="financing_bb">
+                    <div class="explain_g">
+                        <img src="__HOME__/images/wwwexplan/04/jiangjiebt4.gif" />
+                    </div>
+                    <div class="explain_f">
+                        <div class="management_b" style="color:#239bc7">1.保证金</div>
+                        <div class="explain_b">为了保证合同的顺利履行，其无违约行为。<br />
+
+需缴纳<span>10%</span>的保证金，待合同约定的投资周期完整<br />
+
+结束后<span>退还借款人</span>。
+                        </div>
+                        <div class="management_b" style="color:#239bc7">2.居间服务费(54个月)</div>
+                        <div class="explain_b">为了保证投资人的收益，受投资人的委托，<br />
+
+必须每月定期或不定期的到项目地视察调研。持续54个月。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="financing_aa">
+                <div class="financing_ab">
+                    <div class="identifi_diffc">
+                        <img src="__HOME__/images/wwwexplan/04/jiangjiebt5.gif" />
+                    </div>
+                    <div class="financing_ac">
+                        <img src="__HOME__/images/wwwexplan/04/jiangjiel2.jpg" />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="financing_ba">
+                <div class="financing_bb">
+                    <div class="explain_g">
+                        <img src="__HOME__/images/wwwexplan/04/jiangjiebt6.gif" />
+                    </div>
+                    <div class="explain_h">
+                    1、先用资金后付息。（封闭期和回本期无息用款长达18个月）<br />
+
+2、资金按月回款，减轻用款压力。<br />
+
+3、资金回款正常的情况下，不参与企业管理，避免与企业管理团队的管理思维不一致导致企业管理经营混乱。<br />
+
+4、不控股，项目落地发展后，4年半退出，不参与其他额外分红，项目所属权完整性不被破坏。
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--微风投模式讲解end-->
+        
+        
+        <!--认证与未认证-->
+        <div id="rzywrz">
+            <!--特别提示-->
+            <div class="identifi_diffa">
+                <div class="identifi_diff">
+                    <div class="identifi_diffb">
+                        <div class="identifi_diffc">
+                            <img src="__HOME__/images/wwwexplan/04/renzhengbt1.gif" />
+                        </div>
+                        <div class="identifi_diffd">
+                        本平台项目分为<span>“认证项目”</span>与<span>“未认证项目”</span>，投资人在进行投资考察时务必认清标示。
+                        </div>
+                        <div><img src="__HOME__/images/wwwexplan/04/renzheng1.jpg" /></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!--未认证的风险-->
+            <div class="identifi_beforea">
+                <div class="identifi_beforeb">
+                    <div class="identifi_beforel">
+                        <img src="__HOME__/images/wwwexplan/04/weirenzheng.jpg" />
+                    </div> 
+                    <div class="identifi_beforer">
+                        <div class="identifi_beforec">
+                        这些项目是项目方自行注册、<br />
+<span>未经微风投官方审核通过</span>的项目。<br />
+未经过微风投的官方认证，可能带来的风险：
+                        </div>
+                        <div class="identifi_befored">
+                        1、无法保证项目方的真实性和借款人的信誉。<br />
+2、无法保证投资人的资金按时回收到位。<br />
+3、无法保证投资人的投资收益。
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            
+            
+            <!--已认证的优势-->
+            <div class="identifi_aftera">
+                <div class="identifi_afterb">
+                    <div class="identifi_afterl">
+                        <div class="identifi_afterc">
+                        这些项目是微风投官方客服部、项目部、风控部<br />
+
+审核通过的项目。<span>重重审查，专业的风险诊断，</span><br />
+
+让投资<span>零风险</span>，获取<span>高收益</span>。
+                        </div>
+                        <div class="identifi_befored" style="color:#444">
+                        1、线上审核法人身份信息、企业营业执照
+     和商业计划书等全部资料，评估项目可行性。<br />
+
+2、线下实地考核，评估项目风险，预测预期收益。<br />
+
+3、通过项目部审核，未来战略分析，确定投资人对接方案。
+                        </div>
+                    </div> 
+                    <div class="identifi_afterr">
+                        <img src="__HOME__/images/wwwexplan/04/yirenzheng.png" />
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            
+            <!--快速通道-->
+            <div class="greenroada">
+                <div class="greenroadb">
+                    <a href="index.php?s=/Home/Project/project.html"><img src="__HOME__/images/wwwexplan/04/path2.jpg" /></a>
+                </div>
+            </div>
+            
+            
+        </div>
+        
+        
+        
+        <!--融资说明-->
+        <div id="rzsm">
+            <div class="financing_aa">
+                <div class="financing_ab">
+                    <div class="identifi_diffc">
+                        <img src="__HOME__/images/wwwexplan/04/rzsmbt1.gif" />
+                    </div>
+                    <div class="financing_ac">
+                        <img src="__HOME__/images/wwwexplan/04/rzsml1.jpg" />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="financing_ba">
+                <div class="financing_bb">
+                    <!-- <img src="__HOME__/images/wwwexplan/04/rzsm1.jpg" />
+                    <img src="__HOME__/images/wwwexplan/04/rzsm2.jpg" />
+                    <img src="__HOME__/images/wwwexplan/04/rzsm3.jpg" /> -->
+                    <div class="fin_a">
+                        <div class="fin_b">
+                        我们在为什么企业服务？
+                        </div>
+                        <div class="fin_c">
+                          有良好的发展前景;<br />
+有能量的企业团队;<br />
+有成熟的商业计划;<br />  
+                        </div>
+                    </div>
+
+                    <div class="fin_d">
+                        <div  class="fin_b">
+                            我们的服务内容是什么？
+                        </div>
+                        <div  class="fin_c">
+                        为了确保您的项目真实有效，我们会对其进行真实性调查和相关资料的收集。<br />
+为了减少您资金使用空挡周期，我们会对您的项目进行融资前的包装。<br />
+线下组织路演，促成项目方与投资人的合作。<br />
+双方达成微风投商业模式投资合作协议，微风投平台全程跟踪服务。
+                        </div>
+                    </div>
+
+                    <div class="fin_e">
+                        <div  class="fin_b">
+                            我们会拒绝这样的项目
+                        </div>
+                        <div  class="fin_c">
+                        项目方不能认真对待本次融资;<br />
+项目方无法付出精力经营管理项目;<br />
+项目方无责任心，融资后无法对投资人负责;<br />
+项目涉及国家法律明确规定禁止的服务或产品;<br />
+项目方有过违法记录或出现过重大违法违纪事件的;
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="financing_aa">
+                <div class="financing_ab">
+                    <div class="identifi_diffc">
+                        <img src="__HOME__/images/wwwexplan/04/rzsmbt2.gif" />
+                    </div>
+                    <div class="financing_ac">
+                        <img src="__HOME__/images/wwwexplan/04/rzsml2.jpg" />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="financing_ba">
+                <div class="financing_bb">
+                    <div class="financing_c">
+                        <div class="financing_d">
+                        1.如何评定是否可以进行路演?
+                        </div>
+                        
+                        <div class="financing_e" style="font-size:14px">
+                        微风投根据项目预热期间投资人对项目的关注度来衡量，<br />
+
+而关注度主要体现在投资人对项目进行关注、约谈、预约认购等频率来综合评定。
+                        </div>
+                        <div class="financing_d">
+                        2.为什么需要进行路演?
+                        </div>
+                        
+                        <div class="financing_e" style="font-size:14px">
+                        虽然微风投对项目做了完善的项目披露，但是投资风险依然不可忽视。<br />
+
+为此，我们组织融资方和投资人进行线下见面，由融资方进行路演，以增加双方的了解和信任，增强投资人投资信息，同时也是对项目可投资性进行一次真实的考验。
+                        </div>
+                        
+                        <div class="financing_d">
+                        3.为什么有资金封闭期?
+                        </div>
+                        
+                        <div class="financing_e" style="font-size:14px">
+                        (1)一个好的项目管理者，分配资金是有计划和额度的。<br />
+
+(2)微风投商业模式根据项目方提供的商业用款计划书分批次的划拨借款金额，这种商业运作方式有利于投资人的资金调配和监管方把控资金，让资金确实有效的用到项目生产上，扶植项目快速落地。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <!--快速通道-->
+            <div class="greenroadc">
+                <div class="greenroadb">
+                    <a onclick="javascript:createproject();"><img src="__HOME__/images/wwwexplan/04/path4.jpg" /></a>
+                </div>
+            </div>
+            
+        </div>
+        
+        
+        <!--融资管理-->
+        <div id="rzgl">
+        
+        
+            <div class="financing_aa">
+                <div class="financing_ab">
+                    <div class="identifi_diffc">
+                        <img src="__HOME__/images/wwwexplan/04/rzglbt1.gif" />
+                    </div>
+                    <div class="management_a">
+                        <div class="management_b">1.封闭期(3-6个月)</div>
+                        <div class="financing_e">资金按用款计划书分批到位，根据不用项目情况3―6个月内分批次划拨借款金额。</div>
+                        <div class="management_b">2.回本期(12-15个月)</div>
+                        <div class="financing_e">根据《微风投商业模式投资合作协议》制定项目方回本周期，<br />
+在12―15个月内依次归还借款金额，减轻还款压力。</div>
+                        <div class="management_b">3.利润期(36个月)</div>
+                        <div class="financing_e">需支付投资人收益周期为期36个月，年化利润率在15%---18%之间。</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="financing_ba">
+                <div class="financing_bb">
+                    <div class="identifi_diffc">
+                        <img src="__HOME__/images/wwwexplan/04/rzglbt2.gif" />
+                    </div>
+                    <div>
+                        <img src="__HOME__/images/wwwexplan/04/rzgl1.jpg" />
+                        <img src="__HOME__/images/wwwexplan/04/rzgl2.jpg" />
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="financing_aa">
+                <div class="financing_ab">
+                    <div class="management_d">
+                        <img src="__HOME__/images/wwwexplan/04/rzglbt3.gif" />
+                    </div>
+                    <div class="management_e">
+                    《微风投商业模式投资合作协议》<br />
+
+是依法由<span>项目方</span>和<span>投资人</span>协商一致、以书面形式签订的契约。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="greenroadd">
+                <div class="management_f">
+                    <a href="javascript:createproject();"><img src="__HOME__/images/wwwexplan/04/rzglan1.gif" /></a>
+                    <a href="javascript:becomeinvestor();"><img src="__HOME__/images/wwwexplan/04/rzglan2.gif" /></a>
+                </div>
+            </div>
+            
+        </div>
+        
+        
+        
+        <!--认证投资人-->
+        <div id="tzrrz">
+            <div class="financing_aa">
+                <div class="financing_ab">
+                    <div class="identifi_diffc">
+                        <img src="__HOME__/images/wwwexplan/04/touzirenbt1.gif" />
+                    </div>
+                    <div>
+                        <img src="__HOME__/images/wwwexplan/04/touzirenl1.jpg" />
+                    </div>
+                    <div class="invest-cera">
+                        <div class="financing_d" style="color:#ffaa00; font-size:20px;">
+                        怎么成为我们的认证投资人?
+                        </div>
+                        
+                        <div class="management_c">
+                        具备风险投资意识，明白投资的风险和收益的关系。<br />
+
+具备抗风险能力，并且有稳定收入。<br />
+
+对小微企业经营具有一定的认知。<br />
+
+然后在网站上点击投资人认证，提交个人真实信息与证明，并通过微风投审核。
+                        </div>
+                        
+                        
+                    </div>
+                    
+                    <div class="invest-cerb">
+                        <div class="financing_d" style="color:#ffaa00; font-size:20px;">
+                        成为认证投资人有何好处?
+                        </div>
+                        
+                        <div class="management_c">
+                        会不定期获得微风投优质项目的优先推荐;<br />
+
+可以无障碍阅读更多的微风投融资项目;<br />
+
+可以进行对优质项目的预约认购;<br />
+
+可以参加微风投项目的路演和推荐活动。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="financing_ba">
+                <div class="financing_bb">
+                    <div class="identifi_diffc">
+                        <img src="__HOME__/images/wwwexplan/04/touzirenbt2.gif" />
+                    </div>
+                    <div class="financing_ac">
+                        <img src="__HOME__/images/wwwexplan/04/touzirenl2.jpg" />
+                    </div>
+                    <div class="invest-cerc">
+                        <div class="financing_d" style="color:#00bbea; font-size:20px">
+                        如何评定是否可以进行路演？
+                        </div>
+                        
+                        <div class="management_c">
+                        微风投根据项目预热期间投资人对项目的关注度来衡量，<br />
+
+而关注度主要体现在投资人对项目进行关注、约谈、预约认购等频率来综合评定。
+                        </div>
+                        
+                        <div class="financing_d" style="color:#00bbea; font-size:20px">
+                        为什么需要进行路演?
+                        </div>
+                        
+                        <div class="management_c">
+                        虽然微风投对项目做了完善的项目披露，但是投资风险依然不可忽视。<br />
+
+为此，我们组织融资方和投资人进行线下见面，由融资方进行路演，<br />
+
+以增加双方的了解和信任，增强投资人投资信息，<br />
+
+同时也是对项目可投资性进行一次真实的考验。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!--快速通道-->
+            <div class="greenroadd">
+                <div class="greenroadb">
+                    <a href="javascript:becomeinvestor();"><img src="__HOME__/images/wwwexplan/04/path6.jpg" /></a>
+                </div>
+            </div>
+            
+        </div>
+        
+        
+    </div>
+
+</div>
+<include file="Public:minilogin" />
+</block>

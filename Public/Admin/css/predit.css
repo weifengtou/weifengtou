@@ -1,0 +1,182 @@
+* { margin: 0; padding: 0; }
+/*body {font: 14px; color: #444; background:#f6f6f6; font-family:"微软雅黑";text-align:center; }*/
+body {font: 14px; color: #444; background:#f6f6f6; font-family:"微软雅黑";}
+img { border: 0; vertical-align: bottom; }
+ul, li, dt { margin: 0; padding: 0; list-style: none; }
+a { text-decoration: none; }
+a:link { color: #000000; text-decoration: none; }
+a:hover {  cursor: pointer; color:#FF0099; text-decoration: none;}
+a.underline { text-decoration: underline; }
+/*a:visited { color: #000000; text-decoration: none; }*/
+a:visited { text-decoration: none; }
+form, ul, li, p, h1, h2, h3, h4, h5, h6 { padding:0; margin:0}
+.clear { clear: both; }
+/*----------------------顶部-------------------------*/
+
+
+/*----------------------中间-------------------------*/
+
+.all{width:100%; height:100%;}
+
+.littlebanner{ width:100%; background:#e1e5ed; text-align:center}
+.allmain{width:1000px;margin:20px auto; }
+.middle{ margin:10px auto}
+.tttle{ font-size:12px; line-height:36px; border-bottom:1px solid #ccc; width:700px }
+.tttle span{ font-size:14px; margin-right:10px;}
+.logd{ float:left; width:120px; margin-top:20px;}
+.lodd{ float:left; width:120px; padding-top:6px; line-height:20px; color:#aaa }
+.gezi{ font-size:12px; float:left; width:630px;background:#fff;}
+.gezithe{ padding-left:110px}
+.words{ float:left; width:70px; font-weight:bold; text-align:right; margin-right:20px; line-height:80px;}
+.neirong{float:left; border:1px solid #ccc; margin-right:10px}
+.neironf{float:left;margin-right:10px}
+.chuan{ float:left; margin-top:20px}
+.gezitwo{ margin:20px auto}
+.woss{ font-size:12px;width:90px;  font-weight:bold;float:left; text-align:right; margin-right:20px; line-height:30px}
+.kuang{ float:left; line-height:30px;}
+.kuangss{float:left; line-height:30px; }
+.kuangE{float:left; line-height:30px; }
+.kuangssE{float:left; line-height:30px; margin:0 20PX; display:inline}
+.kuang textarea.ldd{ line-height:30px; padding-left:10px; height:30px;width:350px; color:#ccc}
+.kuang textarea.lss{ line-height:30px; padding-left:10px; height:30px;width:350px;max-height:90px; color:#ccc}
+.kuang input.ldd{ line-height:30px; padding-left:10px; height:30px;width:350px; color:#ccc;font-size: 14px;}
+.kuang input.lss{ line-height:30px; padding-left:10px; height:30px;width:350px;max-height:90px; color:#ccc;font-size: 14px;}
+.kuang textarea.lxx{ line-height:30px; padding-left:10px; height:180px;width:500px; color:#ccc}
+.kuang textarea.lkk{ line-height:30px; padding-left:10px; height:30px;width:350px; color:#ccc;}
+.kuang textarea.ljj{ line-height:30px; padding-left:10px; height:30px;width:350px; color:#ccc}
+.kuang textarea.lpp{ line-height:30px; padding-left:10px; height:100px;width:350px; color:#ccc}
+.kuangssE textarea.lee{ line-height:30px; padding-left:10px; height:30px;width:200px; color:#ccc}
+.kuangss textarea.loo{ line-height:30px; padding-left:10px; height:30px;width:80px; color:#ccc}
+
+
+.woxx{ font-size:12px;width:90px;  font-weight:bold;float:left; text-align:right; margin-right:20px;}
+.tips{ float:left; color:#666; line-height:30px; margin-left:15px; display:inline}
+.rell{ margin:0 0 10px 80px}
+.rell input{ float:left}
+.rell .les{ float:left}
+.zhaiyao{padding:0 80px; color:#aaa; line-height:20px;}
+/*.nextt{ margin-left:235px;}*/
+
+.ttlle{ padding:30px 0; font-size:12px;  padding-left:30px; border:1px solid #f2f2f2; background:#fbfbfb}
+.tleft{ float:left; width:700px}
+.tright{float:left;width:250px}
+.loff{ float:left}
+.nakee{ float:left; padding-left:10px; width:600px;}
+.nakee h3{ font-size:24px;float:left;}
+.fbd{ float:left; background:#cfe4db; color:#0d774a;padding:3px 10px; margin:6px 20px 0 20px}
+.heto{ float:left; background:#ec8a23; color:#fff;padding:3px 10px;  margin-top:6px }
+.know{ margin:10px 0}
+.namo{ }
+.namo a{ display:block; float:left; margin:6px 10px; display:inline; background:#3b70e1; padding:3px 10px; color:#fff;}
+.namo a:hover{ display:block; float:left; margin:6px 10px; display:inline; background:#0d40ae; padding:3px 10px; color:#fff;}
+.tipsd{ color:#f00;padding-left:8px}
+
+
+/* 标准盒模型 */
+.ttl{height:18px;}
+.ctt{padding:6px;clear:both;border:1px solid #eee;border-top:0;text-align:left;}
+.w936{margin:2px auto;clear:both;width:1000px; background:#fff;/*滑动门的宽度*/}
+/* TAB 切换效果 */
+.tb_{background: #eee; padding-top:20px;}
+.tb_ ul{ height:40px; padding-left:100px;}
+.tb_ li{float:left;height: 40px; margin-left:25px; display:inline; text-align:center; background:#eee; line-height:40px;width: 94px;cursor:pointer; color:#555}
+/*.tb_ li#tb_1{ background:#fff}*/
+
+/* 控制显示与隐藏css类 */
+.normaltab   {  background-repeat: no-repeat; color:#1F3A87 ;}
+.hovertab    { background-repeat: no-repeat; color:#1F3A87; font-weight:bold }
+.dis{display:block;}
+/*.undis{display:none;}*/
+
+#tbc_01{ font-size:12px; padding:30px 118px 10px 118px}
+#tbc_02{ font-size:12px; padding:30px 118px 10px 118px}
+#tbc_03{ font-size:12px; padding:30px 118px 10px 118px}
+.onmor{font-weight:bold; }
+#tbc_01 span{ font-weight:normal; margin-left:15px}
+.wol{ float:left; margin:40px 0;width:400px; line-height:24px }
+.avs{ float:left; margin:40px 0 40px 50px; display:inline}
+.xian{ margin:30px 0; height:1px; background:#eee;}
+.lssdee input{ border:1px solid #ccc; line-height:40px;  text-align:center; margin-left:30px;width:300px; color:#aaa}
+.dianj a{ color:#fff; float:left; margin:40px 20px 30px 0; padding:10px 40px; background:#3b70e1;}
+.dianj a.lidse{ background:#ddd}
+
+
+.linfes{ border-bottom:1px dashed #ccc; height:1px; margin:40px auto}
+.wodts{ font-weight:normal; line-height:20px; float:left; line-height:30px }
+.lades{ margin:15px 0 15px 110px}
+.lads{ margin-left:110px}
+.leaeft{ float:left; width:80px; margin-right:10px}
+.learht{ float:left; width:300px;}
+.els{ float:left; font-size:14px; color:#3b70e1; margin-right:20px;}
+.els span{ color:#0d774a}
+.xel{ float:left; background:#cfe4db; padding:2px 4px; color:#0d774a}
+.shuoming{ margin:10px 0; color:#888}
+.jjs a{ color:#3b70e1}
+.jjs a:hover{ text-decoration:underline}
+.lesec{ margin-left:90px}
+
+.gezse{ margin:0 0 15px 120px } 
+.woee{ font-size:12px;width:80px;  font-weight:bold;float:left; text-align:right; margin-right:10px;}
+.wodee{ float:left; margin-top:28px; color:#aaa; margin-left:10px; display:inline}
+.lies{ border-bottom:1px dashed #ccc; height:1px; margin:30px 0 30px 230px ; width:520px}
+
+.sckd{ margin:10px 0 35px 210px;}
+.sckd a{ display:block; float:left;}
+.sckd a.led{ margin-left:150px; display:inline}
+.woqq{ font-size:12px;width:120px;  font-weight:bold;float:left; text-align:right; margin-right:20px; line-height:30px}
+
+.nextt{width:752px;height:35px;}
+.next{float:left; display:inline; margin-right:20px}
+.next a{ width:102px; height:35px; line-height:35px; display:block; text-align:center}
+.next a{ color:#fff !important}
+.next a:hover{ color:#fff}
+
+
+
+
+
+
+
+
+
+/*----------------------底部-------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

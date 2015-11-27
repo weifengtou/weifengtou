@@ -1,0 +1,222 @@
+<extend name="Base/project"/>
+
+<block name="header">
+    <header>
+        <div class="littlebanner">
+            <img src="__HOME__/images/project/cailing.gif" />
+        </div>
+        <div class="allmain"></div>
+    </header>
+    <!-- ==============================悬浮区=============================== -->
+    <include file="index/effect"/>
+    <!-- =================================================================== -->
+</block>
+<block name="body">
+    <div class="all">
+
+        <!--总-->
+
+        <div class="allmain">
+
+            <!--创业项目-->
+            <div class="program" >
+                <ul>
+                    <li>
+                        <a href="{:U('project')}" class="<?php if (!I('get.renzheng')): ?>
+                            rightnow
+                        <?php endif; ?>">认证项目</a>
+                    </li>
+                    <li>·</li>
+                    <li>
+                        <a href="{:U('project?renzheng=other')}" class="<?php if (I('get.renzheng')): ?>
+                            rightnow
+                        <?php endif; ?>">未认证项目</a>
+                    </li>
+                    <!-- <li>
+                        <if condition="$prrateid eq ''">
+                            <a href="?s=Home/Project/project" class="rightnow" id="li_1">所有项目[{$cs[t]}]</a>
+                            <else/>
+                            <a href="?s=Home/Project/project" id="li_1">所有项目[{$cs[t]}]</a>
+                        </if>
+                    </li>
+                    <li>·</li>
+                    <li>
+                        <if condition="$prrateid eq 2">
+                            <a href="?s=Home/Project/project&prrateid={$prrates[3][prrateid]}" class="rightnow">{$prrates[3][prratename]}[{$cs[3]}]</a>
+                            <else />
+                            <a href="?s=Home/Project/project&prrateid={$prrates[3][prrateid]}" id="li_2">{$prrates[3][prratename]}[{$cs[3]}]</a>
+                        </if>
+                    </li>
+                    <li>·</li>
+                    <li>
+                        <if condition="$prrateid eq 3">
+                            <a href="?s=Home/Project/project&prrateid={$prrates[4][prrateid]}" class="rightnow">{$prrates[4][prratename]}[{$cs[4]}]</a>
+                            <else/>
+                            <a href="?s=Home/Project/project&prrateid={$prrates[4][prrateid]}" id="li_3">{$prrates[4][prratename]}[{$cs[4]}]</a>
+                        </if>
+                    </li>
+                    <li>·</li>
+                    <li>
+                        <if condition="$prrateid eq 4">
+                            <a href="?s=Home/Project/project&prrateid={$prrates[5][prrateid]}" class="rightnow">{$prrates[5][prratename]}[{$cs[5]}]</a>
+                            <else/>
+                            <a href="?s=Home/Project/project&prrateid={$prrates[5][prrateid]}" id="li_4">{$prrates[5][prratename]}[{$cs[5]}]</a>
+                        </if>    
+                    </li> -->
+                </ul>
+
+            </div>
+            <!--tou-->
+            <div class="headeer">
+                <!-- =============================筛选区======================================== -->
+                <include file="select_box" />
+                <!-- =========================================================================== -->
+                <!-- <div class="heddd">
+                    <h3>*目前共计拥有{$cs[t]}项好项目，今日更新2项</h3>
+                </div> -->
+                <div class="clear"></div>
+                <div class="heddd">
+                    <a><img onclick="javascript:fa_bu_project();" src="__HOME__/images/project/fb1.gif" /></a>
+                </div>
+
+            </div>
+            <include file="Public:minilogin" />
+            <!--main-->
+            <div>
+
+                <div id="items">
+                    <volist name="project" id="vo">
+                        <div class="item">
+                            <div class="gzqy">
+                                <a href="?s=Home/Project/prdetail&pid={$vo.id}" target="_blank">
+                                    <?php if (!$vo[logo]): ?>
+                                    <img src="__STATIC__/images/nop.gif" style="max-width:317px;max-height:175px;margin:0 auto;vertical-align:center;display:block;"  />
+                                    <?php else: ?>
+                                    <img onclick='location.href("?s=Home/Project/prdetail&pid={$vo.id}")' src="./Uploads/Album/{$vo[logo]}" style="max-width:317px;max-height:175px;" />
+                                    <?php endif ?>
+                                    {$vo[pjname]}
+                                </a>
+                            </div>
+
+                            <!--zy-->
+                            <div class="zy">
+                                <p style="word-wrap:break-word;">{$vo.pjintroduce}</p>
+                            </div>
+
+                            <!--jd-->
+                            <div class="jd">
+                                <div class="jd_l">项目阶段</div>
+                                <div class="jd_r">
+                                    <if condition="$vo[prrate] eq 2">{$prrates[3][prratename]}
+                                        <elseif condition="$vo[prrate] eq 3"/>{$prrates[4][prratename]}
+                                        <elseif condition="$vo[prrate] eq 4"/>{$prrates[5][prratename]}
+                                    </if>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                            <div class="clear"></div>
+
+                            <!--baifen-->
+                            <div class="baifen">
+                                <div id="progress-bar" class="ddiiy">
+                                    <?php if($vo[money] > $vo[budget]){
+                                        $ec = 100;
+                                        $attrleft = 0;
+                                    }else{
+                                        $ec = round($vo[money]/$vo[budget]*100,2);
+                                        if ($ec<20) {
+                                            $attrleft = 1;
+                                        }else{
+                                            $attrleft = 0;
+                                        }
+                                    } ?>
+
+                                    <div class="yddiiy" style="width: {$ec}%;" attrleft="{$attrleft}">
+                                        
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!--yirongzi-->
+                            <div class="yirongzi">
+						<if condition="($vo[privacyset] eq 1) OR ($_SESSION[wft_home][userinfo][id] neq '')">
+						<div class="yirongzi_l">
+							<p>
+								<if condition="empty($vo[money])"> ￥0 <else /> ￥<?php echo number_format($vo[money]); ?>
+								</if>
+								<br /> 已融资金额
+							</p>
+						</div>
+
+						<div class="yirongzi_r">
+							<p>
+								￥
+								<?php echo number_format($vo[budget]); ?>
+								<br /> 融资总额
+							</p>
+						</div>
+						<elseif condition="$vo[privacyset] eq 0" />
+						<div class="yirongzi_l">
+							<p>
+								<if condition="empty($vo[money])">0% <else /> <?php echo $ec; ?>%
+								</if>
+								<br /> 已融资金额
+							</p>
+						</div>
+
+						<div class="yirongzi_r">
+							<p>
+								100%
+								<br /> 融资总额
+							</p>
+						</div>
+						</if>
+
+						<div class="clear"></div>
+
+                            </div>
+
+                            <div class="clear"></div>
+
+                            
+
+                        </div>
+                        <!-- <div class="clear"></div>
+                    -->
+                </volist>
+            </div>
+        </div>
+
+        <!--分页-->
+        <div class="pages">
+            <script>
+                    $("div.pages").jPages({
+                        containerID : "items",
+                        perPage : 9,
+                        previous : "上一页",
+                        next : "下一页"
+                    });
+                </script>
+        </div>
+        <script>
+            jQuery(document).ready(function($) {
+                $('#items :nth-child(3n)').addClass('right')
+            });
+            </script>
+
+    </div>
+</div>
+
+<script>
+    jQuery(document).ready(function($) {
+        $(".yddiiy").each(function(index, val) {
+            if($(this).attr("attrleft") == 1) {
+                $(this).children(".ddiiy-fo").animate({ left: "+=40px" })
+            }
+        });
+    });
+</script>
+</block>

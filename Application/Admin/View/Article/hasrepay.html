@@ -1,0 +1,73 @@
+<extend name="Public/base"/>
+
+<!-- 子导航 -->
+<block name="sidebar">
+	<include file="sidemenu" />
+</block>
+
+<block name="body">
+<script type="text/javascript" src="__STATIC__/laydate/laydate.js"></script>
+<script type="text/javascript" src="__STATIC__/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="__STATIC__/jQueryValidation/lib/jquery.validate.js"></script>
+<script type="text/javascript" src="__STATIC__/jQueryValidation/lib/jquery.metadata.js"></script>
+<script type="text/javascript" src="__STATIC__/jQueryValidation/lib/jquery.validate.messages_cn.js"></script>
+
+	<div>
+		<!-- 标题 -->
+		<div class="main-title">
+			<h2>还款记录({$_total})</h2>
+			<p style="float:right;font-size:16px;"><a href="javascript:history.go(-1);">返回</a></p>
+		</div>
+		<!-- 按钮工具栏 -->
+		<div class="cf"></div>
+		<!-- 数据表格 -->
+		<div class="data-table">
+			<table class="">
+				<thead>
+					<tr>
+						<th class="row-selected row-selected">
+							<input class="check-all" type="checkbox"/>
+						</th>
+						<th class="">编号</th>
+						<th class="">还款日期</th>
+						<th class="">还款金额(元)</th>
+						<th class="">还款信息</th>
+						<th class="">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="list" item="vo">
+						<tr>
+							<td>
+								<input class="ids" type="checkbox" name="ids[]" value="{$vo.id}" />
+							</td>
+							<td id="prid">{$vo.id}</td>
+							<td>{$vo[repay_time]}</td>
+							<td>{$vo[repay_money]}</td>
+							<td>{$vo[repay_msg]}</td>
+							<td><a href="javascript:repay_delete({$vo[id]});">删除</a></td>
+						</tr>
+					</foreach>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- 分页 -->
+		<div class="page">{$_page}</div>
+	</div>
+
+</block>
+<block name="script">
+<script type="text/javascript" src="__STATIC__/layer.min.js"></script>
+<script type="text/javascript" src="__STATIC__/layer.ext.js"></script>
+<script>
+	function repay_delete (i) {
+		if (confirm("确定删除?")) {
+			$.post('?s=Article/hasrepay&fin_id={$_GET[fin_id]}',{delete_id:i}, function(data, textStatus, xhr) {
+				layer.msg(data,1,1)
+				location.reload();
+			});
+		}
+	}
+</script>
+</block>

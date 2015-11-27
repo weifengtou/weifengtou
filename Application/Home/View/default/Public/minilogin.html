@@ -1,0 +1,127 @@
+<style type="text/css">
+    .mainright{width:330px; margin:0 auto}
+	.deluu{ width:287px; height:38px; font-size:18px; margin-top:25px; background:#ec6f00; line-height:38px; color:#fff; text-align:center; margin-left:20px}
+	.mansec{ padding:20px 10px 10px 20px;}
+	.man{ width:222px; height:30px; padding:5px 10px 5px 55px;; background:url(__IMG__/public/minilogin/man.gif);}
+	.man input{ width:220px; height:30px; border:0; color:#444;font-family:"微软雅黑"; line-height:30px;}
+	.man input placeholder{ color:#ccc}
+	.sec{ width:222px; height:30px; padding:5px 10px 5px 55px;; background:url(__IMG__/public/minilogin/sec.gif); margin:20px 0}
+	.sec input{ width:220px; height:30px; border:0; color:#444;font-family:"微软雅黑"; line-height:30px;}
+	.sec input placeholder{ color:#ccc}
+	.rem{color:#8f8f8f; font-size:14px; font-family:"微软雅黑";}
+	.rem span.rember{ margin-right:120px;}
+	.rem a{ color:#0697da !important}
+	.rem a:hover{ color:#0fb3ff}
+	.lgoinin{width:165px; height:40px; margin:50px 0 20px 60px;}
+	.lgoword{ display:block; text-align:center; font-size:12px; margin-top:30px; color:#8f8f8f}
+	.lgoword a{color:#0697da !important}
+	.lgoword a:hover{ color:#0fb3ff}
+	.qier{background:url(__IMG__/public/minilogin/linesd.gif) top no-repeat; padding:30px 0px 10px 22px;}
+	.qier span{ font-size:12px; color:#aeacad; display:block; float:left; line-height:26px; margin-right:80px; display:inline}
+	.qier a{ display:block; float:left;}
+	.qier .partner-qq{ float:left;margin-right:20px; display:inline}
+	.qier .partner-weibo{ float:left}
+	.qier .partner-qq a{ background:url(__IMG__/public/minilogin/anqq.gif); width:20px; height:24px;}
+	.qier .partner-qq a:hover{ background:url(__IMG__/public/minilogin/liangqq.gif); width:20px; height:24px;}
+	.qier .partner-weibo a{ background:url(__IMG__/public/minilogin/anxl.gif); width:29px; height:24px;}
+	.qier .partner-weibo a:hover{ background:url(__IMG__/public/minilogin/xinxl.gif); width:29px; height:24px;}
+
+	/*----------------------底部-------------------------*/
+
+</style>
+
+<!--表单插件-->
+<script src="__STATIC__/jquery.form.js"></script>
+<!--验证插件-->
+<script src="__STATIC__/jQueryValidation/lib/jquery.validate.js"></script>
+<script src="__STATIC__/jQueryValidation/lib/jquery.metadata.js"></script>
+<script src="__STATIC__/jQueryValidation/lib/jquery.validate.messages_cn.js"></script>
+<style type="text/css">
+/*错误样式*/
+input.error { border: 1px dashed red;background:yellow; padding:2px; }
+select.error { border: 1px dashed red; background:yellow; padding:::::;}
+.error {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 16px;
+    margin-left: 2px;
+    color:red;
+    /*背景图片（校验未通过的’×’图标）*/
+    /*background: url(unchecked.gif) no-repeat 0px 0px;*/
+    font-family:Verdana, Geneva, sans-serif;
+    font-size:13px;
+}
+</style>
+
+<div id="minilogin" style="display:none">
+	<form id="miniloginfun" action="?s=Home/User/denglu" method="post">
+		<div class="mainright">
+			<!--请先登录-->
+		     
+			<div class="deluu">登录</div>
+
+			<div class="mansec">
+				<div class="man">
+					<input type="text" placeholder="请输入用户名/邮箱" name="username" />
+				</div>
+				<div class="sec">
+					<input type="password" placeholder="请输入密码" name="password" />
+				</div>
+				<div class="rem">
+					<span class="yesme" style="background-position: 0px -33px;">
+						<input type="checkbox" checked="checked"></span>
+					<span class="rember">记住用户名</span>
+					<a class="forgot" href="?s=Home/User/forgetpd01">忘记密码</a>
+				</div>
+
+				<div class="lgoinin">
+					<a class="intom" href="javascript:miniloginfun();">
+						<img src="__IMG__/public/minilogin/lgoinin.gif" />
+					</a>
+				</div>
+				<div class="lgoword">
+					没有账号？
+					<a href="?s=Home/User/register">免费注册</a>
+				</div>
+
+			</div>
+			<div class="qier">
+				<span>您还可以使用合作账号登录</span>
+				<div class="partner-qq" id="_qqLoginBtn">
+					<a ></a>
+				</div>
+				<div class="partner-weibo">
+					<a onclick="javascript:hasnofun();"></a>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" charset="utf-8"></script>
+
+<script type="text/javascript">
+    $("#_qqLoginBtn").on('click', function(event) {
+    	QC.Login.showPopup({
+		   appId:"{:C('QQ_APP_ID')}",
+		   redirectURI:'{:C("WEB_URL")}' + "/index.php?s=Home/User/qqlogin"
+		});
+    });
+</script>
+
+<script>
+	function miniloginfun () {
+		$("#miniloginfun").trigger('submit')
+	}
+	$("#miniloginfun").ajaxForm(function (e) {
+		if (e==2||e==3||e==4) {
+			location.reload()
+		}else if(e==5){
+			alert("用户未激活")
+		}else if(e==0||e==1){
+			alert("用户名或密码错误")
+		}
+	})
+</script>

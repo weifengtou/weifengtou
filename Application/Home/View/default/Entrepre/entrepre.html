@@ -1,0 +1,1346 @@
+<extend name="Base/entrepre" />
+
+<block name="header"> <header>
+	<div class="littlebanner">
+		<img src="__HOME__/images/entrepre/cailing.gif" />
+	</div>
+</header> <!-- ==============================================js特效================================================= -->
+<include file="index/effect" /> <!-- =================================================================================================== -->
+</block>
+
+<block name="body">
+<div class="all">
+	<div class="allmain">
+		<div class="test01">
+			<img src="__HOME__/images/entrepre/xixin01.gif" />
+			<!-- <div class="moxxx">
+                    <a target="_blank" href="{:U('Help/rzmx')}">
+                        <img src="__HOME__/images/entrepre/moxxx.gif" />
+                    </a>
+                </div> -->
+		</div>
+		<div class="middle">
+			<div class="w936">
+				<div id="tb_" class="tb_">
+					<ul>
+						<li id="tb_1" class="hovertab"
+							style="background: #fff; font-weight: bold;"><a
+							href="__URL__/entrepre">项目资料</a></li>
+						<li id="tb_2" class="normaltab"><a href="javascript:li2();"
+							id="li2">审核资料</a></li>
+						<!-- <li id="tb_5" class="normaltab" >
+            				<a href="javascript:li5();">项目描述</a>
+        				</li> -->
+						<li id="tb_3" class="normaltab"><a href="javascript:li3();">融资需求</a>
+						</li>
+						<li id="tb_4" class="normaltab"><a href="javascript:li4();">项目图片</a>
+						</li>
+					</ul>
+				</div>
+				<div class="ctt">
+					<div class="undis" id="tbc_01">
+						<if condition="!$_SESSION[wft_home][prid]"> <!-- 项目基本资料填写 -->
+							<div class="middle" id="pr01">
+								<div style="width: 758px;">
+
+									<!-- 封面图surface plot -->
+
+									<div class="logd">
+										<form name="surfaceForm01" id="surfaceForm01"
+											action="__URL__/upSurface" method="post""multipart/form-data">
+											<img src="__HOME__/images/entrepre/xmlg.gif"
+												style="width: 95px; height: 84px;" />
+											<div style="position: relative;">
+												<input type="file" name="prsurface01" id="prsurface01"
+													style="opacity: 0; position: relative; z-index: 2; text-align: right; -moz-opacity: 0; filter: alpha(opacity :         0); height: 18px; width: 95px; cursor: pointer;">
+												<div
+													style="position: absolute; z-index: 1; top: 0px; left: 0px;">
+													<img src="__HOME__/images/entrepre/sclg.gif"
+														style="vertical-align: middle; width: 95px; height: 17px;" />
+												</div>
+												<div style="width:95px; height:20px; line-height:20px; text-align:center; font-size:10px">图片尺寸：317×175</div>
+											</div>
+										</form>
+										<!-- 缩略图显示 -->
+										<div class="logd" style="display: none;" id="surfacediv01">
+											<img src="__HOME__/images/entrepre/xmlg.gif"
+												style="width: 95px; height: 84px;" id="surfaceimg01" />
+										</div>
+									</div>
+									
+									<!-- 项目基本资料提交 -->
+									<div style="float:left">
+									<form name="prform01" id="prform01" action="__URL__/prinsert01"
+										method="post">
+										<!-- 封面图保存名 -->
+										<input type="hidden" id="surface01" name="surface01" value=" ">
+										<div class="gezi">
+											<div class="gezitwo">
+												<div class="woss">
+													<font style="color: #f00; font-weight: normal">*</font> 项目名称
+												</div>
+												<div class="kuang">
+													<textarea class="ldd" name="prname01" id="prname01"
+														style="resize: none;" placeholder="请填写项目名，2-15字"></textarea>
+												</div>
+												<!-- <div style="line-height: 30px; color: #ccc; height: 30px;">
+													<img src="__HOME__/images/entrepre/right.png"
+														id="prnameright01"
+														style="width: 30px; height: 30px; display: none;">
+												</div> -->
+												<div class="clear"></div>
+											</div>
+											<div class="gezitwo">
+												<div class="woss">
+													<font style="color: #f00; font-weight: normal">*</font> 联系人
+												</div>
+												<div class="kuang">
+													<textarea class="ldd" name="linkman01" id="linkman01"
+														style="resize: none;" placeholder="请填写项目联系人"></textarea>
+												</div>
+												<!-- <div style="line-height: 30px; color: #ccc; height: 30px;">
+													<img src="__HOME__/images/entrepre/right.png"
+														id="prnameright01"
+														style="width: 30px; height: 30px; display: none;">
+												</div> -->
+												<div class="clear"></div>
+											</div>
+											<div class="gezitwo">
+												<div class="woss">
+													<font style="color: #f00; font-weight: normal">*</font> 联系电话
+												</div>
+												<div class="kuang">
+													<textarea class="ldd" name="prphone01" id="prphone01"
+														style="resize: none;" placeholder="请填写联系电话"></textarea>
+												</div>
+												<!-- <div style="line-height: 30px; color: #ccc; height: 30px;">
+													<img src="__HOME__/images/entrepre/right.png"
+														id="prphoneright01"
+														style="width: 30px; height: 30px; display: none;">
+												</div> -->
+												<div class="clear"></div>
+											</div>
+											<div class="gezione">
+												<div class="woss">
+													<font style="color: #f00; font-weight: normal">*</font>
+													一句话介绍
+												</div>
+												<div class="kuang">
+													<textarea id="printroduce01" class="lss"
+														name="printroduce01" style="resize: none;"
+														placeholder="请填入一句话介绍，2-50字"></textarea>
+												</div>
+												<!-- <div style="line-height: 30px; color: #ccc; height: 30px;">
+													<img src="__HOME__/images/entrepre/right.png"
+														id="printroduceright01"
+														style="width: 30px; height: 30px; display: none;">
+												</div> -->
+												<div class="clear"></div>
+											</div>
+											<div class="gezitwo">
+												<div class="woss">
+													<font style="color: #f00; font-weight: normal"></font> 视频地址
+												</div>
+												<div class="kuang">
+													<textarea id="videoweb01" class="lss" name="videoweb01"
+														style="resize: none;" placeholder="请正确填写视频地址"></textarea>
+												</div>
+												<!-- <div style="line-height: 30px; color: #ccc; height: 30px;">
+													<img src="__HOME__/images/entrepre/right.png"
+														id="videowebright01"
+														style="width: 30px; height: 30px; display: none;">
+												</div> -->
+												<div class="clear"></div>
+											</div>
+											<div class="gezione">
+												<div class="woxx">
+													<font style="color: #f00; font-weight: normal">*</font> 所处阶段
+												</div>
+												<div class="kuang">
+													<select name="prstage01" id="prstage01"
+														style="width: 160px; height: 30px; font-size: 14px; padding-left: 7px;">
+														<option selected value="">==选择所处阶段==</option>
+														<option value="1">起步阶段</option>
+														<option value="2">盈利阶段</option>
+														<option value="3">亏损阶段</option>
+													</select>
+												</div>
+												<!-- <div style="line-height: 30px; color: #ccc; height: 30px;">
+													<img src="__HOME__/images/entrepre/right.png"
+														id="prstageright01"
+														style="width: 30px; height: 30px; display: none;">
+												</div> -->
+												<div class="clear"></div>
+											</div>
+											<div class="gezitwo">
+												<div class="woxx">
+													<font style="color: #f00; font-weight: normal">*</font> 所属行业
+												</div>
+												<div class="kuang">
+													<select name="father01"
+														style="width: 145px; height: 30px; font-size: 14px; padding-left: 7px;"
+														id="father01">
+														<option value="" selected>请选择</option>
+														<volist id="vo" name="alltradeone">
+														<option value="{$vo.id}">{$vo.trade}</option>
+														</volist>
+													</select> <select name="full01"
+														style="width: 145px; height: 30px; font-size: 14px; padding-left: 7px;"
+														id="full01"></select>
+												</div>
+												<!-- <div style="line-height: 30px; color: #ccc; height: 30px;">
+													<img src="__HOME__/images/entrepre/right.png"
+														id="prindustryright01"
+														style="width: 30px; height: 30px; display: none;">
+												</div> -->
+												<div class="clear"></div>
+											</div>
+											<div class="gezitwo">
+												<div class="woxx" style="line-height: 26px">
+													<font style="color: #f00; font-weight: normal">*</font> 所在城市
+												</div>
+												<div class="kuang" style=" width:500px">
+													<select name="province01" id="province01"
+														style="width: 145px; height: 30px; font-size: 14px; padding-left: 7px;">
+														<option class="oparea" value="" selected>省/自治区</option>
+														<volist id="vo" name="allprovince">
+														<option class="oparea" value="{$vo.id}">{$vo.name}</option>
+														</volist>
+													</select> <select name="city01" id="city01"
+														style="width: 145px; height: 30px; font-size: 14px; padding-left: 7px;"></select>
+													<select id="town01" name="town01"
+														style="width: 145px; height: 30px; font-size: 14px; padding-left: 7px;"></select>
+												</div>
+												<!-- <div style="line-height: 30px; color: #ccc; height: 30px;">
+													<img src="__HOME__/images/entrepre/right.png"
+														id="prarearight01"
+														style="width: 30px; height: 30px; display: none;">
+												</div> -->
+												<div class="clear"></div>
+											</div>
+											<div class="clear"></div>
+
+										</div>
+									</form>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<div style="width: 758px; height: 30px;">
+									<div class="jjs" style="margin: 0 auto; width: 120px;">
+										<input type="image" src="__HOME__/images/entrepre/chesl.gif"
+											id="save01" style="width: 55px;" /> <input type="image" src="__HOME__/images/entrepre/quxiao.gif" id="reset01" style="width:55px;">
+									</div>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<else /> <!-- 项目基本资料显示 -->
+							<div class="middle" id="pr02">
+								<div style="width: 758px;">
+									<div class="logd">
+										<img src="./Uploads/Album/{$logo}"
+											style="width: 95px; height: 84px;" id="logo02" />
+									</div>
+									<div class="gezi">
+										<div class="gezitwo">
+											<div class="woss">
+												<font style="color: #f00; font-weight: normal">*</font> 项目名称
+											</div>
+											<div class="kuang" id="prname02">{$prname}</div>
+											<div class="clear"></div>
+										</div>
+										<div class="gezitwo">
+											<div class="woss">
+												<font style="color: #f00; font-weight: normal">*</font> 联系人
+											</div>
+											<div class="kuang" id="linkman02">{$linkman}</div>
+											<div class="clear"></div>
+										</div>
+										<div class="gezitwo">
+											<div class="woss">
+												<font style="color: #f00; font-weight: normal">*</font> 联系方式
+											</div>
+											<div class="kuang" id="prphone02">{$prphone}</div>
+											<div class="clear"></div>
+										</div>
+										<div class="gezione">
+											<div class="woss">
+												<font style="color: #f00; font-weight: normal">*</font> 一句话介绍
+											</div>
+											<div class="kuang" id="printroduce02">{$printroduce}</div>
+											<div class="clear"></div>
+										</div>
+										<div class="gezitwo">
+											<div class="woss">
+												<font style="color: #f00; font-weight: normal"></font> 视频地址
+											</div>
+											<div class="kuang" id="videoweb02">{$videoweb}</div>
+											<div class="clear"></div>
+										</div>
+										<div class="gezione">
+											<div class="woss">
+												<font style="color: #f00; font-weight: normal">*</font> 所处阶段
+											</div>
+											<div class="kuang" id="prstage02">
+												<if condition="$stageid eq 1"> 起步阶段 <elseif
+													condition="$stageid eq 2" /> 盈利阶段 <else /> 亏损阶段 </if>
+											</div>
+											<div class="clear"></div>
+										</div>
+										<div class="gezitwo">
+											<div class="woss">
+												<font style="color: #f00; font-weight: normal">*</font> 所在城市
+											</div>
+											<div class="kuang" id="prarea02">{$province}&nbsp;-&nbsp;{$city}&nbsp;-&nbsp;{$town}</div>
+											<div class="clear"></div>
+										</div>
+										<div class="gezitwo">
+											<div class="woss">
+												<font style="color: #f00; font-weight: normal">*</font> 所属行业
+											</div>
+											<div class="kuang" id="prindustry02">
+												{$fathertrade}&nbsp;-&nbsp;{$fulltrade}</div>
+											<div class="clear"></div>
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<div style="width: 758px; height: 30px;">
+									<div class="jjs" style="margin: 0 auto; width: 55px;">
+										<input type="image" src="__HOME__/images/entrepre/bianji.gif"
+											id="edit02" style="width: 55px;">
+									</div>
+								</div>
+								<div class="clear"></div>
+							</div>
+						</if>
+						<!-- 项目基本资料显示 -->
+						<div class="middle" style="display: none;" id="pr02">
+							<div style="width: 758px;">
+								<div class="logd">
+									<img src="__HOME__/images/entrepre/xmlg.gif"
+										style="width: 95px; height: 84px;" id="logo02" />
+								</div>
+								<div class="gezi">
+									<div class="gezitwo">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font> 项目名称
+										</div>
+										<div class="kuang" id="prname02"></div>
+										<div class="clear"></div>
+									</div>
+									<div class="gezitwo">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font> 联系人
+										</div>
+										<div class="kuang" id="linkman02"></div>
+										<div class="clear"></div>
+									</div>
+									<div class="gezitwo">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font> 联系方式
+										</div>
+										<div class="kuang" id="prphone02"></div>
+										<div class="clear"></div>
+									</div>
+									<div class="gezione">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font> 一句话介绍
+										</div>
+										<div class="kuang" id="printroduce02"></div>
+										<div class="clear"></div>
+									</div>
+									<div class="gezitwo">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal"></font> 视频地址
+										</div>
+										<div class="kuang" id="videoweb02"></div>
+										<div class="clear"></div>
+									</div>
+									<div class="gezione">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font> 所处阶段
+										</div>
+										<div class="kuang" id="prstage02"></div>
+										<div class="clear"></div>
+									</div>
+									<div class="gezitwo">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font> 所在城市
+										</div>
+										<div class="kuang" id="prarea02"></div>
+										<div class="clear"></div>
+									</div>
+									<div class="gezitwo">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font> 所属行业
+										</div>
+										<div class="kuang" id="prindustry02"></div>
+										<div class="clear"></div>
+									</div>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div style="width: 758px; height: 30px;">
+								<div class="jjs" style="margin: 0 auto; width: 55px;">
+									<input type="image" src="__HOME__/images/entrepre/bianji.gif"
+										id="edit02" style="width: 55px;">
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<!-- 项目基本资料更新 -->
+						<div class="middle" id="pr03" style="display: none;">
+							<div style="width: 758px;">
+								<!-- 更新封面图 -->
+								<div class="logd">
+									<form name="surfaceForm03" id="surfaceForm03"
+										action="__URL__/updateSurface" method="post""multipart/form-data">
+										
+											<img src="__HOME__/images/entrepre/xmlg.gif"
+												style="width: 95px; height: 84px;" id="logo03" />
+
+											<div style="position: relative;">
+												<input type="file" name="prsurface03" id="prsurface03"
+													style="opacity: 0; position: relative; z-index: 2; text-align: right; -moz-opacity: 0; filter: alpha(opacity :         0); height: 18px; width: 95px; cursor: pointer;">
+												<div
+													style="position: absolute; z-index: 1; top: 0px; left: 0px;">
+													<img src="__HOME__/images/entrepre/gglg.gif"
+														style="vertical-align: middle;" />
+												</div>
+											</div>
+										
+									</form>
+
+								<!-- 缩略图显示 -->
+									<div class="logd" style="display: none;" id="surfacediv03">
+										<img src="__HOME__/images/entrepre/xmlg.gif"
+											style="width: 95px; height: 84px;" id="surfaceimg03" />
+									</div>
+								</div>
+								<!-- 更新基本资料 -->
+								<div style="float:left">
+									<form name="prform03" id="prform03"
+										action="__URL__/prbaseupdate" method="post"
+										enctype="multipart/form-data">
+										<input type="hidden" name="surface03" id="surface03" value="">
+										<div class="gezi">
+											<div class="gezitwo">
+												<div class="woss">
+													<font style="color: #f00; font-weight: normal">*</font> 项目名称
+												</div>
+												<div class="kuang">
+													<textarea class="ldd" id="prname03" name="prname03"
+														style="resize: none;" placeholder="请填入项目名，2-15字"></textarea>
+												</div>
+												<!-- <div style="line-height: 30px; color: #ccc; height: 30px;">
+													<img src="__HOME__/images/entrepre/right.png"
+														id="prnameright03"
+														style="width: 30px; height: 30px; display: none;">
+												</div> -->
+												<div class="clear"></div>
+											</div>
+											<div class="gezitwo">
+												<div class="woss">
+													<font style="color: #f00; font-weight: normal">*</font> 联系人
+												</div>
+												<div class="kuang">
+													<textarea class="ldd" id="linkman03" name="linkman03"
+														style="resize: none;" placeholder="请填入项目联系人"></textarea>
+												</div>
+												<!-- <div style="line-height: 30px; color: #ccc; height: 30px;">
+													<img src="__HOME__/images/entrepre/right.png"
+														id="prnameright03"
+														style="width: 30px; height: 30px; display: none;">
+												</div> -->
+												<div class="clear"></div>
+											</div>
+											<div class="gezitwo">
+												<div class="woss">
+													<font style="color: #f00; font-weight: normal">*</font> 联系电话
+												</div>
+												<div class="kuang">
+													<textarea class="ldd" name="prphone03" id="prphone03"
+														style="resize: none;" placeholder="请填写联系电话"></textarea>
+												</div>
+												<!-- <div style="line-height: 30px; color: #ccc; height: 30px;">
+													<img src="__HOME__/images/entrepre/right.png"
+														id="prphoneright03"
+														style="width: 30px; height: 30px; display: none;">
+												</div> -->
+												<div class="clear"></div>
+											</div>
+											<div class="gezione">
+												<div class="woss">
+													<font style="color: #f00; font-weight: normal">*</font>
+													一句话介绍
+												</div>
+												<div class="kuang">
+													<textarea id="printroduce03" class="lss"
+														name="printroduce03" style="resize: none;"
+														placeholder="请填入一句话介绍，2-50字"></textarea>
+												</div>
+												<!-- <div style="line-height: 30px; color: #ccc; height: 30px;">
+													<img src="__HOME__/images/entrepre/right.png"
+														id="printroduceright03"
+														style="width: 30px; height: 30px; display: none;">
+												</div> -->
+												<div class="clear"></div>
+											</div>
+											<div class="gezitwo">
+												<div class="woss">
+													<font style="color: #f00; font-weight: normal"></font> 视频地址
+												</div>
+												<div class="kuang">
+													<textarea id="videoweb03" class="lss" name="videoweb03"
+														style="resize: none;" placeholder="请正确填写视频地址"></textarea>
+												</div>
+												<!-- <div style="line-height: 30px; color: #ccc; height: 30px;">
+													<img src="__HOME__/images/entrepre/right.png"
+														id="videowebright03"
+														style="width: 30px; height: 30px; display: none;">
+												</div> -->
+												<div class="clear"></div>
+											</div>
+											<div class="gezitwo">
+												<div class="woxx">
+													<font style="color: #f00; font-weight: normal">*</font> 所处阶段
+												</div>
+												<div class="kuang">
+													<select name="prstage03" id="prstage03"
+														style="width: 160px; height: 30px; font-size: 14px; padding-left: 7px;">
+														<option selected value=""></option>
+														<option value="1">起步阶段</option>
+														<option value="2">盈利阶段</option>
+														<option value="3">亏损阶段</option>
+													</select>
+												</div>
+												<!-- <div style="line-height: 30px; color: #ccc; height: 30px;">
+													<img src="__HOME__/images/entrepre/right.png"
+														id="prstageright03"
+														style="width: 30px; height: 30px; display: none;">
+												</div> -->
+												<div class="clear"></div>
+											</div>
+											<div class="gezitwo">
+												<div class="woxx">
+													<font style="color: #f00; font-weight: normal">*</font> 所属行业
+												</div>
+												<div class="kuang">
+													<select name="father03"
+														style="width: 145px; height: 30px; font-size: 14px; padding-left: 7px;"
+														id="father03">
+														<option value="" selected>请选择</option>
+														<volist id="vo" name="alltradeone">
+														<option value="{$vo.id}">{$vo.trade}</option>
+														</volist>
+													</select> <select name="full03"
+														style="width: 145px; height: 30px; font-size: 14px; padding-left: 7px;"
+														id="full03"></select>
+												</div>
+												<!-- <div style="line-height: 30px; color: #ccc; height: 30px;">
+													<img src="__HOME__/images/entrepre/right.png"
+														id="prindustryright03"
+														style="width: 30px; height: 30px; display: none;">
+												</div> -->
+												<div class="clear"></div>
+											</div>
+											<div class="gezitwo">
+												<div class="woxx" style="line-height: 26px">
+													<font style="color: #f00; font-weight: normal">*</font> 所在城市
+												</div>
+												<div class="kuang">
+													<select name="province03" id="province03"
+														style="width: 145px; height: 30px; font-size: 14px; padding-left: 7px;">
+														<volist id="vo" name="allprovince">
+														<option value="{$vo.id}">{$vo.name}</option>
+														</volist>
+													</select> <select name="city03" id="city03"
+														style="width: 145px; height: 30px; font-size: 14px; padding-left: 7px;"></select>
+													<select id="town03" name="town03"
+														style="width: 145px; height: 30px; font-size: 14px; padding-left: 7px;"></select>
+												</div>
+												<!-- <div style="line-height: 30px; color: #ccc; height: 30px;">
+													<img src="__HOME__/images/entrepre/right.png"
+														id="prarearight03"
+														style="width: 30px; height: 30px; display: none;">
+												</div> -->
+												<div class="clear"></div>
+											</div>
+
+											<input name="prid" class="prid" type="hidden" value="{$prid}">
+										</div>
+
+									</form>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div style="width: 758px; height: 30px;">
+								<div style="margin: 0 auto; width: 120px;">
+									<input type="image" src="__HOME__/images/entrepre/chesl.gif"
+										id="save03" style="width: 55px;" /> <a
+										href="javascript:back03()"> <img
+										src="__HOME__/images/entrepre/quxiao.gif" style="width: 55px;"></a>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="linfes"></div>
+						<if condition="!($about)"> <!-- 关于我们保存 -->
+						<div class="middle" id="pr11">
+							<form id="prform11" name="prform11"
+								action="__URL__/praboutinsert" method="post">
+								<div style="width: 758px; height: 200px;">
+									<div class="lodd">自身定位，用户场景，简单介绍项目的亮点，项目取得过什么成绩，具备的优势有哪些。</div>
+									<div class="gezi">
+										<div class="gezione">
+											<div class="woss">
+												<font style="color: #f00; font-weight: normal">*</font> 关于我们
+											</div>
+											<div class="kuang" style="width: 510px">
+												<textarea name="prabout11" id="prabout11" class="lxx"
+													style="resize: none;" placeholder="项目简介不能超过500个字"></textarea>
+											</div>
+											<input type="hidden" name="prid" class="prid" value="{$prid}" />
+											<div class="clear"></div>
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<div style="width: 758px; heigth: 30px;">
+									<div style="width: 120px; margin: 0 auto;">
+										<input type="image" src="__HOME__/images/entrepre/chesl.gif"
+											id="save11" style="width: 55px;" /> <input type="image"
+											src="__HOME__/images/entrepre/quxiao.gif" id="reset11"
+											style="width: 55px;">
+									</div>
+								</div>
+							</form>
+						</div>
+						<else /> <!-- 关于我们显示 -->
+						<div class="middle" id="pr12">
+							<div style="width: 758px; min-height: 100px;">
+								<div class="lodd">自身定位，用户场景，简单介绍项目的亮点，项目取得过什么成绩，具备的优势有哪些。</div>
+								<div class="gezi">
+									<div class="gezione">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font> 关于我们
+										</div>
+										<div class="kuang"
+											style="width: 510px; word-wrap: break-word;" id="prabout12">{$about}</div>
+										<input type="hidden" name="prid" class="prid" value="{$prid}" />
+										<div class="clear"></div>
+									</div>
+								</div>
+							</div>
+							<div style="width: 758px; height: 30px;">
+								<div class="jjs" style="margin: 0 auto; width: 55px;">
+									<input name="edit12" id="edit12" type="image"
+										src="__HOME__/images/entrepre/bianji.gif" style="width: 55px;">
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						</if>
+						<!-- 关于我们显示 -->
+						<div class="middle" style="display: none" id="pr12">
+							<div style="width: 758px; min-height: 100px;">
+								<div class="lodd">自身定位，用户场景，简单介绍项目的亮点，项目取得过什么成绩，具备的优势有哪些。</div>
+								<div class="gezi">
+									<div class="gezione">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font> 关于我们
+										</div>
+										<div class="kuang"
+											style="width: 510px; word-wrap: break-word;" id="prabout12"></div>
+										<input type="hidden" name="prid" class="prid" value="{$prid}" />
+										<div class="clear"></div>
+									</div>
+								</div>
+							</div>
+							<div style="width: 758px; height: 30px;">
+								<div class="jjs" style="margin: 0 auto; width: 55px;">
+									<input name="edit12" id="edit12" type="image"
+										src="__HOME__/images/entrepre/bianji.gif" style="width: 55px;">
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<!-- 关于我们更新 -->
+						<div class="middle" id="pr13" style="display: none;">
+							<form id="prform13" name="prform13"
+								action="__URL__/praboutupdate" method="post">
+								<div style="width: 758px; height: 200px;">
+									<div class="lodd">自身定位，用户场景，简单介绍项目的亮点，项目取得过什么成绩，具备的优势有哪些。</div>
+									<div class="gezi">
+										<div class="gezione">
+											<div class="woss">
+												<font style="color: #f00; font-weight: normal">*</font> 关于我们
+											</div>
+											<div class="kuang" style="width: 510px">
+												<textarea name="prabout13" id="prabout13" class="lxx"
+													style="resize: none;" placeholder="项目简介不能超过500个字"></textarea>
+											</div>
+											<input type="hidden" name="prid" class="prid" value="{$prid}" />
+											<div class="clear"></div>
+										</div>
+									</div>
+								</div>
+								<div style="width: 758px; height: 30px;">
+									<div style="width: 120px; margin: 0 auto;">
+										<input type="image" src="__HOME__/images/entrepre/chesl.gif"
+											id="save13" name="save13" style="width: 55px;" /> <a
+											href="javascript:back13()"> <img
+											src="__HOME__/images/entrepre/quxiao.gif"
+											style="width: 55px;"></a>
+									</div>
+								</div>
+								<div class="clear"></div>
+							</form>
+						</div>
+						<div class="linfes"></div>
+						<if condition="!$whysupport"> <!-- 为什么支持我们保存 -->
+						<div class="middle" id="pr41">
+							<form id="prform41" name="prform41"
+								action="__URL__/prwhysupportinsert" method="post">
+								<div style="width: 758px; height: 200px;">
+									<div class="lodd">商业模式，发展中遇到的资金问题，发展目标、短期策略。</div>
+									<div class="gezi">
+										<div class="gezione">
+											<div class="woss">
+												<font style="color: #f00; font-weight: normal">*</font>
+												为什么我们需要你的支持
+											</div>
+											<div class="kuang" style="width: 510px">
+												<textarea name="prwhysupport41" id="prwhysupport41"
+													class="lxx" style="resize: none;"
+													placeholder="项目简介不能超过500个字"></textarea>
+											</div>
+											<input type="hidden" name="prid" class="prid" value="{$prid}" />
+											<div class="clear"></div>
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<div style="width: 758px; heigth: 30px;">
+									<div style="width: 120px; margin: 0 auto;">
+										<input type="image" src="__HOME__/images/entrepre/chesl.gif"
+											id="save41" style="width: 55px;" /> <input type="image"
+											src="__HOME__/images/entrepre/quxiao.gif" id="reset41"
+											style="width: 55px;">
+									</div>
+								</div>
+							</form>
+						</div>
+						<else /> <!-- 为什么支持我们显示 -->
+						<div class="middle" id="pr42">
+							<div style="width: 758px; min-height: 100px;">
+								<div class="lodd">商业模式，发展中遇到的资金问题，发展目标、短期策略。</div>
+								<div class="gezi">
+									<div class="gezione">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font>
+											为什么我们需要你的支持
+										</div>
+										<div class="kuang"
+											style="width: 510px; word-wrap: break-word;"
+											id="prwhysupport42">{$whysupport}</div>
+										<input type="hidden" name="prid" class="prid" value="{$prid}" />
+										<div class="clear"></div>
+									</div>
+								</div>
+							</div>
+							<div style="width: 758px; height: 30px;">
+								<div class="jjs" style="margin: 0 auto; width: 55px;">
+									<input name="edit42" id="edit42" type="image"
+										src="__HOME__/images/entrepre/bianji.gif" style="width: 55px;">
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						</if>
+						<!-- 为什么支持我们显示 -->
+						<div class="middle" id="pr42" style="display: none;">
+							<div style="width: 758px; min-height: 100px;">
+								<div class="lodd">商业模式，发展中遇到的资金问题，发展目标、短期策略。</div>
+								<div class="gezi">
+									<div class="gezione">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font>
+											为什么我们需要你的支持
+										</div>
+										<div class="kuang"
+											style="width: 510px; word-wrap: break-word;"
+											id="prwhysupport42"></div>
+										<input type="hidden" name="prid" class="prid" value="{$prid}" />
+										<div class="clear"></div>
+									</div>
+								</div>
+							</div>
+							<div style="width: 758px; height: 30px;">
+								<div class="jjs" style="margin: 0 auto; width: 55px;">
+									<input name="edit42" id="edit42" type="image"
+										src="__HOME__/images/entrepre/bianji.gif" style="width: 55px;">
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<!-- 为什么支持我们更新 -->
+						<div class="middle" id="pr43" style="display: none;">
+							<form id="prform43" name="prform43"
+								action="__URL__/prwhysupportupdate" method="post">
+								<div style="width: 758px; height: 200px;">
+									<div class="lodd">商业模式，发展中遇到的资金问题，发展目标、短期策略。</div>
+									<div class="gezi">
+										<div class="gezione">
+											<div class="woss">
+												<font style="color: #f00; font-weight: normal">*</font>
+												为什么我们需要你的支持
+											</div>
+											<div class="kuang" style="width: 510px">
+												<textarea name="prwhysupport43" id="prwhysupport43"
+													class="lxx" style="resize: none;"
+													placeholder="项目简介不能超过500个字"></textarea>
+											</div>
+											<input type="hidden" name="prid" class="prid" value="{$prid}" />
+											<div class="clear"></div>
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<div style="width: 758px; heigth: 30px;">
+									<div style="width: 120px; margin: 0 auto;">
+										<input type="image" src="__HOME__/images/entrepre/chesl.gif"
+											id="save43" style="width: 55px;" /> <input type="image"
+											src="__HOME__/images/entrepre/quxiao.gif" id="back43"
+											style="width: 55px;">
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="linfes"></div>
+						<if condition="!$promise"> <!-- 承诺保存 -->
+						<div class="middle" id="pr51">
+							<form id="prform51" name="prform51"
+								action="__URL__/prpromiseinsert" method="post">
+								<div style="width: 758px; height: 200px;">
+									<div class="lodd">承诺投资者你的项目能达到什么样的经营成果，能给予投资者多少利润。</div>
+									<div class="gezi">
+										<div class="gezione">
+											<div class="woss">
+												<font style="color: #f00; font-weight: normal">*</font>
+												我们的承诺与回报
+											</div>
+											<div class="kuang" style="width: 510px">
+												<textarea name="prpromise51" id="prpromise51" class="lxx"
+													style="resize: none;" placeholder="项目简介不能超过500个字"></textarea>
+											</div>
+											<input type="hidden" name="prid" class="prid" value="{$prid}" />
+											<div class="clear"></div>
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<div style="width: 758px; heigth: 30px;">
+									<div style="width: 120px; margin: 0 auto;">
+										<input type="image" src="__HOME__/images/entrepre/chesl.gif"
+											id="save51" style="width: 55px;" /> <input type="image"
+											src="__HOME__/images/entrepre/quxiao.gif" id="reset51"
+											style="width: 55px;">
+									</div>
+								</div>
+							</form>
+						</div>
+						<else /> <!-- 承诺显示 -->
+						<div class="middle" id="pr52">
+							<div style="width: 758px; min-height: 100px;">
+								<div class="lodd">承诺投资者你的项目能达到什么样的经营成果，能给予投资者多少利润。</div>
+								<div class="gezi">
+									<div class="gezione">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font>
+											我们的承诺与回报
+										</div>
+										<div class="kuang"
+											style="width: 510px; word-wrap: break-word;" id="prpromise52">{$promise}</div>
+										<input type="hidden" name="prid" class="prid" value="{$prid}" />
+										<div class="clear"></div>
+									</div>
+								</div>
+							</div>
+							<div style="width: 758px; height: 30px;">
+								<div class="jjs" style="margin: 0 auto; width: 55px;">
+									<input name="edit52" id="edit52" type="image"
+										src="__HOME__/images/entrepre/bianji.gif" style="width: 55px;">
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						</if>
+						<!-- 承诺显示 -->
+						<div class="middle" id="pr52" style="display: none;">
+							<div style="width: 758px; min-height: 100px;">
+								<div class="lodd">承诺投资者你的项目能达到什么样的经营成果，能给予投资者多少利润。</div>
+								<div class="gezi">
+									<div class="gezione">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font>
+											我们的承诺与回报
+										</div>
+										<div class="kuang"
+											style="width: 510px; word-wrap: break-word;" id="prpromise52"></div>
+										<input type="hidden" name="prid" class="prid" value="{$prid}" />
+										<div class="clear"></div>
+									</div>
+								</div>
+							</div>
+							<div style="width: 758px; height: 30px;">
+								<div class="jjs" style="margin: 0 auto; width: 55px;">
+									<input name="edit52" id="edit52" type="image"
+										src="__HOME__/images/entrepre/bianji.gif" style="width: 55px;">
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<!-- 承诺更新 -->
+						<div class="middle" id="pr53" style="display: none;">
+							<form id="prform53" name="prform53"
+								action="__URL__/prpromiseupdate" method="post">
+								<div style="width: 758px; height: 200px;">
+									<div class="lodd">承诺投资者你的项目能达到什么样的经营成果，能给予投资者多少利润。</div>
+									<div class="gezi">
+										<div class="gezione">
+											<div class="woss">
+												<font style="color: #f00; font-weight: normal">*</font>
+												我们的承诺与回报
+											</div>
+											<div class="kuang" style="width: 510px">
+												<textarea name="prpromise53" id="prpromise53" class="lxx"
+													style="resize: none;" placeholder="项目简介不能超过500个字"></textarea>
+											</div>
+											<input type="hidden" name="prid" class="prid" value="{$prid}" />
+											<div class="clear"></div>
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<div style="width: 758px; heigth: 30px;">
+									<div style="width: 120px; margin: 0 auto;">
+										<input type="image" src="__HOME__/images/entrepre/chesl.gif"
+											id="save53" style="width: 55px;" /> <input type="image"
+											src="__HOME__/images/entrepre/quxiao.gif" id="back53"
+											style="width: 55px;">
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="linfes"></div>
+						<if condition="!$danger"> <!-- 风险保存 -->
+						<div class="middle" id="pr61">
+							<form id="prform61" name="prform61"
+								action="__URL__/prdangerinsert" method="post">
+								<div style="width: 758px; height: 200px;">
+									<div class="lodd">描述项目发展过程中可能遇到的问题，强调投资就会有风险。</div>
+									<div class="gezi">
+										<div class="gezione">
+											<div class="woss">
+												<font style="color: #f00; font-weight: normal">*</font> 项目风险
+											</div>
+											<div class="kuang" style="width: 510px">
+												<textarea name="prdanger61" id="prdanger61" class="lxx"
+													style="resize: none;" placeholder="项目简介不能超过500个字"></textarea>
+											</div>
+											<input type="hidden" name="prid" class="prid" value="{$prid}" />
+											<div class="clear"></div>
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<div style="width: 758px; heigth: 30px;">
+									<div style="width: 120px; margin: 0 auto;">
+										<input type="image" src="__HOME__/images/entrepre/chesl.gif"
+											id="save61" style="width: 55px;" /> <input type="image"
+											src="__HOME__/images/entrepre/quxiao.gif" id="reset61"
+											style="width: 55px;">
+									</div>
+								</div>
+							</form>
+						</div>
+						<else /> <!-- 风险显示 -->
+						<div class="middle" id="pr62">
+							<div style="width: 758px; min-height: 100px;">
+								<div class="lodd">描述项目发展过程中可能遇到的问题，强调投资就会有风险。</div>
+								<div class="gezi">
+									<div class="gezione">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font> 项目风险
+										</div>
+										<div class="kuang"
+											style="width: 510px; word-wrap: break-word;" id="prdanger62">{$danger}</div>
+										<input type="hidden" name="prid" class="prid" value="{$prid}" />
+										<div class="clear"></div>
+									</div>
+								</div>
+							</div>
+							<div style="width: 758px; height: 30px;">
+								<div class="jjs" style="margin: 0 auto; width: 55px;">
+									<input name="edit62" id="edit62" type="image"
+										src="__HOME__/images/entrepre/bianji.gif" style="width: 55px;">
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						</if>
+						<!-- 风险显示 -->
+						<div class="middle" id="pr62" style="display: none;">
+							<div style="width: 758px; min-height: 100px;">
+								<div class="lodd">描述项目发展过程中可能遇到的问题，强调投资就会有风险。</div>
+								<div class="gezi">
+									<div class="gezione">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font> 项目风险
+										</div>
+										<div class="kuang"
+											style="width: 510px; word-wrap: break-word;" id="prdanger62"></div>
+										<input type="hidden" name="prid" class="prid" value="{$prid}" />
+										<div class="clear"></div>
+									</div>
+								</div>
+							</div>
+							<div style="width: 758px; height: 30px;">
+								<div class="jjs" style="margin: 0 auto; width: 55px;">
+									<input name="edit62" id="edit62" type="image"
+										src="__HOME__/images/entrepre/bianji.gif" style="width: 55px;">
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<!-- 风险更新 -->
+						<div class="middle" id="pr63" style="display: none;">
+							<form id="prform63" name="prform63"
+								action="__URL__/prdangerupdate" method="post">
+								<div style="width: 758px; height: 200px;">
+									<div class="lodd">描述项目发展过程中可能遇到的问题，强调投资就会有风险。</div>
+									<div class="gezi">
+										<div class="gezione">
+											<div class="woss">
+												<font style="color: #f00; font-weight: normal">*</font> 项目风险
+											</div>
+											<div class="kuang" style="width: 510px">
+												<textarea name="prdanger63" id="prdanger63" class="lxx"
+													style="resize: none;" placeholder="项目简介不能超过500个字"></textarea>
+											</div>
+											<input type="hidden" name="prid" class="prid" value="{$prid}" />
+											<div class="clear"></div>
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<div style="width: 758px; heigth: 30px;">
+									<div style="width: 120px; margin: 0 auto;">
+										<input type="image" src="__HOME__/images/entrepre/chesl.gif"
+											id="save63" style="width: 55px;" /> <input type="image"
+											src="__HOME__/images/entrepre/quxiao.gif" id="back63"
+											style="width: 55px;">
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="linfes"></div>
+						<!-- 项目团队成员 -->
+						<div class="middle">
+							<div class="lodd">天使投资很大程度就是“投人”，所以请认真填写以获得投资人的信任。</div>
+							<div class="gezi">
+								<div class="gezione">
+									<div class="woss">
+										<font style="color: #f00; font-weight: normal">*</font> 团队信息
+									</div>
+									<div class="wodts" style="margin-bottom: 20px;">成员添加流程：1.线上添加
+										2.线下邀请他注册微风投 3.发出邀请 4.请他在系统私信中接受邀请</div>
+									<div class="clear"></div>
+								</div>
+								<!-- 成员追加块 -->
+								<div id="teamx"></div>
+								<if condition="$memberresult"> <!-- 成员信息显示 --> <volist
+									name="member" id="vo">
+								<div class="lades" id="pr{$vo.id}">
+									<div class="leaeft">
+										<img src="__PORTRAIT__/{$vo.photo}"
+											style="width: 80px; height: 80px;" id="photo{$vo.id}" />
+									</div>
+									<div class="learht">
+										<div class="els">
+											<span id="name{$vo.id}">{$vo.membername}</span> <span
+												id="position{$vo.id}">[{$vo.memberposition}]</span>
+										</div>
+										<div class="xel" id="role{$vo.id}">
+											<if condition="$vo[memberroleid] eq 0"> 创建人 <elseif
+												condition="$vo[memberroleid] eq 1" /> 其他成员 </if>
+										</div>
+										<div class="clear"></div>
+										<div class="shuoming"
+											style="width: 425px; min-height: 20px; word-wrap: break-word;"
+											id="introduce{$vo.id}">{$vo.memberintroduce}</div>
+										<input type="hidden" name="memberid" class="memberid"
+											value="{$vo.id}">
+										<div class="jjs">
+											<input type="image"
+												src="public/home/images/entrepre/bianji.gif" id="edit32"
+												onclick="javascript:doedit({$vo.id});"
+												style="margin-right: 3px;" style="width:55px; height=30px">
+											<input type="image"
+												src="public/home/images/entrepre/sccr.gif" id="delete32"
+												onclick="javascript:dodelete({$vo.id});"
+												style="width: 89px;">
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+								</volist> <else /> <!-- 显示模型 -->
+								<div class="lads" id="pr31">
+									<div class="leaeft">
+										<img src="__HOME__/images/entrepre/logg.gif"
+											style="width: 80px; height: 80px;" />
+									</div>
+									<div class="learht">
+										<div class="els">
+											<span>张学良</span> <span>[ 副总监 ]</span>
+										</div>
+										<div class="xel">项目创建人</div>
+										<div class="clear"></div>
+										<div class="shuoming">电子商务运用推广，产品线上推广策划运营。</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+								</if>
+							</div>
+							<div class="clear"></div>
+							<div class="lies"></div>
+							<!-- 项目团队成员添加 -->
+							<div class="gezse" id="pr21">
+								<div class="gezione">
+									<div class="woss">
+										<font style="color: #f00; font-weight: normal">*</font> 添加头像
+									</div>
+									<div class="neironf" style="width: 80px; height: 80px">
+										<img src="__HOME__/images/entrepre/logg.gif" id="photoimg21"
+											style="width: 80px; height: 80px" alt="团队成员头像" /> <img
+											src="__HOME__/images/entrepre/logg.gif" id="photoimg22"
+											style="width: 80px; height: 80px; display: none;"
+											alt="团队成员头像" />
+									</div>
+									<!-- 成员头像上传 -->
+									<form name="photoForm21" id="photoForm21" method="post"
+										action="__URL__/upPhoto" enctype="multipart/form-data">
+										<div class="chuan"
+											style="position: relative; width: 110px; height: 43px; overflow: hidden; background: url('__HOME__/images/entrepre/choose.gif') no-repeat;">
+											<input name="photo21" id="photo21" type="file"
+												style="opacity: 0; position: absolute; text-align: right; -moz-opacity: 0; filter: alpha(opacity :         0); height: 43px; width: 110px; cursor: pointer;">
+										</div>
+										<div class="wodee">
+											请上传本人真实头像。 <br /> 图片大小为200x200，支持jpg/gif/jpeg.
+										</div>
+										<div class="clear"></div>
+									</form>
+								</div>
+								<!-- 成员资料写入 -->
+								<form name="prform21" id="prform21"
+									action="__URL__/prmemberinsert21" method="post">
+									<input type="hidden" name="headphoto21" id="headphoto21"
+										value=" ">
+									<div class="gezitwo">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font> 添加姓名
+										</div>
+										<div class="kuang">
+											<textarea name="name21" class="ldd" id="name21"
+												placeholder="请填写他/她的姓名，2-10字" style="resize: none;"></textarea>
+										</div>
+										<div style="line-height: 30px; color: #ccc; height: 30px;">
+											<img src="__HOME__/images/entrepre/right.png"
+												id="nameright21"
+												style="width: 30px; height: 30px; display: none;">
+										</div>
+										<div class="clear"></div>
+									</div>
+									<div class="gezione">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font> 添加职位
+										</div>
+										<div class="kuang">
+											<textarea name="position21" class="lss" id="position21"
+												placeholder="请填写他/她担当的职位，2-10字" style="resize: none;"></textarea>
+										</div>
+										<div style="line-height: 30px; color: #ccc; height: 30px;">
+											<img src="__HOME__/images/entrepre/right.png"
+												id="positionright21"
+												style="width: 30px; height: 30px; display: none;">
+										</div>
+										<div class="clear"></div>
+									</div>
+									<div class="gezitwo">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font> 选择角色
+										</div>
+										<div
+											style="display: inline; float: left; line-height: 30px; width: 300px; word-wrap: break-word;">
+											<input class="juese21" type="radio" id="radio211"
+												name="radio21" value="0"> <label for="radio211">项目发起人</label>&nbsp;&nbsp;&nbsp;&nbsp;
+											<input class="juese21" type="radio" id="radio212"
+												name="radio21" value="1"> <label for="radio212">团队其他成员</label>
+										</div>
+										<div id="role21" style="display: inline; float: left;"></div>
+
+										<div class="clear"></div>
+									</div>
+									<div class="gezitwo">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font> 添加简介
+										</div>
+										<div class="kuang">
+											<textarea name="introduce21" class="lpp" id="introduce21"
+												placeholder="请填写他/她的简介，10-200字。" style="resize: none;"></textarea>
+										</div>
+										<div style="line-height: 30px; color: #ccc; height: 30px;">
+											<img src="__HOME__/images/entrepre/right.png"
+												id="introduceright21"
+												style="width: 30px; height: 30px; display: none;">
+										</div>
+										<div class="clear"></div>
+									</div>
+									<input name="prid" class="prid" type="hidden" value="{$prid}" />
+									<div class="geizione">
+										<div style="width: 120px; height: 30px; margin-left: 194px;">
+											<input type="image" src="__HOME__/images/entrepre/chesl.gif"
+												id="save21" style="width: 55px;" /> <input type="image"
+												src="__HOME__/images/entrepre/quxiao.gif" id="reset21"
+												style="width: 55px;">
+										</div>
+									</div>
+									<div class="clear"></div>
+								</form>
+							</div>
+							<!-- 项目团队成员信息更新 -->
+							<div class="gezse" id="pr23" style="display: none;">
+								<div class="gezione">
+									<div class="woss">
+										<font style="color: #f00; font-weight: normal">*</font> 添加头像
+									</div>
+									<div class="neironf" style="width: 80px; height: 80px;">
+										<img src="__HOME__/images/entrepre/logg.gif" alt="头像LOGO"
+											id="photoimg23" style="width: 80px; height: 80px;" /> <img
+											src="__HOME__/images/entrepre/logg.gif" alt="头像LOGO"
+											id="photoimg24"
+											style="width: 80px; height: 80px; display: none;" />
+									</div>
+									<!-- 头像更新 -->
+									<form name="photoForm23" id="photoForm23" method="post"
+										action="__URL__/updatePhoto" enctype="multipart/form-data">
+										<div class="chuan"
+											style="position: relative; width: 110px; height: 43px; overflow: hidden; background: url('__HOME__/images/entrepre/choose.gif') no-repeat;">
+											<input name="memberphoto23" id="memberphoto23" type="file"
+												style="opacity: 0; position: absolute; text-align: right; -moz-opacity: 0; filter: alpha(opacity :         0); height: 43px; width: 110px; cursor: pointer;">
+										</div>
+
+										<div class="wodee">
+											请上传本人真实头像。 <br /> 图片大小为200x200，支持jpg/gif/jpeg.
+										</div>
+										<div class="clear"></div>
+									</form>
+								</div>
+								<!-- 成员资料更新 -->
+								<form name="prform23" id="prform23"
+									action="__URL__/prmemberupdate23" method="post">
+									<input type="hidden" name="headphoto23" id="headphoto23"
+										value=" ">
+									<div class="gezitwo">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font> 添加姓名
+										</div>
+										<div class="kuang">
+											<textarea name="name23" class="ldd" id="name23"
+												placeholder="请填写他的姓名,2—10字" style="resize: none;"></textarea>
+										</div>
+										<div style="line-height: 30px; color: #ccc; height: 30px;">
+											<img src="__HOME__/images/entrepre/right.png"
+												id="nameright23"
+												style="width: 30px; height: 30px; display: none;">
+										</div>
+										<div class="clear"></div>
+									</div>
+									<div class="gezione">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font> 添加职位
+										</div>
+										<div class="kuang">
+											<textarea name="position23" class="lss" id="position23"
+												placeholder="请填写他担当的职位，2—10字" style="resize: none;"></textarea>
+										</div>
+										<div style="line-height: 30px; color: #ccc; height: 30px;">
+											<img src="__HOME__/images/entrepre/right.png"
+												id="positionright23"
+												style="width: 30px; height: 30px; display: none;">
+										</div>
+										<div class="clear"></div>
+									</div>
+									<div class="gezitwo">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font> 选择角色
+										</div>
+										<div
+											style="display: inline; float: left; line-height: 30px; width: 300px; word-wrap: break-word;">
+											<input class="juese23" type="radio" id="radio231"
+												name="radio23" value="0"> <label for="radio231">项目发起人</label>&nbsp;&nbsp;&nbsp;&nbsp;
+											<input class="juese23" type="radio" id="radio232"
+												name="radio23" value="1"> <label for="radio232">团队其他成员</label>
+										</div>
+										<div id="role23" style="display: inline; float: left;"></div>
+
+										<div class="clear"></div>
+									</div>
+									<div class="gezitwo">
+										<div class="woss">
+											<font style="color: #f00; font-weight: normal">*</font> 添加简介
+										</div>
+										<div class="kuang">
+											<textarea name="introduce23" class="lpp" id="introduce23"
+												placeholder="请填写他的简介，10-200字。" style="resize: none;"></textarea>
+										</div>
+										<div style="line-height: 30px; color: #ccc; height: 30px;">
+											<img src="__HOME__/images/entrepre/right.png"
+												id="introduceright23"
+												style="width: 30px; height: 30px; display: none;">
+										</div>
+										<div class="clear"></div>
+									</div>
+									<input name="memberid23" id="memberid23" type="hidden">
+									<div class="geizione">
+										<div style="width: 120px; height: 30px; margin-left: 194px;">
+											<input type="image" name="save23"
+												src="__HOME__/images/entrepre/chesl.gif" id="save23"
+												style="width: 55px;" /> <a href="javascript:back23()">
+												<img src="__HOME__/images/entrepre/quxiao.gif"
+												style="width: 55px;">
+											</a>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<!-- 下一步 -->
+						<div class="nextt">
+							<div style="width: 112px; height: 35px; margin: 0 auto;">
+								<div class="next"
+									style="background: url('./Public/home/images/entrepre/xis.gif') no-repeat;">
+									<a href="javascript:li2();">下一步</a>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</block>

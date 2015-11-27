@@ -1,0 +1,82 @@
+<extend name="Base/prcenter"/>
+
+<block name="header">
+	<header>
+		<div class="littlebanner">
+			<img src="__HOME__/images/entrepre/cailing.gif" />
+		</div>
+		<script type="text/javascript">
+    jQuery(document).ready(function($) {
+      $('#guanzhu').addClass('jiben');
+    });
+  </script>
+	</header>
+	<!-- ==============================================js特效================================================= -->
+	<include file="index/effect" />
+    <!-- =================================================================================================== -->
+</block>
+
+<block name="body">
+	<div class="all">
+		<include file="main_t" />
+		<!--main-->
+		<div class="main" style="margin-bottom:20px;">
+			<include file="main_l" />
+
+			<div class="main_r">
+
+				<div class="yichuangjian">
+					<p>
+						关注
+                        <span>
+                            你关注了 <font style="color:red">{:count($atts)}个</font>投资人或项目
+                        </span>
+					</p>
+				</div>
+				<div id="items">
+					<?php foreach ($atts as $key => $value): ?>
+						<div class="ffens">
+							<div class="ffens_l">
+								<a href="{$value[url]}">
+									<?php if($value[img]): ?>
+										<img src="{$value[img]}"/>
+									<?php else: ?>
+										<img src="__STATIC__/images/nop.gif"/>
+									<?php endif; ?>
+								</a>
+							</div>
+
+							<div class="ffens_r">
+								<div class="fanxin_l">
+									<p>
+	                                    {$value[attd_style_name]}<br><span><a href="{$value[url]}">{$value[name]}</a></span>
+	                                    <br />
+	                                </p>
+									<h3 class="time">{:date("Y-m-d",$value[att_time])}</h3>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="fenge clear"></div>
+						</div>
+					<?php endforeach ?>
+				</div>
+				<?php if ($atts): ?>
+					<div class="pages">
+	                    <script>
+	                    $("div.pages").jPages({
+	                        containerID : "items",
+	                        perPage : 10,
+	                        previous : "上一页",
+	                        next : "下一页"
+	                    });
+	                    </script>
+	                </div>
+	            <?php else: ?>
+	            	<p>你还未关注任何人</p>
+				<?php endif ?>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</block>

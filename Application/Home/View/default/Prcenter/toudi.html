@@ -1,0 +1,111 @@
+<extend name="Base/prcenter"/>
+
+<block name="header">
+  <header>
+    <div class="littlebanner">
+      <img src="__HOME__/images/entrepre/cailing.gif" />
+    </div>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+      $('#toudi').addClass('jiben');
+    });
+  </script>
+  </header>
+  <!-- ==============================================js特效================================================= -->
+  <include file="index/effect" />
+  <!-- =================================================================================================== -->
+</block>
+
+<block name="body">
+  <div class="all">
+    
+    <include file="main_t" />
+    <!--main-->
+    <div class="main" style="margin_bottom:20px;">
+      <include file="main_l" />
+      
+      <div class="main_r">
+
+        <div class="yichuangjian">
+          <p>你一共投递了<strong><?php echo count($toudis); ?>个</strong>项目</p>
+        </div>
+        <?php if ($toudis): ?>
+          <div id="items">
+          <?php foreach ($toudis as $key => $value): ?>
+            <?php 
+            $t_pro = M('project')->where("id='$value[pid]'")->select(); 
+            $t_investor = M("investor")->where("id='$value[iid]'")->select();
+            $t_homeuser = M("homeuser")->where("id='".$t_investor[0][uid]."'")->select();
+            ?>
+            <div class="con">
+            <span class="position_second">
+              <img src="__HOME__/images/prcenter/rongzizhong.gif" alt="企业logo" width="67" height="63" />
+            </span>
+            <dl>
+              <dt>
+                <a href="#">
+                <?php if (!$t_pro[0][logo]): ?>
+                  <img src="./Public/home/images/prcenter/touxiangshangchuan.gif" alt="投资商信息" />
+                <?php else: ?>
+                  <img src="./Uploads/Album/{$t_pro[0][logo]}" alt="投资商信息" />
+                <?php endif ?>
+                </a>
+              </dt>
+              <dd style="margin-left:0;">  <a href="?s=home/project/prdetail&pid={$t_pro[0][id]}"><strong>{$t_pro[0][pjname]}</strong></a>
+                <p>
+                  {$t_pro[0][pjintroduce]}
+                </p>
+                <div class="img">
+                  <ul>
+                    <li>
+                      <img src="__HOME__/images/prcenter/baifenshu02.gif" alt="百分比" height="22" width="250" />
+                    </li>
+                    <li class="right_img">
+                      <p>130%</p>
+                    </li>
+                    <div class="clear"></div>
+                  </ul>
+                </div>
+                <div class="rongzi">
+                  <p>
+                    {$t_pro[0][money]}元
+                    <br />
+                    已融资金额
+                  </p>
+                  <p>
+                    {$t_pro[0][budget]}元
+                    <br />
+                    融资总额
+                  </p>
+                  <div class="clear"></div>
+                </div>
+                <div class="tdddt">
+                  投递给了<a href="?s=home/invhome/invDisplay&uid={$t_investor[0][uid]}">{$t_homeuser[0][username]}</a>
+                </div>
+              </dd>
+              <div class="clear"></div>
+            </dl>
+          </div>
+
+          <?php endforeach ?>
+
+          </div>
+
+          <div class="pages">
+          <script>
+          $("div.pages").jPages({
+              containerID : "items",
+              perPage : 10,
+              previous : "上一页",
+              next : "下一页"
+          });
+          </script>
+          </div>
+        <?php endif ?>
+
+      </div>
+
+    </div>
+    <div class="clear"></div>
+  </div>
+</block>

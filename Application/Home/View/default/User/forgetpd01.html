@@ -1,0 +1,95 @@
+01<extend name="Base/register"/>
+<block name="header">
+	<link rel="stylesheet"  href="__CSS__/forgetpassword.css" type="text/css" />
+	<header>
+		<div class="littlebanner">
+			<img src="__HOME__/images/entrepre/cailing.gif" />
+		</div>
+	</header>
+</block>
+
+<block name="body">
+	<div class="all">
+    	
+        <div class="forgot">
+        	<div class="forgoa">找回密码</div>
+            <div><img src="__IMG__/user/forgetpassword/forget01.gif" /></div>
+            <!-- <div class="xinfg">
+                	（备注:“<font style="color:#f00; padding:0 10px">*</font>”为必填项）
+            </div> -->
+            <div class="forgomm">
+                <form action="{:U(forgetpd01)}" method="post" id="form">
+                	<div class="wodedea" style="margin-top:30px">
+                    	<div class="woded_l">
+                        	<font style="color:#f00">*</font>邮箱：
+                        </div>
+                        <div class="woded_r">
+                        	<input type="text" name="email" id="email" maxlength="50" placeholder="请输入绑定的邮箱" />
+                        </div>
+                        <div class="clear"></div>
+                        
+                    </div>
+                    
+                    <div class="wodedea">
+                    	<div class="woded_l">
+                        	<font style="color:#f00">*</font>验证码：
+                        </div>
+                        <div class="yanzhe">
+                        	<input type="text" name="code" id="code" maxlength="4" placeholder="请输入验证码" />
+                        </div>
+                        <div class="yanzheng">
+                        	<img class="verifyimg reloadverify" alt="点击切换" src="{:U('verify')}" style="cursor:pointer;">
+                        </div>
+                        <div class="zhuan">
+                        	<img class="update_varifyimg" alt="看不清？换一换" src="__HOME__/images/user/zhuan.gif" />
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </form>
+                
+                <div class="yessub">
+                	<img onclick="yanzheng()" src="__IMG__/user/forgetpassword/submit1.gif" />
+                </div>
+            </div>
+            <script>
+            $(function(){
+                var verifyimg = $(".verifyimg").attr("src");
+                $(".update_varifyimg,.reloadverify").click(function(){
+                    if( verifyimg.indexOf('?')>0){
+                        $(".verifyimg").attr("src", verifyimg+'&random='+Math.random());
+                    }else{
+                        $(".verifyimg").attr("src", verifyimg.replace(/\?.*$/,'')+'?'+Math.random());
+                    }
+                });
+            });
+            function yanzheng() {
+                var code = $("#code").val()
+                $.post('?s=Home/User/checkVerify', {code:code}, function(data, textStatus, xhr) {
+                    if (data) {
+                        $("form").ajaxSubmit({
+                            beforeSubmit:function () {
+                                if (!/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test($("#email").val())) {
+                                    layer.tips('邮箱错误！','#email',{time:3,guide:1});
+                                    return false
+                                }
+                            },
+                            success:function (e) {
+                                if (e==0) {
+                                    layer.tips('邮箱不存在！','#email',{time:3,guide:1});
+                                    $(".update_varifyimg").trigger('click')
+                                }else if(e==2){
+                                    layer.alert("发送邮件失败！")
+                                }else{
+                                    location.href = "?s=Home/User/forgetpd02&email="+e
+                                }
+                            }
+                        })
+                    }else{
+                        layer.tips('验证码错误！','#code',{time:3,guide:1});
+                    }
+                });
+            }
+            </script>
+        </div>
+    </div>
+</block>

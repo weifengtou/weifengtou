@@ -1,0 +1,51 @@
+<!--项目团队-->
+<div class="gongtong xmtd">
+
+    <h3>项目团队</h3>
+
+    <!--人物图片-->
+
+    <div></div>
+
+    <!--文字介绍-->
+
+    <div class="jianjie">
+
+        <?php foreach ($prmembers as $key =>
+        $value): ?>
+        <div>
+            <div class="jianjie_l">
+                <div class="xmtd_im">
+
+                    <a>
+                        <?php if (!$value[photo]): ?>
+                        <img src="__HOME__/images/detail/team01.gif" width="80" height="80"/>
+                        <?php else: ?>
+                        <img src="./Uploads/Portrait/{$value[photo]}" style="width:80px;height:80px;" />
+                        <?php endif ?></a>
+
+                    <p>
+                        {$value[membername]}
+                        <br />
+                        <span>{$value[memberposition]}</span>
+                    </p>
+
+                    <div class="clear"></div>
+
+                    <div class="positionth">
+                        <a href="#">
+                            <img src="__HOME__/images/detail/touxiang03.png" width="80" height="80" />
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="jianjie_r">
+                <p>{$value[memberintroduce]}</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <?php endforeach; ?></div>
+
+</div>

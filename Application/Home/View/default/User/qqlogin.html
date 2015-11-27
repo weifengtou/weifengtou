@@ -1,0 +1,40 @@
+<meta charset="UTF-8">
+<script src="__STATIC__/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="{:C('QQ_APP_ID')}" charset="utf-8"></script>
+<script>
+    var paras = {};
+    QC.api("get_user_info", paras)
+    .success(function(s){
+        // alert("获取用户信息成功！当前用户昵称为："+s.data.nickname);
+    })
+	.error(function(f){
+        alert("获取用户信息失败！");
+	 })
+    .complete(function(c){
+        // alert("获取用户信息成功！当前用户昵称为："+c.data.nickname);
+        getToken(c.data.nickname)
+        // window.location.href="{:C('WEB_URL')}"; 
+	})
+	function getToken(nickname) {
+        if(QC.Login.check()){
+            QC.Login.getMe(function(openId, accessToken){
+                // alert(["当前登录用户的", "openid为："+openId, "accessToken为："+accessToken].join("n")); 
+                check(openId,nickname)
+            });
+        }else{
+            alert("请登录后体验");
+        }
+    }
+    function check (openId,nickname) {
+        // alert(nickname)
+    	$.post("{:U('User/checkqqopenid')}", {openId: openId}, function(data, textStatus, xhr) {
+    		if (data!='0') {
+    			data = jQuery.parseJSON(data);
+    			window.location.href = "index.php?s=Home/User/checkqquser&openId="+openId+"&id=" + data[0]['id']+"&nickname="+nickname
+    		}else{
+                alert("qq登录成功，本网站严格按照邮箱用户查询数据，请完成邮箱注册信息后可以绑定该qq直接登录本网站！")
+    			window.location.href = "index.php?s=Home/User/qqregister&openId="+openId+"&nickname="+nickname
+    		}
+    	});
+    }
+</script>
